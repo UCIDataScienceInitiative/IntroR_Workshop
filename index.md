@@ -41,7 +41,7 @@ github:
 4) Feel free to ask questions anytime during lecture.
 
 5) To access this presentation and the codes used during the workshop please visit:
-  + https://github.com/SepehrAkhavan/intro-R-WorkShop
+  + https://github.com/SepehrAkhavan/IntroR_Workshop
   + http://sepehrakhavan.github.io/IntroR_Workshop/#1
 
 ---
@@ -99,7 +99,7 @@ github:
   + please visit: http://cran.us.r-project.org
 
 > 2. R built-in facility:
-  + try ?lm, help(lm) in R consol
+  + try ?lm, help(lm) in R console
 
 > 3. There are many free tutorials available online:
   + Quick R: http://www.statmethods.net/
@@ -152,7 +152,7 @@ github:
 
 ## Data Types in R:
 
-1. R has 5 main data types:
+1. R has 5 main atomic data types:
   + Numeric
   + Integer
   + Complex
@@ -542,7 +542,7 @@ myVec
 
 ### Other Ways to Create Matrix:
 
-+ As it's intuitive, matrix seems to be combination of vectors that are put next to each other (either column wise or row wise).
++ As it's intuitive, matrices seem to be a combination of vectors that are put next to each other (either column wise or row wise).
 
 + rbind() (row bind) and cbind (column bind) do a similar job:
 
@@ -672,7 +672,7 @@ head(data)
 
 + a) please call help on sample() in R. What does this function do?
 + b) What does replace argument in sample() does?
-+ c) Using sample(), randomly choose one number out of the pool of {1, 2, 3, 4, 5, 6}
++ c) Using sample(), randomly choose one number out of the set {1, 2, 3, 4, 5, 6}
 + d) Considering the experiment of rolling a die twice. How can you simulate it by using sample()? what is the role of replace argument in this case?
 
 ---
@@ -1032,7 +1032,6 @@ head(quakes$long)
 
 
 ```r
-library(datasets)
 quakes[1:10,]
 ```
 
@@ -1059,6 +1058,7 @@ quakes[1:10,]
 ```r
 install.packages("PASWR", repos = "http://cran.stat.ucla.edu") # installs PASWR package
 library(PASWR) # this loads in the package
+data(titanic3)
 ```
 
 + b) print out the top 10 rows of the dataset.
@@ -1147,7 +1147,8 @@ x < y
 
 **The slides for "Reading and Writing Data" section were mainly from Dr. Roger D. Peng, Associate Professor at Johns Hopkins**
 
-Main functions on reading data into R:
+Main functions for reading data into R:
+
 1. read.table(), read.csv(): to read tabular data 
 2. readLines(): to read lines of a text file
 3. source(), dget(): reading R codes
@@ -1159,7 +1160,7 @@ Main functions on reading data into R:
 
 ## Reading and Writing Data
 
-Main functions on writing data from R:
+Main functions for writing data from R:
 
 1. write.table(), write.csv(): to write tabular data to file
 2. writeLines(): to write lines to a text file
@@ -1190,6 +1191,12 @@ Main functions on writing data from R:
 ## read.table():
 
 
+```r
+irisFile <- read.table(file = "/Users/sepehrakhavan/Documents/Statistics/Stat Courses/DataScience_Dr.PadhraicSmyth/RWorkShop_Nov_2014/SupportingFiles/iris", header = TRUE)
+
+head(irisFile)
+```
+
 ```
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
@@ -1201,7 +1208,7 @@ Main functions on writing data from R:
 ```
 
 + to make read.table() run faster:
-  + set comment.char = ""
+  + set comment.char = " "
   + set colClasses upfront
 
 ---
@@ -2007,6 +2014,7 @@ data(diamonds) # more info on the data: ?diamonds
 + Find average diamond price per each cut quality level
 + Find 2.5 and 97.5 percentile of diamond price per each cut quality level 
 + Split the dataset based on cut quality level 
+
 ---
 
 ## Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)
@@ -2285,7 +2293,7 @@ plot(x, y, type = "l")
 
 ---
 
-## Time for Lunch Break for 10 Minutes. Please come back at 2:30 :)
+## Time for Lunch Break for 10 Minutes :)
 
 ---
 
@@ -2694,7 +2702,7 @@ qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
 
 ---
 
-## Time for Lunch Break for 10 Minutes. Please come back at 4 :)
+## Time for Lunch Break for 10 Minutes :)
 
 
 ---
