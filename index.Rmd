@@ -1,0 +1,1877 @@
+---
+title       : Intro to R Workshop
+subtitle    : UCI Data Science Initiative
+author      : Sepehr Akhavan
+job         : PhD Candidate, Dept. of Statistics
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : mathjax            # {mathjax, quiz, bootstrap}
+logo        : logo.png
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+github:
+  user: sepehrakhavan
+  repo: IntroR_Workshop
+---
+
+## Introduction
+
+```{r,echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+library(ggplot2)
+```
+1) The class will include 5 sessions:
+  + Session 1 (9-10:20): Data Types in R 
+  + Session 2 (10:30-12): Constrol Structures and Functions
+  + Session 3 (12:30-1:50): Debugging Techniques in R
+  + Session 4 (2-3:20): Plotting and Data Visualization in R 
+  + Session 5 (3:30-5): Statistical Analysis in R
+
+---
+
+## Introduction
+
+2) Each session will include:
+  + Lecture: about 1 hr
+  + R exercise and Discussion: 20 minutes
+  + Break: 10 minutes
+
+
+3) We are going to work in pairs. Please find a partner. 
+
+
+4) Feel free to ask question anytime during lecture.
+
+5) To access this presentation and the codes used during the workshop please visit:
+  + https://github.com/SepehrAkhavan/intro-R-WorkShop
+  + http://sepehrakhavan.github.io/intro-R-WorkShop/
+
+---
+
+## Session 1 - Agenda
+
+1. Oerview and History of R
+2. Resources in Learning R and How to get Help?
+3. RStudio
+4. Data Types in R
+5. Subsetting in R
+
+
+---
+
+## What is R?
+
++ R is a free software environment for statistical computing and graphics
+  + See http://www.r-project.org/ for more info
+  
+  
++ R compiles and runs on a wide variety of UNIX platforms, Windows and Mac OS
+
++ R is Open-Source and free
+
++ R is fundamentally a command-driven system
+
++ R is an object-oriented programming language 
+  + everything in R is considered as an object!
+
+
+---
+
+## History of R:
+
++ R created by Ross Ihaka and Robert Gentleman in 1991 in New Zealand
+  + For more info please read: Ihaka, Ross, and Robert Gentleman. "R: a language for data analysis and graphics." Journal of computational and graphical statistics 5.3 (1996): 299-314. 
+
++ In 1996, the first R public mailing lists were created.
+  + More info on R mailing lists: http://www.r-project.org/mail.html
+
++ In 1997, The R core team, with write access to the R source, was formed:
+  + More info n the core team: http://www.r-project.org/contributors.html
+
++ In 2004, the first useR! conference was in Vienna, Austria.
+
++ In Feb 2011, the first version of RStudio was released.
+
+
+---
+
+## Online Resources to Learn R:
+
+> 1. Very useful resources available on **The Comprehensive R Archive Network** (CRAN)
+  + please visit: http://cran.us.r-project.org
+
+> 2. R built-in facility:
+  + try ?lm, help(lm) in R consol
+
+> 3. There are many free tutorials available online:
+  + Quick R: http://www.statmethods.net/
+  + R-Twotorials: http://www.twotorials.com/
+  + UCLA Academy Technology Services: http://www.ats.ucla.edu/stat/r/
+  
+> 4. R-Bloggers (http://www.r-bloggers.com/): is a central hub (e.g: A blog aggregator) of content collected from bloggers who write about R (in English). 
+
+
+---
+
+## Useful Books in learning R:
+
+1. chambers(1998). Programming with Data, Springer.
+
+2. Venables & Ripley (2000). S Programming, Springer.
+
+3. Chambers (2008). Software for Data Analysis, Springer. (highly recommended)
+
+4. More resources available at: http://www.r-project.org/doc/bib/R-books.html
+
+---
+
+## How to get help in R:
+
+1. Simply use the built-in help function in R
+  + example: ?lm, help(lm)
+  
+2. R mainling lists: r-help and r-devel
+  + For more info: https://stat.ethz.ch/mailman/listinfo/r-help
+  + How to ask good questions: http://www.r-project.org/posting-guide.html
+
+3. Use Q&A websites in particular:
+  + stackoverflow (http://stackoverflow.com): for programming related questions.
+  + crossValidated (http://stats.stackexchange.com): for Stats related questions.
+  
+4. Google :)  
+
+---
+
+## R Studio:
+
+1. Rstudio is a free and open source integrated development environment (IDE) for R.
+
+2. To download Rstudio please visit: http://rstudio.org/
+
+3. Please note that you must have R already installed before installing R Studio.
+
+---
+
+## Data Types in R:
+
+1. R has 5 main data types:
+  + Numeric
+  + Integer
+  + Complex
+  + Logical
+  + Character
+  
+2. Everything in R is object. Objects can have some attributes.
+  + names, dimension, class, length are some possible attributes
+
+---
+
+## Vectors in R:
+
+Vector is the most basic object in R
+
+```{r echo=TRUE}
+numVec <- 1:10 # <- : is assigning operator
+numVec
+
+charVec <- c("a", "b", "c") # c: to combine elements
+charVec
+
+logVec <- vector(mode = "logical", length = 10)
+logVec
+```
+
+---
+
+### Special Values:
+
+There are some special values in R:
+  + use L to refer to an integer value: 1L
+  + R knows infinity: Inf, -Inf
+  + NaN: refers to "Not a number"
+  
+```{r echo=TRUE}
+intVec <- c(1L, 2L, 3L, 4L) 
+intVec
+
+a <- Inf; b <- 0
+rslt <- c(b/a, a/a)
+rslt
+```
+
+---
+
+### Logical, Complex, & Character Vectors:
+
+Let's see some examples of logical,complex, and character vectors:
+```{r echo=TRUE}
+logVec <- c(TRUE, FALSE, FALSE, T, F)
+logVec
+
+compVec <- c(1 + 0i, 3 + 1i)
+compVec
+
+charVec <- c("red", "green", "blue")
+charVec
+```
+
+---
+
+### Data Type Coercion:
+
++ In general, vectors CAN NOT have mixed types of objects
++ exception: lists in R 
+
+```{r echo=TRUE, results='hide'}
+numCharVec <- c(3.14, "a")
+numCharVec # ? what would you expect to be printed?
+
+numLogVec <- c(pi, T)
+numLogVec # any guess?
+
+charLogVec <- c("a", TRUE)
+charLogVec # ?
+```
+
++ In examples above, we saw implicit coercion 
++ Explicit coercion is also possible!
+
+---
+
+### Data Type Coercion:
+
++ as(): To explicitely coerce objects from one type to another
+
+```{r echo=TRUE}
+numVec <- seq(from = 1200, to = 1300, by = 15)
+numVec
+numToChar <- as(numVec, "character")
+numToChar
+logVec <- c(F, T, F, T, T)
+as(logVec, "numeric")
+```
+
+---
+
+### Data Type Coercion:
+
++ Coercion does not always work! Be careful about warnings:
+
+```{r echo=TRUE}
+compVec <- c(12+10i, 1+6i, -3-2i)
+as(compVec, "numeric")
+
+charVec <- c("2.5", "3", "2.8", "1.5", "zero")
+as(charVec, "numeric")
+```
+
+---
+
+### Factors:
+
++ Factor is a vector object used to specify a discrete classification (categorical values).
++ Factors can be: 1) ordered, 2) un-ordered
++ Levels of a Factor are better to be labeled (self-descriptive)
+  + Consider gender as (0, 1) as opposed to labeled ("F", "M")
+```{r echo=TRUE}
+Gender <- rep(c("Female", "Male"), times = 3)
+Gender
+GenderFac1 <- factor(Gender)
+GenderFac1
+```
+
+---
+
+### Factors:
+
+```{r echo=TRUE}
+levels(GenderFac1)
+table(GenderFac1)
+unclass(GenderFac1) # bring the factor down to integer values
+```
+
+---
+
+### Factors:
+```{r echo=TRUE}
+GenderFac1 # levels are ordered alphabetically - 1st level = BaseLevel
+GenderFac2 <- factor(Gender, levels = c("Male", "Female"))
+GenderFac1
+GenderFac2
+```
+
+---
+
+### Missing Values:
+
++ There are two kinds of missing values in R:
+  + NaN: refers to "Not a Number" and is a a missing value produced by numerical computation.
+  + NA: When a value is "Not Available" or is "Missing", NA is assigned as its value.
+
++ NaN is also considered as NA (the reverse is NOT true). 
+```{r echo=TRUE}
+testScore <- NA
+is.na(testScore)
+is.nan(testScore)
+```
+
+---
+
+### Matrices:
+
++ Matrix is a special case of vector:
+  + Matrix has dimension attribute
+
+```{r echo=TRUE}
+myMat <- matrix(nrow = 2, ncol = 4)
+myMat
+attributes(myMat)
+```
+
+---
+
+### Matrices:
+```{r echo=TRUE}
+myMat <- matrix(1:8, nrow = 2, ncol = 4)
+myMat # matrices are filled in column-wise
+```
+
+---
+
+### Matrix is a special vector:
+
+```{r echo=TRUE}
+myVec <- 1:8
+myVec
+dim(myVec) <- c(2,4)
+myVec
+```
+
++ Similar to vectors, all elements of a matrix should have the same type.
+  + if not, R does an automatic coercion.
+
+---
+
+### Other Ways to Create Matrix:
+
++ As it's tuitive, matrix seems to be combination of vectors that are put next to each other (either column wise or row wise).
+
++ rbind() (row bind) and cbind (column bind) do a similar job:
+```{r echo=TRUE}
+vec1 <- 1:4
+vec2 <- sample(1:100, 4, replace = FALSE)
+vec3 <- rnorm(4, mean = 0, sd = 1)
+colMat <- cbind(vec1, vec2, vec3)
+colMat
+```
+
+---
+
+### Other Ways to Create Matrix:
+
+```{r echo=TRUE}
+vec1 <- 1:4
+vec2 <- sample(1:100, 4, replace = FALSE)
+vec3 <- rnorm(4, mean = 0, sd = 1)
+rowMat <- rbind(vec1, vec2, vec3)
+rowMat
+```
+
+---
+
+## Lists:
+
++ Consider list as a vector but with two main differences:
+  + each element of a list can have its own class regardless of other elements
+  + This means, each element can be of a different data type and a different length
+```{r echo=TRUE}
+myVec <- c(10, "R", 10-5i, T)
+myList <- list(10, "R", 10-5i, T)
+myVec
+```
+
+---
+
+## Lists:
+
+```{r echo=TRUE}
+myList <- list(10, "R", 10-5i, T)
+myList
+```
++ Elements of list are shown with [[]]
++ Elements of vector are shown with []
+
+---
+
+## Data Frames:
+
++ We use data frames to store tabular data
++ Data frame is a special list where all objects have equal length
++ The main difference between data.frame and Matrix?
+```{r echo=TRUE}
+studentID <- paste("S#", sample(c(6473:7392), 10), sep = "")
+score <- sample(c(0:100), 10)
+gender <- sample(c("female", "male"), 10, replace = TRUE)
+data <- data.frame(studentID = studentID, score = score, gender = gender)
+head(data)
+```
+
+---
+
+## Exercise 1:
+
++ a) Create two numeric vectors of the same length and find the product of these two vectors. 
+
++ b) Create two numeric vectors of DIFFERENT length and find the product of these two vectors. What do you expect to get? Can you explain the output that R generates?
+
++ c) Create two numeric matrices of 2 by 2 dimensions. 
+
++ d) Multiply the two matrices in part (c) using * operator
+
++ e) Multiply the two matrices in part (c) using %*% operator. What is the difference between part (d) and part (e)?
+
+---
+
+## Exercise 2:
+
++ a) please call help on sample() in R. What does this function do?
++ b) What does replace argument in sample() does?
++ c) Using sample(), randomly choose one number out of the pool of {1, 2, 3, 4, 5, 6}
++ d) Considering the experiment of rolling a die twice. How can you simulate it by using sample()? what is the role of replace argument in this case?
+
+---
+
+## Subsetting:
+
++ Often times we need to take a subset of a vector, a matrix, a list, or a dataframe.
++ We consider three main operators to take a subset of an object:
+  + [ ]: signle brackets return an object of the same class of the original object. By using [], we can also choose more than one element.
+  + [[ ]]: double brackets are used primarily for lists and dataframes. 
+  + $: Similar to double brackets, $ is used primarily for lists and dataframes. 
+
++ With [[ ]] and $, we can only choose one object!
+
++ [[ ]] and $ can return an object with a different class than the original objects we are subsetting from.
+
+---
+
+### Subsetting examples:
+
+```{r echo=TRUE}
+myVec <- 10:20
+myVec[3]
+
+myList <- list(obj1 = "a", obj2 = 10, obj3 = T, obj4 = 10-5i)
+myList[[3]]
+myList$obj3
+```
+
+---
+
+## Subsetting with [ ]:
+
++ By using single bracket, we can choose more than one element of an object.
++ In this case, index vectors can be very useful:
+  + Index vector is a vector of indices of another vector that is used to select a subset of another vector (or Matrix)
+  
+```{r echo=TRUE}
+x <- seq(from=0, to=100,by=10) # length(x) is ??
+IndVec <- c(1, 2, 3, 4, 5) # the first 5 elements 
+x[IndVec]
+```
+
+---
+
+## Index Vectors:
+
++ There are four types of Index vectors:
+  1. Logical Index Vector: The logical index vector should be of the same length of the vector from which we are selecting a subset. Values corresponding to TRUE in the index vector are selected.
+  2. Vector of Positive integers: All the values in this type of index vector must lie in 1:(length(x)).
+  3. Vector of Negative integers: This type of index vector indicates the values to be excluded from the
+vector.
+  4. A Vector of Character Strings: if a vector has a name attribute, we can simply take a subset of the vector by calling the names of the elements.
+
+---
+
+## Index Vectors:
+```{r echo=TRUE}
+myVec <- letters[1:10]
+names(myVec) <- paste("e", 1:10, sep = "")
+myVec
+
+logIndVec <- rep(c(T, F), each = 5)
+logIndVec
+
+posIndVec <- 1:5
+negIndVec <- -6:-10
+chIndVec <- c("e1", "e2", "e3", "e4", "e5")
+```
+
+---
+
+## Index Vectors:
+```{r echo=TRUE}
+myVec[logIndVec]
+
+myVec[negIndVec]
+
+myVec[chIndVec]
+```  
+
+---
+
+## Logical Index Vectors:
+
++ logical index vectors can be generated by using conditional statements:
+  + Using ==, !=, <, >, ...
+
+```{r echo=TRUE}
+myVec <- 1:10
+logIndVec <- (myVec < 5)
+logIndVec
+myVec[logIndVec]
+```  
+
+---
+
+## Matrix Indexing:
++ Similar to vector indexing, we can refer to individual elements of a matrix.
+```{r echo=TRUE}
+myMat <- matrix(1:8, ncol = 4)
+myMat
+myMat[1,1] # refering to an element
+myMat[2,] # refering to the second row
+myMat[,3] # refering to the third column
+```  
+
+---
+
+## Matrix Indexing:
+
++ By default, when the retrieved elements of a matrix look like a vector, R drops their dimension attribute. We can turn this feature off by setting drop = FALSE
+
+```{r echo=TRUE}
+myMat[1,1]
+myMat[1,1, drop = FALSE]
+
+myMat[2,, drop = FALSE]
+``` 
+
+---
+
+## Subsetting Lists:
+```{r echo=TRUE}
+myList <- list(ch = letters[1:2], lg = F, nm = 1:3)
+myList
+myList[1] # subset is still a list
+``` 
+
+---
+
+## Subsetting Lists:
+```{r echo=TRUE}
+myList[1:2] # subset is still a list
+myList[[1]] # returning the 1st obj with its own class
+myList$ch # alternative to [[]]
+``` 
+
+---
+
+## Subsetting Lists:
+```{r echo=TRUE}
+myList[[1]][2] # returning the 2nd element of the 1st obj
+myList$ch[2]
+myList[[c(1,2)]]
+``` 
+
+---
+
+## Subsetting Data Frames:
+```{r echo=TRUE}
+library(datasets)
+data(quakes) # ?quakes for more info
+str(quakes)
+head(quakes$long)
+``` 
+
+---
+
+## Subsetting Data Frames:
+
+```{r echo=TRUE}
+library(datasets)
+quakes[1:10,]
+``` 
+
+---
+
+## Exercise 3:
+
++ a) Please run the commands below to load in titanic3 dataset
+```{r echo = TRUE, warning=FALSE, error=FALSE, message=FALSE, eval=FALSE}
+install.packages("PASWR", repos = "http://cran.stat.ucla.edu") # installs PASWR package
+library(PASWR) # this loads in the package
+```
+
++ b) print out the top 10 rows of the dataset.
+
++ c) print out the names of the columns of the dataset
+  + hint: use names()
+
++ d) print the top 10 values of age column
+
++ e) using is.na() function, take a subset of the dataset that has non-missing age
+  + hint: !is.na() refers to NOT NA !
+
++ e) Run ?which to use help on understanding what which() does.
+
+
+---
+
+## Time to Break for 10 Minutes :)
+
+---
+
+## Session 2 - Agenda
+
+1. Vectorized Operations in R
+2. Reading and Writing in R
+3. Control Structure
+4. Functions & Packages
+
+---
+
+## Vectorized Operations
+
+R is capable of vectorized operations without any need for runing loops:
+```{r echo=TRUE}
+x <- 1:5
+y <- c(1, 2, 6, 7, 10)
+x + y # R does an element by element summation
+x < y
+```
+
+---
+
+## Vectorized Operations
+
++ Similar to vectors, vectorized operations can be performed for Matrices:
+```{r echo=TRUE}
+x <- matrix(1:9, ncol = 3)
+y <- matrix(rep(c(5,6,7), 3), ncol = 3)
+x + y # R does an element by element summation
+x < y
+```
+
+---
+
+## Reading and Writing Data
+
+**The slides for "Reading and Writing Data" section were mainly from Dr. Roger D. Peng, Associate Professor at Johns Hopkins**
+
+Main functions on reading data into R:
+1. read.table(), read.csv(): to read tabular data 
+2. readLines(): to read lines of a text file
+3. source(), dget(): reading R codes
+4. load(): to read saved workspaces
+
++ Only read.table() and read.csv() are covered in this lecture. 
+
+---
+
+## Reading and Writing Data
+
+Main functions on writing data from R:
+
+1. write.table(), write.csv(): to write tabular data to file
+2. writeLines(): to write lines to a text file
+3. dump, dput: to write R codes to a file
+4. save: to save a workspace
+
++ Only write.table() is covered in this lecture. 
+
+---
+
+## read.table():
+
++ read.table() is the most commonly used function to read data in R. Below are important arguments of this function:
+
+  + file: name or address to the file of interest
+  + header: logical indicator on whether the file has header or not
+  + sep: string on how columns of data are separated (in .csv, sep = ",")
+  + colClasses: is a character vector for class of each column
+  + nrows: number of rows in the dataset
+  + comment.char: a character that is used in the dataset for commenting
+  + skip: number of lines to skip from the beginning of the file
+  + stringAsFactors: logical indicator on whether characters should be converted to factors 
+
++ read.csv() is equivalent to read.table with sep = ","
+
+---
+
+## read.table():
+
+```{r echo = FALSE}
+irisFile <- read.table(file = "/Users/sepehrakhavan/Documents/Statistics/Stat Courses/DataScience_Dr.PadhraicSmyth/RWorkShop_Nov_2014/SupportingFiles/iris", header = TRUE)
+
+head(irisFile)
+```
+
++ to make read.table() run faster:
+  + set comment.char = ""
+  + set colClasses upfront
+
+---
+
+## Calculating Memory Requirements:
+
++ Note that datasets will be read into RAM. So, you should have enough RAM in order to read a dataset. 
+
++ Consider a data frame with 1.5 million rows and 120 columns. How much memory is required to read this dataset?
+
+1.5m * 120 * 8 bytes/numeric = 1.44 * $10^9$ = 1.44 * $10^9$/ $2^{20}$ MB = 1,373.29 MB = 1.34 GB
+
++ So it's recommended to have a RAM of size 2 * 1.34GB to read that dataset.
+
+---
+
+## write.table():
+
+```{r echo = T, eval=FALSE}
+write.table(irisFile, file = "pass/to/the/file")
+```
+
+---
+
+## Loops:
+
++ There are 3 ways in R to write loops:
+  + repeat
+  + while
+  + for
+
+---
+
+### repeat:
+
++ The repeat statement causes repeated evaluation of the body until a break is specifically requested.
++ The body of the repeat statement should include:
+  + statements to do computation
+  + conditions on when to stop
+
+```{r echo = T}
+i <- 1 
+repeat {
+  print(paste("cycle #", i, sep = "")) 
+  i=i+1
+  if (i >= 2)
+  break 
+}
+```
+
+---
+
+### while:
+
++ while loops start by testing a condition. If the condition is true, while executes the body:
+
+```{r echo = T}
+i <- 1
+while (i < 2) {
+  print(paste("cycle #", i, sep = ""))
+  i <- i + 1 
+}
+```
+
+---
+
+### for:
+
+```{r echo = T}
+for(i in 1:4){
+  print(paste("cycle #", i, sep = ""))
+  i <- i + 1 
+}
+```
+
+---
+
+## next:
+
++ next is useful in skipping an iteratio of a loop:
+```{r echo = T}
+for(i in 1:4){
+  if (i == 3){
+    next
+  }
+  print(paste("cycle #", i, sep = ""))
+  i <- i + 1 
+}
+```
+
+
+---
+
+## if:
+
++ if/else statements are used to write conditional statements
+
+```{r echo = T}
+x <- 7
+if (x < 10){
+  print("x is less than 10")
+}else{
+  print("x is greater than 10")
+}
+```
+
+---
+
+## if:
+```{r echo = T}
+age <- sample(1:100, 10)
+ageCat <- rep(NA, length(age))
+for (i in 1:(length(age))) {
+    if (age[i] <= 35){
+       ageCat[i] <- "Young"
+      }else if (age[i] <= 55){
+        ageCat[i] <- "Middle-Aged"
+      }else{
+         ageCat[i] <- "Old"
+      } 
+}
+age.df <- data.frame(age = age, ageCat = ageCat)
+age.df[1:3,]
+```
+
+---
+
+## Functions and Packages:
+
+> 1. R language has many built-in functions
+> 2. Each function has a name followed by ()
+> 3. Arguments of a function should mention within parantheses
+> 4. R packages are a comfortable way to maintain collections of R functions and data sets
+> 5. Packages allow for easy, transparent and cross-platform extension of the R base system
+
+
+---
+
+## Functions and Packages:
+
+There are some terms which sometimes get confused and should be clarified:
+
+1. Package: An extension of the R base system with code, data and documentation in a standardized format
+2. Library: A directory containing installed packages
+3. Repository: A website providing packages for installation
+4. Source: The original version of a package with human-readable text and code
+5. Binary: A compiled version of a package with computer-readable text and code, may work only on a specific platform
+6. Base packages: Part of the R source tree, maintained by R Core
+
++ for more info on how R packages are developed, please read: "Creating R Packages: A Tutorial" (Friedrich Leisch)
+  + http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf
+
+
+---
+
+## How to install a package in R:
+
+There are two ways to install a package in R:
+
+1. Installing from CRAN: install a package directly from the repository
+  + Using R studio: tools/install packages
+  + From R console: install.packages()
+
+2. Installing from Source: In this method, you should first download the add-on R package and use the following unix commmand in the console to install the package:
+  + R CMD INSTALL packageName -l path/to/your/Rpackage/Directory
+
++ Once you install a package, you need to load it into R using the function library()
+
+
+---
+
+## Exercise 4:
+
++ Please install ggplot2 package
++ Once installed, please load the package
+
+
+---
+
+## Calling a function in R
+
+```{r echo=TRUE}
+str(sample)
+```
++ consider sample() in R. Simply run ?sample in R console to read the help on this function.
++ sample() gets four arguments: 
+  + x: sample space in form of a vector
+  + size: your desired sample size
+  + replace: sampling with/wout replacement
+  + prob: a vector of probability weights
+
++ some of the arguments have default values. What are those arguments?
+
++ How to use (or call) this function? 
+
+
+---
+
+## Calling a function in R
+
+```{r echo=TRUE}
+# Functions arguments can be matched: 1) by position or 2) by name
+sampSpace <- 1:6 # rolling a die
+sample(sampSpace, 1) # arguments with default values can be omitted
+sample(size = 1, x = sampSpace) # no need to remember the order 
+sample(size = 1, sampSpace)
+```
+
+
+---
+
+## Writing your Own functions
+
+```{r echo=TRUE, eval=FALSE}
+yourFnName <- function(<your arguments>){
+  # body of your code
+  
+  # return the output of the function
+}
+
+# to use your function, you can simply call the function name as:
+yourFnName(<set values for the input arguments>)
+```
+
+
+---
+
+## Writing your Own functions
+
++ Let's write a function that gets three arguments: a, b, c
++ The function then returns min of these two numbers
+
+```{r echo=TRUE, eval=TRUE}
+myMin <- function(a, b, c){
+  myMinVal <- min(a, b, c)
+  return(myMinVal)
+}
+
+myMin(10, 20, 30)
+myMin(10, NA, 20) # ? how to fix this so it returns 10
+```
+
+
+---
+
+## Writing a function for 2-sample t-test
+```{r echo=TRUE, eval=TRUE}
+myTtest <- function(vec1, vec2) {
+    # my T-Test function / Assuming constant variance + Two-Sided T Test
+    n1 <- length(vec1)
+    n2 <- length(vec2)
+    miu1 <- mean(vec1)
+    miu2 <- mean(vec2)
+    var1 <- var(vec1)
+    var2 <- var(vec2)
+    pooledVar <- ((n1 - 1) * (var1) + (n2 - 1) * (var2))/(n1 + n2 - 2)
+    testStat <- (miu1 - miu2)/(sqrt(pooledVar * (1/n1 + 1/n2)))
+    df <- n1 + n2 - 2
+    pval <- 2 * pt(abs(testStat), df, lower.tail = FALSE)
+    rslt <- c(`Mean of Vec1` = miu1, `Mean of Vec2` = miu2, testStat = testStat,
+        df = df, pval = pval)
+    return(rslt)
+}
+```
+
+
+---
+
+## Writing a function for 2-sample t-test
+```{r echo=TRUE, eval=TRUE}
+y1 <- rnorm(10, mean = 0, sd = 1); y2 <- rnorm(10, mean = 0, sd = 1)
+myTtest(y1, y2)
+
+# Using R's built-in T-Test:
+# t.test(y1, y2, var.equal = TRUE)  # ? Test this on your own!
+```
+
+
+---
+
+## Some notes on Functions
+
+> 1. Variables defined within a function are locally defined (i.e. not defined outside of the function).
+
+> 2. Functions in R are treated like any other first class objects. This means functions can be an passed as arguments of other functions.
+
+> 3. Arguments of functions are evaluated as they are needed (lazy evaluation). 
+
+> 4. " ... " can be an argument of a function and it refers to a situation where number of input arguments can be varied and is not fixed upfront. 
+
+
+---
+
+## Lazy Evaluation of Function Arguments
+
+```{r echo=TRUE}
+myLazyFn1 <- function(a, b){
+  return(a)
+}
+myLazyFn1(10) # No error!
+
+myLazyFn2 <- function(a, b){
+  print(a)
+  print(b)
+  return(1)
+}
+myLazyFn2(10) # No error!
+```
+
+
+---
+
+## Some useful functions:
+
++ Here we are going to talk about:
+  + str(): a function to explain internal structure of a function
+  + apply(): to apply a function to a matrix or dataframe
+  + lapply(), sapply(), tapply(), mapply(): applying a function to a vector
+  + split(): to split a dataset by levels of a factor
+
+
+---
+
+### str():
+
++ str() is a compact way of understanding what an object is and what is in that object.
+```{r echo=TRUE}
+str(str)
+str(sample)
+
+genderF <- factor(sample(c("Male", "Female"), 20, replace = TRUE))
+str(genderF)
+```
+
+
+---
+
+### str():
+```{r echo=TRUE}
+myMat <- matrix(1:10, ncol = 5)
+str(myMat)
+myList <- list(numVec = 1:3, logVec = F, charVec = LETTERS[1:4])
+str(myList)
+```
+
+
+---
+
+### apply():
+
+```{r echo=TRUE}
+str(apply) # try ?apply for more info
+```
+
++ apply() is a useful function to apply a function (FUN) on a MARGIN of a matrix or dataframe (X)
+
++ MARGIN: a vector giving the subscripts which the function will be applied over
+  + 1: indicates rows
+  + 2: indicates columns
+  + c(1, 2): indicates rows and columns
+
++ FUN: refers to the function that we want to apply on the dataset
+
++ "..." : additional argunemts of FUN
+
+
+---
+
+### apply():
+
+```{r echo=TRUE}
+myMat <- matrix(1:10, ncol = 5)
+myMat[2,c(2, 5)] <- NA
+myMat
+apply(myMat, 2, sum, na.rm = TRUE)
+```
+
+
+---
+
+### apply():
+
+```{r echo=TRUE}
+# consider iris dataset: 
+head(iris) # more info ?iris
+# suppose we are interested in getting 25% and 75% of each numeric column
+```
+
+
+---
+
+### apply():
+
+```{r echo=TRUE}
+# consider iris dataset: 
+apply(iris[,-5], 2, quantile, probs = c(0.25, 0.75))
+```
+
+
+---
+
+### lapply() and sapply():
+
+```{r echo=TRUE}
+str(lapply)
+str(sapply)
+```
++ x: a list, dataframe, or a vector
++ FUN: the function to be applied to each element of X
++ "...": other arguments of FUN
+
+
+---
+
+### lapply() and sapply():
+```{r echo=TRUE}
+myList <- list(e1 = 1:10, e2 = -1:-10)
+lapply(myList, mean)
+sapply(myList, mean)
+```
+
+
+---
+
+### lapply() v. sapply()?:
+
++ sapply() simplfies the result of lapply.
+  
++ If the result of lapply is a list with all elements of the same length:
+    + if length == 1: sapply() returns a vector
+    + if length != 1: sapply() returns a matrix
+    
++ otherwise, sapply() generates a list similar to lapply()
+
+
+---
+
+### lapply() & sapply() with a user-defined FUN
+```{r echo=TRUE}
+myList <- list(e1 = 1:10, e2 = -1:-10)
+lapply(myList, function(element){return(mean(c(element[1], element[length(element)])))})
+sapply(myList, function(element){return(mean(c(element[1], element[length(element)])))})
+```
+
+
+---
+
+### tapply():
+```{r echo = TRUE}
+str(tapply)
+```
+
++ tapply() applies a function on a subset of of a vector
++ X: is a vector 
++ INDEX: list of one or more factors, each of same length as X
++ FUN: our function of interest
++ "...": other arguments of FUN
++ simplify: any guess???
+
+
+---
+
+### tapply():
+```{r echo = TRUE}
+HeightDF <- data.frame(heigth = c(rnorm(100, 180, 3), rnorm(100, 170, 3)), gender = factor(rep(c("M", "F"), each = 100)))
+head(HeightDF)
+tapply(HeightDF$heigth, HeightDF$gender, mean)
+```
+
+
+---
+
+### mapply():
+```{r echo=TRUE}
+str(mapply)
+```
+  
++ all previous "apply" functions were univariate
+  + f(x, {some other parameters})
+  
++ What to do if we want to apply a multivariate function:
+  + f(x, y, {some other parameters}) # we can have more than 2 variables 
+
+
+---
+
+### mapply():
+```{r echo=TRUE}
+l1 <- list(e1 = 1:10, e2 = 1:10)
+l2 <- list(e1 = -1:-10, e2 = -1:-10)
+# how to get l1$e1[i] + l1$e2[i] + l2$e1[i] + l2$e2[i] ? 
+mapply(sum, l1$e1, l1$e2, l2$e1, l2$e2)
+```
+
+
+---
+
+### split():
+```{r echo=TRUE}
+str(split) # ?split for more info
+```
+
++ X: a vector or a data frame
++ f: factor
++ drop: should R drop empty factor levels?
+
+
+---
+
+### split():
+```{r echo=TRUE}
+str(HeightDF)
+# Goal: to separate Females from Males
+splitData <- split(HeightDF$heigth, HeightDF$gender)
+str(splitData)
+```
+
+
+---
+
+## Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)
+
+---
+
+## Session 3 - Agenda
+
+1. Useful Matrix Functions
+2. Statistical Distributions in R
+3. Exercise
+
+---
+
+## Useful Matrix Functions
+
+Consider A as a matrix. We can then have:
+> 1. t(A): transpose of A
+> 2. solve(): to get inverse of A
+> 3. eigen(): to get eigen values and eigen vectors (if A is symmetric)
+> 4. We only cover solve() in this lecture
+
+---
+
+### solve():
++ Consider B = A %*% X (where X is an unknown matrix)
++ Then: X = solve(A, B)
++ In a special case where B = I, X = $A^{-1}$
+
+```{r echo=TRUE}
+A <- matrix(c(1, 2, 3, 2, 4, 5, 3, 5, 6), ncol = 3)
+A
+# to get inverse of A: solve(A)
+```
+
+---
+
+### solve():
+```{r echo=TRUE}
+solve(A)
+# To check that solve(A) is inverse of A:
+solve(A)%*%A
+```
++ Machine epsilon is defined to be the smallest positive number which, when added to 1, gives a number different from 1.
++ Please visit http://en.wikipedia.org/wiki/Machine_epsilon for more info
+
+---
+
+## Statistical Distributions in R:
+
++ R has many in-built statistical distributions
+  + examples: binomial, poisson, normal, chi square, ...
+
++ Each distribution in R has four functions:
+  + these functions beging with a "d", "p", "q", or "r" and followed by the name of the distribution
+
++ ddist(parameters): refers to the density of each distribution
++ rdist(parameters): generates random numbers out of each distribution
++ qdist(parameters): to get quantile of a distribution
++ pdist(parameters): to calculate CDF
+
+
+---
+
+### Example of a Discrete Distribution:
+```{r echo=TRUE}  
+# Consider tossing a coin 10 times
+str(dbinom)
+dbinom(5, 10, 0.5) # prob of getting two head
+
+str(pbinom) # cumulative dist
+pbinom(5, 10, 0.5) # Pr[X <= 5]
+```
+
+
+---
+
+### Example of a Discrete Distribution:
+```{r echo=TRUE}  
+str(qbinom) # quantile: Pr[X <= ?] = known value
+qbinom(0.6230, 10, 0.5) # prob of getting two head
+
+str(rbinom) # Generating random numbers
+rbinom(20, 10, 0.5) # Pr[X <= 5]
+```
+
+
+---
+
+### Example of a Continuous Distribution:
+```{r echo=TRUE}  
+# Consider a standard Normal distribution
+str(dnorm)
+dnorm(x = 0, mean = 0, sd = 1, log = FALSE)
+
+str(pnorm) # cumulative dist
+pnorm(0, mean = 0, sd = 1)
+```
+
+
+---
+
+### Example of a Continuous Distribution:
+```{r echo=TRUE}  
+str(qnorm) # quantile
+qnorm(0.5, mean = 0, sd = 1)
+
+str(pnorm) # cumulative dist
+rnorm(10, mean = 0, sd = 1)
+```
+
+
+---
+
+### Example of a Continuous Distribution:
+```{r echo=TRUE, fig.height = 4.5, fig.align='center'}  
+# Let's try plotting Normal curve (more on plotting later)
+x <- seq(from = -3, to = 3, by = 0.05)
+y <- dnorm(x, mean = 0, sd = 1)
+plot(x, y, type = "l")
+```
+
+
+---
+
+## Exercise:
+### Source: Dr. Stacey Hancock, Dept. Statistics - UCI
++ Suppose 20 people go to a fancy restaurant. Each person is wearing a hat and checks his/her hat at the door as he/she arrives. The hat-check attendant gets tipsy throughout the evening, forgetting which hat belongs to whom, and returns a random hat to each person as they leave. The patrons leave in a random order.
+
++ Conduct a simulation in R to answer the following question:
+  + estimate the probability that at least one patron gets his or her own hat back
+  + calculate the empirical mean (average) number of patrons who get their own hats back.
+  
+
+
+---
+
+## Exercise 
+### Source: Dr. Stacey Hancock, Dept. Statistics - UCI
++  Write an R function that will simulate rolling two k-sided dice (each numbered 1, 2, 3,...., k) N times, and return the proportion of times your sum was greater than or equal to 7. 
++ Set the function's default value for k to 6 and the default value for N to 1000. 
+
+
+---
+
+## Time for Lunch Break for 10 Minutes. Please come back at 2:30 :)
+
+---
+
+## Session 4 - Agenda
+
+1. Plotting Systems in R
+2. Base Plotting System in detail
+3. Graphic Devices in R
+4. Examples of other plotting Systems
+
+---
+
+## Plotting Systems in R
+
+There are three main plotting systems in R:
+  + Base Plotting System
+  + Lattice
+  + ggplot2
+
+Plotting and Graphics enginer in R is in the following packages:
+  + graphics: contains plotting functions for the Base system
+  + grDevices: contains graphic devices in R
+  + lattice: contains plotting functions of the lattice system
+  + grid: lattice package was built on top of this package
+  + ggplot2
+
+---
+
+### Base System (intro)
+
+In Base plotting system:
+  + We start with a blank canvas
+  + by calling a plot function, we start our plot
+  + Using annotation functions we can add more elements to our plot
+  
+In general, plotting functions under the base system are:
+  + Functions to generate plots: plot()
+  + Functions to annotate plots: text(), lines(), points()
+
+
+---
+
+### Base System (example)
+
+```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
+x <- rnorm(100)
+y <- rnorm(100)
+plot(x, y)
+abline(h = 0)
+```
+
+
+---
+
+### Lattice (intro)
+
++ Lattice plotting system is part of the lattice package
++ Unlike the base system, each plot is constructed with a single function call
++ Plots can not be modified once they are created
++ Since we only have one function call, we usually need to specify a lot of parameters in the plotting function call under this package
+
+
+---
+
+### ggplot2 (intro)
+
++ ggplot2 is a very popular graphics system in R (written by Hadley Wickham)
++ The package has a language or grammar for describing different aspects of plotting
++ The package is an implementation of the Garammar of Graphics by Leland Wilkinson
++ ggplot2 mixes ideas from Base and from Lattice plotting systems
+  + Many of the aesthetics of a plot (labeling, margins, background, ...) are done automatically with a single funcion call (similar to lattice)
+  + You can still add components of a plot layer by layer (similar to the base system)
+
+
+---
+
+## Base Plotting System - Histogram
+
+```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
+x <- rnorm(100)
+hist(x)
+```
+
+
+---
+
+## Base Plotting System - Scatter Plot
+```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
+x <- rnorm(100)
+y <- rnorm(100)
+plot(x, y)
+```
+
+
+---
+
+## Base Plotting System - BoxPlot
+```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
+x <- rnorm(100, 0, 1)
+y <- rnorm(100, 1, 1)
+z <- rnorm(100, 2, 2)
+boxplot(x, y , z)
+```
+
+
+---
+
+## Base Plotting System - Important Parameters
+
++ pch: plotting symbol (pch = 1 for open circle)
++ lty: line type (solid, dashed, dotted, ...)
++ lwd: line width (takes an integer number)
++ col: plotting color 
+  + run colors() to get a list of R colors
++ type: type of plot
+  + "p": points
+  + "l": lines
+  + "b": both points and lines
+  + "n": no plotting
+  
+
+---
+
+## Base Plotting System - Important Parameters
+
++ par(): to specify global graphics parameters that affect all plots in an R session
++ you can run par() to get a list of current values of these paraemters
++ run ?par for more information from help
++ Some important parameters are: 
+  + mar: size of margins of a plot
+  + mfrow: multiple plots that are arranged row-wise
+  + mfcol: multiple plots that are arranged column-wise
+  + bg: the background color
+  
+
+---
+
+## Base Plotting System - Important Parameters
+Let's see the default values for the parameters introduced so far:
+```{r echo=TRUE}
+t(par(c("pch", "lty", "lwd", "col")))
+par("mar")
+par("mfrow")
+```
+  
+
+---
+
+## Base Plotting System - Important Parameters
+
+```{r echo=TRUE}
+par("mfcol")
+par("bg")
+```
+
+  
+
+---
+
+## Base Plotting System - Important Functions
+
++ plot: usually to make scatter plot
+  + depending on the type of it input, might behave differently
+
++ lines: to add lines to a plot (ex: overally a density on a histogram)
+
++ points: to add points to a plot
+
++ text: to add texts to a plot at (x, y)
+
++ title: to add title to a plot
+
++ mtext: to add text to a margin of a plot
+
++ axis: to add customized axis to a plot
+
+  
+
+---
+
+## Base Plotting System - Demo
+
+
+
+  
+
+---
+
+## Graphics Devices in R
+
++ Graphics devices are places where plots in R appear:
+  + screen device
+  + file device
+
++ Screen Devices:
+  + quartz() (Mac OS), x11() (Unix/Linux), windows() (Windows)
+
++ File Devices:
+  + pdf(), png(), svg(), ...
+  
++ By default, plots are sent to the screen device
+  
++ for more info, please see ?Devices
+
+---
+
+## Graphics Devices in R
+
++ There is nothing special to do to use the screen device
++ For file devices:
+  + Graohics device of interest should be opened
+  + Plotting codes
+  + closing the device using dev.off()
+
+```{r echo=TRUE, eval=FALSE}
+x <- rnorm(100)
+pdf(file = "path/to/file.pdf")
+hist(x)
+dev.off()
+```
+
+---
+
+## File Devices
+
++ File devices are in two main types:
+  + Vector formats: pdf(), svg(), postscript()
+  + Bitmap formats: png(), jpeg(), bmp()
+
+
+---
+
+## Lattice Plotting System
++ In Lattice plotting system, plotting is a one-step process with a single function call
++ Important functions:
+  + xyplot(): to create scatterplot
+  + bwplot(): to create boxplot
+  + histogram()
+  + stripplot(): boxplot with overlaid data points
+
+
+---
+
+### Lattice Scatterplot
+```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height=5}
+library(lattice)
+data(diamonds)
+diamonds_subset <- diamonds[sample(1:nrow(diamonds),500),]
+xyplot(price ~ carat, data = diamonds_subset)
+```
+
+
+---
+
+### Lattice Scatterplot across 
+```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height = 5,fig.width = 12}
+xyplot(price ~ carat | cut, data = diamonds_subset, layout = c(5,1))
+```
+
+
+---
+
+### Lattice Scatterplot with Linear fit
+```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height = 5,fig.width = 12}
+xyplot(price ~ carat | cut, panel = function(x, y, ...){
+  panel.xyplot(x, y, ...) # Here we call the default panel function
+  panel.lmline(x, y, col = "red") # We overlay lm fit
+}, data = diamonds_subset, layout = c(5,1))
+```
+
+
+---
+
+## ggplot2
++ As Hadley Wickham explained in his ggplot2 book: ggplot2 is a package to "shorten the distance from mind to page"
++ Here we briefly mention some examples. For more information please visit: http://ggplot2.org
++ We focus on qplot() function to:
+  + create scatterplot
+  + create histogram
+
+
+---
+
+### qplot()
++ qplot() stands for quick plot
++ it's analogous to plot() in the base package
++ main elements of each plot are:
+  + aesthetics: refers to size, shape, color, ...
+  + geoms: refers to points, lines, bars, ...
+  + for a complete list of aesthetics and geoms as well as other elements, please visit: http://docs.ggplot2.org/current/  
+  
+
+---
+
+### qplot() - Scatterplot
+```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height=5}
+library(ggplot2)
+qplot(carat, price, data = diamonds_subset)
+```
+  
+
+---
+
+### qplot() - Scatterplot
+```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height=5}
+qplot(carat, price, data = diamonds_subset, col = cut)
+```
+  
+
+---
+
+### qplot() - Facets
+```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height=5, fig.width=12}
+qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
+```
+
+  
+
+---
+
+### qplot() - Histogram
+```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height=5}
+qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
+```
+
+
+---
+
+## Time for Lunch Break for 10 Minutes. Please come back at 4 :)
+
+
+---
+
+## Session 5 - Agenda
+
+1. T-Test in R
+2. ANOVA in R
+3. Linear Regression in R
+
+
+---
+
+## T-Test in R
+
+T-tests can be categorized into two groups:
+  + 1) One-Sample t-test
+  + 2) two-sample t-test
+
+
+---
+
+###  One-Sample T-Test
+```{r echo=TRUE}
+oneSampData <- rnorm(100, mean = 0, sd = 1)
+oneSampTest.0 <- t.test(oneSampData) # ?t.test
+oneSampTest.0
+```
+
+
+---
+
+###  One-Sample T-Test
+```{r echo=TRUE}
+names(oneSampTest.0) # alternative to names()?? 
+```  
+
+
+---
+
+###  Two-Sample T-Test
+Two sample t-tests are categorized into 3 groups:
+  + T-Test with equal variances
+  + T-Test with un-equal variances
+  + Paired T-Test: can be also considered as one-sample t-test on deltas.
+
+
+---
+
+###  Two-Sample T-Test (Un-equal Variances)
+```{r echo = TRUE}
+Samp1 <- rnorm(30, mean = 2.5, sd = 1)
+Samp2 <- rnorm(50, mean = 5.5, sd = 1)
+t.test(Samp1, Samp2)  # default assump: unequal variances
+```
+
+
+---
+
+###  Two-Sample T-Test (Equal Variances)
+```{r echo = TRUE}
+t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
+```
+
+
+---
+
+###  Two-Sample T-Test (Paired T Test)
+```{r echo = TRUE}
+t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assump: unequal variances
+```
+
+
+---
+
+##  ANOVA
+If you are not familiar with ANOVA, simply consider ANOVA as an extension to two-sample t-test where we have more than two groups.
+
+```{r echo = TRUE}
+Samp1 <- round(rnorm(10, mean = 25, sd = 1), 1)
+Samp2 <- round(rnorm(10, mean = 30, sd = 1), 1)
+Samp3 <- round(rnorm(10, mean = 35, sd = 1), 1)
+myDF <- data.frame(y = c(Samp1, Samp2, Samp3), group = rep(c(1, 2, 3), each = 10))
+myDF$group <- as.factor(myDF$group)
+str(myDF)
+```
+
+
+---
+
+##  ANOVA
+```{r echo = TRUE}
+ANOVAfit <- lm(y ~ group, data = myDF)  # instead of lm, aov() can also be used!
+myANOVA <- anova(ANOVAfit)  # anova computes analysis of variance tables on a fitted model object.
+str(myANOVA) # see what is 
+```
+
+
+---
+
+##  ANOVA
++ To learn more on how to fit ANOVA, please visit: 
+  + http://www.statmethods.net/stats/anova.html
+  
+
+---
+
+##  Linear Regression:
++ lm() is used to fit linear regression
++ Here we use "Prestige" dataset from "car" package
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+# install.package("car")
+library(car)
+data(Prestige) # load the data
+str(Prestige)
+```
+  
+
+---
+
+###  Linear Regression - Fit:
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+myReg <- lm(prestige ~ education + income + women, data = Prestige)
+myReg # summary(myReg)
+names(myReg)
+```
+  
+
+---
+
+###  Linear Regression - Fit:
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+head(myReg$fitted.values)
+head(myReg$residuals) # y - y.hat
+```
+  
+
+---
+
+##  Linear Regression - Diagnostics:
++ Here we cover some common regression diagnostics including:
+  + Testing for Normality
+  + Testing for Constant Variance
+  
++ Reference: http://www.statmethods.net/stats/rdiagnostics.html
+  
+
+---
+
+###  Testing for Normality
+
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=5}
+qqPlot(myReg, main = "QQ Plot")
+```
+  
+
+---
+
+###  Testing for Constant Variance
+
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=5, warning=FALSE, message=FALSE, error=FALSE, results='hide'}
+spreadLevelPlot(myReg)
+```
