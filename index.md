@@ -21,7 +21,7 @@ github:
 1) The class will include 5 sessions:
   + Session 1 (9-10:20): Data Types in R 
   + Session 2 (10:30-12): Control Structures and Functions
-  + Session 3 (12:30-1:50): Debugging Techniques in R
+  + Session 3 (12:30-1:50): Statistical Distributions in R
   + Session 4 (2-3:20): Plotting and Data Visualization in R 
   + Session 5 (3:30-5): Statistical Analysis in R
 
@@ -38,11 +38,11 @@ github:
 3) We are going to work in pairs. Please find a partner. 
 
 
-4) Feel free to ask question anytime during lecture.
+4) Feel free to ask questions anytime during lecture.
 
 5) To access this presentation and the codes used during the workshop please visit:
   + https://github.com/SepehrAkhavan/intro-R-WorkShop
-  + http://sepehrakhavan.github.io/intro-R-WorkShop/
+  + http://sepehrakhavan.github.io/IntroR_Workshop/#1
 
 ---
 
@@ -84,7 +84,7 @@ github:
   + More info on R mailing lists: http://www.r-project.org/mail.html
 
 + In 1997, The R core team, with write access to the R source, was formed:
-  + More info n the core team: http://www.r-project.org/contributors.html
+  + More info on the core team: http://www.r-project.org/contributors.html
 
 + In 2004, the first useR! conference was in Vienna, Austria.
 
@@ -683,7 +683,7 @@ head(data)
 + We consider three main operators to take a subset of an object:
   + [ ]: single brackets return an object of the same class of the original object. By using [], we can also choose more than one element.
   + [[ ]]: double brackets are used primarily for lists and dataframes. 
-  + $: Similar to double brackets, $ is used primarily for lists and dataframes. 
+  + "$": is used primarily for lists and dataframes (similar to double brackets). 
 
 + With [[ ]] and $, we can only choose one object!
 
@@ -1370,11 +1370,11 @@ age.df[1:3,]
 
 ## Functions and Packages:
 
-> 1. R language has many built-in functions
-> 2. Each function has a name followed by ()
-> 3. Arguments of a function should mention within parentheses
-> 4. R packages are a comfortable way to maintain collections of R functions and data sets
-> 5. Packages allow for easy, transparent and cross-platform extension of the R base system
+1. R language has many built-in functions
+2. Each function has a name followed by ()
+3. Arguments of a function should mention within parentheses
+4. R packages are a comfortable way to maintain collections of R functions and data sets
+5. Packages allow for easy, transparent and cross-platform extension of the R base system
 
 
 ---
@@ -1996,6 +1996,19 @@ str(splitData)
 
 ---
 
+## Exercise 5:
++ Load in diamonds dataset in R
+
+```r
+# How to load in the dataset?
+library(ggplot2)
+data(diamonds) # more info on the data: ?diamonds
+```
++ Find average diamond price per each cut quality level
++ Find 2.5 and 97.5 percentile of diamond price per each cut quality level 
++ Split the dataset based on cut quality level 
+---
+
 ## Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)
 
 ---
@@ -2010,7 +2023,7 @@ str(splitData)
 
 ## Useful Matrix Functions
 
-Consider A as a matrix. We can then have:
+Consider matrix "A". We can then have:
 > 1. t(A): transpose of A
 > 2. solve(): to get inverse of A
 > 3. eigen(): to get eigen values and eigen vectors (if A is symmetric)
@@ -2247,12 +2260,12 @@ y <- dnorm(x, mean = 0, sd = 1)
 plot(x, y, type = "l")
 ```
 
-<img src="assets/fig/unnamed-chunk-71-1.png" title="plot of chunk unnamed-chunk-71" alt="plot of chunk unnamed-chunk-71" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-72-1.png" title="plot of chunk unnamed-chunk-72" alt="plot of chunk unnamed-chunk-72" style="display: block; margin: auto;" />
 
 
 ---
 
-## Exercise:
+## Exercise 6:
 ### Source: Dr. Stacey Hancock, Dept. Statistics - UCI
 + Suppose 20 people go to a fancy restaurant. Each person is wearing a hat and checks his/her hat at the door as he/she arrives. The hat-check attendant gets tipsy throughout the evening, forgetting which hat belongs to whom, and returns a random hat to each person as they leave. The patrons leave in a random order.
 
@@ -2264,7 +2277,7 @@ plot(x, y, type = "l")
 
 ---
 
-## Exercise 
+## Exercise 7: 
 ### Source: Dr. Stacey Hancock, Dept. Statistics - UCI
 +  Write an R function that will simulate rolling two k-sided dice (each numbered 1, 2, 3,...., k) N times, and return the proportion of times your sum was greater than or equal to 7. 
 + Set the function's default value for k to 6 and the default value for N to 1000. 
@@ -2325,7 +2338,7 @@ plot(x, y)
 abline(h = 0)
 ```
 
-<img src="assets/fig/unnamed-chunk-72-1.png" title="plot of chunk unnamed-chunk-72" alt="plot of chunk unnamed-chunk-72" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-73-1.png" title="plot of chunk unnamed-chunk-73" alt="plot of chunk unnamed-chunk-73" style="display: block; margin: auto;" />
 
 
 ---
@@ -2360,7 +2373,7 @@ x <- rnorm(100)
 hist(x)
 ```
 
-<img src="assets/fig/unnamed-chunk-73-1.png" title="plot of chunk unnamed-chunk-73" alt="plot of chunk unnamed-chunk-73" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-74-1.png" title="plot of chunk unnamed-chunk-74" alt="plot of chunk unnamed-chunk-74" style="display: block; margin: auto;" />
 
 
 ---
@@ -2373,7 +2386,7 @@ y <- rnorm(100)
 plot(x, y)
 ```
 
-<img src="assets/fig/unnamed-chunk-74-1.png" title="plot of chunk unnamed-chunk-74" alt="plot of chunk unnamed-chunk-74" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-75-1.png" title="plot of chunk unnamed-chunk-75" alt="plot of chunk unnamed-chunk-75" style="display: block; margin: auto;" />
 
 
 ---
@@ -2387,7 +2400,7 @@ z <- rnorm(100, 2, 2)
 boxplot(x, y , z)
 ```
 
-<img src="assets/fig/unnamed-chunk-75-1.png" title="plot of chunk unnamed-chunk-75" alt="plot of chunk unnamed-chunk-75" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-76-1.png" title="plot of chunk unnamed-chunk-76" alt="plot of chunk unnamed-chunk-76" style="display: block; margin: auto;" />
 
 
 ---
@@ -2505,6 +2518,20 @@ par("bg")
 
 ---
 
+
+## Exercise 8:
+### Source: Dr. Stacey Hancock, Dept. Statistics - UCI 
++ 1) In this Exercise, we explore a famour theorem in Statistics known as "The Central Limit Theorem".
++ 2) Choose a probability distribution other than the normal distribution from which to generate data.
++ 3) Generate 1000 random values from your chosen distribution. Create a histogram of these 1000 values with a density plot overlaid.
++ 4) Generate 1000 random samples of size n = 5 from your chosen distribution (use a for loop!). For each sample, calculate the sample mean (using the "mean" function in R), so in the end, you have a vector of 1000 sample means. Create a histogram of these 1000 sample means with a density plot overlaid.
++ 5) Can you re-write step (4) in terms of a function with with sample size as an input argument? Run your function with different n (10, 20 , 30). 
++ 6) As n increases, what happens to the shape of the histogram?
+
+
+---
+
+
 ## Graphics Devices in R
 
 + Graphics devices are places where plots in R appear:
@@ -2570,7 +2597,7 @@ diamonds_subset <- diamonds[sample(1:nrow(diamonds),500),]
 xyplot(price ~ carat, data = diamonds_subset)
 ```
 
-<img src="assets/fig/unnamed-chunk-79-1.png" title="plot of chunk unnamed-chunk-79" alt="plot of chunk unnamed-chunk-79" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-80-1.png" title="plot of chunk unnamed-chunk-80" alt="plot of chunk unnamed-chunk-80" style="display: block; margin: auto;" />
 
 
 ---
@@ -2581,7 +2608,7 @@ xyplot(price ~ carat, data = diamonds_subset)
 xyplot(price ~ carat | cut, data = diamonds_subset, layout = c(5,1))
 ```
 
-<img src="assets/fig/unnamed-chunk-80-1.png" title="plot of chunk unnamed-chunk-80" alt="plot of chunk unnamed-chunk-80" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-81-1.png" title="plot of chunk unnamed-chunk-81" alt="plot of chunk unnamed-chunk-81" style="display: block; margin: auto;" />
 
 
 ---
@@ -2595,7 +2622,7 @@ xyplot(price ~ carat | cut, panel = function(x, y, ...){
 }, data = diamonds_subset, layout = c(5,1))
 ```
 
-<img src="assets/fig/unnamed-chunk-81-1.png" title="plot of chunk unnamed-chunk-81" alt="plot of chunk unnamed-chunk-81" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-82-1.png" title="plot of chunk unnamed-chunk-82" alt="plot of chunk unnamed-chunk-82" style="display: block; margin: auto;" />
 
 
 ---
@@ -2628,7 +2655,7 @@ library(ggplot2)
 qplot(carat, price, data = diamonds_subset)
 ```
 
-<img src="assets/fig/unnamed-chunk-82-1.png" title="plot of chunk unnamed-chunk-82" alt="plot of chunk unnamed-chunk-82" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-83-1.png" title="plot of chunk unnamed-chunk-83" alt="plot of chunk unnamed-chunk-83" style="display: block; margin: auto;" />
   
 
 ---
@@ -2639,7 +2666,7 @@ qplot(carat, price, data = diamonds_subset)
 qplot(carat, price, data = diamonds_subset, col = cut)
 ```
 
-<img src="assets/fig/unnamed-chunk-83-1.png" title="plot of chunk unnamed-chunk-83" alt="plot of chunk unnamed-chunk-83" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-84-1.png" title="plot of chunk unnamed-chunk-84" alt="plot of chunk unnamed-chunk-84" style="display: block; margin: auto;" />
   
 
 ---
@@ -2650,7 +2677,7 @@ qplot(carat, price, data = diamonds_subset, col = cut)
 qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
 ```
 
-<img src="assets/fig/unnamed-chunk-84-1.png" title="plot of chunk unnamed-chunk-84" alt="plot of chunk unnamed-chunk-84" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-85-1.png" title="plot of chunk unnamed-chunk-85" alt="plot of chunk unnamed-chunk-85" style="display: block; margin: auto;" />
 
   
 
@@ -2662,7 +2689,7 @@ qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
 qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
 ```
 
-<img src="assets/fig/unnamed-chunk-85-1.png" title="plot of chunk unnamed-chunk-85" alt="plot of chunk unnamed-chunk-85" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-86-1.png" title="plot of chunk unnamed-chunk-86" alt="plot of chunk unnamed-chunk-86" style="display: block; margin: auto;" />
 
 
 ---
@@ -2957,7 +2984,7 @@ head(myReg$residuals) # y - y.hat
 qqPlot(myReg, main = "QQ Plot")
 ```
 
-![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96-1.png) 
+![plot of chunk unnamed-chunk-97](assets/fig/unnamed-chunk-97-1.png) 
   
 
 ---
@@ -2969,4 +2996,16 @@ qqPlot(myReg, main = "QQ Plot")
 spreadLevelPlot(myReg)
 ```
 
-![plot of chunk unnamed-chunk-97](assets/fig/unnamed-chunk-97-1.png) 
+![plot of chunk unnamed-chunk-98](assets/fig/unnamed-chunk-98-1.png) 
+  
+
+---
+
+###  Exercise 9:
+
++ For this exercise, we need to load in diamonds datset from ggplot2 package.
++ Is ther any difference between diamonds with different quality of cut in terms of price? 
+  + You will need to use ANOVA to answer this question
++ Fit a linear regression to predict price of a given diamond based on the features below:
+  + carat, cut, color, clarity, and depth
+  

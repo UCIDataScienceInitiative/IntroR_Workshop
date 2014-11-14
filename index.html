@@ -58,7 +58,7 @@
 <ul>
 <li>Session 1 (9-10:20): Data Types in R </li>
 <li>Session 2 (10:30-12): Control Structures and Functions</li>
-<li>Session 3 (12:30-1:50): Debugging Techniques in R</li>
+<li>Session 3 (12:30-1:50): Statistical Distributions in R</li>
 <li>Session 4 (2-3:20): Plotting and Data Visualization in R </li>
 <li>Session 5 (3:30-5): Statistical Analysis in R</li>
 </ul>
@@ -82,13 +82,13 @@
 
 <p>3) We are going to work in pairs. Please find a partner. </p>
 
-<p>4) Feel free to ask question anytime during lecture.</p>
+<p>4) Feel free to ask questions anytime during lecture.</p>
 
 <p>5) To access this presentation and the codes used during the workshop please visit:</p>
 
 <ul>
 <li><a href="https://github.com/SepehrAkhavan/intro-R-WorkShop">https://github.com/SepehrAkhavan/intro-R-WorkShop</a></li>
-<li><a href="http://sepehrakhavan.github.io/intro-R-WorkShop/">http://sepehrakhavan.github.io/intro-R-WorkShop/</a></li>
+<li><a href="http://sepehrakhavan.github.io/IntroR_Workshop/#1">http://sepehrakhavan.github.io/IntroR_Workshop/#1</a></li>
 </ul>
 
   </article>
@@ -156,7 +156,7 @@
 <li><p>In 1997, The R core team, with write access to the R source, was formed:</p>
 
 <ul>
-<li>More info n the core team: <a href="http://www.r-project.org/contributors.html">http://www.r-project.org/contributors.html</a></li>
+<li>More info on the core team: <a href="http://www.r-project.org/contributors.html">http://www.r-project.org/contributors.html</a></li>
 </ul></li>
 <li><p>In 2004, the first useR! conference was in Vienna, Austria.</p></li>
 <li><p>In Feb 2011, the first version of RStudio was released.</p></li>
@@ -870,7 +870,7 @@ head(data)
 <ul>
 <li>[ ]: single brackets return an object of the same class of the original object. By using [], we can also choose more than one element.</li>
 <li>[[ ]]: double brackets are used primarily for lists and dataframes. </li>
-<li>$: Similar to double brackets, $ is used primarily for lists and dataframes. </li>
+<li>&quot;$&quot;: is used primarily for lists and dataframes (similar to double brackets). </li>
 </ul></li>
 <li><p>With [[ ]] and $, we can only choose one object!</p></li>
 <li><p>[[ ]] and $ can return an object with a different class than the original objects we are subsetting from.</p></li>
@@ -1686,7 +1686,7 @@ age.df[1:3,]
     <h2>Functions and Packages:</h2>
   </hgroup>
   <article data-timings="">
-    <ol class = "build incremental">
+    <ol>
 <li>R language has many built-in functions</li>
 <li>Each function has a name followed by ()</li>
 <li>Arguments of a function should mention within parentheses</li>
@@ -2397,10 +2397,27 @@ str(splitData)
 
 <slide class="" id="slide-92" style="background:;">
   <hgroup>
-    <h2>Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)</h2>
+    <h2>Exercise 5:</h2>
   </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li>Load in diamonds dataset in R</li>
+</ul>
+
+<pre><code class="r"># How to load in the dataset?
+library(ggplot2)
+data(diamonds) # more info on the data: ?diamonds
+</code></pre>
+
+<ul>
+<li>Find average diamond price per each cut quality level</li>
+<li>Find 2.5 and 97.5 percentile of diamond price per each cut quality level </li>
+</ul>
+
+<h2>+ Split the dataset based on cut quality level </h2>
+
+<h2>Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)</h2>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -2425,7 +2442,7 @@ str(splitData)
     <h2>Useful Matrix Functions</h2>
   </hgroup>
   <article data-timings="">
-    <p>Consider A as a matrix. We can then have:</p>
+    <p>Consider matrix &quot;A&quot;. We can then have:</p>
 
 <ol class = "build incremental">
 <li>t(A): transpose of A</li>
@@ -2671,7 +2688,7 @@ y &lt;- dnorm(x, mean = 0, sd = 1)
 plot(x, y, type = &quot;l&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-71-1.png" title="plot of chunk unnamed-chunk-71" alt="plot of chunk unnamed-chunk-71" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-72-1.png" title="plot of chunk unnamed-chunk-72" alt="plot of chunk unnamed-chunk-72" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2679,7 +2696,7 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-103" style="background:;">
   <hgroup>
-    <h2>Exercise:</h2>
+    <h2>Exercise 6:</h2>
   </hgroup>
   <article data-timings="">
     <h3>Source: Dr. Stacey Hancock, Dept. Statistics - UCI</h3>
@@ -2700,7 +2717,7 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-104" style="background:;">
   <hgroup>
-    <h2>Exercise</h2>
+    <h2>Exercise 7:</h2>
   </hgroup>
   <article data-timings="">
     <h3>Source: Dr. Stacey Hancock, Dept. Statistics - UCI</h3>
@@ -2802,7 +2819,7 @@ plot(x, y)
 abline(h = 0)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-72-1.png" title="plot of chunk unnamed-chunk-72" alt="plot of chunk unnamed-chunk-72" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-73-1.png" title="plot of chunk unnamed-chunk-73" alt="plot of chunk unnamed-chunk-73" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2854,7 +2871,7 @@ abline(h = 0)
 hist(x)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-73-1.png" title="plot of chunk unnamed-chunk-73" alt="plot of chunk unnamed-chunk-73" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-74-1.png" title="plot of chunk unnamed-chunk-74" alt="plot of chunk unnamed-chunk-74" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2870,7 +2887,7 @@ y &lt;- rnorm(100)
 plot(x, y)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-74-1.png" title="plot of chunk unnamed-chunk-74" alt="plot of chunk unnamed-chunk-74" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-75-1.png" title="plot of chunk unnamed-chunk-75" alt="plot of chunk unnamed-chunk-75" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2887,7 +2904,7 @@ z &lt;- rnorm(100, 2, 2)
 boxplot(x, y , z)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-75-1.png" title="plot of chunk unnamed-chunk-75" alt="plot of chunk unnamed-chunk-75" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-76-1.png" title="plot of chunk unnamed-chunk-76" alt="plot of chunk unnamed-chunk-76" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3030,6 +3047,26 @@ boxplot(x, y , z)
 
 <slide class="" id="slide-121" style="background:;">
   <hgroup>
+    <h2>Exercise 8:</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Source: Dr. Stacey Hancock, Dept. Statistics - UCI</h3>
+
+<ul>
+<li>1) In this Exercise, we explore a famour theorem in Statistics known as &quot;The Central Limit Theorem&quot;.</li>
+<li>2) Choose a probability distribution other than the normal distribution from which to generate data.</li>
+<li>3) Generate 1000 random values from your chosen distribution. Create a histogram of these 1000 values with a density plot overlaid.</li>
+<li>4) Generate 1000 random samples of size n = 5 from your chosen distribution (use a for loop!). For each sample, calculate the sample mean (using the &quot;mean&quot; function in R), so in the end, you have a vector of 1000 sample means. Create a histogram of these 1000 sample means with a density plot overlaid.</li>
+<li>5) Can you re-write step (4) in terms of a function with with sample size as an input argument? Run your function with different n (10, 20 , 30). </li>
+<li>6) As n increases, what happens to the shape of the histogram?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-122" style="background:;">
+  <hgroup>
     <h2>Graphics Devices in R</h2>
   </hgroup>
   <article data-timings="">
@@ -3058,7 +3095,7 @@ boxplot(x, y , z)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-122" style="background:;">
+<slide class="" id="slide-123" style="background:;">
   <hgroup>
     <h2>Graphics Devices in R</h2>
   </hgroup>
@@ -3084,7 +3121,7 @@ dev.off()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-123" style="background:;">
+<slide class="" id="slide-124" style="background:;">
   <hgroup>
     <h2>File Devices</h2>
   </hgroup>
@@ -3102,7 +3139,7 @@ dev.off()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-124" style="background:;">
+<slide class="" id="slide-125" style="background:;">
   <hgroup>
     <h2>Lattice Plotting System</h2>
   </hgroup>
@@ -3123,7 +3160,7 @@ dev.off()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-125" style="background:;">
+<slide class="" id="slide-126" style="background:;">
   <hgroup>
     <h3>Lattice Scatter plot</h3>
   </hgroup>
@@ -3134,20 +3171,6 @@ diamonds_subset &lt;- diamonds[sample(1:nrow(diamonds),500),]
 xyplot(price ~ carat, data = diamonds_subset)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-79-1.png" title="plot of chunk unnamed-chunk-79" alt="plot of chunk unnamed-chunk-79" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-126" style="background:;">
-  <hgroup>
-    <h3>Lattice Scatterplot across</h3>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">xyplot(price ~ carat | cut, data = diamonds_subset, layout = c(5,1))
-</code></pre>
-
 <p><img src="assets/fig/unnamed-chunk-80-1.png" title="plot of chunk unnamed-chunk-80" alt="plot of chunk unnamed-chunk-80" style="display: block; margin: auto;" /></p>
 
   </article>
@@ -3155,6 +3178,20 @@ xyplot(price ~ carat, data = diamonds_subset)
 </slide>
 
 <slide class="" id="slide-127" style="background:;">
+  <hgroup>
+    <h3>Lattice Scatterplot across</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">xyplot(price ~ carat | cut, data = diamonds_subset, layout = c(5,1))
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-81-1.png" title="plot of chunk unnamed-chunk-81" alt="plot of chunk unnamed-chunk-81" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-128" style="background:;">
   <hgroup>
     <h3>Lattice Scatterplot with Linear fit</h3>
   </hgroup>
@@ -3165,13 +3202,13 @@ xyplot(price ~ carat, data = diamonds_subset)
 }, data = diamonds_subset, layout = c(5,1))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-81-1.png" title="plot of chunk unnamed-chunk-81" alt="plot of chunk unnamed-chunk-81" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-82-1.png" title="plot of chunk unnamed-chunk-82" alt="plot of chunk unnamed-chunk-82" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-128" style="background:;">
+<slide class="" id="slide-129" style="background:;">
   <hgroup>
     <h2>ggplot2</h2>
   </hgroup>
@@ -3191,7 +3228,7 @@ xyplot(price ~ carat, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-129" style="background:;">
+<slide class="" id="slide-130" style="background:;">
   <hgroup>
     <h3>qplot()</h3>
   </hgroup>
@@ -3212,27 +3249,13 @@ xyplot(price ~ carat, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-130" style="background:;">
+<slide class="" id="slide-131" style="background:;">
   <hgroup>
     <h3>qplot() - Scatterplot</h3>
   </hgroup>
   <article data-timings="">
     <pre><code class="r">library(ggplot2)
 qplot(carat, price, data = diamonds_subset)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-82-1.png" title="plot of chunk unnamed-chunk-82" alt="plot of chunk unnamed-chunk-82" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-131" style="background:;">
-  <hgroup>
-    <h3>qplot() - Scatterplot</h3>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">qplot(carat, price, data = diamonds_subset, col = cut)
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-83-1.png" title="plot of chunk unnamed-chunk-83" alt="plot of chunk unnamed-chunk-83" style="display: block; margin: auto;" /></p>
@@ -3243,10 +3266,10 @@ qplot(carat, price, data = diamonds_subset)
 
 <slide class="" id="slide-132" style="background:;">
   <hgroup>
-    <h3>qplot() - Facets</h3>
+    <h3>qplot() - Scatterplot</h3>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
+    <pre><code class="r">qplot(carat, price, data = diamonds_subset, col = cut)
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-84-1.png" title="plot of chunk unnamed-chunk-84" alt="plot of chunk unnamed-chunk-84" style="display: block; margin: auto;" /></p>
@@ -3257,10 +3280,10 @@ qplot(carat, price, data = diamonds_subset)
 
 <slide class="" id="slide-133" style="background:;">
   <hgroup>
-    <h3>qplot() - Histogram</h3>
+    <h3>qplot() - Facets</h3>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
+    <pre><code class="r">qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-85-1.png" title="plot of chunk unnamed-chunk-85" alt="plot of chunk unnamed-chunk-85" style="display: block; margin: auto;" /></p>
@@ -3271,6 +3294,20 @@ qplot(carat, price, data = diamonds_subset)
 
 <slide class="" id="slide-134" style="background:;">
   <hgroup>
+    <h3>qplot() - Histogram</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-86-1.png" title="plot of chunk unnamed-chunk-86" alt="plot of chunk unnamed-chunk-86" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-135" style="background:;">
+  <hgroup>
     <h2>Time for Lunch Break for 10 Minutes. Please come back at 4 :)</h2>
   </hgroup>
   <article data-timings="">
@@ -3279,7 +3316,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-135" style="background:;">
+<slide class="" id="slide-136" style="background:;">
   <hgroup>
     <h2>Session 5 - Agenda</h2>
   </hgroup>
@@ -3294,7 +3331,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-136" style="background:;">
+<slide class="" id="slide-137" style="background:;">
   <hgroup>
     <h2>T-Test in R</h2>
   </hgroup>
@@ -3310,7 +3347,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-137" style="background:;">
+<slide class="" id="slide-138" style="background:;">
   <hgroup>
     <h3>One-Sample T-Test</h3>
   </hgroup>
@@ -3337,7 +3374,7 @@ oneSampTest.0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-138" style="background:;">
+<slide class="" id="slide-139" style="background:;">
   <hgroup>
     <h3>One-Sample T-Test</h3>
   </hgroup>
@@ -3353,7 +3390,7 @@ oneSampTest.0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-139" style="background:;">
+<slide class="" id="slide-140" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test</h3>
   </hgroup>
@@ -3370,7 +3407,7 @@ oneSampTest.0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-140" style="background:;">
+<slide class="" id="slide-141" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Un-equal Variances)</h3>
   </hgroup>
@@ -3397,7 +3434,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-141" style="background:;">
+<slide class="" id="slide-142" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Equal Variances)</h3>
   </hgroup>
@@ -3422,7 +3459,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-142" style="background:;">
+<slide class="" id="slide-143" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Paired T Test)</h3>
   </hgroup>
@@ -3447,7 +3484,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-143" style="background:;">
+<slide class="" id="slide-144" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -3471,7 +3508,7 @@ str(myDF)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-144" style="background:;">
+<slide class="" id="slide-145" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -3494,7 +3531,7 @@ str(myANOVA) # see what is
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-145" style="background:;">
+<slide class="" id="slide-146" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -3511,7 +3548,7 @@ str(myANOVA) # see what is
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-146" style="background:;">
+<slide class="" id="slide-147" style="background:;">
   <hgroup>
     <h2>Linear Regression:</h2>
   </hgroup>
@@ -3540,7 +3577,7 @@ str(Prestige)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-147" style="background:;">
+<slide class="" id="slide-148" style="background:;">
   <hgroup>
     <h3>Linear Regression - Fit:</h3>
   </hgroup>
@@ -3570,7 +3607,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-148" style="background:;">
+<slide class="" id="slide-149" style="background:;">
   <hgroup>
     <h3>Linear Regression - Fit:</h3>
   </hgroup>
@@ -3597,7 +3634,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-149" style="background:;">
+<slide class="" id="slide-150" style="background:;">
   <hgroup>
     <h2>Linear Regression - Diagnostics:</h2>
   </hgroup>
@@ -3616,7 +3653,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-150" style="background:;">
+<slide class="" id="slide-151" style="background:;">
   <hgroup>
     <h3>Testing for Normality</h3>
   </hgroup>
@@ -3624,13 +3661,13 @@ myReg # summary(myReg)
     <pre><code class="r">qqPlot(myReg, main = &quot;QQ Plot&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-96-1.png" alt="plot of chunk unnamed-chunk-96"> </p>
+<p><img src="assets/fig/unnamed-chunk-97-1.png" alt="plot of chunk unnamed-chunk-97"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-151" style="background:;">
+<slide class="" id="slide-152" style="background:;">
   <hgroup>
     <h3>Testing for Constant Variance</h3>
   </hgroup>
@@ -3638,7 +3675,30 @@ myReg # summary(myReg)
     <pre><code class="r">spreadLevelPlot(myReg)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-97-1.png" alt="plot of chunk unnamed-chunk-97"> </p>
+<p><img src="assets/fig/unnamed-chunk-98-1.png" alt="plot of chunk unnamed-chunk-98"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-153" style="background:;">
+  <hgroup>
+    <h3>Exercise 9:</h3>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>For this exercise, we need to load in diamonds datset from ggplot2 package.</li>
+<li>Is ther any difference between diamonds with different quality of cut in terms of price? 
+
+<ul>
+<li>You will need to use ANOVA to answer this question</li>
+</ul></li>
+<li>Fit a linear regression to predict price of a given diamond based on the features below:
+
+<ul>
+<li>carat, cut, color, clarity, and depth</li>
+</ul></li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -4196,7 +4256,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=92 title='Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)'>
+        data-slide=92 title='Exercise 5:'>
          92
       </a>
     </li>
@@ -4262,13 +4322,13 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=103 title='Exercise:'>
+        data-slide=103 title='Exercise 6:'>
          103
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=104 title='Exercise'>
+        data-slide=104 title='Exercise 7:'>
          104
       </a>
     </li>
@@ -4370,7 +4430,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=121 title='Graphics Devices in R'>
+        data-slide=121 title='Exercise 8:'>
          121
       </a>
     </li>
@@ -4382,49 +4442,49 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=123 title='File Devices'>
+        data-slide=123 title='Graphics Devices in R'>
          123
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=124 title='Lattice Plotting System'>
+        data-slide=124 title='File Devices'>
          124
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=125 title='Lattice Scatter plot'>
+        data-slide=125 title='Lattice Plotting System'>
          125
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=126 title='Lattice Scatterplot across'>
+        data-slide=126 title='Lattice Scatter plot'>
          126
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=127 title='Lattice Scatterplot with Linear fit'>
+        data-slide=127 title='Lattice Scatterplot across'>
          127
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=128 title='ggplot2'>
+        data-slide=128 title='Lattice Scatterplot with Linear fit'>
          128
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=129 title='qplot()'>
+        data-slide=129 title='ggplot2'>
          129
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=130 title='qplot() - Scatterplot'>
+        data-slide=130 title='qplot()'>
          130
       </a>
     </li>
@@ -4436,37 +4496,37 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=132 title='qplot() - Facets'>
+        data-slide=132 title='qplot() - Scatterplot'>
          132
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=133 title='qplot() - Histogram'>
+        data-slide=133 title='qplot() - Facets'>
          133
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=134 title='Time for Lunch Break for 10 Minutes. Please come back at 4 :)'>
+        data-slide=134 title='qplot() - Histogram'>
          134
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=135 title='Session 5 - Agenda'>
+        data-slide=135 title='Time for Lunch Break for 10 Minutes. Please come back at 4 :)'>
          135
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=136 title='T-Test in R'>
+        data-slide=136 title='Session 5 - Agenda'>
          136
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=137 title='One-Sample T-Test'>
+        data-slide=137 title='T-Test in R'>
          137
       </a>
     </li>
@@ -4478,31 +4538,31 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=139 title='Two-Sample T-Test'>
+        data-slide=139 title='One-Sample T-Test'>
          139
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=140 title='Two-Sample T-Test (Un-equal Variances)'>
+        data-slide=140 title='Two-Sample T-Test'>
          140
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=141 title='Two-Sample T-Test (Equal Variances)'>
+        data-slide=141 title='Two-Sample T-Test (Un-equal Variances)'>
          141
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=142 title='Two-Sample T-Test (Paired T Test)'>
+        data-slide=142 title='Two-Sample T-Test (Equal Variances)'>
          142
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=143 title='ANOVA'>
+        data-slide=143 title='Two-Sample T-Test (Paired T Test)'>
          143
       </a>
     </li>
@@ -4520,13 +4580,13 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=146 title='Linear Regression:'>
+        data-slide=146 title='ANOVA'>
          146
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=147 title='Linear Regression - Fit:'>
+        data-slide=147 title='Linear Regression:'>
          147
       </a>
     </li>
@@ -4538,20 +4598,32 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=149 title='Linear Regression - Diagnostics:'>
+        data-slide=149 title='Linear Regression - Fit:'>
          149
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=150 title='Testing for Normality'>
+        data-slide=150 title='Linear Regression - Diagnostics:'>
          150
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=151 title='Testing for Constant Variance'>
+        data-slide=151 title='Testing for Normality'>
          151
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=152 title='Testing for Constant Variance'>
+         152
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=153 title='Exercise 9:'>
+         153
       </a>
     </li>
   </ul>
