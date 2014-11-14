@@ -13,7 +13,8 @@
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
   <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/logo.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
@@ -56,7 +57,7 @@
 
 <ul>
 <li>Session 1 (9-10:20): Data Types in R </li>
-<li>Session 2 (10:30-12): Constrol Structures and Functions</li>
+<li>Session 2 (10:30-12): Control Structures and Functions</li>
 <li>Session 3 (12:30-1:50): Debugging Techniques in R</li>
 <li>Session 4 (2-3:20): Plotting and Data Visualization in R </li>
 <li>Session 5 (3:30-5): Statistical Analysis in R</li>
@@ -100,7 +101,7 @@
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Oerview and History of R</li>
+<li>Overview and History of R</li>
 <li>Resources in Learning R and How to get Help?</li>
 <li>RStudio</li>
 <li>Data Types in R</li>
@@ -201,7 +202,7 @@
   </hgroup>
   <article data-timings="">
     <ol>
-<li><p>chambers(1998). Programming with Data, Springer.</p></li>
+<li><p>Chambers(1998). Programming with Data, Springer.</p></li>
 <li><p>Venables &amp; Ripley (2000). S Programming, Springer.</p></li>
 <li><p>Chambers (2008). Software for Data Analysis, Springer. (highly recommended)</p></li>
 <li><p>More resources available at: <a href="http://www.r-project.org/doc/bib/R-books.html">http://www.r-project.org/doc/bib/R-books.html</a></p></li>
@@ -222,7 +223,7 @@
 <ul>
 <li>example: ?lm, help(lm)</li>
 </ul></li>
-<li><p>R mainling lists: r-help and r-devel</p>
+<li><p>R mailing lists: r-help and r-devel</p>
 
 <ul>
 <li>For more info: <a href="https://stat.ethz.ch/mailman/listinfo/r-help">https://stat.ethz.ch/mailman/listinfo/r-help</a></li>
@@ -247,8 +248,8 @@
   </hgroup>
   <article data-timings="">
     <ol>
-<li><p>Rstudio is a free and open source integrated development environment (IDE) for R.</p></li>
-<li><p>To download Rstudio please visit: <a href="http://rstudio.org/">http://rstudio.org/</a></p></li>
+<li><p>RStudio is a free and open source integrated development environment (IDE) for R.</p></li>
+<li><p>To download RStudio please visit: <a href="http://rstudio.org/">http://rstudio.org/</a></p></li>
 <li><p>Please note that you must have R already installed before installing R Studio.</p></li>
 </ol>
 
@@ -351,7 +352,7 @@ rslt
     <h3>Logical, Complex, &amp; Character Vectors:</h3>
   </hgroup>
   <article data-timings="">
-    <p>Let&#39;s see some examples of logical,complex, and character vectors:</p>
+    <p>Let&#39;s see some examples of logical, complex, and character vectors:</p>
 
 <pre><code class="r">logVec &lt;- c(TRUE, FALSE, FALSE, T, F)
 logVec
@@ -413,7 +414,7 @@ charLogVec # ?
   </hgroup>
   <article data-timings="">
     <ul>
-<li>as(): To explicitely coerce objects from one type to another</li>
+<li>as(): To explicitly coerce objects from one type to another</li>
 </ul>
 
 <pre><code class="r">numVec &lt;- seq(from = 1200, to = 1300, by = 15)
@@ -692,7 +693,7 @@ myVec
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p>As it&#39;s tuitive, matrix seems to be combination of vectors that are put next to each other (either column wise or row wise).</p></li>
+<li><p>As it&#39;s intuitive, matrix seems to be combination of vectors that are put next to each other (either column wise or row wise).</p></li>
 <li><p>rbind() (row bind) and cbind (column bind) do a similar job:</p></li>
 </ul>
 
@@ -867,7 +868,7 @@ head(data)
 <li><p>We consider three main operators to take a subset of an object:</p>
 
 <ul>
-<li>[ ]: signle brackets return an object of the same class of the original object. By using [], we can also choose more than one element.</li>
+<li>[ ]: single brackets return an object of the same class of the original object. By using [], we can also choose more than one element.</li>
 <li>[[ ]]: double brackets are used primarily for lists and dataframes. </li>
 <li>$: Similar to double brackets, $ is used primarily for lists and dataframes. </li>
 </ul></li>
@@ -1325,7 +1326,7 @@ library(PASWR) # this loads in the package
     <h2>Vectorized Operations</h2>
   </hgroup>
   <article data-timings="">
-    <p>R is capable of vectorized operations without any need for runing loops:</p>
+    <p>R is capable of vectorized operations without any need for running loops:</p>
 
 <pre><code class="r">x &lt;- 1:5
 y &lt;- c(1, 2, 6, 7, 10)
@@ -1605,7 +1606,7 @@ while (i &lt; 2) {
   </hgroup>
   <article data-timings="">
     <ul>
-<li>next is useful in skipping an iteratio of a loop:</li>
+<li>next is useful in skipping an iteration of a loop:</li>
 </ul>
 
 <pre><code class="r">for(i in 1:4){
@@ -1688,7 +1689,7 @@ age.df[1:3,]
     <ol class = "build incremental">
 <li>R language has many built-in functions</li>
 <li>Each function has a name followed by ()</li>
-<li>Arguments of a function should mention within parantheses</li>
+<li>Arguments of a function should mention within parentheses</li>
 <li>R packages are a comfortable way to maintain collections of R functions and data sets</li>
 <li>Packages allow for easy, transparent and cross-platform extension of the R base system</li>
 </ol>
@@ -1739,7 +1740,7 @@ age.df[1:3,]
 <li>Using R studio: tools/install packages</li>
 <li>From R console: install.packages()</li>
 </ul></li>
-<li><p>Installing from Source: In this method, you should first download the add-on R package and use the following unix commmand in the console to install the package:</p>
+<li><p>Installing from Source: In this method, you should first download the add-on R package and use the following unix command in the console to install the package:</p>
 
 <ul>
 <li>R CMD INSTALL packageName -l path/to/your/Rpackage/Directory</li>
@@ -1786,7 +1787,7 @@ age.df[1:3,]
 <ul>
 <li>x: sample space in form of a vector</li>
 <li>size: your desired sample size</li>
-<li>replace: sampling with/wout replacement</li>
+<li>replace: sampling with/without replacement</li>
 <li>prob: a vector of probability weights</li>
 </ul></li>
 <li><p>some of the arguments have default values. What are those arguments?</p></li>
@@ -2071,7 +2072,7 @@ str(myList)
 <li>c(1, 2): indicates rows and columns</li>
 </ul></li>
 <li><p>FUN: refers to the function that we want to apply on the dataset</p></li>
-<li><p>&quot;...&quot; : additional argunemts of FUN</p></li>
+<li><p>&quot;...&quot; : additional arguments of FUN</p></li>
 </ul>
 
   </article>
@@ -2133,7 +2134,7 @@ head(iris) # more info ?iris
     <h3>apply():</h3>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r"># consider iris dataset: 
+    <pre><code class="r"># Consider iris dataset: 
 apply(iris[,-5], 2, quantile, probs = c(0.25, 0.75))
 </code></pre>
 
@@ -2752,7 +2753,7 @@ plot(x, y, type = &quot;l&quot;)
 <li>ggplot2</li>
 </ul>
 
-<p>Plotting and Graphics enginer in R is in the following packages:</p>
+<p>Plotting and Graphics engines in R is in the following packages:</p>
 
 <ul>
 <li>graphics: contains plotting functions for the Base system</li>
@@ -2831,11 +2832,11 @@ abline(h = 0)
     <ul>
 <li>ggplot2 is a very popular graphics system in R (written by Hadley Wickham)</li>
 <li>The package has a language or grammar for describing different aspects of plotting</li>
-<li>The package is an implementation of the Garammar of Graphics by Leland Wilkinson</li>
+<li>The package is an implementation of the Grammar of Graphics by Leland Wilkinson</li>
 <li>ggplot2 mixes ideas from Base and from Lattice plotting systems
 
 <ul>
-<li>Many of the aesthetics of a plot (labeling, margins, background, ...) are done automatically with a single funcion call (similar to lattice)</li>
+<li>Many of the aesthetics of a plot (labeling, margins, background, ...) are done automatically with a single function call (similar to lattice)</li>
 <li>You can still add components of a plot layer by layer (similar to the base system)</li>
 </ul></li>
 </ul>
@@ -3005,7 +3006,7 @@ boxplot(x, y , z)
 <ul>
 <li>depending on the type of it input, might behave differently</li>
 </ul></li>
-<li><p>lines: to add lines to a plot (ex: overally a density on a histogram)</p></li>
+<li><p>lines: to add lines to a plot (ex: to overlay a density on a histogram)</p></li>
 <li><p>points: to add points to a plot</p></li>
 <li><p>text: to add texts to a plot at (x, y)</p></li>
 <li><p>title: to add title to a plot</p></li>
@@ -3067,7 +3068,7 @@ boxplot(x, y , z)
 <li>For file devices:
 
 <ul>
-<li>Graohics device of interest should be opened</li>
+<li>Graphics device of interest should be opened</li>
 <li>Plotting codes</li>
 <li>closing the device using dev.off()</li>
 </ul></li>
@@ -3124,7 +3125,7 @@ dev.off()
 
 <slide class="" id="slide-125" style="background:;">
   <hgroup>
-    <h3>Lattice Scatterplot</h3>
+    <h3>Lattice Scatter plot</h3>
   </hgroup>
   <article data-timings="">
     <pre><code class="r">library(lattice)
@@ -3181,7 +3182,7 @@ xyplot(price ~ carat, data = diamonds_subset)
 <li>We focus on qplot() function to:
 
 <ul>
-<li>create scatterplot</li>
+<li>create scatter plot</li>
 <li>create histogram</li>
 </ul></li>
 </ul>
@@ -3426,7 +3427,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
     <h3>Two-Sample T-Test (Paired T Test)</h3>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assump: unequal variances
+    <pre><code class="r">t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assumption: unequal variances
 </code></pre>
 
 <pre><code>## 
@@ -4393,7 +4394,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=125 title='Lattice Scatterplot'>
+        data-slide=125 title='Lattice Scatter plot'>
          125
       </a>
     </li>

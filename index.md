@@ -7,7 +7,7 @@ framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : mathjax            # {mathjax, quiz, bootstrap}
-logo        : logo.png
+logo     : logo.png
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 github:
@@ -20,7 +20,7 @@ github:
 
 1) The class will include 5 sessions:
   + Session 1 (9-10:20): Data Types in R 
-  + Session 2 (10:30-12): Constrol Structures and Functions
+  + Session 2 (10:30-12): Control Structures and Functions
   + Session 3 (12:30-1:50): Debugging Techniques in R
   + Session 4 (2-3:20): Plotting and Data Visualization in R 
   + Session 5 (3:30-5): Statistical Analysis in R
@@ -48,7 +48,7 @@ github:
 
 ## Session 1 - Agenda
 
-1. Oerview and History of R
+1. Overview and History of R
 2. Resources in Learning R and How to get Help?
 3. RStudio
 4. Data Types in R
@@ -113,7 +113,7 @@ github:
 
 ## Useful Books in learning R:
 
-1. chambers(1998). Programming with Data, Springer.
+1. Chambers(1998). Programming with Data, Springer.
 
 2. Venables & Ripley (2000). S Programming, Springer.
 
@@ -128,7 +128,7 @@ github:
 1. Simply use the built-in help function in R
   + example: ?lm, help(lm)
   
-2. R mainling lists: r-help and r-devel
+2. R mailing lists: r-help and r-devel
   + For more info: https://stat.ethz.ch/mailman/listinfo/r-help
   + How to ask good questions: http://www.r-project.org/posting-guide.html
 
@@ -142,9 +142,9 @@ github:
 
 ## R Studio:
 
-1. Rstudio is a free and open source integrated development environment (IDE) for R.
+1. RStudio is a free and open source integrated development environment (IDE) for R.
 
-2. To download Rstudio please visit: http://rstudio.org/
+2. To download RStudio please visit: http://rstudio.org/
 
 3. Please note that you must have R already installed before installing R Studio.
 
@@ -229,7 +229,7 @@ rslt
 
 ### Logical, Complex, & Character Vectors:
 
-Let's see some examples of logical,complex, and character vectors:
+Let's see some examples of logical, complex, and character vectors:
 
 ```r
 logVec <- c(TRUE, FALSE, FALSE, T, F)
@@ -284,7 +284,7 @@ charLogVec # ?
 
 ### Data Type Coercion:
 
-+ as(): To explicitely coerce objects from one type to another
++ as(): To explicitly coerce objects from one type to another
 
 
 ```r
@@ -542,7 +542,7 @@ myVec
 
 ### Other Ways to Create Matrix:
 
-+ As it's tuitive, matrix seems to be combination of vectors that are put next to each other (either column wise or row wise).
++ As it's intuitive, matrix seems to be combination of vectors that are put next to each other (either column wise or row wise).
 
 + rbind() (row bind) and cbind (column bind) do a similar job:
 
@@ -681,7 +681,7 @@ head(data)
 
 + Often times we need to take a subset of a vector, a matrix, a list, or a dataframe.
 + We consider three main operators to take a subset of an object:
-  + [ ]: signle brackets return an object of the same class of the original object. By using [], we can also choose more than one element.
+  + [ ]: single brackets return an object of the same class of the original object. By using [], we can also choose more than one element.
   + [[ ]]: double brackets are used primarily for lists and dataframes. 
   + $: Similar to double brackets, $ is used primarily for lists and dataframes. 
 
@@ -1091,7 +1091,7 @@ library(PASWR) # this loads in the package
 
 ## Vectorized Operations
 
-R is capable of vectorized operations without any need for runing loops:
+R is capable of vectorized operations without any need for running loops:
 
 ```r
 x <- 1:5
@@ -1300,7 +1300,7 @@ for(i in 1:4){
 
 ## next:
 
-+ next is useful in skipping an iteratio of a loop:
++ next is useful in skipping an iteration of a loop:
 
 ```r
 for(i in 1:4){
@@ -1372,7 +1372,7 @@ age.df[1:3,]
 
 > 1. R language has many built-in functions
 > 2. Each function has a name followed by ()
-> 3. Arguments of a function should mention within parantheses
+> 3. Arguments of a function should mention within parentheses
 > 4. R packages are a comfortable way to maintain collections of R functions and data sets
 > 5. Packages allow for easy, transparent and cross-platform extension of the R base system
 
@@ -1404,7 +1404,7 @@ There are two ways to install a package in R:
   + Using R studio: tools/install packages
   + From R console: install.packages()
 
-2. Installing from Source: In this method, you should first download the add-on R package and use the following unix commmand in the console to install the package:
+2. Installing from Source: In this method, you should first download the add-on R package and use the following unix command in the console to install the package:
   + R CMD INSTALL packageName -l path/to/your/Rpackage/Directory
 
 + Once you install a package, you need to load it into R using the function library()
@@ -1434,7 +1434,7 @@ str(sample)
 + sample() gets four arguments: 
   + x: sample space in form of a vector
   + size: your desired sample size
-  + replace: sampling with/wout replacement
+  + replace: sampling with/without replacement
   + prob: a vector of probability weights
 
 + some of the arguments have default values. What are those arguments?
@@ -1703,7 +1703,7 @@ str(apply) # try ?apply for more info
 
 + FUN: refers to the function that we want to apply on the dataset
 
-+ "..." : additional argunemts of FUN
++ "..." : additional arguments of FUN
 
 
 ---
@@ -1763,7 +1763,7 @@ head(iris) # more info ?iris
 
 
 ```r
-# consider iris dataset: 
+# Consider iris dataset: 
 apply(iris[,-5], 2, quantile, probs = c(0.25, 0.75))
 ```
 
@@ -2292,7 +2292,7 @@ There are three main plotting systems in R:
   + Lattice
   + ggplot2
 
-Plotting and Graphics enginer in R is in the following packages:
+Plotting and Graphics engines in R is in the following packages:
   + graphics: contains plotting functions for the Base system
   + grDevices: contains graphic devices in R
   + lattice: contains plotting functions of the lattice system
@@ -2344,9 +2344,9 @@ abline(h = 0)
 
 + ggplot2 is a very popular graphics system in R (written by Hadley Wickham)
 + The package has a language or grammar for describing different aspects of plotting
-+ The package is an implementation of the Garammar of Graphics by Leland Wilkinson
++ The package is an implementation of the Grammar of Graphics by Leland Wilkinson
 + ggplot2 mixes ideas from Base and from Lattice plotting systems
-  + Many of the aesthetics of a plot (labeling, margins, background, ...) are done automatically with a single funcion call (similar to lattice)
+  + Many of the aesthetics of a plot (labeling, margins, background, ...) are done automatically with a single function call (similar to lattice)
   + You can still add components of a plot layer by layer (similar to the base system)
 
 
@@ -2481,7 +2481,7 @@ par("bg")
 + plot: usually to make scatter plot
   + depending on the type of it input, might behave differently
 
-+ lines: to add lines to a plot (ex: overally a density on a histogram)
++ lines: to add lines to a plot (ex: to overlay a density on a histogram)
 
 + points: to add points to a plot
 
@@ -2527,7 +2527,7 @@ par("bg")
 
 + There is nothing special to do to use the screen device
 + For file devices:
-  + Graohics device of interest should be opened
+  + Graphics device of interest should be opened
   + Plotting codes
   + closing the device using dev.off()
 
@@ -2561,7 +2561,7 @@ dev.off()
 
 ---
 
-### Lattice Scatterplot
+### Lattice Scatter plot
 
 ```r
 library(lattice)
@@ -2604,7 +2604,7 @@ xyplot(price ~ carat | cut, panel = function(x, y, ...){
 + As Hadley Wickham explained in his ggplot2 book: ggplot2 is a package to "shorten the distance from mind to page"
 + Here we briefly mention some examples. For more information please visit: http://ggplot2.org
 + We focus on qplot() function to:
-  + create scatterplot
+  + create scatter plot
   + create histogram
 
 
@@ -2789,7 +2789,7 @@ t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 ###  Two-Sample T-Test (Paired T Test)
 
 ```r
-t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assump: unequal variances
+t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assumption: unequal variances
 ```
 
 ```
