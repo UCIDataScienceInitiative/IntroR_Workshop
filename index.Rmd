@@ -11,7 +11,7 @@ logo     : logo.png
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 github:
-  user: sepehrakhavan
+  user: UCIDataScienceInitiative
   repo: IntroR_Workshop
 ---
 
