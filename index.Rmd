@@ -739,7 +739,7 @@ head(irisFile)
 ## write.table():
 
 ```{r echo = T, eval=FALSE}
-write.table(irisFile, file = "pass/to/the/file")
+write.table(irisFile, file = "path/to/the/file")
 ```
 
 ---
