@@ -20,7 +20,7 @@ github:
 ```{r,echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
 library(ggplot2)
 ```
-1) The class will include 5 sessions:
+1) The class will include 5 sessions: 
   + Session 1 (9-10:20): Data Types in R 
   + Session 2 (10:30-12): Control Structures and Functions
   + Session 3 (12:30-1:50): Statistical Distributions in R
