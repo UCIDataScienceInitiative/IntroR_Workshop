@@ -4,7 +4,7 @@
   <title>Intro to R Workshop</title>
   <meta charset="utf-8">
   <meta name="description" content="Intro to R Workshop">
-  <meta name="author" content="Sepehr Akhavan">
+  <meta name="author" content="Sepehr Akhavan, Homer Strong, Zhe Yu">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -38,9 +38,9 @@
   <hgroup class="auto-fadein">
     <h1>Intro to R Workshop</h1>
     <h2>UCI Data Science Initiative</h2>
-    <p>Sepehr Akhavan<br/>PhD Candidate, Dept. of Statistics</p>
+    <p>Sepehr Akhavan, Homer Strong, Zhe Yu<br/>PhD Candidate, Dept. of Statistics</p>
   </hgroup>
-    <a href="https://github.com/sepehrakhavan/IntroR_Workshop/zipball/gh-pages" class="example">
+    <a href="https://github.com/UCIDataScienceInitiative/IntroR_Workshop/zipball/gh-pages" class="example">
      Download
     </a>
   <article></article>  
@@ -1940,7 +1940,7 @@ myTtest(y1, y2)
   <article data-timings="">
     <ol class = "build incremental">
 <li><p>Variables defined within a function are locally defined (i.e. not defined outside of the function).</p></li>
-<li><p>Functions in R are treated like any other first class objects. This means functions can be an passed as arguments of other functions.</p></li>
+<li><p>Functions in R are treated like any other first class objects. This means functions can be passed as arguments of other functions.</p></li>
 <li><p>Arguments of functions are evaluated as they are needed (lazy evaluation). </p></li>
 <li><p>&quot; ... &quot; can be an argument of a function and it refers to a situation where number of input arguments can be varied and is not fixed upfront. </p></li>
 </ol>
@@ -2268,7 +2268,7 @@ lapply(myList, function(element){return(mean(c(element[1], element[length(elemen
 </code></pre>
 
 <ul>
-<li>tapply() applies a function on a subset of of a vector</li>
+<li>tapply() applies a function on a subset of a vector</li>
 <li>X: is a vector </li>
 <li>INDEX: list of one or more factors, each of same length as X</li>
 <li>FUN: our function of interest</li>
@@ -2569,7 +2569,7 @@ str(dbinom)
 <pre><code>## function (x, size, prob, log = FALSE)
 </code></pre>
 
-<pre><code class="r">dbinom(5, 10, 0.5) # prob of getting two head
+<pre><code class="r">dbinom(5, 10, 0.5) # prob of getting five heads
 </code></pre>
 
 <pre><code>## [1] 0.2460938
@@ -2602,7 +2602,7 @@ str(dbinom)
 <pre><code>## function (p, size, prob, lower.tail = TRUE, log.p = FALSE)
 </code></pre>
 
-<pre><code class="r">qbinom(0.6230, 10, 0.5) # prob of getting two head
+<pre><code class="r">qbinom(0.6230, 10, 0.5) # get the value of ? s.t. Pr[X &lt;= ?]=0.6230
 </code></pre>
 
 <pre><code>## [1] 5
@@ -2614,7 +2614,7 @@ str(dbinom)
 <pre><code>## function (n, size, prob)
 </code></pre>
 
-<pre><code class="r">rbinom(20, 10, 0.5) # Pr[X &lt;= 5]
+<pre><code class="r">rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 </code></pre>
 
 <pre><code>##  [1] 5 4 4 6 6 5 3 5 5 6 7 4 5 4 6 4 3 6 5 5
@@ -2748,7 +2748,7 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-106" style="background:;">
   <hgroup>
-    <h2>Time for Lunch Break for 10 Minutes :)</h2>
+    <h2>Time for Break for 10 Minutes :)</h2>
   </hgroup>
   <article data-timings="">
     
@@ -3036,7 +3036,7 @@ boxplot(x, y , z)
 <li><p>plot: usually to make scatter plot</p>
 
 <ul>
-<li>depending on the type of it input, might behave differently</li>
+<li>depending on the type of its input, might behave differently</li>
 </ul></li>
 <li><p>lines: to add lines to a plot (ex: to overlay a density on a histogram)</p></li>
 <li><p>points: to add points to a plot</p></li>
@@ -3072,7 +3072,7 @@ boxplot(x, y , z)
 <li>2) Choose a probability distribution other than the normal distribution from which to generate data.</li>
 <li>3) Generate 1000 random values from your chosen distribution. Create a histogram of these 1000 values with a density plot overlaid.</li>
 <li>4) Generate 1000 random samples of size n = 5 from your chosen distribution (use a for loop!). For each sample, calculate the sample mean (using the &quot;mean&quot; function in R), so in the end, you have a vector of 1000 sample means. Create a histogram of these 1000 sample means with a density plot overlaid.</li>
-<li>5) Can you re-write step (4) in terms of a function with with sample size as an input argument? Run your function with different n (10, 20 , 30). </li>
+<li>5) Can you re-write step (4) in terms of a function with sample size as an input argument? Run your function with different n (10, 20 , 30). </li>
 <li>6) As n increases, what happens to the shape of the histogram?</li>
 </ul>
 
@@ -3323,7 +3323,7 @@ qplot(carat, price, data = diamonds_subset)
 
 <slide class="" id="slide-136" style="background:;">
   <hgroup>
-    <h2>Time for Lunch Break for 10 Minutes :)</h2>
+    <h2>Time for Break for 10 Minutes :)</h2>
   </hgroup>
   <article data-timings="">
     
@@ -4355,7 +4355,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=106 title='Time for Lunch Break for 10 Minutes :)'>
+        data-slide=106 title='Time for Break for 10 Minutes :)'>
          106
       </a>
     </li>
@@ -4535,7 +4535,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=136 title='Time for Lunch Break for 10 Minutes :)'>
+        data-slide=136 title='Time for Break for 10 Minutes :)'>
          136
       </a>
     </li>

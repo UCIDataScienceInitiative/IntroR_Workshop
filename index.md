@@ -1,7 +1,7 @@
 ---
 title       : Intro to R Workshop
 subtitle    : UCI Data Science Initiative
-author      : Sepehr Akhavan
+author      : Sepehr Akhavan, Homer Strong, Zhe Yu
 job         : PhD Candidate, Dept. of Statistics
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -11,7 +11,7 @@ logo     : logo.png
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 github:
-  user: sepehrakhavan
+  user: UCIDataScienceInitiative
   repo: IntroR_Workshop
 ---
 
@@ -1578,7 +1578,7 @@ myTtest(y1, y2)
 
 > 1. Variables defined within a function are locally defined (i.e. not defined outside of the function).
 
-> 2. Functions in R are treated like any other first class objects. This means functions can be an passed as arguments of other functions.
+> 2. Functions in R are treated like any other first class objects. This means functions can be passed as arguments of other functions.
 
 > 3. Arguments of functions are evaluated as they are needed (lazy evaluation). 
 
@@ -1885,7 +1885,7 @@ str(tapply)
 ## function (X, INDEX, FUN = NULL, ..., simplify = TRUE)
 ```
 
-+ tapply() applies a function on a subset of of a vector
++ tapply() applies a function on a subset of a vector
 + X: is a vector 
 + INDEX: list of one or more factors, each of same length as X
 + FUN: our function of interest
@@ -2120,7 +2120,7 @@ str(dbinom)
 ```
 
 ```r
-dbinom(5, 10, 0.5) # prob of getting two head
+dbinom(5, 10, 0.5) # prob of getting five heads
 ```
 
 ```
@@ -2157,7 +2157,7 @@ str(qbinom) # quantile: Pr[X <= ?] = known value
 ```
 
 ```r
-qbinom(0.6230, 10, 0.5) # prob of getting two head
+qbinom(0.6230, 10, 0.5) # get the value of ? s.t. Pr[X <= ?]=0.6230
 ```
 
 ```
@@ -2173,7 +2173,7 @@ str(rbinom) # Generating random numbers
 ```
 
 ```r
-rbinom(20, 10, 0.5) # Pr[X <= 5]
+rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 ```
 
 ```
@@ -2293,7 +2293,7 @@ plot(x, y, type = "l")
 
 ---
 
-## Time for Lunch Break for 10 Minutes :)
+## Time for Break for 10 Minutes :)
 
 ---
 
@@ -2500,7 +2500,7 @@ par("bg")
 ## Base Plotting System - Important Functions
 
 + plot: usually to make scatter plot
-  + depending on the type of it input, might behave differently
+  + depending on the type of its input, might behave differently
 
 + lines: to add lines to a plot (ex: to overlay a density on a histogram)
 
@@ -2533,7 +2533,7 @@ par("bg")
 + 2) Choose a probability distribution other than the normal distribution from which to generate data.
 + 3) Generate 1000 random values from your chosen distribution. Create a histogram of these 1000 values with a density plot overlaid.
 + 4) Generate 1000 random samples of size n = 5 from your chosen distribution (use a for loop!). For each sample, calculate the sample mean (using the "mean" function in R), so in the end, you have a vector of 1000 sample means. Create a histogram of these 1000 sample means with a density plot overlaid.
-+ 5) Can you re-write step (4) in terms of a function with with sample size as an input argument? Run your function with different n (10, 20 , 30). 
++ 5) Can you re-write step (4) in terms of a function with sample size as an input argument? Run your function with different n (10, 20 , 30). 
 + 6) As n increases, what happens to the shape of the histogram?
 
 
@@ -2702,7 +2702,7 @@ qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
 
 ---
 
-## Time for Lunch Break for 10 Minutes :)
+## Time for Break for 10 Minutes :)
 
 
 ---
