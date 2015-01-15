@@ -628,6 +628,23 @@ data(titanic3)
 
 ---
 
+## Exercises: Auto-Mpg Data
+
+1. Dataset: Auto-Mpg Data from UCI Machine Learning Repository
+2. Download: 
+  + https://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data-original
+3. Variables: 
+  + continuous: mpg, displacement, horsepower, weight, acceleration
+  + discrete: cylinders, model year, origin
+  + string: car name (unique for each instance)
+4. Goal: The data concerns city-cycle fuel consumption in miles per gallon (mpg), to be predicted in terms of 3 multivalued discrete and 5 continuous attributes.
+5. More information: 
+  + https://archive.ics.uci.edu/ml/datasets/Auto+MPG
+ 
+---
+
+---
+
 ## Time to Break for 10 Minutes :)
 
 ---
