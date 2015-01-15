@@ -723,7 +723,7 @@ Main functions for writing data from R:
   + skip: number of lines to skip from the beginning of the file
   + stringAsFactors: logical indicator on whether characters should be converted to factors 
 
-+ read.csv() is equivalent to read.table with sep = ","
++ read.csv() is equivalent to read.table with sep = "," and header = TRUE
 
 ---
 
