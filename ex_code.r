@@ -7,7 +7,7 @@ data = read.table(file = paste(datafolder, "auto-mpg.data-original",sep=""),
 # Check what string/symbol is used to denote missing values in the data and specify the argument 
 # na.strings for the function to read data. 
 data = read.csv(file = paste(datafolder, "auto-mpg.csv",sep=""), 
-                  header = FALSE)
+                header = FALSE)
 
 # 2. check the top 6 rows of data; open the original data in excel or 
 # notepad and compare with the rows printed in R
@@ -52,7 +52,6 @@ summary(data[,index_cont])
 # notice how summary() works differently for a factor variable from a numerical variable
 summary(data[, -index_cont])
 
-# *** #
 # 6.4 create a vector of logical values for whether origin is 2 or 3. 
 # create a new data that contains only the instances (rows) where origin is 1 using the logical vector 
 origin_23 = data$origin > 1 
@@ -116,7 +115,9 @@ data_noNA = data[contain_no_NA, ]
 # 8.4 read the help file for function na.omit(), and use this function to create a 
 # new data that contains only the instances that has no missing variables
 data_noNA = na.omit(data)
+????completcase
 
+#***#
 # from now on use the data set that contains no missing values
 # 9. Exercises for *apply() and split()
 # 9.1 use one of the *apply() functions to get the frequency table on all discrete variables 
@@ -129,7 +130,6 @@ tapply(data_noNA$mpg, data_noNA$cylinders, quantile, c(0.025, 0.975))
 # Split the dataset based on # cylinders 
 data_by_origin = split(data_noNA, data_noNA$origin)
 
-# *** #
 # randomization testing for mean mpg is higher for Japanese cars than European cars
 # calculate the difference between mean mpg for Japanese cars and European cars and save in object dif_JapVSEuro
 dif_JapVSEuro = mean(data_by_origin$Japanese$mpg) - mean(data_by_origin$European$mpg)
@@ -161,13 +161,17 @@ for(iter in 1:B){
 p_val = mean(E_le_J)
 
 
-# 10. histogram and add-on normal approximation curve of the continuous variables
-
+# 10. histogram of the continuous variables
+a) separate plot for each variable
+* b) use reshape and facet
 
 # 11. boxplot of mpg by factor 
+boxplot by cylinders
+optional: facet_grid() and jitter
 
-
-# 12. scatterplot matrix
+# 12. scatterplot 
+a) single scatterplot + lm fit
+b) matrix - ggplotmatrix
 
 # 12.1 data transformation: 
 # based on scatterplot matrix, add new variables: log transformed versions of horsepower, displacement, and weight 
@@ -176,6 +180,10 @@ data_noNA$logdisplacement = log(data_noNA$displacement)
 data_noNA$logweight = log(data_noNA$weight)
 # add new factor version of cylinders:
 data_noNA$cylinders_cat = factor(data_noNA$cylinders)
+
+???opacity
+
+??? add more specific goals in the data intro part
 
 # 13. linear regression 
 # ANOVA for origin
@@ -195,7 +203,5 @@ model = lm(mpg ~ cylinders_cat + logdisplacement + loghorsepower +
 
 summary(model)
 ?plot.lm
-x11()
 plot(model)
-
 
