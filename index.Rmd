@@ -13,13 +13,11 @@ knit        : slidify::knit2slides
 github:
   user: UCIDataScienceInitiative
   repo: IntroR_Workshop
+
 ---
 
 ## Introduction
 
-```{r,echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
-library(ggplot2)
-```
 1) The class will include 5 sessions: 
   + Session 1 (9-10:20): Data Types in R 
   + Session 2 (10:30-12): Control Structures and Functions
@@ -28,6 +26,9 @@ library(ggplot2)
   + Session 5 (3:30-5): Statistical Analysis in R
 
 ---
+```{r,echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+library(ggplot2)
+```
 
 ## Introduction
 
@@ -631,17 +632,14 @@ data(titanic3)
 ## Exercises: Auto-Mpg Data
 
 1. Dataset: Auto-Mpg Data from UCI Machine Learning Repository
-2. Download: 
-  + https://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data-original
-3. Variables: 
+2. Download:   https://github.com/UCIDataScienceInitiative/IntroR_Workshop/data/*
+3. Variables (names saved in auto-mpg-names.txt): 
   + continuous: mpg, displacement, horsepower, weight, acceleration
   + discrete: cylinders, model year, origin
   + string: car name (unique for each instance)
+  + descriptions: mpg (miles per gallon), cylinders (# of cylinders), displacement (engine displacement in cu. inches), weight (vehichle weight in lbs.), accelerate (time to accelerate from O to 60 mph in sec.), model year (modulo 100), origin (1: American, 2: European, 3: Japanese).
 4. Goal: The data concerns city-cycle fuel consumption in miles per gallon (mpg), to be predicted in terms of 3 multivalued discrete and 5 continuous attributes.
-5. More information: 
-  + https://archive.ics.uci.edu/ml/datasets/Auto+MPG
- 
----
+5. More information:   https://archive.ics.uci.edu/ml/datasets/Auto+MPG
 
 ---
 

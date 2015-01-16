@@ -178,6 +178,16 @@ data_noNA$logweight = log(data_noNA$weight)
 data_noNA$cylinders_cat = factor(data_noNA$cylinders)
 
 # 13. linear regression 
+# ANOVA for origin
+model_origin = lm(mpg ~ origin , data = data_noNA)
+summary(model_origin)
+anova(model_origin)
+
+# *** # two way anova
+model_origin_cylinder = lm(mpg ~ origin*cylinders_cat , data = data_noNA)
+summary(model_origin_cylinder)
+anova(model_origin_cylinder)
+
 # Build a regression that contains all the variables 
 # (if a transformed version is available for a variable, use only the transformed version)
 model = lm(mpg ~ cylinders_cat + logdisplacement + loghorsepower + 
