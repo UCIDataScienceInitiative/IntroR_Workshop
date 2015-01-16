@@ -1,13 +1,18 @@
-datafolder = './data/'
-data = read.table(file = paste(datafolder, "auto-mpg.data-original",sep=""), 
-                  header = FALSE, sep=" ")
-# returns error
+# Please first work on the regular problems (with no "optional" marks). 
+# If you still have time after finishing all the regular problems, work on the optional ones. 
 
 # 1. import the data "auto-mpg.csv" and store it as an object "data". 
 # Check what string/symbol is used to denote missing values in the data and specify the argument 
 # na.strings for the function to read data. 
+datafolder = './data/'
 data = read.csv(file = paste(datafolder, "auto-mpg.csv",sep=""), 
                 header = FALSE)
+
+# optional:
+# read data file "auto-mpg.data-original". What happens and why? Check the original data file.
+data_baddata = read.table(file = paste(datafolder, "auto-mpg.data-original",sep=""), 
+                  header = FALSE, sep=" ")
+# returns error
 
 # 2. check the top 6 rows of data; open the original data in excel or 
 # notepad and compare with the rows printed in R
@@ -37,9 +42,12 @@ summary(data)
 # 6. Subset exercises 
 # 6.1 summarize the variable mpg by applying function summary() on the variable
 # (there are 3 ways you can get the variable mpg)
+# See something weird in the result? What might be the reason? 
+# We will get back to this later. 
 summary(data$mpg)
 summary(data[, "mpg"]])
 summary(data[, 1]])
+
 
 # 6.2 create a vector of the column indicies for the continuous variables 
 # (refer to dataset description), 
@@ -74,16 +82,34 @@ for(i in c(2,7,8)){
   print(names(data)[i])
   print(table(data[,i]))
 }
-# 7.3 convert variable origin into factor type, add the labels for the values (1: American, 2: European, 3:Japanese)
-# check the variable type of the converted variable
+# OK. Wait... -99 again? Actually these should already be shown in summary(data) (min.). 
+
+# 7.3 we are going to change the data, so please first make a copy of the original data;
+data_ori = data
+# origin is a categorical variable by nature, so we are going to convert it to a factor type. 
+# before doing that, we need to first fix the weird values -99 -- replace it with NA. 
+# table() the new variable and check if -99's are successfully replaced. 
+data$origin[data$origin == -99] = NA
+table(data$origin)
+# convert variable origin into factor type, add the labels for the values (1: American, 2: European, 3:Japanese)
+# check the variable type of the converted variable and the variable from the original copy of the data
 # table() on the new variable and see how the output changes
 data$origin = factor(data$origin)
 levels(data$origin) = c("American", "European", "Japanese")
 class(data$origin)
+class(data_ori$origin)
 table(data$origin)
-
+# 8.0 notice that there are -99's in mpg and 
 
 # 8. Missing values
+# 8.0 We have seen weird values on mpg. Let's also fix it. 
+# and then use summary(data) to check if every variable looks reasonable
+# note: in reality, there could be dirtier data coding, e.g. multiple bad codings, 
+# in which case histograms and boxplots will be useful - 
+# able to see all weird values at the same time. The same as checking outliers.  
+data$origin[data$mpg == -99] = NA
+summary(data)
+
 # 8.1 using is.na() function, take a subset of the dataset that has non-missing mpg 
 # and check the dimension of the subset
 # hint: !is.na() refers to NOT NA !
@@ -94,7 +120,7 @@ dim(data[!is.na(data$mpg), ])
 # hint: refer to summary(data) to see which variables have missing values
 # logical operator: & for and, | for or
 # and then check # instances in the new data
-data_noNA = data[(!is.na(data$mpg)) & (!is.na(data$horsepower)), ]
+data_noNA = data[(!is.na(data$mpg)) & (!is.na(data$horsepower)) & (!is.na(data$origin)), ]
 nrow(data_noNA)
 dim(data_noNA)[1]
 
