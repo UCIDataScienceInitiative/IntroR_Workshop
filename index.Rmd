@@ -1373,34 +1373,24 @@ y <- dnorm(x, mean = 0, sd = 1)
 plot(x, y, type = "l")
 ```
 
+---
+
 ## Session 4 - Agenda
 
-1. Plotting Systems in R
-2. Preparing Data for ggplot2
-3. ggplot2 simple examples
-4. ggplot2 philosophy
-5. more interesting ggplot2 examples
++ Goal: use gglot2 to explore data afterwards
++ Emphasize simple examples
++ Emphasize principles
++ Some examples will be developed today
++ ... but there's a lot that won't be covered
 
 ---
 
-## Plotting Systems in R
+### Information Visualization
 
-There are three popular plotting systems in R:
-  + Base Plotting System (bultin to R)
-  + Lattice
-  + ggplot2
-
-We'll focus entirely on ggplot2.
-
----
-
-### Base System
-
-Ugly, not flexible, but easy to use and always available.
-
-```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
-hist(rnorm(100,4,20))
-```
++ Efficiency
++ Interpretability
++ Parsimony
++ ggplto2 lies in "sweet spot" of functionality
 
 ---
 
@@ -1408,34 +1398,11 @@ hist(rnorm(100,4,20))
 
 + ggplot2 is a very popular graphics system written by Hadley Wickham
 + implementation of Leland Wilkinson' Grammar of Graphics
-
-----
-
-### Preliminary: reshape2
-
-`reshape2` is another package which must be installed, also by Hadley Wickham, and often used in conjunction with ggplot2.
-
-+ data must have right "shape" before plotting
-+ (also very useful tool to have for other purposes)
-+ just 2 functions: `melt` and `cast`
-+ `melt` turns wide data into long data
-+ `cast` turns long data
-
-
----
-
-### Example: airquality
++ I'll use the `diamonds` dataset for most of the examples.
 
 ```{r}
-library(reshape2)
-names(airquality) <- tolower(names(airquality))
-head(airquality)
-# vs. 
-head(melt(airquality))
-# vs.
-head(melt(airquality, id.vars = c("month", "day")))
+head(diamonds)
 ```
-
 
 ---
 
@@ -1443,21 +1410,23 @@ head(melt(airquality, id.vars = c("month", "day")))
 
 Let's make a histogram!
 
-```{r}
-library(ggplot2)
-ggplot(airquality) # :(
-ggplot(airquality, aes(temp)) # :'''()
-```
-
----
-
-### Get back on the horse
-
 ```{r, fig.width=8, fig.height=4}
 ggplot(diamonds, aes(price)) + geom_histogram()
 ```
 
-Yes!
+
+---
+
+### Gotchas
+
+Easy to run into unhelpful errors
+
+```{r}
+library(ggplot2)
+ggplot(airquality) # :(
+ggplot(airquality, aes(temp)) # :'''(
+```
+
 
 ---
 
@@ -1513,7 +1482,7 @@ ggplot(diamonds, aes(price, carat)) + geom_point()
 
 
 ```{r, fig.width=8, fig.height=4}
-ggplot(diamonds, aes(price, carat)) + geom_point() + scale_y_log10()
+ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
 ```
 
 Scales begin with `scale_`, and are not only for continuous variables: also `datetime`, `shape`, `colour`, etc
@@ -1618,13 +1587,14 @@ m + geom_point(data=ucs, colour="red", size=5)
 + pie charts are possible but please do not make them
 + the `qplot` function is available as a more concise option
 + there are many packages that extend ggplot2's functionality!
++ e.g. `bdscale`, `GGally`, `xkcd`, `ggmap`
 
 ---
 
 ### Notes on oddities
 
-+ doesn't have normal R docs
-+ _does_ have excellent online documentation
++ normal R docs are not the best
++ excellent online documentation
 + default theme has grey background
 + uses British English spellings (e.g. "colour")
 
