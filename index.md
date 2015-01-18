@@ -13,12 +13,12 @@ knit        : slidify::knit2slides
 github:
   user: UCIDataScienceInitiative
   repo: IntroR_Workshop
+
 ---
 
 ## Introduction
 
-
-1) The class will include 5 sessions:
+1) The class will include 5 sessions: 
   + Session 1 (9-10:20): Data Types in R 
   + Session 2 (10:30-12): Control Structures and Functions
   + Session 3 (12:30-1:50): Statistical Distributions in R
@@ -26,6 +26,7 @@ github:
   + Session 5 (3:30-5): Statistical Analysis in R
 
 ---
+
 
 ## Introduction
 
@@ -556,10 +557,10 @@ colMat
 
 ```
 ##      vec1 vec2       vec3
-## [1,]    1   97 -0.2232147
-## [2,]    2   65  1.4498167
-## [3,]    3   71  0.7590436
-## [4,]    4   31  1.0309793
+## [1,]    1   73 -0.3617483
+## [2,]    2   91  1.2021588
+## [3,]    3   35 -1.0595718
+## [4,]    4   47 -0.4532056
 ```
 
 ---
@@ -576,10 +577,10 @@ rowMat
 ```
 
 ```
-##            [,1]     [,2]       [,3]      [,4]
-## vec1  1.0000000  2.00000  3.0000000  4.000000
-## vec2 93.0000000 90.00000 86.0000000 91.000000
-## vec3  0.4642409 -1.65771 -0.4921985 -1.085812
+##            [,1]      [,2]       [,3]       [,4]
+## vec1  1.0000000  2.000000  3.0000000  4.0000000
+## vec2 41.0000000 65.000000 55.0000000  3.0000000
+## vec3  0.0480706 -1.464378  0.3003437 -0.8915256
 ```
 
 ---
@@ -644,36 +645,13 @@ head(data)
 
 ```
 ##   studentID score gender
-## 1    S#6488     7 female
-## 2    S#7339    64 female
-## 3    S#6486    72   male
-## 4    S#6954    25 female
-## 5    S#7299    21 female
-## 6    S#7056    56 female
+## 1    S#7258     8   male
+## 2    S#7178    83 female
+## 3    S#6906    45   male
+## 4    S#6580    35 female
+## 5    S#6527    43   male
+## 6    S#6987    73 female
 ```
-
----
-
-## Exercise 1:
-
-+ a) Create two numeric vectors of the same length and find the product of these two vectors. 
-
-+ b) Create two numeric vectors of DIFFERENT length and find the product of these two vectors. What do you expect to get? Can you explain the output that R generates?
-
-+ c) Create two numeric matrices of 2 by 2 dimensions. 
-
-+ d) Multiply the two matrices in part (c) using * operator
-
-+ e) Multiply the two matrices in part (c) using %*% operator. What is the difference between part (d) and part (e)?
-
----
-
-## Exercise 2:
-
-+ a) please call help on sample() in R. What does this function do?
-+ b) What does replace argument in sample() does?
-+ c) Using sample(), randomly choose one number out of the set {1, 2, 3, 4, 5, 6}
-+ d) Considering the experiment of rolling a die twice. How can you simulate it by using sample()? what is the role of replace argument in this case?
 
 ---
 
@@ -1051,31 +1029,6 @@ quakes[1:10,]
 
 ---
 
-## Exercise 3:
-
-+ a) Please run the commands below to load in titanic3 dataset
-
-```r
-install.packages("PASWR", repos = "http://cran.stat.ucla.edu") # installs PASWR package
-library(PASWR) # this loads in the package
-data(titanic3)
-```
-
-+ b) print out the top 10 rows of the dataset.
-
-+ c) print out the names of the columns of the dataset
-  + hint: use names()
-
-+ d) print the top 10 values of age column
-
-+ e) using is.na() function, take a subset of the dataset that has non-missing age
-  + hint: !is.na() refers to NOT NA !
-
-+ e) Run ?which to use help on understanding what which() does.
-
-
----
-
 ## Time to Break for 10 Minutes :)
 
 ---
@@ -1184,7 +1137,7 @@ Main functions for writing data from R:
   + skip: number of lines to skip from the beginning of the file
   + stringAsFactors: logical indicator on whether characters should be converted to factors 
 
-+ read.csv() is equivalent to read.table with sep = ","
++ read.csv() is equivalent to read.table with sep = "," and header = TRUE
 
 ---
 
@@ -1193,18 +1146,25 @@ Main functions for writing data from R:
 
 ```r
 irisFile <- read.table(file = "/Users/sepehrakhavan/Documents/Statistics/Stat Courses/DataScience_Dr.PadhraicSmyth/RWorkShop_Nov_2014/SupportingFiles/iris", header = TRUE)
+```
 
+```
+## Warning in file(file, "rt"): cannot open file
+## '/Users/sepehrakhavan/Documents/Statistics/Stat
+## Courses/DataScience_Dr.PadhraicSmyth/RWorkShop_Nov_2014/SupportingFiles/iris':
+## No such file or directory
+```
+
+```
+## Error in file(file, "rt"): cannot open the connection
+```
+
+```r
 head(irisFile)
 ```
 
 ```
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa
+## Error in head(irisFile): object 'irisFile' not found
 ```
 
 + to make read.table() run faster:
@@ -1368,9 +1328,9 @@ age.df[1:3,]
 
 ```
 ##   age ageCat
-## 1  72    Old
-## 2  79    Old
-## 3  96    Old
+## 1  82    Old
+## 2  77    Old
+## 3  74    Old
 ```
 
 ---
@@ -1419,14 +1379,6 @@ There are two ways to install a package in R:
 
 ---
 
-## Exercise 4:
-
-+ Please install ggplot2 package
-+ Once installed, please load the package
-
-
----
-
 ## Calling a function in R
 
 
@@ -1461,7 +1413,7 @@ sample(sampSpace, 1) # arguments with default values can be omitted
 ```
 
 ```
-## [1] 5
+## [1] 4
 ```
 
 ```r
@@ -1469,7 +1421,7 @@ sample(size = 1, x = sampSpace) # no need to remember the order
 ```
 
 ```
-## [1] 1
+## [1] 6
 ```
 
 ```r
@@ -1477,7 +1429,7 @@ sample(size = 1, sampSpace)
 ```
 
 ```
-## [1] 2
+## [1] 4
 ```
 
 
@@ -1563,7 +1515,7 @@ myTtest(y1, y2)
 
 ```
 ## Mean of Vec1 Mean of Vec2     testStat           df         pval 
-##    0.2885997    0.1261674    0.3712788   18.0000000    0.7147639
+##   0.02975465  -0.24503761   0.50764455  18.00000000   0.61786639
 ```
 
 ```r
@@ -1658,7 +1610,7 @@ str(genderF)
 ```
 
 ```
-##  Factor w/ 2 levels "Female","Male": 1 1 1 2 1 1 1 1 1 2 ...
+##  Factor w/ 2 levels "Female","Male": 1 2 2 2 2 1 1 1 1 1 ...
 ```
 
 
@@ -1904,12 +1856,12 @@ head(HeightDF)
 
 ```
 ##     heigth gender
-## 1 180.1205      M
-## 2 177.6105      M
-## 3 182.3793      M
-## 4 174.8602      M
-## 5 176.5579      M
-## 6 174.9129      M
+## 1 187.2394      M
+## 2 181.0006      M
+## 3 179.5309      M
+## 4 180.8554      M
+## 5 179.4810      M
+## 6 176.4149      M
 ```
 
 ```r
@@ -1918,7 +1870,7 @@ tapply(HeightDF$heigth, HeightDF$gender, mean)
 
 ```
 ##        F        M 
-## 169.9085 179.8410
+## 170.0743 180.2792
 ```
 
 
@@ -1984,7 +1936,7 @@ str(HeightDF)
 
 ```
 ## 'data.frame':	200 obs. of  2 variables:
-##  $ heigth: num  180 178 182 175 177 ...
+##  $ heigth: num  187 181 180 181 179 ...
 ##  $ gender: Factor w/ 2 levels "F","M": 2 2 2 2 2 2 2 2 2 2 ...
 ```
 
@@ -1996,24 +1948,104 @@ str(splitData)
 
 ```
 ## List of 2
-##  $ F: num [1:100] 172 171 166 169 175 ...
-##  $ M: num [1:100] 180 178 182 175 177 ...
+##  $ F: num [1:100] 171 164 167 174 165 ...
+##  $ M: num [1:100] 187 181 180 181 179 ...
 ```
 
 
 ---
 
-## Exercise 5:
-+ Load in diamonds dataset in R
+## Exercises: Analysis for Auto-Mpg Data
 
-```r
-# How to load in the dataset?
-library(ggplot2)
-data(diamonds) # more info on the data: ?diamonds
-```
-+ Find average diamond price per each cut quality level
-+ Find 2.5 and 97.5 percentile of diamond price per each cut quality level 
-+ Split the dataset based on cut quality level 
+1. Dataset: Auto-Mpg Data from UCI Machine Learning Repository (some modification is done on the data for the exercise of this workshop)
+2. Download:   https://github.com/UCIDataScienceInitiative/IntroR_Workshop/data/
+3. Variables (names saved in auto-mpg-names.txt): 
+  + continuous: mpg, displacement, horsepower, weight, acceleration
+  + discrete: cylinders, model year, origin
+  + string: car name (not used in the analysis)
+  + descriptions: mpg (city-cycle fuel consumption in miles per gallon), cylinders (# of cylinders), displacement (engine displacement in cu. inches), weight (vehichle weight in lbs.), accelerate (time to accelerate from O to 60 mph in sec.), model year (modulo 100), origin (1: American, 2: European, 3: Japanese).
+4. More information:   https://archive.ics.uci.edu/ml/datasets/Auto+MPG
+
+---
+
+## Questions to answer
+1. Are there any problems/outliers in the data?
+2. Does mpg depend on the origin of the car?
+3. How is mpg related with #cylinders of the car?
+4. How is mpg related with other variables?
+5. Predict mpg using the other variables provided in the data.
+
+---
+
+1. The exercises will generally follow the typical process of a statistical analysis. 
+2. 30 min for R exercise for each exercise session, and 10 min for summary of FAQ.  
+3. Suggestion for the exercises
+  + First work on the regular problems (with no "optional" marks) and skip the optional ones, especially if you are very new to R.
+  + If you still have time after finishing all the regular problems, come back to work on the optional ones. 
+
+
+---
+
+EX1. Import data
+  + 1.1 Import the data "auto-mpg.csv" and store it as an object "data". Check what string/symbol is used to denote missing values in the data and specify the argument "na.strings" for the function you used to read the data. 
+  + 1.2 (optional) Read data file "auto-mpg.data-original". What happens and why? Check the original data file.
+
+EX2. General check for the data
+  + 2.1 check the top 6 rows of data; open the original data in excel or notepad and compare with the rows printed in R. Hint: need to set header = FALSE since the data starts right from the first line (no header). 
+  + 2.2. check the dimension of data
+
+---
+
+EX3. Add variable names to data
+  + 3.1 read variable names from "auto-mpg-names.txt"
+  + 3.2 assign variable names to data
+  + 3.3 check if the variable names are correctly assigned. Hint: you can either print the variable names of the data or print the top rows of the data
+
+EX4. Data summary
+  + 4.1. use a function to summarize the data structure and the class of each column;
+  + 4.2 apply function summary() on data and see how it is different from the function above. One nice thing is that it tells you #missing values for each variable
+
+---
+EX5. Subset exercises 
+  + 5.1 summarize the variable mpg (use summary()). (There are 3 ways you can get the variable mpg.) Do you see something weird in the result? What might be the reason? We will get back to this later. 
+
+  + 5.2 create a vector of the column indicies for the continuous variables (refer to dataset description to see which ones are continuous variables) and extract the continuous variables. Summarize the continuous variables (use summary()).
+
+  + 5.3 use the index vector you created above to extract the non-continous variables and summarize them; compare how summary() works differently for a factor variable (car_name) from a numerical variable.
+
+  + 5.4 (optional) read the help file for which(); create a vector of indices for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or.  
+
+  + 5.5 drop variable "car_name". We will not use it in our analysis. Hint: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name". 
+
+---
+
+EX6. Discrete variables 
+  + 6.1 check and apply function table() on variable cylinders
+  + 6.2 use a loop to print the name and the frequency table for each discrete variable. Note that there are very few instances with odd number of cylinders. We will revisit this. Also... weird value -99 again? 
+  + 6.3 we are going to change the data, so please first make a copy of the original data; in case you do something wrong later you can easily reset the new data to be the original data. 
+  + 6.4 origin is a categorical variable by nature, so we are going to convert it to a factor type. But before doing that, we need to first fix the weird values "-99" - sometimes the coding gets messed up and the unlikely values like "-99" are used to code missing values - in which case we should confirm this with the data entry clerk. Now assuming this has been confirmed, let's replace all "-99" in origin with NA (not "NA"). 
+  + 6.5 table() the new variable and check if "-99" is successfully replaced. 
+  + 6.6 convert variable origin into factor type, and then add the labels for the values (1: American, 2: European, 3:Japanese). 
+  + 6.7 check the variable type of the converted variable and the variable from the original data
+
+---
+
+EX7. Missing values
+  + 7.1 First let's also fix the "-99" in mpg as for origin. 
+  + 7.2 use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  
+  + 7.3 using is.na() function, take a subset of the dataset that has non-missing mpg and check the dimension of the subset. Hint: !is.na() refers to NOT NA. 
+  + 7.4 write a function total_NAs(data) that returns the total number of missing values in the dataset given in the argument "data". Test your function on the current data, it should return 17. 
+  + 7.5 read the help file for function na.omit(), and use this function to create a new data that contains only the instances that has no missing value on any variables
+
+---
+
+# From now on use the data set that contains no missing values
+EX8. (optional) Exercises for *apply() and split()
+  + 8.1 use one of the *apply() functions to get the frequency table on all discrete variables. Note that if these variables were all of factor type instead of numerical type, this could be directly done by summary(data[,c(2,7,8)]) 
+  + 8.2 find average mpg for each # cylinders
+  + 8.3 find 2.5 and 97.5 percentile of mpg for each # cynlinders 
+  + 8.4 split the dataset based on # cylinders 
+
 
 ---
 
@@ -2177,7 +2209,7 @@ rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 ```
 
 ```
-##  [1] 5 4 4 6 6 5 3 5 5 6 7 4 5 4 6 4 3 6 5 5
+##  [1] 4 7 2 4 3 5 7 5 3 6 5 6 6 6 8 7 6 5 4 8
 ```
 
 
@@ -2252,8 +2284,8 @@ rnorm(10, mean = 0, sd = 1)
 ```
 
 ```
-##  [1] -1.6828068 -0.4316023  0.5722818  0.3030231  0.5682190 -0.3344771
-##  [7] -0.1360782  2.1635574  0.5146324 -0.8512698
+##  [1] -0.4106237 -0.8771024 -0.3718269 -1.1102043  1.9249076  0.2621283
+##  [7] -1.2242755 -0.8885868  1.4874644  0.5431256
 ```
 
 
@@ -2268,28 +2300,7 @@ y <- dnorm(x, mean = 0, sd = 1)
 plot(x, y, type = "l")
 ```
 
-<img src="assets/fig/unnamed-chunk-72-1.png" title="plot of chunk unnamed-chunk-72" alt="plot of chunk unnamed-chunk-72" style="display: block; margin: auto;" />
-
-
----
-
-## Exercise 6:
-### Source: Dr. Stacey Hancock, Dept. Statistics - UCI
-+ Suppose 20 people go to a fancy restaurant. Each person is wearing a hat and checks his/her hat at the door as he/she arrives. The hat-check attendant gets tipsy throughout the evening, forgetting which hat belongs to whom, and returns a random hat to each person as they leave. The patrons leave in a random order.
-
-+ Conduct a simulation in R to answer the following question:
-  + estimate the probability that at least one patron gets his or her own hat back
-  + calculate the empirical mean (average) number of patrons who get their own hats back.
-  
-
-
----
-
-## Exercise 7: 
-### Source: Dr. Stacey Hancock, Dept. Statistics - UCI
-+  Write an R function that will simulate rolling two k-sided dice (each numbered 1, 2, 3,...., k) N times, and return the proportion of times your sum was greater than or equal to 7. 
-+ Set the function's default value for k to 6 and the default value for N to 1000. 
-
+<img src="assets/fig/unnamed-chunk-70-1.png" title="plot of chunk unnamed-chunk-70" alt="plot of chunk unnamed-chunk-70" style="display: block; margin: auto;" />
 
 ---
 
@@ -2346,7 +2357,7 @@ plot(x, y)
 abline(h = 0)
 ```
 
-<img src="assets/fig/unnamed-chunk-73-1.png" title="plot of chunk unnamed-chunk-73" alt="plot of chunk unnamed-chunk-73" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-71-1.png" title="plot of chunk unnamed-chunk-71" alt="plot of chunk unnamed-chunk-71" style="display: block; margin: auto;" />
 
 
 ---
@@ -2381,7 +2392,7 @@ x <- rnorm(100)
 hist(x)
 ```
 
-<img src="assets/fig/unnamed-chunk-74-1.png" title="plot of chunk unnamed-chunk-74" alt="plot of chunk unnamed-chunk-74" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-72-1.png" title="plot of chunk unnamed-chunk-72" alt="plot of chunk unnamed-chunk-72" style="display: block; margin: auto;" />
 
 
 ---
@@ -2394,7 +2405,7 @@ y <- rnorm(100)
 plot(x, y)
 ```
 
-<img src="assets/fig/unnamed-chunk-75-1.png" title="plot of chunk unnamed-chunk-75" alt="plot of chunk unnamed-chunk-75" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-73-1.png" title="plot of chunk unnamed-chunk-73" alt="plot of chunk unnamed-chunk-73" style="display: block; margin: auto;" />
 
 
 ---
@@ -2408,7 +2419,7 @@ z <- rnorm(100, 2, 2)
 boxplot(x, y , z)
 ```
 
-<img src="assets/fig/unnamed-chunk-76-1.png" title="plot of chunk unnamed-chunk-76" alt="plot of chunk unnamed-chunk-76" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-74-1.png" title="plot of chunk unnamed-chunk-74" alt="plot of chunk unnamed-chunk-74" style="display: block; margin: auto;" />
 
 
 ---
@@ -2521,22 +2532,6 @@ par("bg")
 ## Base Plotting System - Demo
 
 
-
-  
-
----
-
-
-## Exercise 8:
-### Source: Dr. Stacey Hancock, Dept. Statistics - UCI 
-+ 1) In this Exercise, we explore a famour theorem in Statistics known as "The Central Limit Theorem".
-+ 2) Choose a probability distribution other than the normal distribution from which to generate data.
-+ 3) Generate 1000 random values from your chosen distribution. Create a histogram of these 1000 values with a density plot overlaid.
-+ 4) Generate 1000 random samples of size n = 5 from your chosen distribution (use a for loop!). For each sample, calculate the sample mean (using the "mean" function in R), so in the end, you have a vector of 1000 sample means. Create a histogram of these 1000 sample means with a density plot overlaid.
-+ 5) Can you re-write step (4) in terms of a function with sample size as an input argument? Run your function with different n (10, 20 , 30). 
-+ 6) As n increases, what happens to the shape of the histogram?
-
-
 ---
 
 
@@ -2605,7 +2600,7 @@ diamonds_subset <- diamonds[sample(1:nrow(diamonds),500),]
 xyplot(price ~ carat, data = diamonds_subset)
 ```
 
-<img src="assets/fig/unnamed-chunk-80-1.png" title="plot of chunk unnamed-chunk-80" alt="plot of chunk unnamed-chunk-80" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-78-1.png" title="plot of chunk unnamed-chunk-78" alt="plot of chunk unnamed-chunk-78" style="display: block; margin: auto;" />
 
 
 ---
@@ -2616,7 +2611,7 @@ xyplot(price ~ carat, data = diamonds_subset)
 xyplot(price ~ carat | cut, data = diamonds_subset, layout = c(5,1))
 ```
 
-<img src="assets/fig/unnamed-chunk-81-1.png" title="plot of chunk unnamed-chunk-81" alt="plot of chunk unnamed-chunk-81" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-79-1.png" title="plot of chunk unnamed-chunk-79" alt="plot of chunk unnamed-chunk-79" style="display: block; margin: auto;" />
 
 
 ---
@@ -2630,7 +2625,7 @@ xyplot(price ~ carat | cut, panel = function(x, y, ...){
 }, data = diamonds_subset, layout = c(5,1))
 ```
 
-<img src="assets/fig/unnamed-chunk-82-1.png" title="plot of chunk unnamed-chunk-82" alt="plot of chunk unnamed-chunk-82" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-80-1.png" title="plot of chunk unnamed-chunk-80" alt="plot of chunk unnamed-chunk-80" style="display: block; margin: auto;" />
 
 
 ---
@@ -2663,7 +2658,7 @@ library(ggplot2)
 qplot(carat, price, data = diamonds_subset)
 ```
 
-<img src="assets/fig/unnamed-chunk-83-1.png" title="plot of chunk unnamed-chunk-83" alt="plot of chunk unnamed-chunk-83" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-81-1.png" title="plot of chunk unnamed-chunk-81" alt="plot of chunk unnamed-chunk-81" style="display: block; margin: auto;" />
   
 
 ---
@@ -2674,7 +2669,7 @@ qplot(carat, price, data = diamonds_subset)
 qplot(carat, price, data = diamonds_subset, col = cut)
 ```
 
-<img src="assets/fig/unnamed-chunk-84-1.png" title="plot of chunk unnamed-chunk-84" alt="plot of chunk unnamed-chunk-84" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-82-1.png" title="plot of chunk unnamed-chunk-82" alt="plot of chunk unnamed-chunk-82" style="display: block; margin: auto;" />
   
 
 ---
@@ -2685,7 +2680,7 @@ qplot(carat, price, data = diamonds_subset, col = cut)
 qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
 ```
 
-<img src="assets/fig/unnamed-chunk-85-1.png" title="plot of chunk unnamed-chunk-85" alt="plot of chunk unnamed-chunk-85" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-83-1.png" title="plot of chunk unnamed-chunk-83" alt="plot of chunk unnamed-chunk-83" style="display: block; margin: auto;" />
 
   
 
@@ -2697,7 +2692,7 @@ qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
 qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
 ```
 
-<img src="assets/fig/unnamed-chunk-86-1.png" title="plot of chunk unnamed-chunk-86" alt="plot of chunk unnamed-chunk-86" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-84-1.png" title="plot of chunk unnamed-chunk-84" alt="plot of chunk unnamed-chunk-84" style="display: block; margin: auto;" />
 
 
 ---
@@ -2738,13 +2733,13 @@ oneSampTest.0
 ## 	One Sample t-test
 ## 
 ## data:  oneSampData
-## t = 0.0908, df = 99, p-value = 0.9278
+## t = 1.3023, df = 99, p-value = 0.1958
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.2062253  0.2260096
+##  -0.0614803  0.2963141
 ## sample estimates:
-##   mean of x 
-## 0.009892151
+## mean of x 
+## 0.1174169
 ```
 
 
@@ -2786,13 +2781,13 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ## 	Welch Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -11.8574, df = 59.347, p-value < 2.2e-16
+## t = -12.2966, df = 68.933, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.305142 -2.350789
+##  -3.555080 -2.562563
 ## sample estimates:
 ## mean of x mean of y 
-##  2.605988  5.433953
+##  2.343678  5.402500
 ```
 
 
@@ -2809,13 +2804,13 @@ t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 ## 	Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -11.9727, df = 78, p-value < 2.2e-16
+## t = -11.8095, df = 78, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.298208 -2.357723
+##  -3.574476 -2.543166
 ## sample estimates:
 ## mean of x mean of y 
-##  2.605988  5.433953
+##  2.343678  5.402500
 ```
 
 
@@ -2832,13 +2827,13 @@ t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assumption: unequal varianc
 ## 	Paired t-test
 ## 
 ## data:  Samp1 and Samp2[1:30]
-## t = -11.3703, df = 29, p-value = 3.317e-12
+## t = -11.852, df = 29, p-value = 1.224e-12
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.411802 -2.371529
+##  -3.666863 -2.587574
 ## sample estimates:
 ## mean of the differences 
-##               -2.891665
+##               -3.127218
 ```
 
 
@@ -2859,7 +2854,7 @@ str(myDF)
 
 ```
 ## 'data.frame':	30 obs. of  2 variables:
-##  $ y    : num  23.5 24.3 26.1 23.2 23.5 23.9 23.9 24.2 24.9 25.7 ...
+##  $ y    : num  23.2 24 27.5 23.5 26.2 26 24.1 25.4 24.3 25.3 ...
 ##  $ group: Factor w/ 3 levels "1","2","3": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
@@ -2877,10 +2872,10 @@ str(myANOVA) # see what is
 ```
 ## Classes 'anova' and 'data.frame':	2 obs. of  5 variables:
 ##  $ Df     : int  2 27
-##  $ Sum Sq : num  598 28
-##  $ Mean Sq: num  298.78 1.04
-##  $ F value: num  289 NA
-##  $ Pr(>F) : num  6.02e-19 NA
+##  $ Sum Sq : num  563 29.3
+##  $ Mean Sq: num  281.52 1.09
+##  $ F value: num  259 NA
+##  $ Pr(>F) : num  2.39e-18 NA
 ##  - attr(*, "heading")= chr  "Analysis of Variance Table\n" "Response: y"
 ```
 
@@ -2992,7 +2987,7 @@ head(myReg$residuals) # y - y.hat
 qqPlot(myReg, main = "QQ Plot")
 ```
 
-![plot of chunk unnamed-chunk-97](assets/fig/unnamed-chunk-97-1.png) 
+![plot of chunk unnamed-chunk-95](assets/fig/unnamed-chunk-95-1.png) 
   
 
 ---
@@ -3004,16 +2999,74 @@ qqPlot(myReg, main = "QQ Plot")
 spreadLevelPlot(myReg)
 ```
 
-![plot of chunk unnamed-chunk-98](assets/fig/unnamed-chunk-98-1.png) 
+![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96-1.png) 
   
+
 
 ---
 
-###  Exercise 9:
 
-+ For this exercise, we need to load in diamonds datset from ggplot2 package.
-+ Is ther any difference between diamonds with different quality of cut in terms of price? 
-  + You will need to use ANOVA to answer this question
-+ Fit a linear regression to predict price of a given diamond based on the features below:
-  + carat, cut, color, clarity, and depth
-  
+
+EX9. (optional) Randomization testing for whether mean mpg is higher for Japanese cars than European cars
+  + 9.1 calculate the difference between mean mpg for Japanese cars and European cars and save in object dif_JapVSEuro
+  + 9.2 find the number of instances for European cars and save in object n_European
+  + 9.3 write a for loop that does the following in each iteration:
+     + find the subset of European cars and Japanese cars
+     + randomize the origin of the cars: randomly sample n_European instances to be "European" and the rest to be "Japanese"
+     + calcualte the new difference in the mean mpg of the randomized data (Jap - Euro)
+     + record whether the new difference >= the observed difference, dif_JapVSEuro
+  + 9.4 Run the simulation of 1000 iterations
+  + 9.5 obtain the p value by calculating the proportion of times that the difference of the randomized data >= the observed difference. If this p value <= the alpha level we set for the test, then we can conclude mean mpg is higher for Japanese cars than European cars. 
+
+
+
+---
+
+
+
+EX10. Histogram of the continuous variables: to check the outliers and the distribution of the variables
+  + 10.1 generate a histogram for each variable (one histogram per plot); save all plots in a pdf file and check the file. Need to install and load "ggplot2" package if you have not done so. 
+  + 10.2 (optional) reshape the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. 
+
+EX11. Boxplot of mpg by different levels of originto visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. 
+  + (optional) add an additional layer a)geom_point or b)geom_jitter() and see what happens
+
+---
+
+EX12. Scatterplot of mpg vs cylinders to check what the relationship is like, and to check if it is suitable to treat cylinder as a numerical variable or categorical variable.
+  + 12.1. check the use of stat_smooth() and the argument "method". Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed. The two fitted curves should look quite different, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
+  + 12.2 (optional) create another data with instances with odd number of cylinders removed, and check the above plots again. The two fitted curves look similar -> could treat cylinder as numerical
+
+---
+
+
+EX13. Scatterplot matrix 
+  + to check the relationship between any pair of variable
+  + to check for linearity assumption and homogeneity assumption
+  + If violated, data transformation will be needed when building a linear regression model
+
+
+
+EX14. Data transformation
+  + Based on scatterplot matrix, we see increasing variance as mpg increases, and also non-linear relationship between mpg and other variables. We need to transform the variables.
+  + Add new variables to the data: 
+    + (a) log transformed versions of mpg, horsepower, displacement, and weight.
+    + (b) a factor version of cylinders.
+    
+
+
+---
+
+
+
+EX15. Statistical analysis  
+  + 15.1 ANOVA for origin. To formally test whether mean mpg is different across cars of the three origins.
+  + 15.2 linear regression. Build a linear regression model to predict mpg. Include all other variables but if a transformed version is available for a variable, use only the transformed version) (name the regression object as model); build another regression model using the same predictors but to predict log(mpg) (name the regression object as model_log). 
+  + 15.3 Apply summary() on the regression objects and read the outputs. Is origin still helpful in predicting mpg/log(mpg) after including other predictors? 
+  + 15.4 Which column is to answer the relationship between mpg and other variables? 
+  + 15.5 Diagnostics (important in statistical analysis). Execute plot(model) and plot(model_log) in R and check the four plots for each model. You can find the specific help file for "plot()" for a lm object by executing "?plot.lm". Based on the diagnostic plots, are these reasonable models? Which one is better? Check the following aspects.  
+    + (a) linearity assumption, (b) normality assumption, (c) constant variance (d) outliers
+
+---
+
+EX16. (optional) An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens 
