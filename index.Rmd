@@ -2,7 +2,7 @@
 title       : Intro to R Workshop
 subtitle    : UCI Data Science Initiative
 author      : Sepehr Akhavan, Homer Strong, Zhe Yu
-job         : PhD Candidate, Dept. of Statistics
+job         : Dept. of Statistics
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
