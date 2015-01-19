@@ -1200,11 +1200,10 @@ str(splitData)
 ---
 
 ## Questions to answer
-1. Are there any problems/outliers in the data?
-2. Does mpg depend on the origin of the car?
-3. How is mpg related with #cylinders of the car?
-4. How is mpg related with other variables?
-5. Predict mpg using the other variables provided in the data.
+1. Does mpg depend on the origin of the car?
+2. How is mpg related with #cylinders of the car?
+3. How is mpg related with other variables?
+4. Predict mpg using the other variables provided in the data.
 
 ---
 
@@ -1244,7 +1243,7 @@ EX5. Subset exercises
 
   + 5.3 use the index vector you created above to extract the non-continous variables and summarize them; compare how summary() works differently for a factor variable (car_name) from a numerical variable.
 
-  + 5.4 (optional) read the help file for which(); create a vector of indices for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or.  
+  + 5.4 (optional) read the help file for which(); create a vector of indices for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or, ! for NOT.  
 
   + 5.5 drop variable "car_name". We will not use it in our analysis. Hint: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name". 
 
@@ -1265,7 +1264,7 @@ EX7. Missing values
   + 7.1 First let's also fix the "-99" in mpg as for origin. 
   + 7.2 use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  
   + 7.3 using is.na() function, take a subset of the dataset that has non-missing mpg and check the dimension of the subset. Hint: !is.na() refers to NOT NA. 
-  + 7.4 write a function total_NAs(data) that returns the total number of missing values in the dataset given in the argument "data". Test your function on the current data, it should return 17. 
+  + 7.4 write a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument "x". Test your function on the current data, it should return 17. 
   + 7.5 read the help file for function na.omit(), and use this function to create a new data that contains only the instances that has no missing value on any variables
 
 ---
@@ -1919,15 +1918,16 @@ EX9. (optional) Randomization testing for whether mean mpg is higher for Japanes
 
 EX10. Histogram of the continuous variables: to check the outliers and the distribution of the variables
   + 10.1 generate a histogram for each variable (one histogram per plot); save all plots in a pdf file and check the file. Need to install and load "ggplot2" package if you have not done so. 
-  + 10.2 (optional) reshape the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. 
+  + 10.2 (optional) reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the "reshape2" package. 
 
-EX11. Boxplot of mpg by different levels of originto visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. 
+EX11. Boxplot of mpg by different levels of origin to visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. Mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. 
   + (optional) add an additional layer a)geom_point or b)geom_jitter() and see what happens
 
 ---
 
 EX12. Scatterplot of mpg vs cylinders to check what the relationship is like, and to check if it is suitable to treat cylinder as a numerical variable or categorical variable.
-  + 12.1. check the use of stat_smooth() and the argument "method". Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed. The two fitted curves should look quite different, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
+  + 12.1. check the use of stat_smooth() and the argument "method". Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed. The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
+ 
   + 12.2 (optional) create another data with instances with odd number of cylinders removed, and check the above plots again. The two fitted curves look similar -> could treat cylinder as numerical
 
 ---
@@ -1953,7 +1953,7 @@ EX14. Data transformation
 
 
 EX15. Statistical analysis  
-  + 15.1 ANOVA for origin. To formally test whether mean mpg is different across cars of the three origins.
+  + 15.1 ANOVA for origin. To formally test whether mean mpg is different across cars of the three origins. Use significance level 0.05. First build a linear regression for mpg against origin. And then use both ANOVA() and summary() to check the results. 
   + 15.2 linear regression. Build a linear regression model to predict mpg. Include all other variables but if a transformed version is available for a variable, use only the transformed version) (name the regression object as model); build another regression model using the same predictors but to predict log(mpg) (name the regression object as model_log). 
   + 15.3 Apply summary() on the regression objects and read the outputs. Is origin still helpful in predicting mpg/log(mpg) after including other predictors? 
   + 15.4 Which column is to answer the relationship between mpg and other variables? 

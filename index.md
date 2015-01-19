@@ -557,10 +557,10 @@ colMat
 
 ```
 ##      vec1 vec2       vec3
-## [1,]    1   73 -0.3617483
-## [2,]    2   91  1.2021588
-## [3,]    3   35 -1.0595718
-## [4,]    4   47 -0.4532056
+## [1,]    1   75 -1.7701969
+## [2,]    2   93 -0.9977035
+## [3,]    3   76 -0.6052043
+## [4,]    4   19  0.6745620
 ```
 
 ---
@@ -577,10 +577,10 @@ rowMat
 ```
 
 ```
-##            [,1]      [,2]       [,3]       [,4]
-## vec1  1.0000000  2.000000  3.0000000  4.0000000
-## vec2 41.0000000 65.000000 55.0000000  3.0000000
-## vec3  0.0480706 -1.464378  0.3003437 -0.8915256
+##            [,1]       [,2]       [,3]      [,4]
+## vec1  1.0000000  2.0000000  3.0000000 4.0000000
+## vec2 16.0000000 55.0000000 20.0000000 3.0000000
+## vec3 -0.3368965 -0.5732835 -0.3757453 0.3457387
 ```
 
 ---
@@ -645,12 +645,12 @@ head(data)
 
 ```
 ##   studentID score gender
-## 1    S#7258     8   male
-## 2    S#7178    83 female
-## 3    S#6906    45   male
-## 4    S#6580    35 female
-## 5    S#6527    43   male
-## 6    S#6987    73 female
+## 1    S#6793    14   male
+## 2    S#7349    30   male
+## 3    S#6737     5 female
+## 4    S#7138    31 female
+## 5    S#7331    62 female
+## 6    S#7051    99 female
 ```
 
 ---
@@ -1328,9 +1328,9 @@ age.df[1:3,]
 
 ```
 ##   age ageCat
-## 1  82    Old
-## 2  77    Old
-## 3  74    Old
+## 1  96    Old
+## 2  90    Old
+## 3  73    Old
 ```
 
 ---
@@ -1421,7 +1421,7 @@ sample(size = 1, x = sampSpace) # no need to remember the order
 ```
 
 ```
-## [1] 6
+## [1] 2
 ```
 
 ```r
@@ -1429,7 +1429,7 @@ sample(size = 1, sampSpace)
 ```
 
 ```
-## [1] 4
+## [1] 6
 ```
 
 
@@ -1515,7 +1515,7 @@ myTtest(y1, y2)
 
 ```
 ## Mean of Vec1 Mean of Vec2     testStat           df         pval 
-##   0.02975465  -0.24503761   0.50764455  18.00000000   0.61786639
+##   0.15928122   0.12589215   0.07257593  18.00000000   0.94294396
 ```
 
 ```r
@@ -1610,7 +1610,7 @@ str(genderF)
 ```
 
 ```
-##  Factor w/ 2 levels "Female","Male": 1 2 2 2 2 1 1 1 1 1 ...
+##  Factor w/ 2 levels "Female","Male": 1 1 2 1 1 1 2 1 1 2 ...
 ```
 
 
@@ -1856,12 +1856,12 @@ head(HeightDF)
 
 ```
 ##     heigth gender
-## 1 187.2394      M
-## 2 181.0006      M
-## 3 179.5309      M
-## 4 180.8554      M
-## 5 179.4810      M
-## 6 176.4149      M
+## 1 179.8635      M
+## 2 178.1606      M
+## 3 176.4338      M
+## 4 179.7744      M
+## 5 177.6584      M
+## 6 174.1317      M
 ```
 
 ```r
@@ -1870,7 +1870,7 @@ tapply(HeightDF$heigth, HeightDF$gender, mean)
 
 ```
 ##        F        M 
-## 170.0743 180.2792
+## 169.8043 179.3193
 ```
 
 
@@ -1936,7 +1936,7 @@ str(HeightDF)
 
 ```
 ## 'data.frame':	200 obs. of  2 variables:
-##  $ heigth: num  187 181 180 181 179 ...
+##  $ heigth: num  180 178 176 180 178 ...
 ##  $ gender: Factor w/ 2 levels "F","M": 2 2 2 2 2 2 2 2 2 2 ...
 ```
 
@@ -1948,8 +1948,8 @@ str(splitData)
 
 ```
 ## List of 2
-##  $ F: num [1:100] 171 164 167 174 165 ...
-##  $ M: num [1:100] 187 181 180 181 179 ...
+##  $ F: num [1:100] 170 172 168 172 165 ...
+##  $ M: num [1:100] 180 178 176 180 178 ...
 ```
 
 
@@ -1969,11 +1969,10 @@ str(splitData)
 ---
 
 ## Questions to answer
-1. Are there any problems/outliers in the data?
-2. Does mpg depend on the origin of the car?
-3. How is mpg related with #cylinders of the car?
-4. How is mpg related with other variables?
-5. Predict mpg using the other variables provided in the data.
+1. Does mpg depend on the origin of the car?
+2. How is mpg related with #cylinders of the car?
+3. How is mpg related with other variables?
+4. Predict mpg using the other variables provided in the data.
 
 ---
 
@@ -2013,7 +2012,7 @@ EX5. Subset exercises
 
   + 5.3 use the index vector you created above to extract the non-continous variables and summarize them; compare how summary() works differently for a factor variable (car_name) from a numerical variable.
 
-  + 5.4 (optional) read the help file for which(); create a vector of indices for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or.  
+  + 5.4 (optional) read the help file for which(); create a vector of indices for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or, ! for NOT.  
 
   + 5.5 drop variable "car_name". We will not use it in our analysis. Hint: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name". 
 
@@ -2034,7 +2033,7 @@ EX7. Missing values
   + 7.1 First let's also fix the "-99" in mpg as for origin. 
   + 7.2 use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  
   + 7.3 using is.na() function, take a subset of the dataset that has non-missing mpg and check the dimension of the subset. Hint: !is.na() refers to NOT NA. 
-  + 7.4 write a function total_NAs(data) that returns the total number of missing values in the dataset given in the argument "data". Test your function on the current data, it should return 17. 
+  + 7.4 write a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument "x". Test your function on the current data, it should return 17. 
   + 7.5 read the help file for function na.omit(), and use this function to create a new data that contains only the instances that has no missing value on any variables
 
 ---
@@ -2209,7 +2208,7 @@ rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 ```
 
 ```
-##  [1] 4 7 2 4 3 5 7 5 3 6 5 6 6 6 8 7 6 5 4 8
+##  [1] 4 3 6 4 7 5 6 7 6 5 4 3 2 6 5 4 3 9 7 7
 ```
 
 
@@ -2284,8 +2283,8 @@ rnorm(10, mean = 0, sd = 1)
 ```
 
 ```
-##  [1] -0.4106237 -0.8771024 -0.3718269 -1.1102043  1.9249076  0.2621283
-##  [7] -1.2242755 -0.8885868  1.4874644  0.5431256
+##  [1]  0.68258580  0.87042032  0.95075802 -0.95981880  1.37668557
+##  [6]  0.06503641  0.50494379  0.24961012  2.35170184 -0.25698710
 ```
 
 
@@ -2733,13 +2732,13 @@ oneSampTest.0
 ## 	One Sample t-test
 ## 
 ## data:  oneSampData
-## t = 1.3023, df = 99, p-value = 0.1958
+## t = 0.4683, df = 99, p-value = 0.6406
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.0614803  0.2963141
+##  -0.1289773  0.2086590
 ## sample estimates:
-## mean of x 
-## 0.1174169
+##  mean of x 
+## 0.03984082
 ```
 
 
@@ -2781,13 +2780,13 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ## 	Welch Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -12.2966, df = 68.933, p-value < 2.2e-16
+## t = -10.6256, df = 55.897, p-value = 4.957e-15
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.555080 -2.562563
+##  -3.431477 -2.342807
 ## sample estimates:
 ## mean of x mean of y 
-##  2.343678  5.402500
+##  2.443282  5.330424
 ```
 
 
@@ -2804,13 +2803,13 @@ t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 ## 	Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -11.8095, df = 78, p-value < 2.2e-16
+## t = -10.9291, df = 78, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.574476 -2.543166
+##  -3.413065 -2.361219
 ## sample estimates:
 ## mean of x mean of y 
-##  2.343678  5.402500
+##  2.443282  5.330424
 ```
 
 
@@ -2827,13 +2826,13 @@ t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assumption: unequal varianc
 ## 	Paired t-test
 ## 
 ## data:  Samp1 and Samp2[1:30]
-## t = -11.852, df = 29, p-value = 1.224e-12
+## t = -11.8565, df = 29, p-value = 1.213e-12
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.666863 -2.587574
+##  -3.258966 -2.300048
 ## sample estimates:
 ## mean of the differences 
-##               -3.127218
+##               -2.779507
 ```
 
 
@@ -2854,7 +2853,7 @@ str(myDF)
 
 ```
 ## 'data.frame':	30 obs. of  2 variables:
-##  $ y    : num  23.2 24 27.5 23.5 26.2 26 24.1 25.4 24.3 25.3 ...
+##  $ y    : num  24.1 26.7 23.6 25 24.8 24.5 25.2 25.1 23.9 26.5 ...
 ##  $ group: Factor w/ 3 levels "1","2","3": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
@@ -2872,10 +2871,10 @@ str(myANOVA) # see what is
 ```
 ## Classes 'anova' and 'data.frame':	2 obs. of  5 variables:
 ##  $ Df     : int  2 27
-##  $ Sum Sq : num  563 29.3
-##  $ Mean Sq: num  281.52 1.09
-##  $ F value: num  259 NA
-##  $ Pr(>F) : num  2.39e-18 NA
+##  $ Sum Sq : num  533.7 26.5
+##  $ Mean Sq: num  266.833 0.981
+##  $ F value: num  272 NA
+##  $ Pr(>F) : num  1.29e-18 NA
 ##  - attr(*, "heading")= chr  "Analysis of Variance Table\n" "Response: y"
 ```
 
@@ -3026,15 +3025,16 @@ EX9. (optional) Randomization testing for whether mean mpg is higher for Japanes
 
 EX10. Histogram of the continuous variables: to check the outliers and the distribution of the variables
   + 10.1 generate a histogram for each variable (one histogram per plot); save all plots in a pdf file and check the file. Need to install and load "ggplot2" package if you have not done so. 
-  + 10.2 (optional) reshape the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. 
+  + 10.2 (optional) reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the "reshape2" package. 
 
-EX11. Boxplot of mpg by different levels of originto visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. 
+EX11. Boxplot of mpg by different levels of origin to visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. Mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. 
   + (optional) add an additional layer a)geom_point or b)geom_jitter() and see what happens
 
 ---
 
 EX12. Scatterplot of mpg vs cylinders to check what the relationship is like, and to check if it is suitable to treat cylinder as a numerical variable or categorical variable.
-  + 12.1. check the use of stat_smooth() and the argument "method". Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed. The two fitted curves should look quite different, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
+  + 12.1. check the use of stat_smooth() and the argument "method". Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed. The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
+ 
   + 12.2 (optional) create another data with instances with odd number of cylinders removed, and check the above plots again. The two fitted curves look similar -> could treat cylinder as numerical
 
 ---
@@ -3060,7 +3060,7 @@ EX14. Data transformation
 
 
 EX15. Statistical analysis  
-  + 15.1 ANOVA for origin. To formally test whether mean mpg is different across cars of the three origins.
+  + 15.1 ANOVA for origin. To formally test whether mean mpg is different across cars of the three origins. Use significance level 0.05. First build a linear regression for mpg against origin. And then use both ANOVA() and summary() to check the results. 
   + 15.2 linear regression. Build a linear regression model to predict mpg. Include all other variables but if a transformed version is available for a variable, use only the transformed version) (name the regression object as model); build another regression model using the same predictors but to predict log(mpg) (name the regression object as model_log). 
   + 15.3 Apply summary() on the regression objects and read the outputs. Is origin still helpful in predicting mpg/log(mpg) after including other predictors? 
   + 15.4 Which column is to answer the relationship between mpg and other variables? 
