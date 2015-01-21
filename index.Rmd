@@ -693,7 +693,7 @@ head(irisFile)
 ## write.table():
 
 ```{r echo = T, eval=FALSE}
-write.table(irisFile, file = "pass/to/the/file")
+write.table(irisFile, file = "path/to/the/file")
 ```
 
 ---
@@ -1399,192 +1399,336 @@ y <- dnorm(x, mean = 0, sd = 1)
 plot(x, y, type = "l")
 ```
 
+<<<<<<< HEAD
 ---
 
 ## Time for Break for 10 Minutes :)
+=======
+---
+
+## Session 4 - Agenda
+
++ Goal: use gglot2 to explore data afterwards
++ Emphasize simple examples
++ Emphasize principles
++ Some examples will be developed today
++ ... but there's a lot that won't be covered
+
+---
+
+### Information Visualization
+
++ Efficiency
++ Interpretability
++ Parsimony
++ ggplto2 lies in "sweet spot" of functionality
+
+---
+
+### Hello, ggplot2
+
++ ggplot2 is a very popular graphics system written by Hadley Wickham
++ implementation of Leland Wilkinson' Grammar of Graphics
++ I'll use the `diamonds` dataset for most of the examples.
+
+```{r}
+head(diamonds)
+```
+
+---
+
+### First ggplot2: histogram
+
+Let's make a histogram!
+
+```{r, fig.width=8, fig.height=4}
+ggplot(diamonds, aes(price)) + geom_histogram()
+```
+
+
+---
+
+### Gotchas
+
+Easy to run into unhelpful errors
+
+```{r}
+library(ggplot2)
+ggplot(airquality) # :(
+ggplot(airquality, aes(temp)) # :'''(
+```
+
+>>>>>>> gh-pages
+
+---
+
+### Now make it fancier
+
+Group diamonds by cut.
+
+```{r, fig.width=8, fig.height=4}
+m <- ggplot(diamonds, aes(price))
+m + geom_histogram(aes(fill=cut))
+```
+
+---
+
+### Facets are an alternative
+
+Group diamonds by cut.
+
+```{r, fig.width=12, fig.height=5 }
+m <- ggplot(diamonds, aes(price))
+m + geom_histogram(binwidth=100) + facet_grid(cut~color)
+```
+
+
+---
+### Let's pause for a moment
+
++ what's up with `aes`?
++ `aes(x, y, ...)`
++ allows functions of columns e.g. `aes(x=price^2)`, `aes(x=price/carat)`
++ what are layers?
+
+```
+m <- ggplot(diamonds, aes(price))
+m + geom_histogram(aes(fill=cut))
+```
+
++ note that plots can be built up _incrementally_
++ "Geoms, short for geometric objects, describe the type of plot you will produce."
++ geom names always begin with `geom_`
+
+---
+### Scatterplots
+
+Note: There's no "scatterplot" function. Use `geom_point`.
+
+```{r, fig.width=8, fig.height=4}
+ggplot(diamonds, aes(price, carat)) + geom_point()
+```
+
+---
+### Log scales
+
+
+```{r, fig.width=8, fig.height=4}
+ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
+```
+
+Scales begin with `scale_`, and are not only for continuous variables: also `datetime`, `shape`, `colour`, etc
+
+---
+### Adding factors
+
+Similar to histogram
+
+```{r, fig.width=10, fig.height=5}
+ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
+```
+
+Note the legend for each mapping!
+
+---
+### Overview of components
+
++ `geom_*` : Geoms, short for geometric objects, describe the type of plot you will produce.
++ `stat_*`: Statistical transformations transform your data before plotting
++ `scale_*`: Scales control the mapping between data and aesthetics.
++ `facet_*`: Facets display subsets of the dataset in different panels.
++ `coord_*`: Coordinate systems adjust the mapping from coordinates to the 2d plane of the computer screen.
+
+And a few others...
+
+---
+### Problem: overplotting, approach 1a
+Try lowering opacity
+
+```{r, fig.width=10, fig.height=5}
+ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
+```
+
+
+---
+### Problem: overplotting, approach 1b
+
+Try mapping the inverse of a variable to opacity.
+
+```{r, fig.width=10, fig.height=5}
+ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
+```
+
+
+---
+### Problem: overplotting, approach 2
+
+Shake the points around a little bit.
+
+```{r, fig.width=10, fig.height=5}
+ggplot(diamonds, aes(price, carat)) + geom_jitter()
+```
+
+
+---
+### Problem: overplotting, approach 3
+
+Bin into hexagons!
+
+```{r, fig.width=10, fig.height=5}
+library(hexbin)
+ggplot(diamonds, aes(price, carat)) + geom_hex()
+```
+
+
+---
+### Problem: overplotting, approach 4
+
+Smooth with a 2d density
+
+```{r, fig.width=10, fig.height=5}
+ggplot(diamonds, aes(price, carat)) + stat_density2d()
+```
+
+
+---
+### Something completely different: map!
+
+
+```{r, fig.width=10, fig.height=5}
+library(maps)
+states <- map_data("state")
+ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
+```
+
+---
+### The world is your oyster
+
+
+```{r, fig.width=10, fig.height=5}
+ggplot(map_data("world")) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
+```
+
+---
+### What's the point?
+
+
+```{r, fig.width=10, fig.height=5}
+ucs <- data.frame(lat=c(37.870007, 33.64945), long=c(-122.270501, -117.845707))
+m <- ggplot(map_data("state"), aes(x=long, y=lat)) + geom_polygon(aes(group=group))
+m + geom_point(data=ucs, colour="red", size=5)
+```
+
+
+---
+### FYI
+
++ easy to add legend titles, axis labels, etc
++ `ggsave` function will save the plot to an image (or can just save via Rstudio)
++ `+ theme_bw()` will create a plot more suitable for printing
++ pie charts are possible but please do not make them
++ the `qplot` function is available as a more concise option
++ there are many packages that extend ggplot2's functionality!
++ e.g. `bdscale`, `GGally`, `xkcd`, `ggmap`
+
+---
+
+### Notes on oddities
+
++ normal R docs are not the best
++ excellent online documentation
++ default theme has grey background
++ uses British English spellings (e.g. "colour")
+
+
+  
+
+
+---
+
+
+<<<<<<< HEAD
++ plot: usually to make scatter plot
+  + depending on the type of its input, might behave differently
+=======
+>>>>>>> gh-pages
+
+---
+
+## Time for Lunch Break for 10 Minutes :)
 
 ---
 
 ## Session 4 - Agenda
 
 1. Plotting Systems in R
-2. Base Plotting System in detail
-3. Graphic Devices in R
-4. Examples of other plotting Systems
+2. Preparing Data for ggplot2
+3. ggplot2 simple examples
+4. ggplot2 philosophy
+5. more interesting ggplot2 examples
 
 ---
 
 ## Plotting Systems in R
 
-There are three main plotting systems in R:
-  + Base Plotting System
+There are three popular plotting systems in R:
+  + Base Plotting System (bultin to R)
   + Lattice
   + ggplot2
 
-Plotting and Graphics engines in R is in the following packages:
-  + graphics: contains plotting functions for the Base system
-  + grDevices: contains graphic devices in R
-  + lattice: contains plotting functions of the lattice system
-  + grid: lattice package was built on top of this package
-  + ggplot2
+We'll focus entirely on ggplot2.
 
 ---
 
-### Base System (intro)
+### Base System
 
-In Base plotting system:
-  + We start with a blank canvas
-  + by calling a plot function, we start our plot
-  + Using annotation functions we can add more elements to our plot
-  
-In general, plotting functions under the base system are:
-  + Functions to generate plots: plot()
-  + Functions to annotate plots: text(), lines(), points()
-
-
----
-
-### Base System (example)
+Ugly, but easy to use and always available.
 
 ```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
-x <- rnorm(100)
-y <- rnorm(100)
-plot(x, y)
-abline(h = 0)
+hist(rnorm(100,4,20))
+```
+
+---
+
+### Hello, ggplot2
+
++ ggplot2 is a very popular graphics system written by Hadley Wickham
++ implementation of Leland Wilkinson' Grammar of Graphics
+
+<<<<<<< HEAD
+=======
+----
+
+### Preliminary: reshape2
+
++ data must have right "shape" before plotting
++ + (although this is very useful tool to have, generally)
++ just 2 functions: `melt` and `cast`
++ `melt` turns wide data into long data
++ `cast` turns long data
+
+
+---
+
+### Example: airquality
+
+```{r}
+names(airquality) <- tolower(names(airquality))
+head(airquality)
+# vs. 
+head(melt(airquality))
+# vs.
+head(melt(airquality, id.vars = c("month", "day")))
 ```
 
 
----
-
-### Lattice (intro)
-
-+ Lattice plotting system is part of the lattice package
-+ Unlike the base system, each plot is constructed with a single function call
-+ Plots can not be modified once they are created
-+ Since we only have one function call, we usually need to specify a lot of parameters in the plotting function call under this package
 
 
 ---
 
-### ggplot2 (intro)
-
-+ ggplot2 is a very popular graphics system in R (written by Hadley Wickham)
-+ The package has a language or grammar for describing different aspects of plotting
-+ The package is an implementation of the Grammar of Graphics by Leland Wilkinson
-+ ggplot2 mixes ideas from Base and from Lattice plotting systems
-  + Many of the aesthetics of a plot (labeling, margins, background, ...) are done automatically with a single function call (similar to lattice)
-  + You can still add components of a plot layer by layer (similar to the base system)
 
 
----
-
-## Base Plotting System - Histogram
-
-```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
-x <- rnorm(100)
-hist(x)
-```
-
-
----
-
-## Base Plotting System - Scatter Plot
-```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
-x <- rnorm(100)
-y <- rnorm(100)
-plot(x, y)
-```
-
-
----
-
-## Base Plotting System - BoxPlot
-```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
-x <- rnorm(100, 0, 1)
-y <- rnorm(100, 1, 1)
-z <- rnorm(100, 2, 2)
-boxplot(x, y , z)
-```
-
-
----
-
-## Base Plotting System - Important Parameters
-
-+ pch: plotting symbol (pch = 1 for open circle)
-+ lty: line type (solid, dashed, dotted, ...)
-+ lwd: line width (takes an integer number)
-+ col: plotting color 
-  + run colors() to get a list of R colors
-+ type: type of plot
-  + "p": points
-  + "l": lines
-  + "b": both points and lines
-  + "n": no plotting
-  
-
----
-
-## Base Plotting System - Important Parameters
-
-+ par(): to specify global graphics parameters that affect all plots in an R session
-+ you can run par() to get a list of current values of these paraemters
-+ run ?par for more information from help
-+ Some important parameters are: 
-  + mar: size of margins of a plot
-  + mfrow: multiple plots that are arranged row-wise
-  + mfcol: multiple plots that are arranged column-wise
-  + bg: the background color
-  
-
----
-
-## Base Plotting System - Important Parameters
-Let's see the default values for the parameters introduced so far:
-```{r echo=TRUE}
-t(par(c("pch", "lty", "lwd", "col")))
-par("mar")
-par("mfrow")
-```
-  
-
----
-
-## Base Plotting System - Important Parameters
-
-```{r echo=TRUE}
-par("mfcol")
-par("bg")
-```
-
-  
-
----
-
-## Base Plotting System - Important Functions
-
-+ plot: usually to make scatter plot
-  + depending on the type of its input, might behave differently
-
-+ lines: to add lines to a plot (ex: to overlay a density on a histogram)
-
-+ points: to add points to a plot
-
-+ text: to add texts to a plot at (x, y)
-
-+ title: to add title to a plot
-
-+ mtext: to add text to a margin of a plot
-
-+ axis: to add customized axis to a plot
-
-  
-
----
-
-## Base Plotting System - Demo
-
-
+>>>>>>> gh-pages
 ---
 
 
