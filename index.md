@@ -32,7 +32,6 @@ github:
 
 2) Each session will include:
   + Lecture: about 1 hr
-  + R exercise and Discussion: 20 minutes
   + Break: 10 minutes
 
 
@@ -556,11 +555,11 @@ colMat
 ```
 
 ```
-##      vec1 vec2       vec3
-## [1,]    1   75 -1.7701969
-## [2,]    2   93 -0.9977035
-## [3,]    3   76 -0.6052043
-## [4,]    4   19  0.6745620
+##      vec1 vec2        vec3
+## [1,]    1   94 -1.42114867
+## [2,]    2   77 -0.32070110
+## [3,]    3   19 -0.02790357
+## [4,]    4    4 -0.87108024
 ```
 
 ---
@@ -577,10 +576,10 @@ rowMat
 ```
 
 ```
-##            [,1]       [,2]       [,3]      [,4]
-## vec1  1.0000000  2.0000000  3.0000000 4.0000000
-## vec2 16.0000000 55.0000000 20.0000000 3.0000000
-## vec3 -0.3368965 -0.5732835 -0.3757453 0.3457387
+##            [,1]       [,2]       [,3]       [,4]
+## vec1  1.0000000  2.0000000  3.0000000  4.0000000
+## vec2 56.0000000 21.0000000  3.0000000 36.0000000
+## vec3 -0.1681922 -0.9392866 -0.7873606 -0.2582183
 ```
 
 ---
@@ -645,12 +644,12 @@ head(data)
 
 ```
 ##   studentID score gender
-## 1    S#6793    14   male
-## 2    S#7349    30   male
-## 3    S#6737     5 female
-## 4    S#7138    31 female
-## 5    S#7331    62 female
-## 6    S#7051    99 female
+## 1    S#7350    31   male
+## 2    S#6738     6 female
+## 3    S#7138   100 female
+## 4    S#7332    62 female
+## 5    S#7052    30 female
+## 6    S#7241    50 female
 ```
 
 ---
@@ -1189,7 +1188,7 @@ head(irisFile)
 
 
 ```r
-write.table(irisFile, file = "pass/to/the/file")
+write.table(irisFile, file = "path/to/the/file")
 ```
 
 ---
@@ -1328,9 +1327,9 @@ age.df[1:3,]
 
 ```
 ##   age ageCat
-## 1  96    Old
-## 2  90    Old
-## 3  73    Old
+## 1  91    Old
+## 2  74    Old
+## 3   1  Young
 ```
 
 ---
@@ -1413,7 +1412,7 @@ sample(sampSpace, 1) # arguments with default values can be omitted
 ```
 
 ```
-## [1] 4
+## [1] 2
 ```
 
 ```r
@@ -1421,7 +1420,7 @@ sample(size = 1, x = sampSpace) # no need to remember the order
 ```
 
 ```
-## [1] 2
+## [1] 6
 ```
 
 ```r
@@ -1429,7 +1428,7 @@ sample(size = 1, sampSpace)
 ```
 
 ```
-## [1] 6
+## [1] 5
 ```
 
 
@@ -1515,7 +1514,7 @@ myTtest(y1, y2)
 
 ```
 ## Mean of Vec1 Mean of Vec2     testStat           df         pval 
-##   0.15928122   0.12589215   0.07257593  18.00000000   0.94294396
+##   -0.2533165   -0.3306688    0.1932200   18.0000000    0.8489502
 ```
 
 ```r
@@ -1610,7 +1609,7 @@ str(genderF)
 ```
 
 ```
-##  Factor w/ 2 levels "Female","Male": 1 1 2 1 1 1 2 1 1 2 ...
+##  Factor w/ 2 levels "Female","Male": 1 2 1 1 1 2 1 1 2 1 ...
 ```
 
 
@@ -1856,12 +1855,12 @@ head(HeightDF)
 
 ```
 ##     heigth gender
-## 1 179.8635      M
-## 2 178.1606      M
-## 3 176.4338      M
-## 4 179.7744      M
-## 5 177.6584      M
-## 6 174.1317      M
+## 1 177.0585      M
+## 2 179.8865      M
+## 3 178.5185      M
+## 4 181.2018      M
+## 5 182.2658      M
+## 6 183.3044      M
 ```
 
 ```r
@@ -1870,7 +1869,7 @@ tapply(HeightDF$heigth, HeightDF$gender, mean)
 
 ```
 ##        F        M 
-## 169.8043 179.3193
+## 170.2188 180.4068
 ```
 
 
@@ -1936,7 +1935,7 @@ str(HeightDF)
 
 ```
 ## 'data.frame':	200 obs. of  2 variables:
-##  $ heigth: num  180 178 176 180 178 ...
+##  $ heigth: num  177 180 179 181 182 ...
 ##  $ gender: Factor w/ 2 levels "F","M": 2 2 2 2 2 2 2 2 2 2 ...
 ```
 
@@ -1948,8 +1947,8 @@ str(splitData)
 
 ```
 ## List of 2
-##  $ F: num [1:100] 170 172 168 172 165 ...
-##  $ M: num [1:100] 180 178 176 180 178 ...
+##  $ F: num [1:100] 166 169 167 171 168 ...
+##  $ M: num [1:100] 177 180 179 181 182 ...
 ```
 
 
@@ -2056,7 +2055,6 @@ EX8. (optional) Exercises for *apply() and split()
 
 1. Useful Matrix Functions
 2. Statistical Distributions in R
-3. Exercise
 
 ---
 
@@ -2208,7 +2206,7 @@ rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 ```
 
 ```
-##  [1] 4 3 6 4 7 5 6 7 6 5 4 3 2 6 5 4 3 9 7 7
+##  [1] 3 6 4 7 5 6 7 6 5 4 3 2 6 5 4 3 9 7 7 6
 ```
 
 
@@ -2283,8 +2281,8 @@ rnorm(10, mean = 0, sd = 1)
 ```
 
 ```
-##  [1]  0.68258580  0.87042032  0.95075802 -0.95981880  1.37668557
-##  [6]  0.06503641  0.50494379  0.24961012  2.35170184 -0.25698710
+##  [1]  0.3565506  0.2702092  1.3557388 -0.9839800 -1.0520069  0.4597677
+##  [7]  1.0691871  1.2049516 -0.0644890 -0.4889031
 ```
 
 
@@ -2301,236 +2299,461 @@ plot(x, y, type = "l")
 
 <img src="assets/fig/unnamed-chunk-70-1.png" title="plot of chunk unnamed-chunk-70" alt="plot of chunk unnamed-chunk-70" style="display: block; margin: auto;" />
 
+<<<<<<< HEAD
 ---
 
 ## Time for Break for 10 Minutes :)
+=======
+---
+
+## Session 4 - Agenda
+
++ Goal: use gglot2 to explore data afterwards
++ Emphasize simple examples
++ Emphasize principles
++ Some examples will be developed today
++ ... but there's a lot that won't be covered
+
+---
+
+### Information Visualization
+
++ Efficiency
++ Interpretability
++ Parsimony
++ ggplto2 lies in "sweet spot" of functionality
+
+---
+
+### Hello, ggplot2
+
++ ggplot2 is a very popular graphics system written by Hadley Wickham
++ implementation of Leland Wilkinson' Grammar of Graphics
++ I'll use the `diamonds` dataset for most of the examples.
+
+
+```r
+head(diamonds)
+```
+
+```
+##   carat       cut color clarity depth table price    x    y    z     alpha
+## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43  4.339255
+## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31  1.514811
+## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31  4.339255
+## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63 11.536110
+## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75 13.606709
+## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48  5.660624
+```
+
+---
+
+### First ggplot2: histogram
+
+Let's make a histogram!
+
+
+```r
+ggplot(diamonds, aes(price)) + geom_histogram()
+```
+
+```
+## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
+```
+
+![plot of chunk unnamed-chunk-72](assets/fig/unnamed-chunk-72-1.png) 
+
+
+---
+
+### Gotchas
+
+Easy to run into unhelpful errors
+
+
+```r
+library(ggplot2)
+ggplot(airquality) # :(
+```
+
+```
+## Error: No layers in plot
+```
+
+```r
+ggplot(airquality, aes(temp)) # :'''(
+```
+
+```
+## Error: No layers in plot
+```
+
+>>>>>>> gh-pages
+
+---
+
+### Now make it fancier
+
+Group diamonds by cut.
+
+
+```r
+m <- ggplot(diamonds, aes(price))
+m + geom_histogram(aes(fill=cut))
+```
+
+```
+## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
+```
+
+![plot of chunk unnamed-chunk-74](assets/fig/unnamed-chunk-74-1.png) 
+
+---
+
+### Facets are an alternative
+
+Group diamonds by cut.
+
+
+```r
+m <- ggplot(diamonds, aes(price))
+m + geom_histogram(binwidth=100) + facet_grid(cut~color)
+```
+
+![plot of chunk unnamed-chunk-75](assets/fig/unnamed-chunk-75-1.png) 
+
+
+---
+### Let's pause for a moment
+
++ what's up with `aes`?
++ `aes(x, y, ...)`
++ allows functions of columns e.g. `aes(x=price^2)`, `aes(x=price/carat)`
++ what are layers?
+
+```
+m <- ggplot(diamonds, aes(price))
+m + geom_histogram(aes(fill=cut))
+```
+
++ note that plots can be built up _incrementally_
++ "Geoms, short for geometric objects, describe the type of plot you will produce."
++ geom names always begin with `geom_`
+
+---
+### Scatterplots
+
+Note: There's no "scatterplot" function. Use `geom_point`.
+
+
+```r
+ggplot(diamonds, aes(price, carat)) + geom_point()
+```
+
+![plot of chunk unnamed-chunk-76](assets/fig/unnamed-chunk-76-1.png) 
+
+---
+### Log scales
+
+
+
+```r
+ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
+```
+
+![plot of chunk unnamed-chunk-77](assets/fig/unnamed-chunk-77-1.png) 
+
+Scales begin with `scale_`, and are not only for continuous variables: also `datetime`, `shape`, `colour`, etc
+
+---
+### Adding factors
+
+Similar to histogram
+
+
+```r
+ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
+```
+
+![plot of chunk unnamed-chunk-78](assets/fig/unnamed-chunk-78-1.png) 
+
+Note the legend for each mapping!
+
+---
+### Overview of components
+
++ `geom_*` : Geoms, short for geometric objects, describe the type of plot you will produce.
++ `stat_*`: Statistical transformations transform your data before plotting
++ `scale_*`: Scales control the mapping between data and aesthetics.
++ `facet_*`: Facets display subsets of the dataset in different panels.
++ `coord_*`: Coordinate systems adjust the mapping from coordinates to the 2d plane of the computer screen.
+
+And a few others...
+
+---
+### Problem: overplotting, approach 1a
+Try lowering opacity
+
+
+```r
+ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
+```
+
+![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79-1.png) 
+
+
+---
+### Problem: overplotting, approach 1b
+
+Try mapping the inverse of a variable to opacity.
+
+
+```r
+ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
+```
+
+![plot of chunk unnamed-chunk-80](assets/fig/unnamed-chunk-80-1.png) 
+
+
+---
+### Problem: overplotting, approach 2
+
+Shake the points around a little bit.
+
+
+```r
+ggplot(diamonds, aes(price, carat)) + geom_jitter()
+```
+
+![plot of chunk unnamed-chunk-81](assets/fig/unnamed-chunk-81-1.png) 
+
+
+---
+### Problem: overplotting, approach 3
+
+Bin into hexagons!
+
+
+```r
+library(hexbin)
+```
+
+```
+## Error in library(hexbin): there is no package called 'hexbin'
+```
+
+```r
+ggplot(diamonds, aes(price, carat)) + geom_hex()
+```
+
+![plot of chunk unnamed-chunk-82](assets/fig/unnamed-chunk-82-1.png) 
+
+
+---
+### Problem: overplotting, approach 4
+
+Smooth with a 2d density
+
+
+```r
+ggplot(diamonds, aes(price, carat)) + stat_density2d()
+```
+
+![plot of chunk unnamed-chunk-83](assets/fig/unnamed-chunk-83-1.png) 
+
+
+---
+### Something completely different: map!
+
+
+
+```r
+library(maps)
+```
+
+```
+## Error in library(maps): there is no package called 'maps'
+```
+
+```r
+states <- map_data("state")
+```
+
+```
+## Error: maps package required for this functionality. Please install and try again.
+```
+
+```r
+ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
+```
+
+```
+## Error in ggplot(states): object 'states' not found
+```
+
+---
+### The world is your oyster
+
+
+
+```r
+ggplot(map_data("world")) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
+```
+
+```
+## Error: maps package required for this functionality. Please install and try again.
+```
+
+---
+### What's the point?
+
+
+
+```r
+ucs <- data.frame(lat=c(37.870007, 33.64945), long=c(-122.270501, -117.845707))
+m <- ggplot(map_data("state"), aes(x=long, y=lat)) + geom_polygon(aes(group=group))
+```
+
+```
+## Error: maps package required for this functionality. Please install and try again.
+```
+
+```r
+m + geom_point(data=ucs, colour="red", size=5)
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'price' not found
+```
+
+
+---
+### FYI
+
++ easy to add legend titles, axis labels, etc
++ `ggsave` function will save the plot to an image (or can just save via Rstudio)
++ `+ theme_bw()` will create a plot more suitable for printing
++ pie charts are possible but please do not make them
++ the `qplot` function is available as a more concise option
++ there are many packages that extend ggplot2's functionality!
++ e.g. `bdscale`, `GGally`, `xkcd`, `ggmap`
+
+---
+
+### Notes on oddities
+
++ normal R docs are not the best
++ excellent online documentation
++ default theme has grey background
++ uses British English spellings (e.g. "colour")
+
+
+
+<<<<<<< HEAD
++ plot: usually to make scatter plot
+  + depending on the type of its input, might behave differently
+=======
+>>>>>>> gh-pages
+
+---
+
+## Time for Lunch Break for 10 Minutes :)
 
 ---
 
 ## Session 4 - Agenda
 
 1. Plotting Systems in R
-2. Base Plotting System in detail
-3. Graphic Devices in R
-4. Examples of other plotting Systems
+2. Preparing Data for ggplot2
+3. ggplot2 simple examples
+4. ggplot2 philosophy
+5. more interesting ggplot2 examples
 
 ---
 
 ## Plotting Systems in R
 
-There are three main plotting systems in R:
-  + Base Plotting System
+There are three popular plotting systems in R:
+  + Base Plotting System (bultin to R)
   + Lattice
   + ggplot2
 
-Plotting and Graphics engines in R is in the following packages:
-  + graphics: contains plotting functions for the Base system
-  + grDevices: contains graphic devices in R
-  + lattice: contains plotting functions of the lattice system
-  + grid: lattice package was built on top of this package
-  + ggplot2
+We'll focus entirely on ggplot2.
 
 ---
 
-### Base System (intro)
+### Base System
 
-In Base plotting system:
-  + We start with a blank canvas
-  + by calling a plot function, we start our plot
-  + Using annotation functions we can add more elements to our plot
-  
-In general, plotting functions under the base system are:
-  + Functions to generate plots: plot()
-  + Functions to annotate plots: text(), lines(), points()
-
-
----
-
-### Base System (example)
+Ugly, but easy to use and always available.
 
 
 ```r
-x <- rnorm(100)
-y <- rnorm(100)
-plot(x, y)
-abline(h = 0)
+hist(rnorm(100,4,20))
 ```
 
-<img src="assets/fig/unnamed-chunk-71-1.png" title="plot of chunk unnamed-chunk-71" alt="plot of chunk unnamed-chunk-71" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-87-1.png" title="plot of chunk unnamed-chunk-87" alt="plot of chunk unnamed-chunk-87" style="display: block; margin: auto;" />
+
+---
+
+### Hello, ggplot2
+
++ ggplot2 is a very popular graphics system written by Hadley Wickham
++ implementation of Leland Wilkinson' Grammar of Graphics
+
+<<<<<<< HEAD
+=======
+----
+
+### Preliminary: reshape2
+
++ data must have right "shape" before plotting
++ + (although this is very useful tool to have, generally)
++ just 2 functions: `melt` and `cast`
++ `melt` turns wide data into long data
++ `cast` turns long data
 
 
 ---
 
-### Lattice (intro)
-
-+ Lattice plotting system is part of the lattice package
-+ Unlike the base system, each plot is constructed with a single function call
-+ Plots can not be modified once they are created
-+ Since we only have one function call, we usually need to specify a lot of parameters in the plotting function call under this package
-
-
----
-
-### ggplot2 (intro)
-
-+ ggplot2 is a very popular graphics system in R (written by Hadley Wickham)
-+ The package has a language or grammar for describing different aspects of plotting
-+ The package is an implementation of the Grammar of Graphics by Leland Wilkinson
-+ ggplot2 mixes ideas from Base and from Lattice plotting systems
-  + Many of the aesthetics of a plot (labeling, margins, background, ...) are done automatically with a single function call (similar to lattice)
-  + You can still add components of a plot layer by layer (similar to the base system)
-
-
----
-
-## Base Plotting System - Histogram
+### Example: airquality
 
 
 ```r
-x <- rnorm(100)
-hist(x)
-```
-
-<img src="assets/fig/unnamed-chunk-72-1.png" title="plot of chunk unnamed-chunk-72" alt="plot of chunk unnamed-chunk-72" style="display: block; margin: auto;" />
-
-
----
-
-## Base Plotting System - Scatter Plot
-
-```r
-x <- rnorm(100)
-y <- rnorm(100)
-plot(x, y)
-```
-
-<img src="assets/fig/unnamed-chunk-73-1.png" title="plot of chunk unnamed-chunk-73" alt="plot of chunk unnamed-chunk-73" style="display: block; margin: auto;" />
-
-
----
-
-## Base Plotting System - BoxPlot
-
-```r
-x <- rnorm(100, 0, 1)
-y <- rnorm(100, 1, 1)
-z <- rnorm(100, 2, 2)
-boxplot(x, y , z)
-```
-
-<img src="assets/fig/unnamed-chunk-74-1.png" title="plot of chunk unnamed-chunk-74" alt="plot of chunk unnamed-chunk-74" style="display: block; margin: auto;" />
-
-
----
-
-## Base Plotting System - Important Parameters
-
-+ pch: plotting symbol (pch = 1 for open circle)
-+ lty: line type (solid, dashed, dotted, ...)
-+ lwd: line width (takes an integer number)
-+ col: plotting color 
-  + run colors() to get a list of R colors
-+ type: type of plot
-  + "p": points
-  + "l": lines
-  + "b": both points and lines
-  + "n": no plotting
-  
-
----
-
-## Base Plotting System - Important Parameters
-
-+ par(): to specify global graphics parameters that affect all plots in an R session
-+ you can run par() to get a list of current values of these paraemters
-+ run ?par for more information from help
-+ Some important parameters are: 
-  + mar: size of margins of a plot
-  + mfrow: multiple plots that are arranged row-wise
-  + mfcol: multiple plots that are arranged column-wise
-  + bg: the background color
-  
-
----
-
-## Base Plotting System - Important Parameters
-Let's see the default values for the parameters introduced so far:
-
-```r
-t(par(c("pch", "lty", "lwd", "col")))
+names(airquality) <- tolower(names(airquality))
+head(airquality)
 ```
 
 ```
-##      pch lty     lwd col    
-## [1,] 1   "solid" 1   "black"
+##   ozone solar.r wind temp month day
+## 1    41     190  7.4   67     5   1
+## 2    36     118  8.0   72     5   2
+## 3    12     149 12.6   74     5   3
+## 4    18     313 11.5   62     5   4
+## 5    NA      NA 14.3   56     5   5
+## 6    28      NA 14.9   66     5   6
 ```
 
 ```r
-par("mar")
+# vs. 
+head(melt(airquality))
 ```
 
 ```
-## [1] 5.1 4.1 4.1 2.1
-```
-
-```r
-par("mfrow")
-```
-
-```
-## [1] 1 1
-```
-  
-
----
-
-## Base Plotting System - Important Parameters
-
-
-```r
-par("mfcol")
-```
-
-```
-## [1] 1 1
+## Error in head(melt(airquality)): could not find function "melt"
 ```
 
 ```r
-par("bg")
+# vs.
+head(melt(airquality, id.vars = c("month", "day")))
 ```
 
 ```
-## [1] "transparent"
+## Error in head(melt(airquality, id.vars = c("month", "day"))): could not find function "melt"
 ```
 
-  
-
----
-
-## Base Plotting System - Important Functions
-
-+ plot: usually to make scatter plot
-  + depending on the type of its input, might behave differently
-
-+ lines: to add lines to a plot (ex: to overlay a density on a histogram)
-
-+ points: to add points to a plot
-
-+ text: to add texts to a plot at (x, y)
-
-+ title: to add title to a plot
-
-+ mtext: to add text to a margin of a plot
-
-+ axis: to add customized axis to a plot
-
-  
-
----
-
-## Base Plotting System - Demo
 
 
+>>>>>>> gh-pages
 ---
 
 
@@ -2599,7 +2822,7 @@ diamonds_subset <- diamonds[sample(1:nrow(diamonds),500),]
 xyplot(price ~ carat, data = diamonds_subset)
 ```
 
-<img src="assets/fig/unnamed-chunk-78-1.png" title="plot of chunk unnamed-chunk-78" alt="plot of chunk unnamed-chunk-78" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-90-1.png" title="plot of chunk unnamed-chunk-90" alt="plot of chunk unnamed-chunk-90" style="display: block; margin: auto;" />
 
 
 ---
@@ -2610,7 +2833,7 @@ xyplot(price ~ carat, data = diamonds_subset)
 xyplot(price ~ carat | cut, data = diamonds_subset, layout = c(5,1))
 ```
 
-<img src="assets/fig/unnamed-chunk-79-1.png" title="plot of chunk unnamed-chunk-79" alt="plot of chunk unnamed-chunk-79" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-91-1.png" title="plot of chunk unnamed-chunk-91" alt="plot of chunk unnamed-chunk-91" style="display: block; margin: auto;" />
 
 
 ---
@@ -2624,7 +2847,7 @@ xyplot(price ~ carat | cut, panel = function(x, y, ...){
 }, data = diamonds_subset, layout = c(5,1))
 ```
 
-<img src="assets/fig/unnamed-chunk-80-1.png" title="plot of chunk unnamed-chunk-80" alt="plot of chunk unnamed-chunk-80" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-92-1.png" title="plot of chunk unnamed-chunk-92" alt="plot of chunk unnamed-chunk-92" style="display: block; margin: auto;" />
 
 
 ---
@@ -2657,7 +2880,7 @@ library(ggplot2)
 qplot(carat, price, data = diamonds_subset)
 ```
 
-<img src="assets/fig/unnamed-chunk-81-1.png" title="plot of chunk unnamed-chunk-81" alt="plot of chunk unnamed-chunk-81" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-93-1.png" title="plot of chunk unnamed-chunk-93" alt="plot of chunk unnamed-chunk-93" style="display: block; margin: auto;" />
   
 
 ---
@@ -2668,7 +2891,7 @@ qplot(carat, price, data = diamonds_subset)
 qplot(carat, price, data = diamonds_subset, col = cut)
 ```
 
-<img src="assets/fig/unnamed-chunk-82-1.png" title="plot of chunk unnamed-chunk-82" alt="plot of chunk unnamed-chunk-82" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-94-1.png" title="plot of chunk unnamed-chunk-94" alt="plot of chunk unnamed-chunk-94" style="display: block; margin: auto;" />
   
 
 ---
@@ -2679,7 +2902,7 @@ qplot(carat, price, data = diamonds_subset, col = cut)
 qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
 ```
 
-<img src="assets/fig/unnamed-chunk-83-1.png" title="plot of chunk unnamed-chunk-83" alt="plot of chunk unnamed-chunk-83" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-95-1.png" title="plot of chunk unnamed-chunk-95" alt="plot of chunk unnamed-chunk-95" style="display: block; margin: auto;" />
 
   
 
@@ -2691,7 +2914,7 @@ qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
 qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
 ```
 
-<img src="assets/fig/unnamed-chunk-84-1.png" title="plot of chunk unnamed-chunk-84" alt="plot of chunk unnamed-chunk-84" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-96-1.png" title="plot of chunk unnamed-chunk-96" alt="plot of chunk unnamed-chunk-96" style="display: block; margin: auto;" />
 
 
 ---
@@ -2732,13 +2955,13 @@ oneSampTest.0
 ## 	One Sample t-test
 ## 
 ## data:  oneSampData
-## t = 0.4683, df = 99, p-value = 0.6406
+## t = 1.8547, df = 99, p-value = 0.06662
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.1289773  0.2086590
+##  -0.01335352  0.39575498
 ## sample estimates:
-##  mean of x 
-## 0.03984082
+## mean of x 
+## 0.1912007
 ```
 
 
@@ -2780,13 +3003,13 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ## 	Welch Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -10.6256, df = 55.897, p-value = 4.957e-15
+## t = -13.4416, df = 63.443, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.431477 -2.342807
+##  -3.489995 -2.586709
 ## sample estimates:
 ## mean of x mean of y 
-##  2.443282  5.330424
+##  2.407183  5.445535
 ```
 
 
@@ -2803,13 +3026,13 @@ t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 ## 	Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -10.9291, df = 78, p-value < 2.2e-16
+## t = -13.2867, df = 78, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.413065 -2.361219
+##  -3.493611 -2.583093
 ## sample estimates:
 ## mean of x mean of y 
-##  2.443282  5.330424
+##  2.407183  5.445535
 ```
 
 
@@ -2826,13 +3049,13 @@ t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assumption: unequal varianc
 ## 	Paired t-test
 ## 
 ## data:  Samp1 and Samp2[1:30]
-## t = -11.8565, df = 29, p-value = 1.213e-12
+## t = -10.6904, df = 29, p-value = 1.421e-11
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.258966 -2.300048
+##  -3.496849 -2.373727
 ## sample estimates:
 ## mean of the differences 
-##               -2.779507
+##               -2.935288
 ```
 
 
@@ -2853,7 +3076,7 @@ str(myDF)
 
 ```
 ## 'data.frame':	30 obs. of  2 variables:
-##  $ y    : num  24.1 26.7 23.6 25 24.8 24.5 25.2 25.1 23.9 26.5 ...
+##  $ y    : num  23.5 24.7 24.2 25.1 25.1 26.3 23.9 24.4 24.3 23.9 ...
 ##  $ group: Factor w/ 3 levels "1","2","3": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
@@ -2871,10 +3094,10 @@ str(myANOVA) # see what is
 ```
 ## Classes 'anova' and 'data.frame':	2 obs. of  5 variables:
 ##  $ Df     : int  2 27
-##  $ Sum Sq : num  533.7 26.5
-##  $ Mean Sq: num  266.833 0.981
-##  $ F value: num  272 NA
-##  $ Pr(>F) : num  1.29e-18 NA
+##  $ Sum Sq : num  572 18
+##  $ Mean Sq: num  286.11 0.665
+##  $ F value: num  430 NA
+##  $ Pr(>F) : num  3.36e-21 NA
 ##  - attr(*, "heading")= chr  "Analysis of Variance Table\n" "Response: y"
 ```
 
@@ -2986,7 +3209,7 @@ head(myReg$residuals) # y - y.hat
 qqPlot(myReg, main = "QQ Plot")
 ```
 
-![plot of chunk unnamed-chunk-95](assets/fig/unnamed-chunk-95-1.png) 
+![plot of chunk unnamed-chunk-107](assets/fig/unnamed-chunk-107-1.png) 
   
 
 ---
@@ -2998,7 +3221,7 @@ qqPlot(myReg, main = "QQ Plot")
 spreadLevelPlot(myReg)
 ```
 
-![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96-1.png) 
+![plot of chunk unnamed-chunk-108](assets/fig/unnamed-chunk-108-1.png) 
   
 
 

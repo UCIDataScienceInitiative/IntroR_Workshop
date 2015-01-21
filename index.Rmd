@@ -34,7 +34,6 @@ library(ggplot2)
 
 2) Each session will include:
   + Lecture: about 1 hr
-  + R exercise and Discussion: 20 minutes
   + Break: 10 minutes
 
 
@@ -1287,7 +1286,6 @@ EX8. (optional) Exercises for *apply() and split()
 
 1. Useful Matrix Functions
 2. Statistical Distributions in R
-3. Exercise
 
 ---
 
@@ -1457,8 +1455,6 @@ library(ggplot2)
 ggplot(airquality) # :(
 ggplot(airquality, aes(temp)) # :'''(
 ```
-
->>>>>>> gh-pages
 
 ---
 
@@ -1641,24 +1637,6 @@ m + geom_point(data=ucs, colour="red", size=5)
 + uses British English spellings (e.g. "colour")
 
 
----
-
-## Exercise 6:
-### Source: Dr. Stacey Hancock, Dept. Statistics - UCI
-+ Suppose 20 people go to a fancy restaurant. Each person is wearing a hat and checks his/her hat at the door as he/she arrives. The hat-check attendant gets tipsy throughout the evening, forgetting which hat belongs to whom, and returns a random hat to each person as they leave. The patrons leave in a random order.
-
-+ Conduct a simulation in R to answer the following question:
-  + estimate the probability that at least one patron gets his or her own hat back
-  + calculate the empirical mean (average) number of patrons who get their own hats back.
-  
-
-
----
-
-## Exercise 7: 
-### Source: Dr. Stacey Hancock, Dept. Statistics - UCI
-+  Write an R function that will simulate rolling two k-sided dice (each numbered 1, 2, 3,...., k) N times, and return the proportion of times your sum was greater than or equal to 7. 
-+ Set the function's default value for k to 6 and the default value for N to 1000. 
 
 <<<<<<< HEAD
 + plot: usually to make scatter plot
@@ -1734,19 +1712,6 @@ head(melt(airquality))
 head(melt(airquality, id.vars = c("month", "day")))
 ```
 
-
-
-
----
-
-## Exercise 8:
-### Source: Dr. Stacey Hancock, Dept. Statistics - UCI 
-+ 1) In this Exercise, we explore a famour theorem in Statistics known as "The Central Limit Theorem".
-+ 2) Choose a probability distribution other than the normal distribution from which to generate data.
-+ 3) Generate 1000 random values from your chosen distribution. Create a histogram of these 1000 values with a density plot overlaid.
-+ 4) Generate 1000 random samples of size n = 5 from your chosen distribution (use a for loop!). For each sample, calculate the sample mean (using the "mean" function in R), so in the end, you have a vector of 1000 sample means. Create a histogram of these 1000 sample means with a density plot overlaid.
-+ 5) Can you re-write step (4) in terms of a function with with sample size as an input argument? Run your function with different n (10, 20 , 30). 
-+ 6) As n increases, what happens to the shape of the histogram?
 
 
 >>>>>>> gh-pages
