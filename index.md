@@ -2299,11 +2299,10 @@ plot(x, y, type = "l")
 
 <img src="assets/fig/unnamed-chunk-70-1.png" title="plot of chunk unnamed-chunk-70" alt="plot of chunk unnamed-chunk-70" style="display: block; margin: auto;" />
 
-<<<<<<< HEAD
 ---
 
 ## Time for Break for 10 Minutes :)
-=======
+
 ---
 
 ## Session 4 - Agenda
@@ -2387,8 +2386,6 @@ ggplot(airquality, aes(temp)) # :'''(
 ```
 ## Error: No layers in plot
 ```
-
->>>>>>> gh-pages
 
 ---
 
@@ -2536,13 +2533,6 @@ Bin into hexagons!
 
 ```r
 library(hexbin)
-```
-
-```
-## Error in library(hexbin): there is no package called 'hexbin'
-```
-
-```r
 ggplot(diamonds, aes(price, carat)) + geom_hex()
 ```
 
@@ -2648,13 +2638,6 @@ m + geom_point(data=ucs, colour="red", size=5)
 + uses British English spellings (e.g. "colour")
 
 
-
-<<<<<<< HEAD
-+ plot: usually to make scatter plot
-  + depending on the type of its input, might behave differently
-=======
->>>>>>> gh-pages
-
 ---
 
 ## Time for Lunch Break for 10 Minutes :)
@@ -2700,8 +2683,6 @@ hist(rnorm(100,4,20))
 + ggplot2 is a very popular graphics system written by Hadley Wickham
 + implementation of Leland Wilkinson' Grammar of Graphics
 
-<<<<<<< HEAD
-=======
 ----
 
 ### Preliminary: reshape2
@@ -2752,8 +2733,6 @@ head(melt(airquality, id.vars = c("month", "day")))
 ```
 
 
-
->>>>>>> gh-pages
 ---
 
 
