@@ -2927,6 +2927,25 @@ m + geom_histogram(aes(fill=cut))
 
 <slide class="" id="slide-115" style="background:;">
   <hgroup>
+    <h3>Overview of components</h3>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>geom_*</code> : Geoms, short for geometric objects, describe the type of plot you will produce.</li>
+<li><code>stat_*</code>: Statistical transformations transform your data before plotting</li>
+<li><code>scale_*</code>: Scales control the mapping between data and aesthetics.</li>
+<li><code>facet_*</code>: Facets display subsets of the dataset in different panels.</li>
+<li><code>coord_*</code>: Coordinate systems adjust the mapping from coordinates to the 2d plane of the computer screen.</li>
+</ul>
+
+<p>And a few others...</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-116" style="background:;">
+  <hgroup>
     <h3>Problem: overplotting, approach 1a</h3>
   </hgroup>
   <article data-timings="">
@@ -2941,7 +2960,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-116" style="background:;">
+<slide class="" id="slide-117" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 1b</h3>
   </hgroup>
@@ -2957,7 +2976,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-117" style="background:;">
+<slide class="" id="slide-118" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 2</h3>
   </hgroup>
@@ -2973,7 +2992,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-118" style="background:;">
+<slide class="" id="slide-119" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 3</h3>
   </hgroup>
@@ -2990,7 +3009,7 @@ ggplot(diamonds, aes(price, carat)) + geom_hex()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-119" style="background:;">
+<slide class="" id="slide-120" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 4</h3>
   </hgroup>
@@ -3006,7 +3025,7 @@ ggplot(diamonds, aes(price, carat)) + geom_hex()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-120" style="background:;">
+<slide class="" id="slide-121" style="background:;">
   <hgroup>
     <h3>Something completely different: map!</h3>
   </hgroup>
@@ -3022,7 +3041,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;wh
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-121" style="background:;">
+<slide class="" id="slide-122" style="background:;">
   <hgroup>
     <h3>The world is your oyster</h3>
   </hgroup>
@@ -3036,7 +3055,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;wh
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-122" style="background:;">
+<slide class="" id="slide-123" style="background:;">
   <hgroup>
     <h3>What&#39;s the point?</h3>
   </hgroup>
@@ -3052,7 +3071,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-123" style="background:;">
+<slide class="" id="slide-124" style="background:;">
   <hgroup>
     <h3>FYI</h3>
   </hgroup>
@@ -3071,7 +3090,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-124" style="background:;">
+<slide class="" id="slide-125" style="background:;">
   <hgroup>
     <h3>Notes on oddities</h3>
   </hgroup>
@@ -3087,7 +3106,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-125" style="background:;">
+<slide class="" id="slide-126" style="background:;">
   <hgroup>
     <h2>Exercise 6:</h2>
   </hgroup>
@@ -3108,7 +3127,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-126" style="background:;">
+<slide class="" id="slide-127" style="background:;">
   <hgroup>
     <h2>Exercise 7:</h2>
   </hgroup>
@@ -3124,7 +3143,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-127" style="background:;">
+<slide class="" id="slide-128" style="background:;">
   <hgroup>
     <h2>Time for Lunch Break for 10 Minutes :)</h2>
   </hgroup>
@@ -3134,7 +3153,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-128" style="background:;">
+<slide class="" id="slide-129" style="background:;">
   <hgroup>
     <h2>Session 4 - Agenda</h2>
   </hgroup>
@@ -3151,7 +3170,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-129" style="background:;">
+<slide class="" id="slide-130" style="background:;">
   <hgroup>
     <h2>Plotting Systems in R</h2>
   </hgroup>
@@ -3170,7 +3189,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-130" style="background:;">
+<slide class="" id="slide-131" style="background:;">
   <hgroup>
     <h3>Base System</h3>
   </hgroup>
@@ -3186,7 +3205,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-131" style="background:;">
+<slide class="" id="slide-132" style="background:;">
   <hgroup>
     <h3>Hello, ggplot2</h3>
   </hgroup>
@@ -3200,7 +3219,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-132" style="background:;">
+<slide class="" id="slide-133" style="background:;">
   <hgroup>
     <h3>Preliminary: reshape2</h3>
   </hgroup>
@@ -3217,7 +3236,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-133" style="background:;">
+<slide class="" id="slide-134" style="background:;">
   <hgroup>
     <h3>Example: airquality</h3>
   </hgroup>
@@ -3268,7 +3287,7 @@ head(melt(airquality, id.vars = c(&quot;month&quot;, &quot;day&quot;)))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-134" style="background:;">
+<slide class="" id="slide-135" style="background:;">
   <hgroup>
     <h2>Exercise 8:</h2>
   </hgroup>
@@ -3288,7 +3307,7 @@ head(melt(airquality, id.vars = c(&quot;month&quot;, &quot;day&quot;)))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-135" style="background:;">
+<slide class="" id="slide-136" style="background:;">
   <hgroup>
     <h2>Graphics Devices in R</h2>
   </hgroup>
@@ -3318,7 +3337,7 @@ head(melt(airquality, id.vars = c(&quot;month&quot;, &quot;day&quot;)))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-136" style="background:;">
+<slide class="" id="slide-137" style="background:;">
   <hgroup>
     <h2>Graphics Devices in R</h2>
   </hgroup>
@@ -3344,7 +3363,7 @@ dev.off()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-137" style="background:;">
+<slide class="" id="slide-138" style="background:;">
   <hgroup>
     <h2>File Devices</h2>
   </hgroup>
@@ -3362,7 +3381,7 @@ dev.off()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-138" style="background:;">
+<slide class="" id="slide-139" style="background:;">
   <hgroup>
     <h2>Lattice Plotting System</h2>
   </hgroup>
@@ -3383,7 +3402,7 @@ dev.off()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-139" style="background:;">
+<slide class="" id="slide-140" style="background:;">
   <hgroup>
     <h3>Lattice Scatter plot</h3>
   </hgroup>
@@ -3400,7 +3419,7 @@ xyplot(price ~ carat, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-140" style="background:;">
+<slide class="" id="slide-141" style="background:;">
   <hgroup>
     <h3>Lattice Scatterplot across</h3>
   </hgroup>
@@ -3414,7 +3433,7 @@ xyplot(price ~ carat, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-141" style="background:;">
+<slide class="" id="slide-142" style="background:;">
   <hgroup>
     <h3>Lattice Scatterplot with Linear fit</h3>
   </hgroup>
@@ -3431,7 +3450,7 @@ xyplot(price ~ carat, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-142" style="background:;">
+<slide class="" id="slide-143" style="background:;">
   <hgroup>
     <h2>ggplot2</h2>
   </hgroup>
@@ -3451,7 +3470,7 @@ xyplot(price ~ carat, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-143" style="background:;">
+<slide class="" id="slide-144" style="background:;">
   <hgroup>
     <h3>qplot()</h3>
   </hgroup>
@@ -3472,7 +3491,7 @@ xyplot(price ~ carat, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-144" style="background:;">
+<slide class="" id="slide-145" style="background:;">
   <hgroup>
     <h3>qplot() - Scatterplot</h3>
   </hgroup>
@@ -3487,7 +3506,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-145" style="background:;">
+<slide class="" id="slide-146" style="background:;">
   <hgroup>
     <h3>qplot() - Scatterplot</h3>
   </hgroup>
@@ -3501,7 +3520,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-146" style="background:;">
+<slide class="" id="slide-147" style="background:;">
   <hgroup>
     <h3>qplot() - Facets</h3>
   </hgroup>
@@ -3515,7 +3534,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-147" style="background:;">
+<slide class="" id="slide-148" style="background:;">
   <hgroup>
     <h3>qplot() - Histogram</h3>
   </hgroup>
@@ -3529,7 +3548,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-148" style="background:;">
+<slide class="" id="slide-149" style="background:;">
   <hgroup>
     <h2>Time for Lunch Break for 10 Minutes :)</h2>
   </hgroup>
@@ -3539,7 +3558,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-149" style="background:;">
+<slide class="" id="slide-150" style="background:;">
   <hgroup>
     <h2>Session 5 - Agenda</h2>
   </hgroup>
@@ -3554,7 +3573,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-150" style="background:;">
+<slide class="" id="slide-151" style="background:;">
   <hgroup>
     <h2>T-Test in R</h2>
   </hgroup>
@@ -3570,7 +3589,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-151" style="background:;">
+<slide class="" id="slide-152" style="background:;">
   <hgroup>
     <h3>One-Sample T-Test</h3>
   </hgroup>
@@ -3597,7 +3616,7 @@ oneSampTest.0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-152" style="background:;">
+<slide class="" id="slide-153" style="background:;">
   <hgroup>
     <h3>One-Sample T-Test</h3>
   </hgroup>
@@ -3613,7 +3632,7 @@ oneSampTest.0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-153" style="background:;">
+<slide class="" id="slide-154" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test</h3>
   </hgroup>
@@ -3630,7 +3649,7 @@ oneSampTest.0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-154" style="background:;">
+<slide class="" id="slide-155" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Un-equal Variances)</h3>
   </hgroup>
@@ -3657,7 +3676,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-155" style="background:;">
+<slide class="" id="slide-156" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Equal Variances)</h3>
   </hgroup>
@@ -3682,7 +3701,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-156" style="background:;">
+<slide class="" id="slide-157" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Paired T Test)</h3>
   </hgroup>
@@ -3707,7 +3726,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-157" style="background:;">
+<slide class="" id="slide-158" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -3731,7 +3750,7 @@ str(myDF)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-158" style="background:;">
+<slide class="" id="slide-159" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -3754,7 +3773,7 @@ str(myANOVA) # see what is
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-159" style="background:;">
+<slide class="" id="slide-160" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -3771,7 +3790,7 @@ str(myANOVA) # see what is
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-160" style="background:;">
+<slide class="" id="slide-161" style="background:;">
   <hgroup>
     <h2>Linear Regression:</h2>
   </hgroup>
@@ -3800,7 +3819,7 @@ str(Prestige)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-161" style="background:;">
+<slide class="" id="slide-162" style="background:;">
   <hgroup>
     <h3>Linear Regression - Fit:</h3>
   </hgroup>
@@ -3830,7 +3849,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-162" style="background:;">
+<slide class="" id="slide-163" style="background:;">
   <hgroup>
     <h3>Linear Regression - Fit:</h3>
   </hgroup>
@@ -3857,7 +3876,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-163" style="background:;">
+<slide class="" id="slide-164" style="background:;">
   <hgroup>
     <h2>Linear Regression - Diagnostics:</h2>
   </hgroup>
@@ -3876,7 +3895,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-164" style="background:;">
+<slide class="" id="slide-165" style="background:;">
   <hgroup>
     <h3>Testing for Normality</h3>
   </hgroup>
@@ -3890,7 +3909,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-165" style="background:;">
+<slide class="" id="slide-166" style="background:;">
   <hgroup>
     <h3>Testing for Constant Variance</h3>
   </hgroup>
@@ -3904,7 +3923,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-166" style="background:;">
+<slide class="" id="slide-167" style="background:;">
   <hgroup>
     <h3>Exercise 9:</h3>
   </hgroup>
@@ -4617,127 +4636,127 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=115 title='Problem: overplotting, approach 1a'>
+        data-slide=115 title='Overview of components'>
          115
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=116 title='Problem: overplotting, approach 1b'>
+        data-slide=116 title='Problem: overplotting, approach 1a'>
          116
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=117 title='Problem: overplotting, approach 2'>
+        data-slide=117 title='Problem: overplotting, approach 1b'>
          117
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=118 title='Problem: overplotting, approach 3'>
+        data-slide=118 title='Problem: overplotting, approach 2'>
          118
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=119 title='Problem: overplotting, approach 4'>
+        data-slide=119 title='Problem: overplotting, approach 3'>
          119
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=120 title='Something completely different: map!'>
+        data-slide=120 title='Problem: overplotting, approach 4'>
          120
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=121 title='The world is your oyster'>
+        data-slide=121 title='Something completely different: map!'>
          121
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=122 title='What&#39;s the point?'>
+        data-slide=122 title='The world is your oyster'>
          122
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=123 title='FYI'>
+        data-slide=123 title='What&#39;s the point?'>
          123
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=124 title='Notes on oddities'>
+        data-slide=124 title='FYI'>
          124
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=125 title='Exercise 6:'>
+        data-slide=125 title='Notes on oddities'>
          125
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=126 title='Exercise 7:'>
+        data-slide=126 title='Exercise 6:'>
          126
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=127 title='Time for Lunch Break for 10 Minutes :)'>
+        data-slide=127 title='Exercise 7:'>
          127
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=128 title='Session 4 - Agenda'>
+        data-slide=128 title='Time for Lunch Break for 10 Minutes :)'>
          128
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=129 title='Plotting Systems in R'>
+        data-slide=129 title='Session 4 - Agenda'>
          129
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=130 title='Base System'>
+        data-slide=130 title='Plotting Systems in R'>
          130
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=131 title='Hello, ggplot2'>
+        data-slide=131 title='Base System'>
          131
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=132 title='Preliminary: reshape2'>
+        data-slide=132 title='Hello, ggplot2'>
          132
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=133 title='Example: airquality'>
+        data-slide=133 title='Preliminary: reshape2'>
          133
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=134 title='Exercise 8:'>
+        data-slide=134 title='Example: airquality'>
          134
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=135 title='Graphics Devices in R'>
+        data-slide=135 title='Exercise 8:'>
          135
       </a>
     </li>
@@ -4749,49 +4768,49 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=137 title='File Devices'>
+        data-slide=137 title='Graphics Devices in R'>
          137
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=138 title='Lattice Plotting System'>
+        data-slide=138 title='File Devices'>
          138
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=139 title='Lattice Scatter plot'>
+        data-slide=139 title='Lattice Plotting System'>
          139
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=140 title='Lattice Scatterplot across'>
+        data-slide=140 title='Lattice Scatter plot'>
          140
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=141 title='Lattice Scatterplot with Linear fit'>
+        data-slide=141 title='Lattice Scatterplot across'>
          141
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=142 title='ggplot2'>
+        data-slide=142 title='Lattice Scatterplot with Linear fit'>
          142
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=143 title='qplot()'>
+        data-slide=143 title='ggplot2'>
          143
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=144 title='qplot() - Scatterplot'>
+        data-slide=144 title='qplot()'>
          144
       </a>
     </li>
@@ -4803,37 +4822,37 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=146 title='qplot() - Facets'>
+        data-slide=146 title='qplot() - Scatterplot'>
          146
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=147 title='qplot() - Histogram'>
+        data-slide=147 title='qplot() - Facets'>
          147
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=148 title='Time for Lunch Break for 10 Minutes :)'>
+        data-slide=148 title='qplot() - Histogram'>
          148
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=149 title='Session 5 - Agenda'>
+        data-slide=149 title='Time for Lunch Break for 10 Minutes :)'>
          149
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=150 title='T-Test in R'>
+        data-slide=150 title='Session 5 - Agenda'>
          150
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=151 title='One-Sample T-Test'>
+        data-slide=151 title='T-Test in R'>
          151
       </a>
     </li>
@@ -4845,31 +4864,31 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=153 title='Two-Sample T-Test'>
+        data-slide=153 title='One-Sample T-Test'>
          153
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=154 title='Two-Sample T-Test (Un-equal Variances)'>
+        data-slide=154 title='Two-Sample T-Test'>
          154
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=155 title='Two-Sample T-Test (Equal Variances)'>
+        data-slide=155 title='Two-Sample T-Test (Un-equal Variances)'>
          155
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=156 title='Two-Sample T-Test (Paired T Test)'>
+        data-slide=156 title='Two-Sample T-Test (Equal Variances)'>
          156
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=157 title='ANOVA'>
+        data-slide=157 title='Two-Sample T-Test (Paired T Test)'>
          157
       </a>
     </li>
@@ -4887,13 +4906,13 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=160 title='Linear Regression:'>
+        data-slide=160 title='ANOVA'>
          160
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=161 title='Linear Regression - Fit:'>
+        data-slide=161 title='Linear Regression:'>
          161
       </a>
     </li>
@@ -4905,26 +4924,32 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=163 title='Linear Regression - Diagnostics:'>
+        data-slide=163 title='Linear Regression - Fit:'>
          163
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=164 title='Testing for Normality'>
+        data-slide=164 title='Linear Regression - Diagnostics:'>
          164
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=165 title='Testing for Constant Variance'>
+        data-slide=165 title='Testing for Normality'>
          165
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=166 title='Exercise 9:'>
+        data-slide=166 title='Testing for Constant Variance'>
          166
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=167 title='Exercise 9:'>
+         167
       </a>
     </li>
   </ul>

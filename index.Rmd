@@ -1498,6 +1498,16 @@ ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
 
 Note the legend for each mapping!
 
+---
+### Overview of components
+
++ `geom_*` : Geoms, short for geometric objects, describe the type of plot you will produce.
++ `stat_*`: Statistical transformations transform your data before plotting
++ `scale_*`: Scales control the mapping between data and aesthetics.
++ `facet_*`: Facets display subsets of the dataset in different panels.
++ `coord_*`: Coordinate systems adjust the mapping from coordinates to the 2d plane of the computer screen.
+
+And a few others...
 
 ---
 ### Problem: overplotting, approach 1a
