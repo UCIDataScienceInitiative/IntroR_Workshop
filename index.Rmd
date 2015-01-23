@@ -1319,7 +1319,7 @@ boxplot(x, y , z)
 
 ## Session 4 - Agenda
 
-+ Goal: use gglot2 to explore data afterwards
++ Goal: use ggplot2 to explore data afterwards
 + Emphasize simple examples
 + Emphasize principles
 + Some examples will be developed today
@@ -1332,7 +1332,7 @@ boxplot(x, y , z)
 + Efficiency
 + Interpretability
 + Parsimony
-+ ggplto2 lies in "sweet spot" of functionality
++ ggplot2 lies in "sweet spot" of functionality
 
 ---
 

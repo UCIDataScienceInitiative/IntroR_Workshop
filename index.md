@@ -252,7 +252,7 @@ as(compVec, "numeric")
 ```
 
 ```
-## Warning in asMethod(object): imaginary parts discarded in coercion
+## Warning: imaginary parts discarded in coercion
 ```
 
 ```
@@ -265,7 +265,7 @@ as(charVec, "numeric")
 ```
 
 ```
-## Warning in asMethod(object): NAs introduced by coercion
+## Warning: NAs introduced by coercion
 ```
 
 ```
@@ -480,11 +480,11 @@ colMat
 ```
 
 ```
-##      vec1 vec2       vec3
-## [1,]    1   97 -0.2232147
-## [2,]    2   65  1.4498167
-## [3,]    3   71  0.7590436
-## [4,]    4   31  1.0309793
+##      vec1 vec2     vec3
+## [1,]    1   88 -0.60388
+## [2,]    2   64 -0.07985
+## [3,]    3   74  0.89368
+## [4,]    4   55  1.85324
 ```
 
 ---
@@ -501,10 +501,10 @@ rowMat
 ```
 
 ```
-##            [,1]     [,2]       [,3]      [,4]
-## vec1  1.0000000  2.00000  3.0000000  4.000000
-## vec2 93.0000000 90.00000 86.0000000 91.000000
-## vec3  0.4642409 -1.65771 -0.4921985 -1.085812
+##         [,1]    [,2]   [,3] [,4]
+## vec1  1.0000  2.0000  3.000 4.00
+## vec2 21.0000 62.0000 74.000 9.00
+## vec3  0.6717  0.1932 -2.489 1.09
 ```
 
 ---
@@ -569,12 +569,12 @@ head(data)
 
 ```
 ##   studentID score gender
-## 1    S#6488     7 female
-## 2    S#7339    64 female
-## 3    S#6486    72   male
-## 4    S#6954    25 female
-## 5    S#7299    21 female
-## 6    S#7056    56 female
+## 1    S#7075    74 female
+## 2    S#6834    68 female
+## 3    S#7282    10   male
+## 4    S#6903    18 female
+## 5    S#7067    98   male
+## 6    S#7026     7   male
 ```
 
 ---
@@ -925,7 +925,7 @@ head(quakes$long)
 ```
 
 ```
-## [1] 181.62 181.03 184.10 181.66 181.96 184.31
+## [1] 181.6 181.0 184.1 181.7 182.0 184.3
 ```
 
 ---
@@ -938,17 +938,17 @@ quakes[1:10,]
 ```
 
 ```
-##       lat   long depth mag stations
-## 1  -20.42 181.62   562 4.8       41
-## 2  -20.62 181.03   650 4.2       15
-## 3  -26.00 184.10    42 5.4       43
-## 4  -17.97 181.66   626 4.1       19
-## 5  -20.42 181.96   649 4.0       11
-## 6  -19.68 184.31   195 4.0       12
-## 7  -11.70 166.10    82 4.8       43
-## 8  -28.11 181.93   194 4.4       15
-## 9  -28.74 181.74   211 4.7       35
-## 10 -17.47 179.59   622 4.3       19
+##       lat  long depth mag stations
+## 1  -20.42 181.6   562 4.8       41
+## 2  -20.62 181.0   650 4.2       15
+## 3  -26.00 184.1    42 5.4       43
+## 4  -17.97 181.7   626 4.1       19
+## 5  -20.42 182.0   649 4.0       11
+## 6  -19.68 184.3   195 4.0       12
+## 7  -11.70 166.1    82 4.8       43
+## 8  -28.11 181.9   194 4.4       15
+## 9  -28.74 181.7   211 4.7       35
+## 10 -17.47 179.6   622 4.3       19
 ```
 
 ---
@@ -1070,18 +1070,24 @@ Main functions for writing data from R:
 
 ```r
 irisFile <- read.table(file = "/Users/sepehrakhavan/Documents/R_Workshop/iris.csv", header = TRUE)
+```
 
+```
+## Warning: cannot open file
+## '/Users/sepehrakhavan/Documents/R_Workshop/iris.csv': No such file or
+## directory
+```
+
+```
+## Error: cannot open the connection
+```
+
+```r
 head(irisFile)
 ```
 
 ```
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa
+## Error: object 'irisFile' not found
 ```
 
 + to make read.table() run faster:
@@ -1178,10 +1184,10 @@ age.df[1:3,]
 ```
 
 ```
-##   age ageCat
-## 1  72    Old
-## 2  79    Old
-## 3  96    Old
+##   age      ageCat
+## 1  51 Middle-Aged
+## 2  30       Young
+## 3  34       Young
 ```
 
 ---
@@ -1285,7 +1291,7 @@ sample(sampSpace, 1) # arguments with default values can be omitted
 ```
 
 ```
-## [1] 5
+## [1] 4
 ```
 
 ```r
@@ -1301,7 +1307,7 @@ sample(size = 1, sampSpace)
 ```
 
 ```
-## [1] 2
+## [1] 1
 ```
 
 
@@ -1395,7 +1401,7 @@ myLazyFn2(10) # No error!
 ```
 
 ```
-## Error in print(b): argument "b" is missing, with no default
+## Error: argument "b" is missing, with no default
 ```
 
 
@@ -1438,7 +1444,7 @@ str(genderF)
 ```
 
 ```
-##  Factor w/ 2 levels "Female","Male": 2 2 2 1 1 2 1 2 1 2 ...
+##  Factor w/ 2 levels "Female","Male": 1 2 1 2 1 1 1 2 2 1 ...
 ```
 
 
@@ -1683,13 +1689,13 @@ head(HeightDF)
 ```
 
 ```
-##     heigth gender
-## 1 179.9530      M
-## 2 175.1204      M
-## 3 185.5293      M
-## 4 180.8452      M
-## 5 177.7442      M
-## 6 186.0067      M
+##   heigth gender
+## 1  179.4      M
+## 2  178.1      M
+## 3  182.9      M
+## 4  177.3      M
+## 5  183.0      M
+## 6  184.2      M
 ```
 
 ```r
@@ -1697,8 +1703,8 @@ tapply(HeightDF$heigth, HeightDF$gender, mean)
 ```
 
 ```
-##        F        M 
-## 170.2082 179.6986
+##     F     M 
+## 169.9 180.1
 ```
 
 
@@ -1764,7 +1770,7 @@ str(HeightDF)
 
 ```
 ## 'data.frame':	200 obs. of  2 variables:
-##  $ heigth: num  180 175 186 181 178 ...
+##  $ heigth: num  179 178 183 177 183 ...
 ##  $ gender: Factor w/ 2 levels "F","M": 2 2 2 2 2 2 2 2 2 2 ...
 ```
 
@@ -1776,8 +1782,8 @@ str(splitData)
 
 ```
 ## List of 2
-##  $ F: num [1:100] 168 171 171 168 170 ...
-##  $ M: num [1:100] 180 175 186 181 178 ...
+##  $ F: num [1:100] 171 170 169 173 167 ...
+##  $ M: num [1:100] 179 178 183 177 183 ...
 ```
 
 
@@ -1941,10 +1947,10 @@ solve(A)%*%A
 ```
 
 ```
-##      [,1] [,2]          [,3]
-## [1,]    1    0  0.000000e+00
-## [2,]    0    1 -8.881784e-16
-## [3,]    0    0  1.000000e+00
+##      [,1] [,2]       [,3]
+## [1,]    1    0  0.000e+00
+## [2,]    0    1 -8.882e-16
+## [3,]    0    0  1.000e+00
 ```
 + Machine epsilon is defined to be the smallest positive number which, when added to 1, gives a number different from 1.
 + Please visit http://en.wikipedia.org/wiki/Machine_epsilon for more info
@@ -1983,7 +1989,7 @@ dbinom(5, 10, 0.5) # prob of getting five heads
 ```
 
 ```
-## [1] 0.2460938
+## [1] 0.2461
 ```
 
 ```r
@@ -1999,7 +2005,7 @@ pbinom(5, 10, 0.5) # Pr[X <= 5]
 ```
 
 ```
-## [1] 0.6230469
+## [1] 0.623
 ```
 
 
@@ -2036,7 +2042,7 @@ rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 ```
 
 ```
-##  [1] 5 5 3 6 3 3 7 4 6 4 4 6 7 3 3 6 4 6 4 8
+##  [1] 5 6 5 6 4 7 5 3 7 5 3 7 5 2 5 6 4 6 6 3
 ```
 
 
@@ -2058,7 +2064,7 @@ dnorm(x = 0, mean = 0, sd = 1, log = FALSE)
 ```
 
 ```
-## [1] 0.3989423
+## [1] 0.3989
 ```
 
 ```r
@@ -2111,8 +2117,8 @@ rnorm(10, mean = 0, sd = 1)
 ```
 
 ```
-##  [1] -0.7735307 -0.8198088 -0.3149976  0.3073127 -0.1390719 -0.7339548
-##  [7] -0.4427237 -0.3758955  0.4063727 -0.4696300
+##  [1] -2.0271 -0.5438  1.0976  0.3732 -0.5845 -0.8784 -1.5606  1.0805
+##  [9]  1.0381  0.9862
 ```
 
 
@@ -2127,7 +2133,7 @@ y <- dnorm(x, mean = 0, sd = 1)
 plot(x, y, type = "l")
 ```
 
-<img src="assets/fig/unnamed-chunk-65-1.png" title="plot of chunk unnamed-chunk-65" alt="plot of chunk unnamed-chunk-65" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-65.png" title="plot of chunk unnamed-chunk-65" alt="plot of chunk unnamed-chunk-65" style="display: block; margin: auto;" />
 
 ---
 
@@ -2162,7 +2168,7 @@ x <- rnorm(100)
 hist(x)
 ```
 
-<img src="assets/fig/unnamed-chunk-66-1.png" title="plot of chunk unnamed-chunk-66" alt="plot of chunk unnamed-chunk-66" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-66.png" title="plot of chunk unnamed-chunk-66" alt="plot of chunk unnamed-chunk-66" style="display: block; margin: auto;" />
 
 ---
 
@@ -2174,7 +2180,7 @@ y <- rnorm(100)
 plot(x, y)
 ```
 
-<img src="assets/fig/unnamed-chunk-67-1.png" title="plot of chunk unnamed-chunk-67" alt="plot of chunk unnamed-chunk-67" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-67.png" title="plot of chunk unnamed-chunk-67" alt="plot of chunk unnamed-chunk-67" style="display: block; margin: auto;" />
 
 ---
 
@@ -2187,7 +2193,7 @@ z <- rnorm(100, 2, 2)
 boxplot(x, y , z)
 ```
 
-<img src="assets/fig/unnamed-chunk-68-1.png" title="plot of chunk unnamed-chunk-68" alt="plot of chunk unnamed-chunk-68" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-68.png" title="plot of chunk unnamed-chunk-68" alt="plot of chunk unnamed-chunk-68" style="display: block; margin: auto;" />
 
 ---
 
@@ -2197,7 +2203,7 @@ boxplot(x, y , z)
 
 ## Session 4 - Agenda
 
-+ Goal: use gglot2 to explore data afterwards
++ Goal: use ggplot2 to explore data afterwards
 + Emphasize simple examples
 + Emphasize principles
 + Some examples will be developed today
@@ -2210,7 +2216,7 @@ boxplot(x, y , z)
 + Efficiency
 + Interpretability
 + Parsimony
-+ ggplto2 lies in "sweet spot" of functionality
++ ggplot2 lies in "sweet spot" of functionality
 
 ---
 
@@ -2250,7 +2256,7 @@ ggplot(diamonds, aes(price)) + geom_histogram()
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-70](assets/fig/unnamed-chunk-70-1.png) 
+![plot of chunk unnamed-chunk-70](assets/fig/unnamed-chunk-70.png) 
 
 
 ---
@@ -2293,7 +2299,7 @@ m + geom_histogram(aes(fill=cut))
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-72](assets/fig/unnamed-chunk-72-1.png) 
+![plot of chunk unnamed-chunk-72](assets/fig/unnamed-chunk-72.png) 
 
 ---
 
@@ -2307,7 +2313,7 @@ m <- ggplot(diamonds, aes(price))
 m + geom_histogram(binwidth=100) + facet_grid(cut~color)
 ```
 
-![plot of chunk unnamed-chunk-73](assets/fig/unnamed-chunk-73-1.png) 
+![plot of chunk unnamed-chunk-73](assets/fig/unnamed-chunk-73.png) 
 
 
 ---
@@ -2337,7 +2343,7 @@ Note: There's no "scatterplot" function. Use `geom_point`.
 ggplot(diamonds, aes(price, carat)) + geom_point()
 ```
 
-![plot of chunk unnamed-chunk-74](assets/fig/unnamed-chunk-74-1.png) 
+![plot of chunk unnamed-chunk-74](assets/fig/unnamed-chunk-74.png) 
 
 ---
 ### Log scales
@@ -2348,7 +2354,7 @@ ggplot(diamonds, aes(price, carat)) + geom_point()
 ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
 ```
 
-![plot of chunk unnamed-chunk-75](assets/fig/unnamed-chunk-75-1.png) 
+![plot of chunk unnamed-chunk-75](assets/fig/unnamed-chunk-75.png) 
 
 Scales begin with `scale_`, and are not only for continuous variables: also `datetime`, `shape`, `colour`, etc
 
@@ -2362,7 +2368,7 @@ Similar to histogram
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
 ```
 
-![plot of chunk unnamed-chunk-76](assets/fig/unnamed-chunk-76-1.png) 
+![plot of chunk unnamed-chunk-76](assets/fig/unnamed-chunk-76.png) 
 
 Note the legend for each mapping!
 
@@ -2386,7 +2392,7 @@ Try lowering opacity
 ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
 ```
 
-![plot of chunk unnamed-chunk-77](assets/fig/unnamed-chunk-77-1.png) 
+![plot of chunk unnamed-chunk-77](assets/fig/unnamed-chunk-77.png) 
 
 
 ---
@@ -2399,7 +2405,7 @@ Try mapping the inverse of a variable to opacity.
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
 ```
 
-![plot of chunk unnamed-chunk-78](assets/fig/unnamed-chunk-78-1.png) 
+![plot of chunk unnamed-chunk-78](assets/fig/unnamed-chunk-78.png) 
 
 
 ---
@@ -2412,7 +2418,7 @@ Shake the points around a little bit.
 ggplot(diamonds, aes(price, carat)) + geom_jitter()
 ```
 
-![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79-1.png) 
+![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79.png) 
 
 
 ---
@@ -2426,7 +2432,7 @@ library(hexbin)
 ggplot(diamonds, aes(price, carat)) + geom_hex()
 ```
 
-![plot of chunk unnamed-chunk-80](assets/fig/unnamed-chunk-80-1.png) 
+![plot of chunk unnamed-chunk-80](assets/fig/unnamed-chunk-80.png) 
 
 
 ---
@@ -2439,7 +2445,7 @@ Smooth with a 2d density
 ggplot(diamonds, aes(price, carat)) + stat_density2d()
 ```
 
-![plot of chunk unnamed-chunk-81](assets/fig/unnamed-chunk-81-1.png) 
+![plot of chunk unnamed-chunk-81](assets/fig/unnamed-chunk-81.png) 
 
 
 ---
@@ -2453,7 +2459,7 @@ states <- map_data("state")
 ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-82](assets/fig/unnamed-chunk-82-1.png) 
+![plot of chunk unnamed-chunk-82](assets/fig/unnamed-chunk-82.png) 
 
 ---
 ### The world is your oyster
@@ -2464,7 +2470,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ggplot(map_data("world")) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-83](assets/fig/unnamed-chunk-83-1.png) 
+![plot of chunk unnamed-chunk-83](assets/fig/unnamed-chunk-83.png) 
 
 ---
 ### What's the point?
@@ -2477,7 +2483,7 @@ m <- ggplot(map_data("state"), aes(x=long, y=lat)) + geom_polygon(aes(group=grou
 m + geom_point(data=ucs, colour="red", size=5)
 ```
 
-![plot of chunk unnamed-chunk-84](assets/fig/unnamed-chunk-84-1.png) 
+![plot of chunk unnamed-chunk-84](assets/fig/unnamed-chunk-84.png) 
 
 
 ---
@@ -2538,13 +2544,13 @@ oneSampTest.0
 ## 	One Sample t-test
 ## 
 ## data:  oneSampData
-## t = -0.8977, df = 99, p-value = 0.3715
+## t = -0.0571, df = 99, p-value = 0.9546
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.3043837  0.1147565
+##  -0.2136  0.2016
 ## sample estimates:
-##   mean of x 
-## -0.09481361
+## mean of x 
+## -0.005971
 ```
 
 
@@ -2586,13 +2592,13 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ## 	Welch Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -14.2813, df = 70.951, p-value < 2.2e-16
+## t = -14.18, df = 47.96, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.823269 -2.886452
+##  -3.968 -2.983
 ## sample estimates:
 ## mean of x mean of y 
-##  2.336191  5.691052
+##     2.190     5.665
 ```
 
 
@@ -2609,13 +2615,13 @@ t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 ## 	Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -13.5614, df = 78, p-value < 2.2e-16
+## t = -15.29, df = 78, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.847362 -2.862359
+##  -3.928 -3.023
 ## sample estimates:
 ## mean of x mean of y 
-##  2.336191  5.691052
+##     2.190     5.665
 ```
 
 
@@ -2632,13 +2638,13 @@ t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assumption: unequal varianc
 ## 	Paired t-test
 ## 
 ## data:  Samp1 and Samp2[1:30]
-## t = -13.5029, df = 29, p-value = 4.895e-14
+## t = -12.22, df = 29, p-value = 5.871e-13
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.990050 -2.940333
+##  -4.063 -2.897
 ## sample estimates:
 ## mean of the differences 
-##               -3.465192
+##                   -3.48
 ```
 
 
@@ -2659,7 +2665,7 @@ str(myDF)
 
 ```
 ## 'data.frame':	30 obs. of  2 variables:
-##  $ y    : num  26.1 24.7 23.3 26.2 24.5 24.8 24.5 24.7 24.5 25.5 ...
+##  $ y    : num  24.1 25.4 24.4 25.2 25.4 24.4 24.1 24.7 25.6 25.4 ...
 ##  $ group: Factor w/ 3 levels "1","2","3": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
@@ -2677,10 +2683,10 @@ str(myANOVA) # see what is
 ```
 ## Classes 'anova' and 'data.frame':	2 obs. of  5 variables:
 ##  $ Df     : int  2 27
-##  $ Sum Sq : num  515.4 22.5
-##  $ Mean Sq: num  257.725 0.834
-##  $ F value: num  309 NA
-##  $ Pr(>F) : num  2.47e-19 NA
+##  $ Sum Sq : num  495.6 25.1
+##  $ Mean Sq: num  247.78 0.93
+##  $ F value: num  267 NA
+##  $ Pr(>F) : num  1.67e-18 NA
 ##  - attr(*, "heading")= chr  "Analysis of Variance Table\n" "Response: y"
 ```
 
@@ -2732,7 +2738,7 @@ myReg # summary(myReg)
 ## 
 ## Coefficients:
 ## (Intercept)    education       income        women  
-##   -6.794334     4.186637     0.001314    -0.008905
+##    -6.79433      4.18664      0.00131     -0.00891
 ```
 
 ```r
@@ -2756,9 +2762,9 @@ head(myReg$fitted.values)
 
 ```
 ##  gov.administrators    general.managers         accountants 
-##            64.21688            78.49167            58.70723 
+##               64.22               78.49               58.71 
 ## purchasing.officers            chemists          physicists 
-##            52.58065            65.34814            73.12756
+##               52.58               65.35               73.13
 ```
 
 ```r
@@ -2767,9 +2773,9 @@ head(myReg$residuals) # y - y.hat
 
 ```
 ##  gov.administrators    general.managers         accountants 
-##            4.583116           -9.391670            4.692768 
+##               4.583              -9.392               4.693 
 ## purchasing.officers            chemists          physicists 
-##            4.219349            8.151861            4.472439
+##               4.219               8.152               4.472
 ```
   
 
@@ -2792,7 +2798,7 @@ head(myReg$residuals) # y - y.hat
 qqPlot(myReg, main = "QQ Plot")
 ```
 
-![plot of chunk unnamed-chunk-95](assets/fig/unnamed-chunk-95-1.png) 
+![plot of chunk unnamed-chunk-95](assets/fig/unnamed-chunk-95.png) 
   
 
 ---
@@ -2804,7 +2810,7 @@ qqPlot(myReg, main = "QQ Plot")
 spreadLevelPlot(myReg)
 ```
 
-![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96-1.png) 
+![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96.png) 
   
 
 
