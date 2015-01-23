@@ -32,30 +32,20 @@ library(ggplot2)
 
 ## Introduction
 
-2) Each session will include:
-  + Lecture: about 1 hr
-  + Break: 10 minutes
+2) We are going to work in pairs. Please find a partner. 
 
-
-3) We are going to work in pairs. Please find a partner. 
-
-
-4) Feel free to ask questions anytime during lecture.
+3) Feel free to ask questions anytime during lectures.
 
 5) To access this presentation and the codes used during the workshop please visit:
-  + https://github.com/SepehrAkhavan/IntroR_Workshop
-  + http://sepehrakhavan.github.io/IntroR_Workshop/#1
+  + http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1
 
 ---
 
 ## Session 1 - Agenda
 
-1. Overview and History of R
-2. Resources in Learning R and How to get Help?
-3. RStudio
-4. Data Types in R
-5. Subsetting in R
-
+1. RStudio
+2. Data Types in R
+3. Subsetting in R
 
 ---
 
@@ -75,72 +65,7 @@ library(ggplot2)
   + everything in R is considered as an object!
 
 
----
-
-## History of R:
-
-+ R created by Ross Ihaka and Robert Gentleman in 1991 in New Zealand
-  + For more info please read: Ihaka, Ross, and Robert Gentleman. "R: a language for data analysis and graphics." Journal of computational and graphical statistics 5.3 (1996): 299-314. 
-
-+ In 1996, the first R public mailing lists were created.
-  + More info on R mailing lists: http://www.r-project.org/mail.html
-
-+ In 1997, The R core team, with write access to the R source, was formed:
-  + More info on the core team: http://www.r-project.org/contributors.html
-
-+ In 2004, the first useR! conference was in Vienna, Austria.
-
-+ In Feb 2011, the first version of RStudio was released.
-
-
----
-
-## Online Resources to Learn R:
-
-> 1. Very useful resources available on **The Comprehensive R Archive Network** (CRAN)
-  + please visit: http://cran.us.r-project.org
-
-> 2. R built-in facility:
-  + try ?lm, help(lm) in R console
-
-> 3. There are many free tutorials available online:
-  + Quick R: http://www.statmethods.net/
-  + R-Twotorials: http://www.twotorials.com/
-  + UCLA Academy Technology Services: http://www.ats.ucla.edu/stat/r/
-  
-> 4. R-Bloggers (http://www.r-bloggers.com/): is a central hub (e.g: A blog aggregator) of content collected from bloggers who write about R (in English). 
-
-
----
-
-## Useful Books in learning R:
-
-1. Chambers(1998). Programming with Data, Springer.
-
-2. Venables & Ripley (2000). S Programming, Springer.
-
-3. Chambers (2008). Software for Data Analysis, Springer. (highly recommended)
-
-4. More resources available at: http://www.r-project.org/doc/bib/R-books.html
-
----
-
-## How to get help in R:
-
-1. Simply use the built-in help function in R
-  + example: ?lm, help(lm)
-  
-2. R mailing lists: r-help and r-devel
-  + For more info: https://stat.ethz.ch/mailman/listinfo/r-help
-  + How to ask good questions: http://www.r-project.org/posting-guide.html
-
-3. Use Q&A websites in particular:
-  + stackoverflow (http://stackoverflow.com): for programming related questions.
-  + crossValidated (http://stats.stackexchange.com): for Stats related questions.
-  
-4. Google :)  
-
----
+--- 
 
 ## R Studio:
 
@@ -162,7 +87,7 @@ library(ggplot2)
   + Character
   
 2. Everything in R is object. Objects can have some attributes.
-  + names, dimension, class, length are some possible attributes
+  + names, dimension, length are some possible attributes
 
 ---
 
@@ -665,8 +590,8 @@ Main functions for writing data from R:
 
 ## read.table():
 
-```{r echo = TRUE}
-irisFile <- read.table(file = "/Users/sepehrakhavan/Documents/Statistics/Stat Courses/DataScience_Dr.PadhraicSmyth/RWorkShop_Nov_2014/SupportingFiles/iris", header = TRUE)
+```{r echo = TRUE, eval=TRUE}
+irisFile <- read.table(file = "/Users/sepehrakhavan/Documents/R_Workshop/iris.csv", header = TRUE)
 
 head(irisFile)
 ```
@@ -700,42 +625,9 @@ write.table(irisFile, file = "path/to/the/file")
 ## Loops:
 
 + There are 3 ways in R to write loops:
-  + repeat
-  + while
-  + for
-
----
-
-### repeat:
-
-+ The repeat statement causes repeated evaluation of the body until a break is specifically requested.
-+ The body of the repeat statement should include:
-  + statements to do computation
-  + conditions on when to stop
-
-```{r echo = T}
-i <- 1 
-repeat {
-  print(paste("cycle #", i, sep = "")) 
-  i=i+1
-  if (i >= 2)
-  break 
-}
-```
-
----
-
-### while:
-
-+ while loops start by testing a condition. If the condition is true, while executes the body:
-
-```{r echo = T}
-i <- 1
-while (i < 2) {
-  print(paste("cycle #", i, sep = ""))
-  i <- i + 1 
-}
-```
+  + for 
+  + repeat (skipped!)
+  + while (skipped!)
 
 ---
 
@@ -747,22 +639,6 @@ for(i in 1:4){
   i <- i + 1 
 }
 ```
-
----
-
-## next:
-
-+ next is useful in skipping an iteration of a loop:
-```{r echo = T}
-for(i in 1:4){
-  if (i == 3){
-    next
-  }
-  print(paste("cycle #", i, sep = ""))
-  i <- i + 1 
-}
-```
-
 
 ---
 
@@ -819,8 +695,7 @@ There are some terms which sometimes get confused and should be clarified:
 2. Library: A directory containing installed packages
 3. Repository: A website providing packages for installation
 4. Source: The original version of a package with human-readable text and code
-5. Binary: A compiled version of a package with computer-readable text and code, may work only on a specific platform
-6. Base packages: Part of the R source tree, maintained by R Core
+5. Base packages: Part of the R source tree, maintained by R Core
 
 + for more info on how R packages are developed, please read: "Creating R Packages: A Tutorial" (Friedrich Leisch)
   + http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf
@@ -830,7 +705,7 @@ There are some terms which sometimes get confused and should be clarified:
 
 ## How to install a package in R:
 
-There are two ways to install a package in R:
+There are three main ways to install a package in R:
 
 1. Installing from CRAN: install a package directly from the repository
   + Using R studio: tools/install packages
@@ -839,9 +714,31 @@ There are two ways to install a package in R:
 2. Installing from Source: In this method, you should first download the add-on R package and use the following unix command in the console to install the package:
   + R CMD INSTALL packageName -l path/to/your/Rpackage/Directory
 
+3. Installing from a version control (Github): 
+  + Check-out https://github.com/hadley/devtools
+
 + Once you install a package, you need to load it into R using the function library()
 
 
+---
+
+## Popular Packages in R:
+
+1. To visualize data:
+  + ggplot2: to create beautiful graphics
+  + googleVis: to use Google Chart tools
+  
+2. To report results:
+  + shiny: to create interactive web-based apps
+  + knitr: to combine R codes and Latex/Markdown codes
+  + slidify: to build HTML 5 slide shows
+  
+3. To write high-performance R code:
+  + Rcpp: to write R functions that call C++ code
+  + data.table: to organize datasets for fast operations
+  + parallel: to use parallel processing in R
+  
+  
 ---
 
 ## Calling a function in R
@@ -905,41 +802,6 @@ myMin <- function(a, b, c){
 
 myMin(10, 20, 30)
 myMin(10, NA, 20) # ? how to fix this so it returns 10
-```
-
-
----
-
-## Writing a function for 2-sample t-test
-```{r echo=TRUE, eval=TRUE}
-myTtest <- function(vec1, vec2) {
-    # my T-Test function / Assuming constant variance + Two-Sided T Test
-    n1 <- length(vec1)
-    n2 <- length(vec2)
-    miu1 <- mean(vec1)
-    miu2 <- mean(vec2)
-    var1 <- var(vec1)
-    var2 <- var(vec2)
-    pooledVar <- ((n1 - 1) * (var1) + (n2 - 1) * (var2))/(n1 + n2 - 2)
-    testStat <- (miu1 - miu2)/(sqrt(pooledVar * (1/n1 + 1/n2)))
-    df <- n1 + n2 - 2
-    pval <- 2 * pt(abs(testStat), df, lower.tail = FALSE)
-    rslt <- c(`Mean of Vec1` = miu1, `Mean of Vec2` = miu2, testStat = testStat,
-        df = df, pval = pval)
-    return(rslt)
-}
-```
-
-
----
-
-## Writing a function for 2-sample t-test
-```{r echo=TRUE, eval=TRUE}
-y1 <- rnorm(10, mean = 0, sd = 1); y2 <- rnorm(10, mean = 0, sd = 1)
-myTtest(y1, y2)
-
-# Using R's built-in T-Test:
-# t.test(y1, y2, var.equal = TRUE)  # ? Test this on your own!
 ```
 
 
@@ -1188,7 +1050,7 @@ str(splitData)
 ## Exercises: Analysis for Auto-Mpg Data
 
 1. Dataset: Auto-Mpg Data from UCI Machine Learning Repository (some modification is done on the data for the exercise of this workshop)
-2. Download:   https://github.com/UCIDataScienceInitiative/IntroR_Workshop/data/
+2. Download:https://github.com/UCIDataScienceInitiative/IntroR_Workshop/tree/gh-pages/data
 3. Variables (names saved in auto-mpg-names.txt): 
   + continuous: mpg, displacement, horsepower, weight, acceleration
   + discrete: cylinders, model year, origin
@@ -1286,6 +1148,7 @@ EX8. (optional) Exercises for *apply() and split()
 
 1. Useful Matrix Functions
 2. Statistical Distributions in R
+3. Intro to plotting in R
 
 ---
 
@@ -1395,6 +1258,57 @@ rnorm(10, mean = 0, sd = 1)
 x <- seq(from = -3, to = 3, by = 0.05)
 y <- dnorm(x, mean = 0, sd = 1)
 plot(x, y, type = "l")
+```
+
+---
+
+## Plotting Systems in R
+
+There are three main plotting systems in R:
+  + Base Plotting System
+  + ggplot2
+  + Lattice
+
+---
+
+## Base System (intro)
+
+In Base plotting system:
+  + We start with a blank canvas
+  + by calling a plot function, we start our plot
+  + Using annotation functions we can add more elements to our plot
+  
+In general, plotting functions under the base system are:
+  + Functions to generate plots: plot()
+  + Functions to annotate plots: text(), lines(), points()
+
+
+---
+
+## Base Plotting System - Histogram
+
+```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
+x <- rnorm(100)
+hist(x)
+```
+
+---
+
+## Base Plotting System - Scatter Plot
+```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
+x <- rnorm(100)
+y <- rnorm(100)
+plot(x, y)
+```
+
+---
+
+## Base Plotting System - BoxPlot
+```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
+x <- rnorm(100, 0, 1)
+y <- rnorm(100, 1, 1)
+z <- rnorm(100, 2, 2)
+boxplot(x, y , z)
 ```
 
 ---
@@ -1638,216 +1552,7 @@ m + geom_point(data=ucs, colour="red", size=5)
 
 ---
 
-## Time for Lunch Break for 10 Minutes :)
-
----
-
-## Session 4 - Agenda
-
-1. Plotting Systems in R
-2. Preparing Data for ggplot2
-3. ggplot2 simple examples
-4. ggplot2 philosophy
-5. more interesting ggplot2 examples
-
----
-
-## Plotting Systems in R
-
-There are three popular plotting systems in R:
-  + Base Plotting System (bultin to R)
-  + Lattice
-  + ggplot2
-
-We'll focus entirely on ggplot2.
-
----
-
-### Base System
-
-Ugly, but easy to use and always available.
-
-```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
-hist(rnorm(100,4,20))
-```
-
----
-
-### Hello, ggplot2
-
-+ ggplot2 is a very popular graphics system written by Hadley Wickham
-+ implementation of Leland Wilkinson' Grammar of Graphics
-
-----
-
-### Preliminary: reshape2
-
-+ data must have right "shape" before plotting
-+ + (although this is very useful tool to have, generally)
-+ just 2 functions: `melt` and `cast`
-+ `melt` turns wide data into long data
-+ `cast` turns long data
-
-
----
-
-### Example: airquality
-
-```{r}
-names(airquality) <- tolower(names(airquality))
-head(airquality)
-# vs. 
-head(melt(airquality))
-# vs.
-head(melt(airquality, id.vars = c("month", "day")))
-```
-
-
----
-
-
-## Graphics Devices in R
-
-+ Graphics devices are places where plots in R appear:
-  + screen device
-  + file device
-
-+ Screen Devices:
-  + quartz() (Mac OS), x11() (Unix/Linux), windows() (Windows)
-
-+ File Devices:
-  + pdf(), png(), svg(), ...
-  
-+ By default, plots are sent to the screen device
-  
-+ for more info, please see ?Devices
-
----
-
-## Graphics Devices in R
-
-+ There is nothing special to do to use the screen device
-+ For file devices:
-  + Graphics device of interest should be opened
-  + Plotting codes
-  + closing the device using dev.off()
-
-```{r echo=TRUE, eval=FALSE}
-x <- rnorm(100)
-pdf(file = "path/to/file.pdf")
-hist(x)
-dev.off()
-```
-
----
-
-## File Devices
-
-+ File devices are in two main types:
-  + Vector formats: pdf(), svg(), postscript()
-  + Bitmap formats: png(), jpeg(), bmp()
-
-
----
-
-## Lattice Plotting System
-+ In Lattice plotting system, plotting is a one-step process with a single function call
-+ Important functions:
-  + xyplot(): to create scatterplot
-  + bwplot(): to create boxplot
-  + histogram()
-  + stripplot(): boxplot with overlaid data points
-
-
----
-
-### Lattice Scatter plot
-```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height=5}
-library(lattice)
-data(diamonds)
-diamonds_subset <- diamonds[sample(1:nrow(diamonds),500),]
-xyplot(price ~ carat, data = diamonds_subset)
-```
-
-
----
-
-### Lattice Scatterplot across 
-```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height = 5,fig.width = 12}
-xyplot(price ~ carat | cut, data = diamonds_subset, layout = c(5,1))
-```
-
-
----
-
-### Lattice Scatterplot with Linear fit
-```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height = 5,fig.width = 12}
-xyplot(price ~ carat | cut, panel = function(x, y, ...){
-  panel.xyplot(x, y, ...) # Here we call the default panel function
-  panel.lmline(x, y, col = "red") # We overlay lm fit
-}, data = diamonds_subset, layout = c(5,1))
-```
-
-
----
-
-## ggplot2
-+ As Hadley Wickham explained in his ggplot2 book: ggplot2 is a package to "shorten the distance from mind to page"
-+ Here we briefly mention some examples. For more information please visit: http://ggplot2.org
-+ We focus on qplot() function to:
-  + create scatter plot
-  + create histogram
-
-
----
-
-### qplot()
-+ qplot() stands for quick plot
-+ it's analogous to plot() in the base package
-+ main elements of each plot are:
-  + aesthetics: refers to size, shape, color, ...
-  + geoms: refers to points, lines, bars, ...
-  + for a complete list of aesthetics and geoms as well as other elements, please visit: http://docs.ggplot2.org/current/  
-  
-
----
-
-### qplot() - Scatterplot
-```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height=5}
-library(ggplot2)
-qplot(carat, price, data = diamonds_subset)
-```
-  
-
----
-
-### qplot() - Scatterplot
-```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height=5}
-qplot(carat, price, data = diamonds_subset, col = cut)
-```
-  
-
----
-
-### qplot() - Facets
-```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height=5, fig.width=12}
-qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
-```
-
-  
-
----
-
-### qplot() - Histogram
-```{r echo=TRUE, warning=FALSE, message=FALSE, fig.align='center', fig.height=5}
-qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
-```
-
-
----
-
 ## Time for Break for 10 Minutes :)
-
 
 ---
 
@@ -2050,8 +1755,8 @@ EX12. Scatterplot of mpg vs cylinders to check what the relationship is like, an
 
 ---
 
-
 EX13. Scatterplot matrix 
+  + Apply function pairs() or ggpairs() on the data to create the scatterplot matrix. If you use ggpairs(), you need to install and load R package "GGally".
   + to check the relationship between any pair of variable
   + to check for linearity assumption and homogeneity assumption
   + If violated, data transformation will be needed when building a linear regression model
@@ -2065,10 +1770,7 @@ EX14. Data transformation
     + (b) a factor version of cylinders.
     
 
-
 ---
-
-
 
 EX15. Statistical analysis  
   + 15.1 ANOVA for origin. To formally test whether mean mpg is different across cars of the three origins. Use significance level 0.05. First build a linear regression for mpg against origin. And then use both ANOVA() and summary() to check the results. 
@@ -2081,3 +1783,50 @@ EX15. Statistical analysis
 ---
 
 EX16. (optional) An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens 
+
+---
+
+## Online Resources to Learn R:
+
+> 1. Very useful resources available on **The Comprehensive R Archive Network** (CRAN)
+  + please visit: http://cran.us.r-project.org
+
+> 2. R built-in facility:
+  + try ?lm, help(lm) in R console
+
+> 3. There are many free tutorials available online:
+  + Quick R: http://www.statmethods.net/
+  + R-Twotorials: http://www.twotorials.com/
+  + UCLA Academy Technology Services: http://www.ats.ucla.edu/stat/r/
+  
+> 4. R-Bloggers (http://www.r-bloggers.com/): is a central hub (e.g: A blog aggregator) of content collected from bloggers who write about R (in English). 
+
+
+---
+
+## Useful Books in learning R:
+
+1. Chambers(1998). Programming with Data, Springer.
+
+2. Venables & Ripley (2000). S Programming, Springer.
+
+3. Chambers (2008). Software for Data Analysis, Springer. (highly recommended)
+
+4. More resources available at: http://www.r-project.org/doc/bib/R-books.html
+
+---
+
+## How to get help in R:
+
+1. Simply use the built-in help function in R
+  + example: ?lm, help(lm)
+  
+2. R mailing lists: r-help and r-devel
+  + For more info: https://stat.ethz.ch/mailman/listinfo/r-help
+  + How to ask good questions: http://www.r-project.org/posting-guide.html
+
+3. Use Q&A websites in particular:
+  + stackoverflow (http://stackoverflow.com): for programming related questions.
+  + crossValidated (http://stats.stackexchange.com): for Stats related questions.
+  
+4. Google :)  
