@@ -21,7 +21,7 @@ github:
 1) The class will include 5 sessions: 
   + Session 1 (9-10:20): Data Types in R 
   + Session 2 (10:30-12): Control Structures and Functions
-  + Session 3 (12:30-1:50): Statistical Distributions in R
+  + Session 3 (12:30-1:50): Data Exploration in R
   + Session 4 (2-3:20): Plotting and Data Visualization in R 
   + Session 5 (3:30-5): Statistical Analysis in R
 
@@ -30,27 +30,19 @@ github:
 
 ## Introduction
 
-2) Each session will include:
-  + Lecture: about 1 hr
-  + Break: 10 minutes
+2) We are going to work in pairs. Please find a partner. 
 
 
-3) We are going to work in pairs. Please find a partner. 
+3) Feel free to ask questions anytime during lecture.
 
-
-4) Feel free to ask questions anytime during lecture.
-
-5) To access this presentation and the codes used during the workshop please visit:
-  + https://github.com/SepehrAkhavan/IntroR_Workshop
-  + http://sepehrakhavan.github.io/IntroR_Workshop/#1
+4) To access this presentation and the codes used during the workshop please visit:
+   http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1
 
 ---
 
 ## Session 1 - Agenda
 
-1. Overview and History of R
-2. Resources in Learning R and How to get Help?
-3. RStudio
+1. RStudio
 4. Data Types in R
 5. Subsetting in R
 
@@ -71,72 +63,6 @@ github:
 
 + R is an object-oriented programming language 
   + everything in R is considered as an object!
-
-
----
-
-## History of R:
-
-+ R created by Ross Ihaka and Robert Gentleman in 1991 in New Zealand
-  + For more info please read: Ihaka, Ross, and Robert Gentleman. "R: a language for data analysis and graphics." Journal of computational and graphical statistics 5.3 (1996): 299-314. 
-
-+ In 1996, the first R public mailing lists were created.
-  + More info on R mailing lists: http://www.r-project.org/mail.html
-
-+ In 1997, The R core team, with write access to the R source, was formed:
-  + More info on the core team: http://www.r-project.org/contributors.html
-
-+ In 2004, the first useR! conference was in Vienna, Austria.
-
-+ In Feb 2011, the first version of RStudio was released.
-
-
----
-
-## Online Resources to Learn R:
-
-> 1. Very useful resources available on **The Comprehensive R Archive Network** (CRAN)
-  + please visit: http://cran.us.r-project.org
-
-> 2. R built-in facility:
-  + try ?lm, help(lm) in R console
-
-> 3. There are many free tutorials available online:
-  + Quick R: http://www.statmethods.net/
-  + R-Twotorials: http://www.twotorials.com/
-  + UCLA Academy Technology Services: http://www.ats.ucla.edu/stat/r/
-  
-> 4. R-Bloggers (http://www.r-bloggers.com/): is a central hub (e.g: A blog aggregator) of content collected from bloggers who write about R (in English). 
-
-
----
-
-## Useful Books in learning R:
-
-1. Chambers(1998). Programming with Data, Springer.
-
-2. Venables & Ripley (2000). S Programming, Springer.
-
-3. Chambers (2008). Software for Data Analysis, Springer. (highly recommended)
-
-4. More resources available at: http://www.r-project.org/doc/bib/R-books.html
-
----
-
-## How to get help in R:
-
-1. Simply use the built-in help function in R
-  + example: ?lm, help(lm)
-  
-2. R mailing lists: r-help and r-devel
-  + For more info: https://stat.ethz.ch/mailman/listinfo/r-help
-  + How to ask good questions: http://www.r-project.org/posting-guide.html
-
-3. Use Q&A websites in particular:
-  + stackoverflow (http://stackoverflow.com): for programming related questions.
-  + crossValidated (http://stats.stackexchange.com): for Stats related questions.
-  
-4. Google :)  
 
 ---
 
@@ -555,11 +481,11 @@ colMat
 ```
 
 ```
-##      vec1 vec2        vec3
-## [1,]    1   94 -1.42114867
-## [2,]    2   77 -0.32070110
-## [3,]    3   19 -0.02790357
-## [4,]    4    4 -0.87108024
+##      vec1 vec2       vec3
+## [1,]    1   97 -0.2232147
+## [2,]    2   65  1.4498167
+## [3,]    3   71  0.7590436
+## [4,]    4   31  1.0309793
 ```
 
 ---
@@ -576,10 +502,10 @@ rowMat
 ```
 
 ```
-##            [,1]       [,2]       [,3]       [,4]
-## vec1  1.0000000  2.0000000  3.0000000  4.0000000
-## vec2 56.0000000 21.0000000  3.0000000 36.0000000
-## vec3 -0.1681922 -0.9392866 -0.7873606 -0.2582183
+##            [,1]     [,2]       [,3]      [,4]
+## vec1  1.0000000  2.00000  3.0000000  4.000000
+## vec2 93.0000000 90.00000 86.0000000 91.000000
+## vec3  0.4642409 -1.65771 -0.4921985 -1.085812
 ```
 
 ---
@@ -644,12 +570,12 @@ head(data)
 
 ```
 ##   studentID score gender
-## 1    S#7350    31   male
-## 2    S#6738     6 female
-## 3    S#7138   100 female
-## 4    S#7332    62 female
-## 5    S#7052    30 female
-## 6    S#7241    50 female
+## 1    S#6488     7 female
+## 2    S#7339    64 female
+## 3    S#6486    72   male
+## 4    S#6954    25 female
+## 5    S#7299    21 female
+## 6    S#7056    56 female
 ```
 
 ---
@@ -1037,7 +963,7 @@ quakes[1:10,]
 1. Vectorized Operations in R
 2. Reading and Writing in R
 3. Control Structure
-4. Functions & Packages
+4. R Packages and Functions
 
 ---
 
@@ -1145,25 +1071,18 @@ Main functions for writing data from R:
 
 ```r
 irisFile <- read.table(file = "/Users/sepehrakhavan/Documents/Statistics/Stat Courses/DataScience_Dr.PadhraicSmyth/RWorkShop_Nov_2014/SupportingFiles/iris", header = TRUE)
-```
 
-```
-## Warning in file(file, "rt"): cannot open file
-## '/Users/sepehrakhavan/Documents/Statistics/Stat
-## Courses/DataScience_Dr.PadhraicSmyth/RWorkShop_Nov_2014/SupportingFiles/iris':
-## No such file or directory
-```
-
-```
-## Error in file(file, "rt"): cannot open the connection
-```
-
-```r
 head(irisFile)
 ```
 
 ```
-## Error in head(irisFile): object 'irisFile' not found
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
 ```
 
 + to make read.table() run faster:
@@ -1196,52 +1115,9 @@ write.table(irisFile, file = "path/to/the/file")
 ## Loops:
 
 + There are 3 ways in R to write loops:
-  + repeat
-  + while
-  + for
-
----
-
-### repeat:
-
-+ The repeat statement causes repeated evaluation of the body until a break is specifically requested.
-+ The body of the repeat statement should include:
-  + statements to do computation
-  + conditions on when to stop
-
-
-```r
-i <- 1 
-repeat {
-  print(paste("cycle #", i, sep = "")) 
-  i=i+1
-  if (i >= 2)
-  break 
-}
-```
-
-```
-## [1] "cycle #1"
-```
-
----
-
-### while:
-
-+ while loops start by testing a condition. If the condition is true, while executes the body:
-
-
-```r
-i <- 1
-while (i < 2) {
-  print(paste("cycle #", i, sep = ""))
-  i <- i + 1 
-}
-```
-
-```
-## [1] "cycle #1"
-```
+  + for 
+  + while (skipped!)
+  + repeat (skipped!)
 
 ---
 
@@ -1327,9 +1203,9 @@ age.df[1:3,]
 
 ```
 ##   age ageCat
-## 1  91    Old
-## 2  74    Old
-## 3   1  Young
+## 1  72    Old
+## 2  79    Old
+## 3  96    Old
 ```
 
 ---
@@ -1338,7 +1214,7 @@ age.df[1:3,]
 
 1. R language has many built-in functions
 2. Each function has a name followed by ()
-3. Arguments of a function should mention within parentheses
+3. Arguments of a function are put within parentheses
 4. R packages are a comfortable way to maintain collections of R functions and data sets
 5. Packages allow for easy, transparent and cross-platform extension of the R base system
 
@@ -1412,7 +1288,7 @@ sample(sampSpace, 1) # arguments with default values can be omitted
 ```
 
 ```
-## [1] 2
+## [1] 5
 ```
 
 ```r
@@ -1420,7 +1296,7 @@ sample(size = 1, x = sampSpace) # no need to remember the order
 ```
 
 ```
-## [1] 6
+## [1] 1
 ```
 
 ```r
@@ -1428,7 +1304,7 @@ sample(size = 1, sampSpace)
 ```
 
 ```
-## [1] 5
+## [1] 2
 ```
 
 
@@ -1476,50 +1352,6 @@ myMin(10, NA, 20) # ? how to fix this so it returns 10
 
 ```
 ## [1] NA
-```
-
-
----
-
-## Writing a function for 2-sample t-test
-
-```r
-myTtest <- function(vec1, vec2) {
-    # my T-Test function / Assuming constant variance + Two-Sided T Test
-    n1 <- length(vec1)
-    n2 <- length(vec2)
-    miu1 <- mean(vec1)
-    miu2 <- mean(vec2)
-    var1 <- var(vec1)
-    var2 <- var(vec2)
-    pooledVar <- ((n1 - 1) * (var1) + (n2 - 1) * (var2))/(n1 + n2 - 2)
-    testStat <- (miu1 - miu2)/(sqrt(pooledVar * (1/n1 + 1/n2)))
-    df <- n1 + n2 - 2
-    pval <- 2 * pt(abs(testStat), df, lower.tail = FALSE)
-    rslt <- c(`Mean of Vec1` = miu1, `Mean of Vec2` = miu2, testStat = testStat,
-        df = df, pval = pval)
-    return(rslt)
-}
-```
-
-
----
-
-## Writing a function for 2-sample t-test
-
-```r
-y1 <- rnorm(10, mean = 0, sd = 1); y2 <- rnorm(10, mean = 0, sd = 1)
-myTtest(y1, y2)
-```
-
-```
-## Mean of Vec1 Mean of Vec2     testStat           df         pval 
-##   -0.2533165   -0.3306688    0.1932200   18.0000000    0.8489502
-```
-
-```r
-# Using R's built-in T-Test:
-# t.test(y1, y2, var.equal = TRUE)  # ? Test this on your own!
 ```
 
 
@@ -1609,7 +1441,7 @@ str(genderF)
 ```
 
 ```
-##  Factor w/ 2 levels "Female","Male": 1 2 1 1 1 2 1 1 2 1 ...
+##  Factor w/ 2 levels "Female","Male": 2 2 2 1 1 2 1 2 1 2 ...
 ```
 
 
@@ -1855,12 +1687,12 @@ head(HeightDF)
 
 ```
 ##     heigth gender
-## 1 177.0585      M
-## 2 179.8865      M
-## 3 178.5185      M
-## 4 181.2018      M
-## 5 182.2658      M
-## 6 183.3044      M
+## 1 179.9530      M
+## 2 175.1204      M
+## 3 185.5293      M
+## 4 180.8452      M
+## 5 177.7442      M
+## 6 186.0067      M
 ```
 
 ```r
@@ -1869,7 +1701,7 @@ tapply(HeightDF$heigth, HeightDF$gender, mean)
 
 ```
 ##        F        M 
-## 170.2188 180.4068
+## 170.2082 179.6986
 ```
 
 
@@ -1935,7 +1767,7 @@ str(HeightDF)
 
 ```
 ## 'data.frame':	200 obs. of  2 variables:
-##  $ heigth: num  177 180 179 181 182 ...
+##  $ heigth: num  180 175 186 181 178 ...
 ##  $ gender: Factor w/ 2 levels "F","M": 2 2 2 2 2 2 2 2 2 2 ...
 ```
 
@@ -1947,8 +1779,8 @@ str(splitData)
 
 ```
 ## List of 2
-##  $ F: num [1:100] 166 169 167 171 168 ...
-##  $ M: num [1:100] 177 180 179 181 182 ...
+##  $ F: num [1:100] 168 171 171 168 170 ...
+##  $ M: num [1:100] 180 175 186 181 178 ...
 ```
 
 
@@ -2206,7 +2038,7 @@ rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 ```
 
 ```
-##  [1] 3 6 4 7 5 6 7 6 5 4 3 2 6 5 4 3 9 7 7 6
+##  [1] 5 5 3 6 3 3 7 4 6 4 4 6 7 3 3 6 4 6 4 8
 ```
 
 
@@ -2281,8 +2113,8 @@ rnorm(10, mean = 0, sd = 1)
 ```
 
 ```
-##  [1]  0.3565506  0.2702092  1.3557388 -0.9839800 -1.0520069  0.4597677
-##  [7]  1.0691871  1.2049516 -0.0644890 -0.4889031
+##  [1] -0.7735307 -0.8198088 -0.3149976  0.3073127 -0.1390719 -0.7339548
+##  [7] -0.4427237 -0.3758955  0.4063727 -0.4696300
 ```
 
 
@@ -2297,7 +2129,7 @@ y <- dnorm(x, mean = 0, sd = 1)
 plot(x, y, type = "l")
 ```
 
-<img src="assets/fig/unnamed-chunk-70-1.png" title="plot of chunk unnamed-chunk-70" alt="plot of chunk unnamed-chunk-70" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-66-1.png" title="plot of chunk unnamed-chunk-66" alt="plot of chunk unnamed-chunk-66" style="display: block; margin: auto;" />
 
 ---
 
@@ -2336,13 +2168,13 @@ head(diamonds)
 ```
 
 ```
-##   carat       cut color clarity depth table price    x    y    z     alpha
-## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43  4.339255
-## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31  1.514811
-## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31  4.339255
-## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63 11.536110
-## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75 13.606709
-## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48  5.660624
+##   carat       cut color clarity depth table price    x    y    z
+## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
+## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31
+## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31
+## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63
+## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75
+## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48
 ```
 
 ---
@@ -2360,7 +2192,7 @@ ggplot(diamonds, aes(price)) + geom_histogram()
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-72](assets/fig/unnamed-chunk-72-1.png) 
+![plot of chunk unnamed-chunk-68](assets/fig/unnamed-chunk-68-1.png) 
 
 
 ---
@@ -2403,7 +2235,7 @@ m + geom_histogram(aes(fill=cut))
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-74](assets/fig/unnamed-chunk-74-1.png) 
+![plot of chunk unnamed-chunk-70](assets/fig/unnamed-chunk-70-1.png) 
 
 ---
 
@@ -2417,7 +2249,7 @@ m <- ggplot(diamonds, aes(price))
 m + geom_histogram(binwidth=100) + facet_grid(cut~color)
 ```
 
-![plot of chunk unnamed-chunk-75](assets/fig/unnamed-chunk-75-1.png) 
+![plot of chunk unnamed-chunk-71](assets/fig/unnamed-chunk-71-1.png) 
 
 
 ---
@@ -2447,7 +2279,7 @@ Note: There's no "scatterplot" function. Use `geom_point`.
 ggplot(diamonds, aes(price, carat)) + geom_point()
 ```
 
-![plot of chunk unnamed-chunk-76](assets/fig/unnamed-chunk-76-1.png) 
+![plot of chunk unnamed-chunk-72](assets/fig/unnamed-chunk-72-1.png) 
 
 ---
 ### Log scales
@@ -2458,7 +2290,7 @@ ggplot(diamonds, aes(price, carat)) + geom_point()
 ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
 ```
 
-![plot of chunk unnamed-chunk-77](assets/fig/unnamed-chunk-77-1.png) 
+![plot of chunk unnamed-chunk-73](assets/fig/unnamed-chunk-73-1.png) 
 
 Scales begin with `scale_`, and are not only for continuous variables: also `datetime`, `shape`, `colour`, etc
 
@@ -2472,7 +2304,7 @@ Similar to histogram
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
 ```
 
-![plot of chunk unnamed-chunk-78](assets/fig/unnamed-chunk-78-1.png) 
+![plot of chunk unnamed-chunk-74](assets/fig/unnamed-chunk-74-1.png) 
 
 Note the legend for each mapping!
 
@@ -2496,7 +2328,7 @@ Try lowering opacity
 ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
 ```
 
-![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79-1.png) 
+![plot of chunk unnamed-chunk-75](assets/fig/unnamed-chunk-75-1.png) 
 
 
 ---
@@ -2509,7 +2341,7 @@ Try mapping the inverse of a variable to opacity.
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
 ```
 
-![plot of chunk unnamed-chunk-80](assets/fig/unnamed-chunk-80-1.png) 
+![plot of chunk unnamed-chunk-76](assets/fig/unnamed-chunk-76-1.png) 
 
 
 ---
@@ -2522,7 +2354,7 @@ Shake the points around a little bit.
 ggplot(diamonds, aes(price, carat)) + geom_jitter()
 ```
 
-![plot of chunk unnamed-chunk-81](assets/fig/unnamed-chunk-81-1.png) 
+![plot of chunk unnamed-chunk-77](assets/fig/unnamed-chunk-77-1.png) 
 
 
 ---
@@ -2536,7 +2368,7 @@ library(hexbin)
 ggplot(diamonds, aes(price, carat)) + geom_hex()
 ```
 
-![plot of chunk unnamed-chunk-82](assets/fig/unnamed-chunk-82-1.png) 
+![plot of chunk unnamed-chunk-78](assets/fig/unnamed-chunk-78-1.png) 
 
 
 ---
@@ -2549,7 +2381,7 @@ Smooth with a 2d density
 ggplot(diamonds, aes(price, carat)) + stat_density2d()
 ```
 
-![plot of chunk unnamed-chunk-83](assets/fig/unnamed-chunk-83-1.png) 
+![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79-1.png) 
 
 
 ---
@@ -2559,27 +2391,11 @@ ggplot(diamonds, aes(price, carat)) + stat_density2d()
 
 ```r
 library(maps)
-```
-
-```
-## Error in library(maps): there is no package called 'maps'
-```
-
-```r
 states <- map_data("state")
-```
-
-```
-## Error: maps package required for this functionality. Please install and try again.
-```
-
-```r
 ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-```
-## Error in ggplot(states): object 'states' not found
-```
+![plot of chunk unnamed-chunk-80](assets/fig/unnamed-chunk-80-1.png) 
 
 ---
 ### The world is your oyster
@@ -2590,9 +2406,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ggplot(map_data("world")) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-```
-## Error: maps package required for this functionality. Please install and try again.
-```
+![plot of chunk unnamed-chunk-81](assets/fig/unnamed-chunk-81-1.png) 
 
 ---
 ### What's the point?
@@ -2602,19 +2416,10 @@ ggplot(map_data("world")) + geom_polygon(aes(x=long, y=lat, group = group), colo
 ```r
 ucs <- data.frame(lat=c(37.870007, 33.64945), long=c(-122.270501, -117.845707))
 m <- ggplot(map_data("state"), aes(x=long, y=lat)) + geom_polygon(aes(group=group))
-```
-
-```
-## Error: maps package required for this functionality. Please install and try again.
-```
-
-```r
 m + geom_point(data=ucs, colour="red", size=5)
 ```
 
-```
-## Error in eval(expr, envir, enclos): object 'price' not found
-```
+![plot of chunk unnamed-chunk-82](assets/fig/unnamed-chunk-82-1.png) 
 
 
 ---
@@ -2674,7 +2479,7 @@ Ugly, but easy to use and always available.
 hist(rnorm(100,4,20))
 ```
 
-<img src="assets/fig/unnamed-chunk-87-1.png" title="plot of chunk unnamed-chunk-87" alt="plot of chunk unnamed-chunk-87" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-83-1.png" title="plot of chunk unnamed-chunk-83" alt="plot of chunk unnamed-chunk-83" style="display: block; margin: auto;" />
 
 ---
 
@@ -2801,7 +2606,7 @@ diamonds_subset <- diamonds[sample(1:nrow(diamonds),500),]
 xyplot(price ~ carat, data = diamonds_subset)
 ```
 
-<img src="assets/fig/unnamed-chunk-90-1.png" title="plot of chunk unnamed-chunk-90" alt="plot of chunk unnamed-chunk-90" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-86-1.png" title="plot of chunk unnamed-chunk-86" alt="plot of chunk unnamed-chunk-86" style="display: block; margin: auto;" />
 
 
 ---
@@ -2812,7 +2617,7 @@ xyplot(price ~ carat, data = diamonds_subset)
 xyplot(price ~ carat | cut, data = diamonds_subset, layout = c(5,1))
 ```
 
-<img src="assets/fig/unnamed-chunk-91-1.png" title="plot of chunk unnamed-chunk-91" alt="plot of chunk unnamed-chunk-91" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-87-1.png" title="plot of chunk unnamed-chunk-87" alt="plot of chunk unnamed-chunk-87" style="display: block; margin: auto;" />
 
 
 ---
@@ -2826,7 +2631,7 @@ xyplot(price ~ carat | cut, panel = function(x, y, ...){
 }, data = diamonds_subset, layout = c(5,1))
 ```
 
-<img src="assets/fig/unnamed-chunk-92-1.png" title="plot of chunk unnamed-chunk-92" alt="plot of chunk unnamed-chunk-92" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-88-1.png" title="plot of chunk unnamed-chunk-88" alt="plot of chunk unnamed-chunk-88" style="display: block; margin: auto;" />
 
 
 ---
@@ -2859,7 +2664,7 @@ library(ggplot2)
 qplot(carat, price, data = diamonds_subset)
 ```
 
-<img src="assets/fig/unnamed-chunk-93-1.png" title="plot of chunk unnamed-chunk-93" alt="plot of chunk unnamed-chunk-93" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-89-1.png" title="plot of chunk unnamed-chunk-89" alt="plot of chunk unnamed-chunk-89" style="display: block; margin: auto;" />
   
 
 ---
@@ -2870,7 +2675,7 @@ qplot(carat, price, data = diamonds_subset)
 qplot(carat, price, data = diamonds_subset, col = cut)
 ```
 
-<img src="assets/fig/unnamed-chunk-94-1.png" title="plot of chunk unnamed-chunk-94" alt="plot of chunk unnamed-chunk-94" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-90-1.png" title="plot of chunk unnamed-chunk-90" alt="plot of chunk unnamed-chunk-90" style="display: block; margin: auto;" />
   
 
 ---
@@ -2881,7 +2686,7 @@ qplot(carat, price, data = diamonds_subset, col = cut)
 qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
 ```
 
-<img src="assets/fig/unnamed-chunk-95-1.png" title="plot of chunk unnamed-chunk-95" alt="plot of chunk unnamed-chunk-95" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-91-1.png" title="plot of chunk unnamed-chunk-91" alt="plot of chunk unnamed-chunk-91" style="display: block; margin: auto;" />
 
   
 
@@ -2893,7 +2698,7 @@ qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
 qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
 ```
 
-<img src="assets/fig/unnamed-chunk-96-1.png" title="plot of chunk unnamed-chunk-96" alt="plot of chunk unnamed-chunk-96" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-92-1.png" title="plot of chunk unnamed-chunk-92" alt="plot of chunk unnamed-chunk-92" style="display: block; margin: auto;" />
 
 
 ---
@@ -2934,13 +2739,13 @@ oneSampTest.0
 ## 	One Sample t-test
 ## 
 ## data:  oneSampData
-## t = 1.8547, df = 99, p-value = 0.06662
+## t = -0.2383, df = 99, p-value = 0.8122
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.01335352  0.39575498
+##  -0.2160898  0.1697585
 ## sample estimates:
-## mean of x 
-## 0.1912007
+##   mean of x 
+## -0.02316566
 ```
 
 
@@ -2982,13 +2787,13 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ## 	Welch Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -13.4416, df = 63.443, p-value < 2.2e-16
+## t = -13.0876, df = 56.024, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.489995 -2.586709
+##  -3.925199 -2.883104
 ## sample estimates:
 ## mean of x mean of y 
-##  2.407183  5.445535
+##  2.299010  5.703161
 ```
 
 
@@ -3005,13 +2810,13 @@ t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 ## 	Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -13.2867, df = 78, p-value < 2.2e-16
+## t = -13.4521, df = 78, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.493611 -2.583093
+##  -3.907948 -2.900354
 ## sample estimates:
 ## mean of x mean of y 
-##  2.407183  5.445535
+##  2.299010  5.703161
 ```
 
 
@@ -3028,13 +2833,13 @@ t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assumption: unequal varianc
 ## 	Paired t-test
 ## 
 ## data:  Samp1 and Samp2[1:30]
-## t = -10.6904, df = 29, p-value = 1.421e-11
+## t = -14.8012, df = 29, p-value = 4.737e-15
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.496849 -2.373727
+##  -4.036730 -3.056576
 ## sample estimates:
 ## mean of the differences 
-##               -2.935288
+##               -3.546653
 ```
 
 
@@ -3055,7 +2860,7 @@ str(myDF)
 
 ```
 ## 'data.frame':	30 obs. of  2 variables:
-##  $ y    : num  23.5 24.7 24.2 25.1 25.1 26.3 23.9 24.4 24.3 23.9 ...
+##  $ y    : num  23.6 25.5 27.6 25.4 24.1 24.7 24.5 23.3 25.6 23.8 ...
 ##  $ group: Factor w/ 3 levels "1","2","3": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
@@ -3073,10 +2878,10 @@ str(myANOVA) # see what is
 ```
 ## Classes 'anova' and 'data.frame':	2 obs. of  5 variables:
 ##  $ Df     : int  2 27
-##  $ Sum Sq : num  572 18
-##  $ Mean Sq: num  286.11 0.665
-##  $ F value: num  430 NA
-##  $ Pr(>F) : num  3.36e-21 NA
+##  $ Sum Sq : num  474.7 29.8
+##  $ Mean Sq: num  237.33 1.11
+##  $ F value: num  215 NA
+##  $ Pr(>F) : num  2.64e-17 NA
 ##  - attr(*, "heading")= chr  "Analysis of Variance Table\n" "Response: y"
 ```
 
@@ -3188,7 +2993,7 @@ head(myReg$residuals) # y - y.hat
 qqPlot(myReg, main = "QQ Plot")
 ```
 
-![plot of chunk unnamed-chunk-107](assets/fig/unnamed-chunk-107-1.png) 
+![plot of chunk unnamed-chunk-103](assets/fig/unnamed-chunk-103-1.png) 
   
 
 ---
@@ -3200,7 +3005,7 @@ qqPlot(myReg, main = "QQ Plot")
 spreadLevelPlot(myReg)
 ```
 
-![plot of chunk unnamed-chunk-108](assets/fig/unnamed-chunk-108-1.png) 
+![plot of chunk unnamed-chunk-104](assets/fig/unnamed-chunk-104-1.png) 
   
 
 
@@ -3272,3 +3077,50 @@ EX15. Statistical analysis
 ---
 
 EX16. (optional) An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens 
+
+---
+
+## Online Resources to Learn R:
+
+> 1. Very useful resources available on **The Comprehensive R Archive Network** (CRAN)
+  + please visit: http://cran.us.r-project.org
+
+> 2. R built-in facility:
+  + try ?lm, help(lm) in R console
+
+> 3. There are many free tutorials available online:
+  + Quick R: http://www.statmethods.net/
+  + R-Twotorials: http://www.twotorials.com/
+  + UCLA Academy Technology Services: http://www.ats.ucla.edu/stat/r/
+  
+> 4. R-Bloggers (http://www.r-bloggers.com/): is a central hub (e.g: A blog aggregator) of content collected from bloggers who write about R (in English). 
+
+
+---
+
+## Useful Books in learning R:
+
+1. Chambers(1998). Programming with Data, Springer.
+
+2. Venables & Ripley (2000). S Programming, Springer.
+
+3. Chambers (2008). Software for Data Analysis, Springer. (highly recommended)
+
+4. More resources available at: http://www.r-project.org/doc/bib/R-books.html
+
+---
+
+## How to get help in R:
+
+1. Simply use the built-in help function in R
+  + example: ?lm, help(lm)
+  
+2. R mailing lists: r-help and r-devel
+  + For more info: https://stat.ethz.ch/mailman/listinfo/r-help
+  + How to ask good questions: http://www.r-project.org/posting-guide.html
+
+3. Use Q&A websites in particular:
+  + stackoverflow (http://stackoverflow.com): for programming related questions.
+  + crossValidated (http://stats.stackexchange.com): for Stats related questions.
+  
+4. Google :)  
