@@ -1923,7 +1923,7 @@ lapply(myList, mean)
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p>sapply() simplfies the result of lapply.</p></li>
+<li><p>sapply() simplifies the result of lapply.</p></li>
 <li><p>If the result of lapply is a list with all elements of the same length:</p>
 
 <ul>
@@ -2179,7 +2179,7 @@ str(splitData)
 <p>EX1. Import data</p>
 
 <ul>
-<li>1.1  to mport the data &quot;auto-mpg.csv&quot; and store it as an object &quot;data&quot;, run the code data = read.csv(file = &quot;auto-mpg.csv&quot;, header = FALSE, na.strings= &quot;NA&quot;). We need to set header = FALSE since the data starts right from the first line (no header). Look at the data set to see what string/symbol is used to denote missing values; in this data &quot;NA&quot; is used, so na.strings = &quot;NA&quot; is specified in the read.csv(). You can also use read.table() but you will need to specify sep=&quot;,&quot; additionally. </li>
+<li>1.1  to import the data &quot;auto-mpg.csv&quot; and store it as an object &quot;data&quot;, run the code data = read.csv(file = &quot;auto-mpg.csv&quot;, header = FALSE, na.strings= &quot;NA&quot;). We need to set header = FALSE since the data starts right from the first line (no header). Look at the data set to see what string/symbol is used to denote missing values; in this data &quot;NA&quot; is used, so na.strings = &quot;NA&quot; is specified in the read.csv(). You can also use read.table() but you will need to specify sep=&quot;,&quot; additionally. </li>
 <li>1.2 (optional) Read data file &quot;auto-mpg.data-original&quot;. What happens and why? Check the original data file.</li>
 </ul>
 
@@ -2258,7 +2258,7 @@ str(splitData)
 <li>7.2 use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.<br></li>
 <li>7.3 using is.na() function, take a subset of the dataset that has non-missing mpg and check the dimension of the subset. Hint: !is.na() refers to NOT NA. </li>
 <li>7.4 write a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument &quot;x&quot;. Test your function on the current data, it should return 17. </li>
-<li>7.5 read the help file for function na.omit(), and use this function to create a new data that contains only the instances that has no missing value on any variables</li>
+<li>7.5 read the help file for function na.omit(), and use this function to create a new data (name it as data_noNA) that contains only the instances that has no missing value on any variables</li>
 </ul>
 
   </article>
@@ -2401,7 +2401,7 @@ solve(A)%*%A
 <li><p>Each distribution in R has four functions:</p>
 
 <ul>
-<li>these functions beging with a &quot;d&quot;, &quot;p&quot;, &quot;q&quot;, or &quot;r&quot; and followed by the name of the distribution</li>
+<li>these functions begin with a &quot;d&quot;, &quot;p&quot;, &quot;q&quot;, or &quot;r&quot; and are followed by the name of the distribution</li>
 </ul></li>
 <li><p>ddist(parameters): refers to the density of each distribution</p></li>
 <li><p>rdist(parameters): generates random numbers out of each distribution</p></li>
@@ -3430,7 +3430,7 @@ myReg # summary(myReg)
     <pre><code class="r">spreadLevelPlot(myReg)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-96.png" alt="plot of chunk unnamed-chunk-96"> </p>
+<p><img src="assets/fig/unnamed-chunk-96-1.png" alt="plot of chunk unnamed-chunk-96"> </p>
 
   </article>
   <!-- Presenter Notes -->

@@ -1623,7 +1623,7 @@ sapply(myList, mean)
 
 ### lapply() v. sapply()?:
 
-+ sapply() simplfies the result of lapply.
++ sapply() simplifies the result of lapply.
   
 + If the result of lapply is a list with all elements of the same length:
     + if length == 1: sapply() returns a vector
@@ -1822,7 +1822,7 @@ EX0. Set working directory
   + use setwd() to set the working directory to the folder where the data files are. 
 
 EX1. Import data
-  + 1.1  to mport the data "auto-mpg.csv" and store it as an object "data", run the code data = read.csv(file = "auto-mpg.csv", header = FALSE, na.strings= "NA"). We need to set header = FALSE since the data starts right from the first line (no header). Look at the data set to see what string/symbol is used to denote missing values; in this data "NA" is used, so na.strings = "NA" is specified in the read.csv(). You can also use read.table() but you will need to specify sep="," additionally. 
+  + 1.1  to import the data "auto-mpg.csv" and store it as an object "data", run the code data = read.csv(file = "auto-mpg.csv", header = FALSE, na.strings= "NA"). We need to set header = FALSE since the data starts right from the first line (no header). Look at the data set to see what string/symbol is used to denote missing values; in this data "NA" is used, so na.strings = "NA" is specified in the read.csv(). You can also use read.table() but you will need to specify sep="," additionally. 
   + 1.2 (optional) Read data file "auto-mpg.data-original". What happens and why? Check the original data file.
 
 EX2. General check for the data
@@ -1870,7 +1870,7 @@ EX7. Missing values
   + 7.2 use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  
   + 7.3 using is.na() function, take a subset of the dataset that has non-missing mpg and check the dimension of the subset. Hint: !is.na() refers to NOT NA. 
   + 7.4 write a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument "x". Test your function on the current data, it should return 17. 
-  + 7.5 read the help file for function na.omit(), and use this function to create a new data that contains only the instances that has no missing value on any variables
+  + 7.5 read the help file for function na.omit(), and use this function to create a new data (name it as data_noNA) that contains only the instances that has no missing value on any variables
 
 ---
 
@@ -1965,7 +1965,7 @@ solve(A)%*%A
   + examples: binomial, poisson, normal, chi square, ...
 
 + Each distribution in R has four functions:
-  + these functions beging with a "d", "p", "q", or "r" and followed by the name of the distribution
+  + these functions begin with a "d", "p", "q", or "r" and are followed by the name of the distribution
 
 + ddist(parameters): refers to the density of each distribution
 + rdist(parameters): generates random numbers out of each distribution
@@ -2812,7 +2812,7 @@ qqPlot(myReg, main = "QQ Plot")
 spreadLevelPlot(myReg)
 ```
 
-![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96.png) 
+![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96-1.png) 
   
 
 

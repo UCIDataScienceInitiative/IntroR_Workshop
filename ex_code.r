@@ -94,7 +94,7 @@ total_NAs = function(x){
   return(sum(is.na(x)))
 }
 total_NAs(data)
-# + 7.5 read the help file for function na.omit(), and use this function to create a new data that contains only the instances that has no missing value on any variables
+# + 7.5 read the help file for function na.omit(), and use this function to create a new data (name it as data_noNA) that contains only the instances that has no missing value on any variables
 data_noNA = na.omit(data)
 
 
