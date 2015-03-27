@@ -74,10 +74,13 @@
   <article data-timings="">
     <p>2) We are going to work in pairs. Please find a partner. </p>
 
-<p>3) Feel free to ask questions anytime during lecture.</p>
+<p>3) Feel free to ask questions anytime during lectures.</p>
 
-<p>4) To access this presentation and the codes used during the workshop please visit:
-   <a href="http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1">http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1</a></p>
+<p>4) To access this presentation and the codes used during the workshop please visit:</p>
+
+<ul>
+<li><a href="http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1">http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1</a></li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -156,7 +159,7 @@
 <li><p>Everything in R is object. Objects can have some attributes.</p>
 
 <ul>
-<li>names, dimension, class, length are some possible attributes</li>
+<li>names, dimension, length are some possible attributes</li>
 </ul></li>
 </ol>
 
@@ -585,11 +588,11 @@ colMat &lt;- cbind(vec1, vec2, vec3)
 colMat
 </code></pre>
 
-<pre><code>##      vec1 vec2       vec3
-## [1,]    1   97 -0.2232147
-## [2,]    2   65  1.4498167
-## [3,]    3   71  0.7590436
-## [4,]    4   31  1.0309793
+<pre><code>##      vec1 vec2     vec3
+## [1,]    1   88 -0.60388
+## [2,]    2   64 -0.07985
+## [3,]    3   74  0.89368
+## [4,]    4   55  1.85324
 </code></pre>
 
   </article>
@@ -608,10 +611,10 @@ rowMat &lt;- rbind(vec1, vec2, vec3)
 rowMat
 </code></pre>
 
-<pre><code>##            [,1]     [,2]       [,3]      [,4]
-## vec1  1.0000000  2.00000  3.0000000  4.000000
-## vec2 93.0000000 90.00000 86.0000000 91.000000
-## vec3  0.4642409 -1.65771 -0.4921985 -1.085812
+<pre><code>##         [,1]    [,2]   [,3] [,4]
+## vec1  1.0000  2.0000  3.000 4.00
+## vec2 21.0000 62.0000 74.000 9.00
+## vec3  0.6717  0.1932 -2.489 1.09
 </code></pre>
 
   </article>
@@ -694,12 +697,12 @@ head(data)
 </code></pre>
 
 <pre><code>##   studentID score gender
-## 1    S#6488     7 female
-## 2    S#7339    64 female
-## 3    S#6486    72   male
-## 4    S#6954    25 female
-## 5    S#7299    21 female
-## 6    S#7056    56 female
+## 1    S#7075    74 female
+## 2    S#6834    68 female
+## 3    S#7282    10   male
+## 4    S#6903    18 female
+## 5    S#7067    98   male
+## 6    S#7026     7   male
 </code></pre>
 
   </article>
@@ -1269,18 +1272,21 @@ x + y # R does an element by element summation
     <h2>read.table():</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">irisFile &lt;- read.table(file = &quot;/Users/sepehrakhavan/Documents/Statistics/Stat Courses/DataScience_Dr.PadhraicSmyth/RWorkShop_Nov_2014/SupportingFiles/iris&quot;, header = TRUE)
-
-head(irisFile)
+    <pre><code class="r">irisFile &lt;- read.table(file = &quot;/Users/sepehrakhavan/Documents/R_Workshop/iris.csv&quot;, header = TRUE)
 </code></pre>
 
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa
+<pre><code>## Warning: cannot open file
+## &#39;/Users/sepehrakhavan/Documents/R_Workshop/iris.csv&#39;: No such file or
+## directory
+</code></pre>
+
+<pre><code>## Error: cannot open the connection
+</code></pre>
+
+<pre><code class="r">head(irisFile)
+</code></pre>
+
+<pre><code>## Error: object &#39;irisFile&#39; not found
 </code></pre>
 
 <ul>
@@ -1338,8 +1344,8 @@ head(irisFile)
 
 <ul>
 <li>for </li>
-<li>while (skipped!)</li>
 <li>repeat (skipped!)</li>
+<li>while (skipped!)</li>
 </ul></li>
 </ul>
 
@@ -1370,33 +1376,6 @@ head(irisFile)
 
 <slide class="" id="slide-51" style="background:;">
   <hgroup>
-    <h2>next:</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>next is useful in skipping an iteration of a loop:</li>
-</ul>
-
-<pre><code class="r">for(i in 1:4){
-  if (i == 3){
-    next
-  }
-  print(paste(&quot;cycle #&quot;, i, sep = &quot;&quot;))
-  i &lt;- i + 1 
-}
-</code></pre>
-
-<pre><code>## [1] &quot;cycle #1&quot;
-## [1] &quot;cycle #2&quot;
-## [1] &quot;cycle #4&quot;
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-52" style="background:;">
-  <hgroup>
     <h2>if:</h2>
   </hgroup>
   <article data-timings="">
@@ -1419,7 +1398,7 @@ if (x &lt; 10){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-53" style="background:;">
+<slide class="" id="slide-52" style="background:;">
   <hgroup>
     <h2>if:</h2>
   </hgroup>
@@ -1439,17 +1418,17 @@ age.df &lt;- data.frame(age = age, ageCat = ageCat)
 age.df[1:3,]
 </code></pre>
 
-<pre><code>##   age ageCat
-## 1  72    Old
-## 2  79    Old
-## 3  96    Old
+<pre><code>##   age      ageCat
+## 1  51 Middle-Aged
+## 2  30       Young
+## 3  34       Young
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-54" style="background:;">
+<slide class="" id="slide-53" style="background:;">
   <hgroup>
     <h2>Functions and Packages:</h2>
   </hgroup>
@@ -1466,7 +1445,7 @@ age.df[1:3,]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-55" style="background:;">
+<slide class="" id="slide-54" style="background:;">
   <hgroup>
     <h2>Functions and Packages:</h2>
   </hgroup>
@@ -1478,7 +1457,6 @@ age.df[1:3,]
 <li>Library: A directory containing installed packages</li>
 <li>Repository: A website providing packages for installation</li>
 <li>Source: The original version of a package with human-readable text and code</li>
-<li>Binary: A compiled version of a package with computer-readable text and code, may work only on a specific platform</li>
 <li>Base packages: Part of the R source tree, maintained by R Core</li>
 </ol>
 
@@ -1494,12 +1472,12 @@ age.df[1:3,]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-56" style="background:;">
+<slide class="" id="slide-55" style="background:;">
   <hgroup>
     <h2>How to install a package in R:</h2>
   </hgroup>
   <article data-timings="">
-    <p>There are two ways to install a package in R:</p>
+    <p>There are three main ways to install a package in R:</p>
 
 <ol>
 <li><p>Installing from CRAN: install a package directly from the repository</p>
@@ -1513,6 +1491,11 @@ age.df[1:3,]
 <ul>
 <li>R CMD INSTALL packageName -l path/to/your/Rpackage/Directory</li>
 </ul></li>
+<li><p>Installing from a version control (Github): </p>
+
+<ul>
+<li>Check-out <a href="https://github.com/hadley/devtools">https://github.com/hadley/devtools</a></li>
+</ul></li>
 </ol>
 
 <ul>
@@ -1523,12 +1506,39 @@ age.df[1:3,]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-57" style="background:;">
+<slide class="" id="slide-56" style="background:;">
   <hgroup>
-    <h2>Calling a function in R</h2>
+    <h2>Popular Packages in R:</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">str(sample)
+    <ol>
+<li><p>To visualize data:</p>
+
+<ul>
+<li>ggplot2: to create beautiful graphics</li>
+<li>googleVis: to use Google Chart tools</li>
+</ul></li>
+<li><p>To report results:</p>
+
+<ul>
+<li>shiny: to create interactive web-based apps</li>
+<li>knitr: to combine R codes and Latex/Markdown codes</li>
+<li>slidify: to build HTML 5 slide shows</li>
+</ul></li>
+<li><p>To write high-performance R code:</p>
+
+<ul>
+<li>Rcpp: to write R functions that call C++ code</li>
+<li>data.table: to organize datasets for fast operations</li>
+<li>parallel: to use parallel processing in R</li>
+</ul></li>
+</ol>
+
+<hr>
+
+<h2>Calling a function in R</h2>
+
+<pre><code class="r">str(sample)
 </code></pre>
 
 <pre><code>## function (x, size, replace = FALSE, prob = NULL)
@@ -1552,7 +1562,7 @@ age.df[1:3,]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-58" style="background:;">
+<slide class="" id="slide-57" style="background:;">
   <hgroup>
     <h2>Calling a function in R</h2>
   </hgroup>
@@ -1562,7 +1572,7 @@ sampSpace &lt;- 1:6 # rolling a die
 sample(sampSpace, 1) # arguments with default values can be omitted
 </code></pre>
 
-<pre><code>## [1] 5
+<pre><code>## [1] 4
 </code></pre>
 
 <pre><code class="r">sample(size = 1, x = sampSpace) # no need to remember the order 
@@ -1574,14 +1584,14 @@ sample(sampSpace, 1) # arguments with default values can be omitted
 <pre><code class="r">sample(size = 1, sampSpace)
 </code></pre>
 
-<pre><code>## [1] 2
+<pre><code>## [1] 1
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-59" style="background:;">
+<slide class="" id="slide-58" style="background:;">
   <hgroup>
     <h2>Writing your Own functions</h2>
   </hgroup>
@@ -1600,7 +1610,7 @@ yourFnName(&lt;set values for the input arguments&gt;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-60" style="background:;">
+<slide class="" id="slide-59" style="background:;">
   <hgroup>
     <h2>Writing your Own functions</h2>
   </hgroup>
@@ -1631,7 +1641,7 @@ myMin(10, 20, 30)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-61" style="background:;">
+<slide class="" id="slide-60" style="background:;">
   <hgroup>
     <h2>Some notes on Functions</h2>
   </hgroup>
@@ -1647,7 +1657,7 @@ myMin(10, 20, 30)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-62" style="background:;">
+<slide class="" id="slide-61" style="background:;">
   <hgroup>
     <h2>Lazy Evaluation of Function Arguments</h2>
   </hgroup>
@@ -1672,14 +1682,14 @@ myLazyFn2(10) # No error!
 <pre><code>## [1] 10
 </code></pre>
 
-<pre><code>## Error in print(b): argument &quot;b&quot; is missing, with no default
+<pre><code>## Error: argument &quot;b&quot; is missing, with no default
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-63" style="background:;">
+<slide class="" id="slide-62" style="background:;">
   <hgroup>
     <h2>Some useful functions:</h2>
   </hgroup>
@@ -1699,7 +1709,7 @@ myLazyFn2(10) # No error!
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-64" style="background:;">
+<slide class="" id="slide-63" style="background:;">
   <hgroup>
     <h3>str():</h3>
   </hgroup>
@@ -1724,14 +1734,14 @@ myLazyFn2(10) # No error!
 str(genderF)
 </code></pre>
 
-<pre><code>##  Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 2 2 2 1 1 2 1 2 1 2 ...
+<pre><code>##  Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 1 2 1 1 1 2 2 1 ...
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-65" style="background:;">
+<slide class="" id="slide-64" style="background:;">
   <hgroup>
     <h3>str():</h3>
   </hgroup>
@@ -1757,7 +1767,7 @@ str(myList)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-66" style="background:;">
+<slide class="" id="slide-65" style="background:;">
   <hgroup>
     <h3>apply():</h3>
   </hgroup>
@@ -1785,7 +1795,7 @@ str(myList)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-67" style="background:;">
+<slide class="" id="slide-66" style="background:;">
   <hgroup>
     <h3>apply():</h3>
   </hgroup>
@@ -1810,7 +1820,7 @@ myMat
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-68" style="background:;">
+<slide class="" id="slide-67" style="background:;">
   <hgroup>
     <h3>apply():</h3>
   </hgroup>
@@ -1835,7 +1845,7 @@ head(iris) # more info ?iris
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-69" style="background:;">
+<slide class="" id="slide-68" style="background:;">
   <hgroup>
     <h3>apply():</h3>
   </hgroup>
@@ -1853,7 +1863,7 @@ apply(iris[,-5], 2, quantile, probs = c(0.25, 0.75))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-70" style="background:;">
+<slide class="" id="slide-69" style="background:;">
   <hgroup>
     <h3>lapply() and sapply():</h3>
   </hgroup>
@@ -1880,7 +1890,7 @@ apply(iris[,-5], 2, quantile, probs = c(0.25, 0.75))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-71" style="background:;">
+<slide class="" id="slide-70" style="background:;">
   <hgroup>
     <h3>lapply() and sapply():</h3>
   </hgroup>
@@ -1907,13 +1917,13 @@ lapply(myList, mean)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-72" style="background:;">
+<slide class="" id="slide-71" style="background:;">
   <hgroup>
     <h3>lapply() v. sapply()?:</h3>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p>sapply() simplfies the result of lapply.</p></li>
+<li><p>sapply() simplifies the result of lapply.</p></li>
 <li><p>If the result of lapply is a list with all elements of the same length:</p>
 
 <ul>
@@ -1927,7 +1937,7 @@ lapply(myList, mean)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-73" style="background:;">
+<slide class="" id="slide-72" style="background:;">
   <hgroup>
     <h3>lapply() &amp; sapply() with a user-defined FUN</h3>
   </hgroup>
@@ -1954,7 +1964,7 @@ lapply(myList, function(element){return(mean(c(element[1], element[length(elemen
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-74" style="background:;">
+<slide class="" id="slide-73" style="background:;">
   <hgroup>
     <h3>tapply():</h3>
   </hgroup>
@@ -1978,7 +1988,7 @@ lapply(myList, function(element){return(mean(c(element[1], element[length(elemen
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-75" style="background:;">
+<slide class="" id="slide-74" style="background:;">
   <hgroup>
     <h3>tapply():</h3>
   </hgroup>
@@ -1987,27 +1997,27 @@ lapply(myList, function(element){return(mean(c(element[1], element[length(elemen
 head(HeightDF)
 </code></pre>
 
-<pre><code>##     heigth gender
-## 1 179.9530      M
-## 2 175.1204      M
-## 3 185.5293      M
-## 4 180.8452      M
-## 5 177.7442      M
-## 6 186.0067      M
+<pre><code>##   heigth gender
+## 1  179.4      M
+## 2  178.1      M
+## 3  182.9      M
+## 4  177.3      M
+## 5  183.0      M
+## 6  184.2      M
 </code></pre>
 
 <pre><code class="r">tapply(HeightDF$heigth, HeightDF$gender, mean)
 </code></pre>
 
-<pre><code>##        F        M 
-## 170.2082 179.6986
+<pre><code>##     F     M 
+## 169.9 180.1
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-76" style="background:;">
+<slide class="" id="slide-75" style="background:;">
   <hgroup>
     <h3>mapply():</h3>
   </hgroup>
@@ -2035,7 +2045,7 @@ head(HeightDF)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-77" style="background:;">
+<slide class="" id="slide-76" style="background:;">
   <hgroup>
     <h3>mapply():</h3>
   </hgroup>
@@ -2053,7 +2063,7 @@ mapply(sum, l1$e1, l1$e2, l2$e1, l2$e2)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-78" style="background:;">
+<slide class="" id="slide-77" style="background:;">
   <hgroup>
     <h3>split():</h3>
   </hgroup>
@@ -2074,7 +2084,7 @@ mapply(sum, l1$e1, l1$e2, l2$e1, l2$e2)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-79" style="background:;">
+<slide class="" id="slide-78" style="background:;">
   <hgroup>
     <h3>split():</h3>
   </hgroup>
@@ -2083,7 +2093,7 @@ mapply(sum, l1$e1, l1$e2, l2$e1, l2$e2)
 </code></pre>
 
 <pre><code>## &#39;data.frame&#39;:    200 obs. of  2 variables:
-##  $ heigth: num  180 175 186 181 178 ...
+##  $ heigth: num  179 178 183 177 183 ...
 ##  $ gender: Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 2 2 2 2 2 2 2 2 2 2 ...
 </code></pre>
 
@@ -2093,29 +2103,29 @@ str(splitData)
 </code></pre>
 
 <pre><code>## List of 2
-##  $ F: num [1:100] 168 171 171 168 170 ...
-##  $ M: num [1:100] 180 175 186 181 178 ...
+##  $ F: num [1:100] 171 170 169 173 167 ...
+##  $ M: num [1:100] 179 178 183 177 183 ...
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-80" style="background:;">
+<slide class="" id="slide-79" style="background:;">
   <hgroup>
     <h2>Exercises: Analysis for Auto-Mpg Data</h2>
   </hgroup>
   <article data-timings="">
     <ol>
 <li>Dataset: Auto-Mpg Data from UCI Machine Learning Repository (some modification is done on the data for the exercise of this workshop)</li>
-<li>Download:   <a href="https://github.com/UCIDataScienceInitiative/IntroR_Workshop/data/">https://github.com/UCIDataScienceInitiative/IntroR_Workshop/data/</a></li>
+<li>Download: click the &quot;download&quot; button in slide 1, extract the zip file and the data files will be in the folder &quot;data&quot;</li>
 <li>Variables (names saved in auto-mpg-names.txt): 
 
 <ul>
 <li>continuous: mpg, displacement, horsepower, weight, acceleration</li>
 <li>discrete: cylinders, model year, origin</li>
 <li>string: car name (not used in the analysis)</li>
-<li>descriptions: mpg (city-cycle fuel consumption in miles per gallon), cylinders (# of cylinders), displacement (engine displacement in cu. inches), weight (vehichle weight in lbs.), accelerate (time to accelerate from O to 60 mph in sec.), model year (modulo 100), origin (1: American, 2: European, 3: Japanese).</li>
+<li>descriptions: mpg (city-cycle fuel consumption in miles per gallon), cylinders (# of cylinders), displacement (engine displacement in cu. inches), weight (vehicle weight in lbs.), accelerate (time to accelerate from O to 60 mph in sec.), model year (modulo 100), origin (1: American, 2: European, 3: Japanese).</li>
 </ul></li>
 <li>More information:   <a href="https://archive.ics.uci.edu/ml/datasets/Auto+MPG">https://archive.ics.uci.edu/ml/datasets/Auto+MPG</a></li>
 </ol>
@@ -2124,7 +2134,7 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-81" style="background:;">
+<slide class="" id="slide-80" style="background:;">
   <hgroup>
     <h2>Questions to answer</h2>
   </hgroup>
@@ -2140,36 +2150,43 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-82" style="background:;">
+<slide class="" id="slide-81" style="background:;">
+  <hgroup>
+    <h1>Some suggestions</h1>
+  </hgroup>
   <article data-timings="">
-    <ol>
-<li>The exercises will generally follow the typical process of a statistical analysis. </li>
-<li>30 min for R exercise for each exercise session, and 10 min for summary of FAQ.<br></li>
-<li>Suggestion for the exercises
-
-<ul>
+    <ul>
 <li>First work on the regular problems (with no &quot;optional&quot; marks) and skip the optional ones, especially if you are very new to R.</li>
 <li>If you still have time after finishing all the regular problems, come back to work on the optional ones. </li>
-</ul></li>
-</ol>
+<li>Feel free to ask us for help</li>
+<li>Take a look at the data files by opening them in any text editor or Excel </li>
+<li>Disable &quot;hide file extensions&quot; so you can easily see the full file names</li>
+<li>Create a new R script file for the exercises; write your code in the code file instead of directly in the console so you can easily save and edit your code; execute the code by highlighting the code and press Ctrl+Enter (PC) or Cmd+Return (Mac). </li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-83" style="background:;">
+<slide class="" id="slide-82" style="background:;">
   <article data-timings="">
-    <p>EX1. Import data</p>
+    <p>EX0. Set working directory</p>
 
 <ul>
-<li>1.1 Import the data &quot;auto-mpg.csv&quot; and store it as an object &quot;data&quot;. Check what string/symbol is used to denote missing values in the data and specify the argument &quot;na.strings&quot; for the function you used to read the data. </li>
+<li>use setwd() to set the working directory to the folder where the data files are. </li>
+</ul>
+
+<p>EX1. Import data</p>
+
+<ul>
+<li>1.1  to import the data &quot;auto-mpg.csv&quot; and store it as an object &quot;data&quot;, run the code data = read.csv(file = &quot;auto-mpg.csv&quot;, header = FALSE, na.strings= &quot;NA&quot;). We need to set header = FALSE since the data starts right from the first line (no header). Look at the data set to see what string/symbol is used to denote missing values; in this data &quot;NA&quot; is used, so na.strings = &quot;NA&quot; is specified in the read.csv(). You can also use read.table() but you will need to specify sep=&quot;,&quot; additionally. </li>
 <li>1.2 (optional) Read data file &quot;auto-mpg.data-original&quot;. What happens and why? Check the original data file.</li>
 </ul>
 
 <p>EX2. General check for the data</p>
 
 <ul>
-<li>2.1 check the top 6 rows of data; open the original data in excel or notepad and compare with the rows printed in R. Hint: need to set header = FALSE since the data starts right from the first line (no header). </li>
+<li>2.1 check the top 6 rows of data; open the original data in excel or notepad and compare with the rows printed in R.<br></li>
 <li>2.2. check the dimension of data</li>
 </ul>
 
@@ -2177,13 +2194,13 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-84" style="background:;">
+<slide class="" id="slide-83" style="background:;">
   <article data-timings="">
     <p>EX3. Add variable names to data</p>
 
 <ul>
-<li>3.1 read variable names from &quot;auto-mpg-names.txt&quot;</li>
-<li>3.2 assign variable names to data</li>
+<li>3.1 read variable names from &quot;auto-mpg-names.txt&quot; using readLines(). The difference between readLines() and read.table() is that readLines() imports the data file into a vector of strings, but read.table() imports the data file into a data frame (could be any data type depending on the actual data values). Each element of the vector returned by readLines() is the content of a entire line in the data file. </li>
+<li>3.2 assign variable names to data (you can assign values to names(data) to change the names of data)</li>
 <li>3.3 check if the variable names are correctly assigned. Hint: you can either print the variable names of the data or print the top rows of the data</li>
 </ul>
 
@@ -2198,14 +2215,14 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-85" style="background:;">
+<slide class="" id="slide-84" style="background:;">
   <article data-timings="">
     <p>EX5. Subset exercises </p>
 
 <ul>
 <li><p>5.1 summarize the variable mpg (use summary()). (There are 3 ways you can get the variable mpg.) Do you see something weird in the result? What might be the reason? We will get back to this later. </p></li>
-<li><p>5.2 create a vector of the column indicies for the continuous variables (refer to dataset description to see which ones are continuous variables) and extract the continuous variables. Summarize the continuous variables (use summary()).</p></li>
-<li><p>5.3 use the index vector you created above to extract the non-continous variables and summarize them; compare how summary() works differently for a factor variable (car_name) from a numerical variable.</p></li>
+<li><p>5.2 create a vector in R for the numbers 1,3,4,5,6, which are the column indices for the continuous variables; use that vector to extract the continuous variables and summarize the continuous variables (use summary()).</p></li>
+<li><p>5.3 use the index vector you created above to extract the non-continuous variables and summarize them; compare how summary() works differently for a factor variable (car_name) from a numerical variable.</p></li>
 <li><p>5.4 (optional) read the help file for which(); create a vector of indices for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: &amp; for and, | for or, ! for NOT.  </p></li>
 <li><p>5.5 drop variable &quot;car_name&quot;. We will not use it in our analysis. Hint: you can either assign NULL (empty) to the variable &quot;car_name&quot;, or redefine data to be the subset of the data that does not contain &quot;car_name&quot;. </p></li>
 </ul>
@@ -2214,7 +2231,7 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-86" style="background:;">
+<slide class="" id="slide-85" style="background:;">
   <article data-timings="">
     <p>EX6. Discrete variables </p>
 
@@ -2232,7 +2249,7 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-87" style="background:;">
+<slide class="" id="slide-86" style="background:;">
   <article data-timings="">
     <p>EX7. Missing values</p>
 
@@ -2241,14 +2258,14 @@ str(splitData)
 <li>7.2 use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.<br></li>
 <li>7.3 using is.na() function, take a subset of the dataset that has non-missing mpg and check the dimension of the subset. Hint: !is.na() refers to NOT NA. </li>
 <li>7.4 write a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument &quot;x&quot;. Test your function on the current data, it should return 17. </li>
-<li>7.5 read the help file for function na.omit(), and use this function to create a new data that contains only the instances that has no missing value on any variables</li>
+<li>7.5 read the help file for function na.omit(), and use this function to create a new data (name it as data_noNA) that contains only the instances that has no missing value on any variables</li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-88" style="background:;">
+<slide class="" id="slide-87" style="background:;">
   <hgroup>
     <h1>From now on use the data set that contains no missing values</h1>
   </hgroup>
@@ -2258,7 +2275,7 @@ str(splitData)
 <ul>
 <li>8.1 use one of the *apply() functions to get the frequency table on all discrete variables. Note that if these variables were all of factor type instead of numerical type, this could be directly done by summary(data[,c(2,7,8)]) </li>
 <li>8.2 find average mpg for each # cylinders</li>
-<li>8.3 find 2.5 and 97.5 percentile of mpg for each # cynlinders </li>
+<li>8.3 find 2.5 and 97.5 percentile of mpg for each # cylinders </li>
 <li>8.4 split the dataset based on # cylinders </li>
 </ul>
 
@@ -2266,7 +2283,7 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-89" style="background:;">
+<slide class="" id="slide-88" style="background:;">
   <hgroup>
     <h2>Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)</h2>
   </hgroup>
@@ -2276,7 +2293,7 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-90" style="background:;">
+<slide class="" id="slide-89" style="background:;">
   <hgroup>
     <h2>Session 3 - Agenda</h2>
   </hgroup>
@@ -2284,13 +2301,14 @@ str(splitData)
     <ol>
 <li>Useful Matrix Functions</li>
 <li>Statistical Distributions in R</li>
+<li>Intro to plotting in R</li>
 </ol>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-91" style="background:;">
+<slide class="" id="slide-90" style="background:;">
   <hgroup>
     <h2>Useful Matrix Functions</h2>
   </hgroup>
@@ -2308,7 +2326,7 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-92" style="background:;">
+<slide class="" id="slide-91" style="background:;">
   <hgroup>
     <h3>solve():</h3>
   </hgroup>
@@ -2336,7 +2354,7 @@ A
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-93" style="background:;">
+<slide class="" id="slide-92" style="background:;">
   <hgroup>
     <h3>solve():</h3>
   </hgroup>
@@ -2354,10 +2372,10 @@ A
 solve(A)%*%A
 </code></pre>
 
-<pre><code>##      [,1] [,2]          [,3]
-## [1,]    1    0  0.000000e+00
-## [2,]    0    1 -8.881784e-16
-## [3,]    0    0  1.000000e+00
+<pre><code>##      [,1] [,2]       [,3]
+## [1,]    1    0  0.000e+00
+## [2,]    0    1 -8.882e-16
+## [3,]    0    0  1.000e+00
 </code></pre>
 
 <ul>
@@ -2369,7 +2387,7 @@ solve(A)%*%A
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-94" style="background:;">
+<slide class="" id="slide-93" style="background:;">
   <hgroup>
     <h2>Statistical Distributions in R:</h2>
   </hgroup>
@@ -2383,7 +2401,7 @@ solve(A)%*%A
 <li><p>Each distribution in R has four functions:</p>
 
 <ul>
-<li>these functions beging with a &quot;d&quot;, &quot;p&quot;, &quot;q&quot;, or &quot;r&quot; and followed by the name of the distribution</li>
+<li>these functions begin with a &quot;d&quot;, &quot;p&quot;, &quot;q&quot;, or &quot;r&quot; and are followed by the name of the distribution</li>
 </ul></li>
 <li><p>ddist(parameters): refers to the density of each distribution</p></li>
 <li><p>rdist(parameters): generates random numbers out of each distribution</p></li>
@@ -2395,7 +2413,7 @@ solve(A)%*%A
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-95" style="background:;">
+<slide class="" id="slide-94" style="background:;">
   <hgroup>
     <h3>Example of a Discrete Distribution:</h3>
   </hgroup>
@@ -2410,7 +2428,7 @@ str(dbinom)
 <pre><code class="r">dbinom(5, 10, 0.5) # prob of getting five heads
 </code></pre>
 
-<pre><code>## [1] 0.2460938
+<pre><code>## [1] 0.2461
 </code></pre>
 
 <pre><code class="r">str(pbinom) # cumulative dist
@@ -2422,14 +2440,14 @@ str(dbinom)
 <pre><code class="r">pbinom(5, 10, 0.5) # Pr[X &lt;= 5]
 </code></pre>
 
-<pre><code>## [1] 0.6230469
+<pre><code>## [1] 0.623
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-96" style="background:;">
+<slide class="" id="slide-95" style="background:;">
   <hgroup>
     <h3>Example of a Discrete Distribution:</h3>
   </hgroup>
@@ -2455,14 +2473,14 @@ str(dbinom)
 <pre><code class="r">rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 </code></pre>
 
-<pre><code>##  [1] 5 5 3 6 3 3 7 4 6 4 4 6 7 3 3 6 4 6 4 8
+<pre><code>##  [1] 5 6 5 6 4 7 5 3 7 5 3 7 5 2 5 6 4 6 6 3
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-97" style="background:;">
+<slide class="" id="slide-96" style="background:;">
   <hgroup>
     <h3>Example of a Continuous Distribution:</h3>
   </hgroup>
@@ -2477,7 +2495,7 @@ str(dnorm)
 <pre><code class="r">dnorm(x = 0, mean = 0, sd = 1, log = FALSE)
 </code></pre>
 
-<pre><code>## [1] 0.3989423
+<pre><code>## [1] 0.3989
 </code></pre>
 
 <pre><code class="r">str(pnorm) # cumulative dist
@@ -2496,7 +2514,7 @@ str(dnorm)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-98" style="background:;">
+<slide class="" id="slide-97" style="background:;">
   <hgroup>
     <h3>Example of a Continuous Distribution:</h3>
   </hgroup>
@@ -2522,15 +2540,15 @@ str(dnorm)
 <pre><code class="r">rnorm(10, mean = 0, sd = 1)
 </code></pre>
 
-<pre><code>##  [1] -0.7735307 -0.8198088 -0.3149976  0.3073127 -0.1390719 -0.7339548
-##  [7] -0.4427237 -0.3758955  0.4063727 -0.4696300
+<pre><code>##  [1] -2.0271 -0.5438  1.0976  0.3732 -0.5845 -0.8784 -1.5606  1.0805
+##  [9]  1.0381  0.9862
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-99" style="background:;">
+<slide class="" id="slide-98" style="background:;">
   <hgroup>
     <h3>Example of a Continuous Distribution:</h3>
   </hgroup>
@@ -2541,13 +2559,102 @@ y &lt;- dnorm(x, mean = 0, sd = 1)
 plot(x, y, type = &quot;l&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-66-1.png" title="plot of chunk unnamed-chunk-66" alt="plot of chunk unnamed-chunk-66" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-65.png" title="plot of chunk unnamed-chunk-65" alt="plot of chunk unnamed-chunk-65" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-99" style="background:;">
+  <hgroup>
+    <h2>Plotting Systems in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>There are three main plotting systems in R:</p>
+
+<ul>
+<li>Base Plotting System</li>
+<li>ggplot2</li>
+<li>Lattice</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-100" style="background:;">
+  <hgroup>
+    <h2>Base System (intro)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In Base plotting system:</p>
+
+<ul>
+<li>We start with a blank canvas</li>
+<li>by calling a plot function, we start our plot</li>
+<li>Using annotation functions we can add more elements to our plot</li>
+</ul>
+
+<p>In general, plotting functions under the base system are:</p>
+
+<ul>
+<li>Functions to generate plots: plot()</li>
+<li>Functions to annotate plots: text(), lines(), points()</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-101" style="background:;">
+  <hgroup>
+    <h2>Base Plotting System - Histogram</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x &lt;- rnorm(100)
+hist(x)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-66.png" title="plot of chunk unnamed-chunk-66" alt="plot of chunk unnamed-chunk-66" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-102" style="background:;">
+  <hgroup>
+    <h2>Base Plotting System - Scatter Plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x &lt;- rnorm(100)
+y &lt;- rnorm(100)
+plot(x, y)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-67.png" title="plot of chunk unnamed-chunk-67" alt="plot of chunk unnamed-chunk-67" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-103" style="background:;">
+  <hgroup>
+    <h2>Base Plotting System - BoxPlot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x &lt;- rnorm(100, 0, 1)
+y &lt;- rnorm(100, 1, 1)
+z &lt;- rnorm(100, 2, 2)
+boxplot(x, y , z)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-68.png" title="plot of chunk unnamed-chunk-68" alt="plot of chunk unnamed-chunk-68" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-104" style="background:;">
   <hgroup>
     <h2>Time for Break for 10 Minutes :)</h2>
   </hgroup>
@@ -2557,13 +2664,13 @@ plot(x, y, type = &quot;l&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-101" style="background:;">
+<slide class="" id="slide-105" style="background:;">
   <hgroup>
     <h2>Session 4 - Agenda</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Goal: use gglot2 to explore data afterwards</li>
+<li>Goal: use ggplot2 to explore data afterwards</li>
 <li>Emphasize simple examples</li>
 <li>Emphasize principles</li>
 <li>Some examples will be developed today</li>
@@ -2574,7 +2681,7 @@ plot(x, y, type = &quot;l&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-102" style="background:;">
+<slide class="" id="slide-106" style="background:;">
   <hgroup>
     <h3>Information Visualization</h3>
   </hgroup>
@@ -2583,14 +2690,14 @@ plot(x, y, type = &quot;l&quot;)
 <li>Efficiency</li>
 <li>Interpretability</li>
 <li>Parsimony</li>
-<li>ggplto2 lies in &quot;sweet spot&quot; of functionality</li>
+<li>ggplot2 lies in &quot;sweet spot&quot; of functionality</li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-103" style="background:;">
+<slide class="" id="slide-107" style="background:;">
   <hgroup>
     <h3>Hello, ggplot2</h3>
   </hgroup>
@@ -2617,7 +2724,7 @@ plot(x, y, type = &quot;l&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-104" style="background:;">
+<slide class="" id="slide-108" style="background:;">
   <hgroup>
     <h3>First ggplot2: histogram</h3>
   </hgroup>
@@ -2630,13 +2737,13 @@ plot(x, y, type = &quot;l&quot;)
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-68-1.png" alt="plot of chunk unnamed-chunk-68"> </p>
+<p><img src="assets/fig/unnamed-chunk-70.png" alt="plot of chunk unnamed-chunk-70"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-105" style="background:;">
+<slide class="" id="slide-109" style="background:;">
   <hgroup>
     <h3>Gotchas</h3>
   </hgroup>
@@ -2660,7 +2767,7 @@ ggplot(airquality) # :(
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-106" style="background:;">
+<slide class="" id="slide-110" style="background:;">
   <hgroup>
     <h3>Now make it fancier</h3>
   </hgroup>
@@ -2674,13 +2781,13 @@ m + geom_histogram(aes(fill=cut))
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-70-1.png" alt="plot of chunk unnamed-chunk-70"> </p>
+<p><img src="assets/fig/unnamed-chunk-72.png" alt="plot of chunk unnamed-chunk-72"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-107" style="background:;">
+<slide class="" id="slide-111" style="background:;">
   <hgroup>
     <h3>Facets are an alternative</h3>
   </hgroup>
@@ -2691,13 +2798,13 @@ m + geom_histogram(aes(fill=cut))
 m + geom_histogram(binwidth=100) + facet_grid(cut~color)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-71-1.png" alt="plot of chunk unnamed-chunk-71"> </p>
+<p><img src="assets/fig/unnamed-chunk-73.png" alt="plot of chunk unnamed-chunk-73"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-108" style="background:;">
+<slide class="" id="slide-112" style="background:;">
   <hgroup>
     <h3>Let&#39;s pause for a moment</h3>
   </hgroup>
@@ -2723,7 +2830,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-109" style="background:;">
+<slide class="" id="slide-113" style="background:;">
   <hgroup>
     <h3>Scatterplots</h3>
   </hgroup>
@@ -2733,13 +2840,13 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-72-1.png" alt="plot of chunk unnamed-chunk-72"> </p>
+<p><img src="assets/fig/unnamed-chunk-74.png" alt="plot of chunk unnamed-chunk-74"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-110" style="background:;">
+<slide class="" id="slide-114" style="background:;">
   <hgroup>
     <h3>Log scales</h3>
   </hgroup>
@@ -2747,7 +2854,7 @@ m + geom_histogram(aes(fill=cut))
     <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-73-1.png" alt="plot of chunk unnamed-chunk-73"> </p>
+<p><img src="assets/fig/unnamed-chunk-75.png" alt="plot of chunk unnamed-chunk-75"> </p>
 
 <p>Scales begin with <code>scale_</code>, and are not only for continuous variables: also <code>datetime</code>, <code>shape</code>, <code>colour</code>, etc</p>
 
@@ -2755,7 +2862,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-111" style="background:;">
+<slide class="" id="slide-115" style="background:;">
   <hgroup>
     <h3>Adding factors</h3>
   </hgroup>
@@ -2765,7 +2872,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-74-1.png" alt="plot of chunk unnamed-chunk-74"> </p>
+<p><img src="assets/fig/unnamed-chunk-76.png" alt="plot of chunk unnamed-chunk-76"> </p>
 
 <p>Note the legend for each mapping!</p>
 
@@ -2773,7 +2880,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-112" style="background:;">
+<slide class="" id="slide-116" style="background:;">
   <hgroup>
     <h3>Overview of components</h3>
   </hgroup>
@@ -2792,7 +2899,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-113" style="background:;">
+<slide class="" id="slide-117" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 1a</h3>
   </hgroup>
@@ -2802,13 +2909,13 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-75-1.png" alt="plot of chunk unnamed-chunk-75"> </p>
+<p><img src="assets/fig/unnamed-chunk-77.png" alt="plot of chunk unnamed-chunk-77"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-114" style="background:;">
+<slide class="" id="slide-118" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 1b</h3>
   </hgroup>
@@ -2818,13 +2925,13 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-76-1.png" alt="plot of chunk unnamed-chunk-76"> </p>
+<p><img src="assets/fig/unnamed-chunk-78.png" alt="plot of chunk unnamed-chunk-78"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-115" style="background:;">
+<slide class="" id="slide-119" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 2</h3>
   </hgroup>
@@ -2834,13 +2941,13 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_jitter()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-77-1.png" alt="plot of chunk unnamed-chunk-77"> </p>
+<p><img src="assets/fig/unnamed-chunk-79.png" alt="plot of chunk unnamed-chunk-79"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-116" style="background:;">
+<slide class="" id="slide-120" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 3</h3>
   </hgroup>
@@ -2851,13 +2958,13 @@ m + geom_histogram(aes(fill=cut))
 ggplot(diamonds, aes(price, carat)) + geom_hex()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-78-1.png" alt="plot of chunk unnamed-chunk-78"> </p>
+<p><img src="assets/fig/unnamed-chunk-80.png" alt="plot of chunk unnamed-chunk-80"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-117" style="background:;">
+<slide class="" id="slide-121" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 4</h3>
   </hgroup>
@@ -2867,13 +2974,13 @@ ggplot(diamonds, aes(price, carat)) + geom_hex()
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + stat_density2d()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-79-1.png" alt="plot of chunk unnamed-chunk-79"> </p>
+<p><img src="assets/fig/unnamed-chunk-81.png" alt="plot of chunk unnamed-chunk-81"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-118" style="background:;">
+<slide class="" id="slide-122" style="background:;">
   <hgroup>
     <h3>Something completely different: map!</h3>
   </hgroup>
@@ -2883,13 +2990,13 @@ states &lt;- map_data(&quot;state&quot;)
 ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;white&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-80-1.png" alt="plot of chunk unnamed-chunk-80"> </p>
+<p><img src="assets/fig/unnamed-chunk-82.png" alt="plot of chunk unnamed-chunk-82"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-119" style="background:;">
+<slide class="" id="slide-123" style="background:;">
   <hgroup>
     <h3>The world is your oyster</h3>
   </hgroup>
@@ -2897,13 +3004,13 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;wh
     <pre><code class="r">ggplot(map_data(&quot;world&quot;)) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;white&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-81-1.png" alt="plot of chunk unnamed-chunk-81"> </p>
+<p><img src="assets/fig/unnamed-chunk-83.png" alt="plot of chunk unnamed-chunk-83"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-120" style="background:;">
+<slide class="" id="slide-124" style="background:;">
   <hgroup>
     <h3>What&#39;s the point?</h3>
   </hgroup>
@@ -2913,13 +3020,13 @@ m &lt;- ggplot(map_data(&quot;state&quot;), aes(x=long, y=lat)) + geom_polygon(a
 m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-82-1.png" alt="plot of chunk unnamed-chunk-82"> </p>
+<p><img src="assets/fig/unnamed-chunk-84.png" alt="plot of chunk unnamed-chunk-84"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-121" style="background:;">
+<slide class="" id="slide-125" style="background:;">
   <hgroup>
     <h3>FYI</h3>
   </hgroup>
@@ -2938,7 +3045,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-122" style="background:;">
+<slide class="" id="slide-126" style="background:;">
   <hgroup>
     <h3>Notes on oddities</h3>
   </hgroup>
@@ -2954,377 +3061,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-123" style="background:;">
-  <hgroup>
-    <h2>Time for Lunch Break for 10 Minutes :)</h2>
-  </hgroup>
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-124" style="background:;">
-  <hgroup>
-    <h2>Session 4 - Agenda</h2>
-  </hgroup>
-  <article data-timings="">
-    <ol>
-<li>Plotting Systems in R</li>
-<li>Preparing Data for ggplot2</li>
-<li>ggplot2 simple examples</li>
-<li>ggplot2 philosophy</li>
-<li>more interesting ggplot2 examples</li>
-</ol>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-125" style="background:;">
-  <hgroup>
-    <h2>Plotting Systems in R</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>There are three popular plotting systems in R:</p>
-
-<ul>
-<li>Base Plotting System (bultin to R)</li>
-<li>Lattice</li>
-<li>ggplot2</li>
-</ul>
-
-<p>We&#39;ll focus entirely on ggplot2.</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-126" style="background:;">
-  <hgroup>
-    <h3>Base System</h3>
-  </hgroup>
-  <article data-timings="">
-    <p>Ugly, but easy to use and always available.</p>
-
-<pre><code class="r">hist(rnorm(100,4,20))
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-83-1.png" title="plot of chunk unnamed-chunk-83" alt="plot of chunk unnamed-chunk-83" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
 <slide class="" id="slide-127" style="background:;">
-  <hgroup>
-    <h3>Hello, ggplot2</h3>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>ggplot2 is a very popular graphics system written by Hadley Wickham</li>
-<li>implementation of Leland Wilkinson&#39; Grammar of Graphics</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-128" style="background:;">
-  <hgroup>
-    <h3>Preliminary: reshape2</h3>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>data must have right &quot;shape&quot; before plotting</li>
-<li>+ (although this is very useful tool to have, generally)</li>
-<li>just 2 functions: <code>melt</code> and <code>cast</code></li>
-<li><code>melt</code> turns wide data into long data</li>
-<li><code>cast</code> turns long data</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-129" style="background:;">
-  <hgroup>
-    <h3>Example: airquality</h3>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">names(airquality) &lt;- tolower(names(airquality))
-head(airquality)
-</code></pre>
-
-<pre><code>##   ozone solar.r wind temp month day
-## 1    41     190  7.4   67     5   1
-## 2    36     118  8.0   72     5   2
-## 3    12     149 12.6   74     5   3
-## 4    18     313 11.5   62     5   4
-## 5    NA      NA 14.3   56     5   5
-## 6    28      NA 14.9   66     5   6
-</code></pre>
-
-<pre><code class="r"># vs. 
-head(melt(airquality))
-</code></pre>
-
-<pre><code>## Error in head(melt(airquality)): could not find function &quot;melt&quot;
-</code></pre>
-
-<pre><code class="r"># vs.
-head(melt(airquality, id.vars = c(&quot;month&quot;, &quot;day&quot;)))
-</code></pre>
-
-<pre><code>## Error in head(melt(airquality, id.vars = c(&quot;month&quot;, &quot;day&quot;))): could not find function &quot;melt&quot;
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-130" style="background:;">
-  <hgroup>
-    <h2>Graphics Devices in R</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>Graphics devices are places where plots in R appear:</p>
-
-<ul>
-<li>screen device</li>
-<li>file device</li>
-</ul></li>
-<li><p>Screen Devices:</p>
-
-<ul>
-<li>quartz() (Mac OS), x11() (Unix/Linux), windows() (Windows)</li>
-</ul></li>
-<li><p>File Devices:</p>
-
-<ul>
-<li>pdf(), png(), svg(), ...</li>
-</ul></li>
-<li><p>By default, plots are sent to the screen device</p></li>
-<li><p>for more info, please see ?Devices</p></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-131" style="background:;">
-  <hgroup>
-    <h2>Graphics Devices in R</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>There is nothing special to do to use the screen device</li>
-<li>For file devices:
-
-<ul>
-<li>Graphics device of interest should be opened</li>
-<li>Plotting codes</li>
-<li>closing the device using dev.off()</li>
-</ul></li>
-</ul>
-
-<pre><code class="r">x &lt;- rnorm(100)
-pdf(file = &quot;path/to/file.pdf&quot;)
-hist(x)
-dev.off()
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-132" style="background:;">
-  <hgroup>
-    <h2>File Devices</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>File devices are in two main types:
-
-<ul>
-<li>Vector formats: pdf(), svg(), postscript()</li>
-<li>Bitmap formats: png(), jpeg(), bmp()</li>
-</ul></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-133" style="background:;">
-  <hgroup>
-    <h2>Lattice Plotting System</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>In Lattice plotting system, plotting is a one-step process with a single function call</li>
-<li>Important functions:
-
-<ul>
-<li>xyplot(): to create scatterplot</li>
-<li>bwplot(): to create boxplot</li>
-<li>histogram()</li>
-<li>stripplot(): boxplot with overlaid data points</li>
-</ul></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-134" style="background:;">
-  <hgroup>
-    <h3>Lattice Scatter plot</h3>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">library(lattice)
-data(diamonds)
-diamonds_subset &lt;- diamonds[sample(1:nrow(diamonds),500),]
-xyplot(price ~ carat, data = diamonds_subset)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-86-1.png" title="plot of chunk unnamed-chunk-86" alt="plot of chunk unnamed-chunk-86" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-135" style="background:;">
-  <hgroup>
-    <h3>Lattice Scatterplot across</h3>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">xyplot(price ~ carat | cut, data = diamonds_subset, layout = c(5,1))
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-87-1.png" title="plot of chunk unnamed-chunk-87" alt="plot of chunk unnamed-chunk-87" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-136" style="background:;">
-  <hgroup>
-    <h3>Lattice Scatterplot with Linear fit</h3>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">xyplot(price ~ carat | cut, panel = function(x, y, ...){
-  panel.xyplot(x, y, ...) # Here we call the default panel function
-  panel.lmline(x, y, col = &quot;red&quot;) # We overlay lm fit
-}, data = diamonds_subset, layout = c(5,1))
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-88-1.png" title="plot of chunk unnamed-chunk-88" alt="plot of chunk unnamed-chunk-88" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-137" style="background:;">
-  <hgroup>
-    <h2>ggplot2</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>As Hadley Wickham explained in his ggplot2 book: ggplot2 is a package to &quot;shorten the distance from mind to page&quot;</li>
-<li>Here we briefly mention some examples. For more information please visit: <a href="http://ggplot2.org">http://ggplot2.org</a></li>
-<li>We focus on qplot() function to:
-
-<ul>
-<li>create scatter plot</li>
-<li>create histogram</li>
-</ul></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-138" style="background:;">
-  <hgroup>
-    <h3>qplot()</h3>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>qplot() stands for quick plot</li>
-<li>it&#39;s analogous to plot() in the base package</li>
-<li>main elements of each plot are:
-
-<ul>
-<li>aesthetics: refers to size, shape, color, ...</li>
-<li>geoms: refers to points, lines, bars, ...</li>
-<li>for a complete list of aesthetics and geoms as well as other elements, please visit: <a href="http://docs.ggplot2.org/current/">http://docs.ggplot2.org/current/</a><br></li>
-</ul></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-139" style="background:;">
-  <hgroup>
-    <h3>qplot() - Scatterplot</h3>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">library(ggplot2)
-qplot(carat, price, data = diamonds_subset)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-89-1.png" title="plot of chunk unnamed-chunk-89" alt="plot of chunk unnamed-chunk-89" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-140" style="background:;">
-  <hgroup>
-    <h3>qplot() - Scatterplot</h3>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">qplot(carat, price, data = diamonds_subset, col = cut)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-90-1.png" title="plot of chunk unnamed-chunk-90" alt="plot of chunk unnamed-chunk-90" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-141" style="background:;">
-  <hgroup>
-    <h3>qplot() - Facets</h3>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-91-1.png" title="plot of chunk unnamed-chunk-91" alt="plot of chunk unnamed-chunk-91" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-142" style="background:;">
-  <hgroup>
-    <h3>qplot() - Histogram</h3>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-92-1.png" title="plot of chunk unnamed-chunk-92" alt="plot of chunk unnamed-chunk-92" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-143" style="background:;">
   <hgroup>
     <h2>Time for Break for 10 Minutes :)</h2>
   </hgroup>
@@ -3334,7 +3071,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-144" style="background:;">
+<slide class="" id="slide-128" style="background:;">
   <hgroup>
     <h2>Session 5 - Agenda</h2>
   </hgroup>
@@ -3349,7 +3086,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-145" style="background:;">
+<slide class="" id="slide-129" style="background:;">
   <hgroup>
     <h2>T-Test in R</h2>
   </hgroup>
@@ -3365,7 +3102,7 @@ qplot(carat, price, data = diamonds_subset)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-146" style="background:;">
+<slide class="" id="slide-130" style="background:;">
   <hgroup>
     <h3>One-Sample T-Test</h3>
   </hgroup>
@@ -3379,20 +3116,20 @@ oneSampTest.0
 ##  One Sample t-test
 ## 
 ## data:  oneSampData
-## t = -0.2383, df = 99, p-value = 0.8122
+## t = -0.0571, df = 99, p-value = 0.9546
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.2160898  0.1697585
+##  -0.2136  0.2016
 ## sample estimates:
-##   mean of x 
-## -0.02316566
+## mean of x 
+## -0.005971
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-147" style="background:;">
+<slide class="" id="slide-131" style="background:;">
   <hgroup>
     <h3>One-Sample T-Test</h3>
   </hgroup>
@@ -3408,7 +3145,7 @@ oneSampTest.0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-148" style="background:;">
+<slide class="" id="slide-132" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test</h3>
   </hgroup>
@@ -3425,7 +3162,7 @@ oneSampTest.0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-149" style="background:;">
+<slide class="" id="slide-133" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Un-equal Variances)</h3>
   </hgroup>
@@ -3439,20 +3176,20 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ##  Welch Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -13.0876, df = 56.024, p-value &lt; 2.2e-16
+## t = -14.18, df = 47.96, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.925199 -2.883104
+##  -3.968 -2.983
 ## sample estimates:
 ## mean of x mean of y 
-##  2.299010  5.703161
+##     2.190     5.665
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-150" style="background:;">
+<slide class="" id="slide-134" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Equal Variances)</h3>
   </hgroup>
@@ -3464,45 +3201,45 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ##  Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -13.4521, df = 78, p-value &lt; 2.2e-16
+## t = -15.29, df = 78, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.907948 -2.900354
+##  -3.928 -3.023
 ## sample estimates:
 ## mean of x mean of y 
-##  2.299010  5.703161
+##     2.190     5.665
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-151" style="background:;">
+<slide class="" id="slide-135" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Paired T Test)</h3>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assumption: unequal variances
+    <pre><code class="r">t.test(Samp1, Samp2[1:30], paired = TRUE)
 </code></pre>
 
 <pre><code>## 
 ##  Paired t-test
 ## 
 ## data:  Samp1 and Samp2[1:30]
-## t = -14.8012, df = 29, p-value = 4.737e-15
+## t = -12.2157, df = 29, p-value = 5.871e-13
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -4.036730 -3.056576
+##  -4.062664 -2.897369
 ## sample estimates:
 ## mean of the differences 
-##               -3.546653
+##               -3.480017
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-152" style="background:;">
+<slide class="" id="slide-136" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -3518,7 +3255,7 @@ str(myDF)
 </code></pre>
 
 <pre><code>## &#39;data.frame&#39;:    30 obs. of  2 variables:
-##  $ y    : num  23.6 25.5 27.6 25.4 24.1 24.7 24.5 23.3 25.6 23.8 ...
+##  $ y    : num  24.1 25.4 24.4 25.2 25.4 24.4 24.1 24.7 25.6 25.4 ...
 ##  $ group: Factor w/ 3 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 </code></pre>
 
@@ -3526,7 +3263,7 @@ str(myDF)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-153" style="background:;">
+<slide class="" id="slide-137" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -3538,10 +3275,10 @@ str(myANOVA) # see what is
 
 <pre><code>## Classes &#39;anova&#39; and &#39;data.frame&#39;:    2 obs. of  5 variables:
 ##  $ Df     : int  2 27
-##  $ Sum Sq : num  474.7 29.8
-##  $ Mean Sq: num  237.33 1.11
-##  $ F value: num  215 NA
-##  $ Pr(&gt;F) : num  2.64e-17 NA
+##  $ Sum Sq : num  495.6 25.1
+##  $ Mean Sq: num  247.78 0.93
+##  $ F value: num  267 NA
+##  $ Pr(&gt;F) : num  1.67e-18 NA
 ##  - attr(*, &quot;heading&quot;)= chr  &quot;Analysis of Variance Table\n&quot; &quot;Response: y&quot;
 </code></pre>
 
@@ -3549,7 +3286,7 @@ str(myANOVA) # see what is
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-154" style="background:;">
+<slide class="" id="slide-138" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -3566,7 +3303,7 @@ str(myANOVA) # see what is
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-155" style="background:;">
+<slide class="" id="slide-139" style="background:;">
   <hgroup>
     <h2>Linear Regression:</h2>
   </hgroup>
@@ -3595,7 +3332,7 @@ str(Prestige)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-156" style="background:;">
+<slide class="" id="slide-140" style="background:;">
   <hgroup>
     <h3>Linear Regression - Fit:</h3>
   </hgroup>
@@ -3610,7 +3347,7 @@ myReg # summary(myReg)
 ## 
 ## Coefficients:
 ## (Intercept)    education       income        women  
-##   -6.794334     4.186637     0.001314    -0.008905
+##    -6.79433      4.18664      0.00131     -0.00891
 </code></pre>
 
 <pre><code class="r">names(myReg)
@@ -3625,7 +3362,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-157" style="background:;">
+<slide class="" id="slide-141" style="background:;">
   <hgroup>
     <h3>Linear Regression - Fit:</h3>
   </hgroup>
@@ -3634,25 +3371,25 @@ myReg # summary(myReg)
 </code></pre>
 
 <pre><code>##  gov.administrators    general.managers         accountants 
-##            64.21688            78.49167            58.70723 
+##               64.22               78.49               58.71 
 ## purchasing.officers            chemists          physicists 
-##            52.58065            65.34814            73.12756
+##               52.58               65.35               73.13
 </code></pre>
 
 <pre><code class="r">head(myReg$residuals) # y - y.hat
 </code></pre>
 
 <pre><code>##  gov.administrators    general.managers         accountants 
-##            4.583116           -9.391670            4.692768 
+##               4.583              -9.392               4.693 
 ## purchasing.officers            chemists          physicists 
-##            4.219349            8.151861            4.472439
+##               4.219               8.152               4.472
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-158" style="background:;">
+<slide class="" id="slide-142" style="background:;">
   <hgroup>
     <h2>Linear Regression - Diagnostics:</h2>
   </hgroup>
@@ -3671,7 +3408,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-159" style="background:;">
+<slide class="" id="slide-143" style="background:;">
   <hgroup>
     <h3>Testing for Normality</h3>
   </hgroup>
@@ -3679,13 +3416,13 @@ myReg # summary(myReg)
     <pre><code class="r">qqPlot(myReg, main = &quot;QQ Plot&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-103-1.png" alt="plot of chunk unnamed-chunk-103"> </p>
+<p><img src="assets/fig/unnamed-chunk-95.png" alt="plot of chunk unnamed-chunk-95"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-160" style="background:;">
+<slide class="" id="slide-144" style="background:;">
   <hgroup>
     <h3>Testing for Constant Variance</h3>
   </hgroup>
@@ -3693,13 +3430,13 @@ myReg # summary(myReg)
     <pre><code class="r">spreadLevelPlot(myReg)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-104-1.png" alt="plot of chunk unnamed-chunk-104"> </p>
+<p><img src="assets/fig/unnamed-chunk-96.png" alt="plot of chunk unnamed-chunk-96"> </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-161" style="background:;">
+<slide class="" id="slide-145" style="background:;">
   <article data-timings="">
     <p>EX9. (optional) Randomization testing for whether mean mpg is higher for Japanese cars than European cars</p>
 
@@ -3722,7 +3459,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-162" style="background:;">
+<slide class="" id="slide-146" style="background:;">
   <article data-timings="">
     <p>EX10. Histogram of the continuous variables: to check the outliers and the distribution of the variables</p>
 
@@ -3731,7 +3468,7 @@ myReg # summary(myReg)
 <li>10.2 (optional) reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the &quot;reshape2&quot; package. </li>
 </ul>
 
-<p>EX11. Boxplot of mpg by different levels of origin to visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. Mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. </p>
+<p>EX11. Boxplot of mpg by different levels of origin to visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. In order for boxplot to work, make sure the variable for the x-axis (origin in this case) needs to be of factor type. After you&#39;ve generated the plots, you can see mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later.   </p>
 
 <ul>
 <li>(optional) add an additional layer a)geom_point or b)geom_jitter() and see what happens</li>
@@ -3741,7 +3478,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-163" style="background:;">
+<slide class="" id="slide-147" style="background:;">
   <article data-timings="">
     <p>EX12. Scatterplot of mpg vs cylinders to check what the relationship is like, and to check if it is suitable to treat cylinder as a numerical variable or categorical variable.</p>
 
@@ -3754,9 +3491,9 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-164" style="background:;">
+<slide class="" id="slide-148" style="background:;">
   <article data-timings="">
-    <p>EX13. Scatterplot matrix </p>
+    <p>EX13. Scatterplot matrix. Apply function pairs() or ggpairs() on the data to create the scatterplot matrix. If you use ggpairs(), you need to install and load R package &quot;GGally&quot;.   </p>
 
 <ul>
 <li>to check the relationship between any pair of variable</li>
@@ -3768,10 +3505,10 @@ myReg # summary(myReg)
 
 <ul>
 <li>Based on scatterplot matrix, we see increasing variance as mpg increases, and also non-linear relationship between mpg and other variables. We need to transform the variables.</li>
-<li>Add new variables to the data: 
+<li>Add new variables to the data.<br>
 
 <ul>
-<li>(a) log transformed versions of mpg, horsepower, displacement, and weight.</li>
+<li>(a) log transformed versions of mpg, horsepower, displacement, and weight. Hint: to add a new variable, e.g. log of mpg, you can run data_noNA$logmpg = log(data_noNA$mpg), where &quot;logmpg&quot; is the name for the new variable you choose. </li>
 <li>(b) a factor version of cylinders.</li>
 </ul></li>
 </ul>
@@ -3780,7 +3517,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-165" style="background:;">
+<slide class="" id="slide-149" style="background:;">
   <article data-timings="">
     <p>EX15. Statistical analysis  </p>
 
@@ -3800,7 +3537,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-166" style="background:;">
+<slide class="" id="slide-150" style="background:;">
   <article data-timings="">
     <p>EX16. (optional) An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens </p>
 
@@ -3808,7 +3545,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-167" style="background:;">
+<slide class="" id="slide-151" style="background:;">
   <hgroup>
     <h2>Online Resources to Learn R:</h2>
   </hgroup>
@@ -3838,7 +3575,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-168" style="background:;">
+<slide class="" id="slide-152" style="background:;">
   <hgroup>
     <h2>Useful Books in learning R:</h2>
   </hgroup>
@@ -3854,7 +3591,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-169" style="background:;">
+<slide class="" id="slide-153" style="background:;">
   <hgroup>
     <h2>How to get help in R:</h2>
   </hgroup>
@@ -4190,7 +3927,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='next:'>
+        data-slide=51 title='if:'>
          51
       </a>
     </li>
@@ -4202,7 +3939,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=53 title='if:'>
+        data-slide=53 title='Functions and Packages:'>
          53
       </a>
     </li>
@@ -4214,13 +3951,13 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=55 title='Functions and Packages:'>
+        data-slide=55 title='How to install a package in R:'>
          55
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=56 title='How to install a package in R:'>
+        data-slide=56 title='Popular Packages in R:'>
          56
       </a>
     </li>
@@ -4232,7 +3969,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=58 title='Calling a function in R'>
+        data-slide=58 title='Writing your Own functions'>
          58
       </a>
     </li>
@@ -4244,25 +3981,25 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=60 title='Writing your Own functions'>
+        data-slide=60 title='Some notes on Functions'>
          60
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=61 title='Some notes on Functions'>
+        data-slide=61 title='Lazy Evaluation of Function Arguments'>
          61
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=62 title='Lazy Evaluation of Function Arguments'>
+        data-slide=62 title='Some useful functions:'>
          62
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=63 title='Some useful functions:'>
+        data-slide=63 title='str():'>
          63
       </a>
     </li>
@@ -4274,7 +4011,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=65 title='str():'>
+        data-slide=65 title='apply():'>
          65
       </a>
     </li>
@@ -4298,7 +4035,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=69 title='apply():'>
+        data-slide=69 title='lapply() and sapply():'>
          69
       </a>
     </li>
@@ -4310,19 +4047,19 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=71 title='lapply() and sapply():'>
+        data-slide=71 title='lapply() v. sapply()?:'>
          71
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=72 title='lapply() v. sapply()?:'>
+        data-slide=72 title='lapply() &amp; sapply() with a user-defined FUN'>
          72
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=73 title='lapply() &amp; sapply() with a user-defined FUN'>
+        data-slide=73 title='tapply():'>
          73
       </a>
     </li>
@@ -4334,7 +4071,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=75 title='tapply():'>
+        data-slide=75 title='mapply():'>
          75
       </a>
     </li>
@@ -4346,7 +4083,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=77 title='mapply():'>
+        data-slide=77 title='split():'>
          77
       </a>
     </li>
@@ -4358,19 +4095,19 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=79 title='split():'>
+        data-slide=79 title='Exercises: Analysis for Auto-Mpg Data'>
          79
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=80 title='Exercises: Analysis for Auto-Mpg Data'>
+        data-slide=80 title='Questions to answer'>
          80
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=81 title='Questions to answer'>
+        data-slide=81 title='Some suggestions'>
          81
       </a>
     </li>
@@ -4406,31 +4143,31 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=87 title=''>
+        data-slide=87 title='From now on use the data set that contains no missing values'>
          87
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=88 title='From now on use the data set that contains no missing values'>
+        data-slide=88 title='Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)'>
          88
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=89 title='Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)'>
+        data-slide=89 title='Session 3 - Agenda'>
          89
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=90 title='Session 3 - Agenda'>
+        data-slide=90 title='Useful Matrix Functions'>
          90
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=91 title='Useful Matrix Functions'>
+        data-slide=91 title='solve():'>
          91
       </a>
     </li>
@@ -4442,13 +4179,13 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=93 title='solve():'>
+        data-slide=93 title='Statistical Distributions in R:'>
          93
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=94 title='Statistical Distributions in R:'>
+        data-slide=94 title='Example of a Discrete Distribution:'>
          94
       </a>
     </li>
@@ -4460,7 +4197,7 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=96 title='Example of a Discrete Distribution:'>
+        data-slide=96 title='Example of a Continuous Distribution:'>
          96
       </a>
     </li>
@@ -4478,428 +4215,332 @@ myReg # summary(myReg)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=99 title='Example of a Continuous Distribution:'>
+        data-slide=99 title='Plotting Systems in R'>
          99
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=100 title='Time for Break for 10 Minutes :)'>
+        data-slide=100 title='Base System (intro)'>
          100
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=101 title='Session 4 - Agenda'>
+        data-slide=101 title='Base Plotting System - Histogram'>
          101
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=102 title='Information Visualization'>
+        data-slide=102 title='Base Plotting System - Scatter Plot'>
          102
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=103 title='Hello, ggplot2'>
+        data-slide=103 title='Base Plotting System - BoxPlot'>
          103
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=104 title='First ggplot2: histogram'>
+        data-slide=104 title='Time for Break for 10 Minutes :)'>
          104
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=105 title='Gotchas'>
+        data-slide=105 title='Session 4 - Agenda'>
          105
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=106 title='Now make it fancier'>
+        data-slide=106 title='Information Visualization'>
          106
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=107 title='Facets are an alternative'>
+        data-slide=107 title='Hello, ggplot2'>
          107
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=108 title='Let&#39;s pause for a moment'>
+        data-slide=108 title='First ggplot2: histogram'>
          108
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=109 title='Scatterplots'>
+        data-slide=109 title='Gotchas'>
          109
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=110 title='Log scales'>
+        data-slide=110 title='Now make it fancier'>
          110
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=111 title='Adding factors'>
+        data-slide=111 title='Facets are an alternative'>
          111
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=112 title='Overview of components'>
+        data-slide=112 title='Let&#39;s pause for a moment'>
          112
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=113 title='Problem: overplotting, approach 1a'>
+        data-slide=113 title='Scatterplots'>
          113
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=114 title='Problem: overplotting, approach 1b'>
+        data-slide=114 title='Log scales'>
          114
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=115 title='Problem: overplotting, approach 2'>
+        data-slide=115 title='Adding factors'>
          115
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=116 title='Problem: overplotting, approach 3'>
+        data-slide=116 title='Overview of components'>
          116
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=117 title='Problem: overplotting, approach 4'>
+        data-slide=117 title='Problem: overplotting, approach 1a'>
          117
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=118 title='Something completely different: map!'>
+        data-slide=118 title='Problem: overplotting, approach 1b'>
          118
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=119 title='The world is your oyster'>
+        data-slide=119 title='Problem: overplotting, approach 2'>
          119
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=120 title='What&#39;s the point?'>
+        data-slide=120 title='Problem: overplotting, approach 3'>
          120
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=121 title='FYI'>
+        data-slide=121 title='Problem: overplotting, approach 4'>
          121
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=122 title='Notes on oddities'>
+        data-slide=122 title='Something completely different: map!'>
          122
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=123 title='Time for Lunch Break for 10 Minutes :)'>
+        data-slide=123 title='The world is your oyster'>
          123
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=124 title='Session 4 - Agenda'>
+        data-slide=124 title='What&#39;s the point?'>
          124
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=125 title='Plotting Systems in R'>
+        data-slide=125 title='FYI'>
          125
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=126 title='Base System'>
+        data-slide=126 title='Notes on oddities'>
          126
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=127 title='Hello, ggplot2'>
+        data-slide=127 title='Time for Break for 10 Minutes :)'>
          127
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=128 title='Preliminary: reshape2'>
+        data-slide=128 title='Session 5 - Agenda'>
          128
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=129 title='Example: airquality'>
+        data-slide=129 title='T-Test in R'>
          129
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=130 title='Graphics Devices in R'>
+        data-slide=130 title='One-Sample T-Test'>
          130
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=131 title='Graphics Devices in R'>
+        data-slide=131 title='One-Sample T-Test'>
          131
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=132 title='File Devices'>
+        data-slide=132 title='Two-Sample T-Test'>
          132
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=133 title='Lattice Plotting System'>
+        data-slide=133 title='Two-Sample T-Test (Un-equal Variances)'>
          133
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=134 title='Lattice Scatter plot'>
+        data-slide=134 title='Two-Sample T-Test (Equal Variances)'>
          134
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=135 title='Lattice Scatterplot across'>
+        data-slide=135 title='Two-Sample T-Test (Paired T Test)'>
          135
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=136 title='Lattice Scatterplot with Linear fit'>
+        data-slide=136 title='ANOVA'>
          136
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=137 title='ggplot2'>
+        data-slide=137 title='ANOVA'>
          137
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=138 title='qplot()'>
+        data-slide=138 title='ANOVA'>
          138
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=139 title='qplot() - Scatterplot'>
+        data-slide=139 title='Linear Regression:'>
          139
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=140 title='qplot() - Scatterplot'>
+        data-slide=140 title='Linear Regression - Fit:'>
          140
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=141 title='qplot() - Facets'>
+        data-slide=141 title='Linear Regression - Fit:'>
          141
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=142 title='qplot() - Histogram'>
+        data-slide=142 title='Linear Regression - Diagnostics:'>
          142
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=143 title='Time for Break for 10 Minutes :)'>
+        data-slide=143 title='Testing for Normality'>
          143
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=144 title='Session 5 - Agenda'>
+        data-slide=144 title='Testing for Constant Variance'>
          144
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=145 title='T-Test in R'>
+        data-slide=145 title=''>
          145
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=146 title='One-Sample T-Test'>
+        data-slide=146 title=''>
          146
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=147 title='One-Sample T-Test'>
+        data-slide=147 title=''>
          147
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=148 title='Two-Sample T-Test'>
+        data-slide=148 title=''>
          148
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=149 title='Two-Sample T-Test (Un-equal Variances)'>
+        data-slide=149 title=''>
          149
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=150 title='Two-Sample T-Test (Equal Variances)'>
+        data-slide=150 title=''>
          150
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=151 title='Two-Sample T-Test (Paired T Test)'>
+        data-slide=151 title='Online Resources to Learn R:'>
          151
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=152 title='ANOVA'>
+        data-slide=152 title='Useful Books in learning R:'>
          152
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=153 title='ANOVA'>
+        data-slide=153 title='How to get help in R:'>
          153
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=154 title='ANOVA'>
-         154
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=155 title='Linear Regression:'>
-         155
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=156 title='Linear Regression - Fit:'>
-         156
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=157 title='Linear Regression - Fit:'>
-         157
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=158 title='Linear Regression - Diagnostics:'>
-         158
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=159 title='Testing for Normality'>
-         159
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=160 title='Testing for Constant Variance'>
-         160
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=161 title=''>
-         161
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=162 title=''>
-         162
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=163 title=''>
-         163
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=164 title=''>
-         164
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=165 title=''>
-         165
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=166 title=''>
-         166
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=167 title='Online Resources to Learn R:'>
-         167
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=168 title='Useful Books in learning R:'>
-         168
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=169 title='How to get help in R:'>
-         169
       </a>
     </li>
   </ul>

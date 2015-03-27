@@ -1,4 +1,5 @@
 base
 car
 ggplot2
-lattice
+hexbin
+maps

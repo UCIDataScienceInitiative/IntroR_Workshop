@@ -1,25 +1,26 @@
+# EX0. Set working directory
+# + use setwd() to set the working directory to the folder where the data files are. 
+setwd('./data/') # replace "./data/" to the path of the folder where your data files are
+
 # EX1. Import data
-# + 1.1 Import the data "auto-mpg.csv" and store it as an object "data". Check what string/symbol is used to denote missing values in the data and specify the argument "na.strings" for the function you used to read the data. 
-datafolder = './data/'
-data = read.csv(file = paste(datafolder, "auto-mpg.csv",sep=""), 
-                header = FALSE)
-# if you've alread use setwd() to change the working directory to the data folder, you can just use the filename directly instead of paste(datafolder, "auto-mpg.csv",sep="").  
+# + 1.1  to mport the data "auto-mpg.csv" and store it as an object "data", run the code data = read.csv(file = "auto-mpg.csv", header = FALSE, na.strings= "NA"). We need to set header = FALSE since the data starts right from the first line (no header). Look at the data set to see what string/symbol is used to denote missing values; in this data "NA" is used, so na.strings = "NA" is specified in the read.csv(). You can also use read.table() but you will need to specify sep="," additionally. 
+data = read.csv(file = "auto-mpg.csv", header = FALSE)
 
 # + 1.2 (optional) Read data file "auto-mpg.data-original". What happens and why? Check the original data file.
-data_baddata = read.table(file = paste(datafolder, "auto-mpg.data-original",sep=""), 
-                          header = FALSE, sep=" ")
-# It returns error because the data format is not suitable for read.table or read.csv. It has fixed width format so you need to use read.fwf(). Or, when the size of the data is not very big, you can open the data in excel and convert it to a csv file first. 
+data_baddata = read.table(file = "auto-mpg.data-original", header = FALSE, sep=" ")
+# It returns error because the data format is not suitable for read.table or read.csv. It has fixed width format so you need to use read.fwf() and specify the column widths. Therefore you need to know the column widths in advance; if you don't know, you can look at the data and count the widths). Or, you can open the data in Excel which automatically obtains the column widths, convert it to a csv file, and import the data using read.csv(). 
 
 # EX2. General check for the data
-# + 2.1 check the top 6 rows of data; open the original data in excel or notepad and compare with the rows printed in R. Hint: need to set header = FALSE since the data starts right from the first line (no header). 
+# + 2.1 check the top 6 rows of data; open the original data in excel or notepad and compare with the rows printed in R. 
 head(data)
 # + 2.2. check the dimension of data
 dim(data)
 
 # EX3. Add variable names to data
-# + 3.1 read variable names from "auto-mpg-names.txt"
-varnames = readLines(paste(datafolder,"auto-mpg-names.txt",sep=""))
-# + 3.2 assign variable names to data
+# + 3.1 read variable names from "auto-mpg-names.txt" using readLines(). The difference between readLines() and read.table() is that readLines() imports the data file into a vector of strings, but read.table() imports the data file into a data frame (could be any data type depending on the actual data values). Each element of the vector returned by readLines() is the content of a entire line in the data file. 
+varnames = readLines("auto-mpg-names.txt")
+# if you used read.table("auto-mpg-names.txt") instead, then you need to extract the actual vector of names out of the dataframe by varnames = varnames[,1] or varnames = varnames[[1]]
+# + 3.2 assign variable names to data (you can assign values to names(data) to change the names of data)
 names(data) = varnames
 # + 3.3 check if the variable names are correctly assigned. Hint: you can either print the variable names of the data or print the top rows of the data
 names(data)
@@ -36,14 +37,14 @@ summary(data)
 # EX5. Subset exercises 
 # + 5.1 summarize the variable mpg (use summary()). (There are 3 ways you can get the variable mpg.) Do you see something weird in the result? What might be the reason? We will get back to this later. 
 summary(data$mpg)
-summary(data[, "mpg"]])
-summary(data[, 1]])
+summary(data[, "mpg"])
+summary(data[, 1])
 
-# + 5.2 create a vector of the column indicies for the continuous variables (refer to dataset description to see which ones are continuous variables) and extract the continuous variables. Summarize the continuous variables (use summary()).
+# + 5.2 create a vector in R for the numbers 1,3,4,5,6, which are the column indices for the continuous variables; use that vector to extract the continuous variables and summarize the continuous variables (use summary()).
 index_cont = c(1, 3:6) 
 summary(data[,index_cont])
 
-# + 5.3 use the index vector you created above to extract the non-continous variables and summarize them; compare how summary() works differently for a factor variable (car_name) from a numerical variable.
+# + 5.3 use the index vector you created above to extract the non-continuous variables and summarize them; compare how summary() works differently for a factor variable (car_name) from a numerical variable.
 summary(data[, -index_cont])
 
 # + 5.4 (optional) read the help file for which(); create a vector of indices for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or, ! for NOT.  
@@ -93,7 +94,7 @@ total_NAs = function(x){
   return(sum(is.na(x)))
 }
 total_NAs(data)
-# + 7.5 read the help file for function na.omit(), and use this function to create a new data that contains only the instances that has no missing value on any variables
+# + 7.5 read the help file for function na.omit(), and use this function to create a new data (name it as data_noNA) that contains only the instances that has no missing value on any variables
 data_noNA = na.omit(data)
 
 
@@ -105,7 +106,7 @@ sapply(data_noNA[,c(2, 7, 8)], table)
 lapply(data_noNA[,c(2, 7, 8)], table) 
 # + 8.2 find average mpg for each # cylinders
 tapply(data_noNA$mpg, data_noNA$cylinders, mean)
-# + 8.3 find 2.5 and 97.5 percentile of mpg for each # cynlinders 
+# + 8.3 find 2.5 and 97.5 percentile of mpg for each # cylinders 
 tapply(data_noNA$mpg, data_noNA$cylinders, quantile, c(0.025, 0.975))
 # + 8.4 split the dataset based on # cylinders 
 data_by_origin = split(data_noNA, data_noNA$origin)
@@ -116,8 +117,6 @@ data_by_origin = split(data_noNA, data_noNA$origin)
 dif_JapVSEuro = mean(data_by_origin$Japanese$mpg) - mean(data_by_origin$European$mpg)
 # + 9.2 find the number of instances for European cars and save in object n_European
 n_European = sum(data_noNA$origin == "European")
-# or 
-n_European = dim(data_by_origin$American)[1]
 # + 9.3 write a for loop that does the following in each iteration:
 #   + find the subset of European cars and Japanese cars
 # + randomize the origin of the cars: randomly sample n_European instances to be "European" and the rest to be "Japanese"
@@ -161,7 +160,7 @@ ggplot(data_noNA_cont_melt, aes(value)) + geom_histogram() +
 dev.off()
 
 
-# EX11. Boxplot of mpg by different levels of origin to visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. Mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. 
+# EX11. Boxplot of mpg by different levels of origin to visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. In order for boxplot to work, make sure the variable for the x-axis (origin in this case) needs to be of factor type. After you've generated the plots, you can see mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later.   
 ggplot(data_noNA, aes(origin, mpg)) + geom_boxplot()
 
 # + (optional) add an additional layer a)geom_point or b)geom_jitter() and see what happens
@@ -181,6 +180,7 @@ ggplot(data_noNA_evenCyl, aes(cylinders, mpg)) + geom_point() + stat_smooth(meth
 
 
 # EX13. Scatterplot matrix 
+# + Apply function pairs() or ggpairs() on the data to create the scatterplot matrix. If you use ggpairs(), you need to install and load R package "GGally".
 # + to check the relationship between any pair of variable
 # + to check for linearity assumption and homogeneity assumption
 # + If violated, data transformation will be needed when building a linear regression model
@@ -195,7 +195,7 @@ ggpairs(data_noNA)
 # EX14. Data transformation
 # + Based on scatterplot matrix, we see increasing variance as mpg increases, and also non-linear relationship between mpg and other variables. We need to transform the variables.
 # + Add new variables to the data: 
-#   + (a) log transformed versions of mpg, horsepower, displacement, and weight.
+# + (a) log transformed versions of mpg, horsepower, displacement, and weight. Hint: to add a new variable, e.g. log of mpg, you can run data_noNA$logmpg = log(data_noNA$mpg), where "logmpg" is the name for the new variable you choose. 
 data_noNA$logmpg = log(data_noNA$mpg)
 data_noNA$loghorsepower = log(data_noNA$horsepower)
 data_noNA$logdisplacement = log(data_noNA$displacement)

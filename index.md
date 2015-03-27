@@ -32,20 +32,19 @@ github:
 
 2) We are going to work in pairs. Please find a partner. 
 
-
-3) Feel free to ask questions anytime during lecture.
+3) Feel free to ask questions anytime during lectures.
 
 4) To access this presentation and the codes used during the workshop please visit:
-   http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1
+  + http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1
+
 
 ---
 
 ## Session 1 - Agenda
 
 1. RStudio
-4. Data Types in R
-5. Subsetting in R
-
+2. Data Types in R
+3. Subsetting in R
 
 ---
 
@@ -64,7 +63,9 @@ github:
 + R is an object-oriented programming language 
   + everything in R is considered as an object!
 
----
+
+--- 
+
 
 ## R Studio:
 
@@ -86,7 +87,7 @@ github:
   + Character
   
 2. Everything in R is object. Objects can have some attributes.
-  + names, dimension, class, length are some possible attributes
+  + names, dimension, length are some possible attributes
 
 ---
 
@@ -481,11 +482,11 @@ colMat
 ```
 
 ```
-##      vec1 vec2       vec3
-## [1,]    1   97 -0.2232147
-## [2,]    2   65  1.4498167
-## [3,]    3   71  0.7590436
-## [4,]    4   31  1.0309793
+##      vec1 vec2     vec3
+## [1,]    1   88 -0.60388
+## [2,]    2   64 -0.07985
+## [3,]    3   74  0.89368
+## [4,]    4   55  1.85324
 ```
 
 ---
@@ -502,10 +503,10 @@ rowMat
 ```
 
 ```
-##            [,1]     [,2]       [,3]      [,4]
-## vec1  1.0000000  2.00000  3.0000000  4.000000
-## vec2 93.0000000 90.00000 86.0000000 91.000000
-## vec3  0.4642409 -1.65771 -0.4921985 -1.085812
+##         [,1]    [,2]   [,3] [,4]
+## vec1  1.0000  2.0000  3.000 4.00
+## vec2 21.0000 62.0000 74.000 9.00
+## vec3  0.6717  0.1932 -2.489 1.09
 ```
 
 ---
@@ -570,12 +571,12 @@ head(data)
 
 ```
 ##   studentID score gender
-## 1    S#6488     7 female
-## 2    S#7339    64 female
-## 3    S#6486    72   male
-## 4    S#6954    25 female
-## 5    S#7299    21 female
-## 6    S#7056    56 female
+## 1    S#7075    74 female
+## 2    S#6834    68 female
+## 3    S#7282    10   male
+## 4    S#6903    18 female
+## 5    S#7067    98   male
+## 6    S#7026     7   male
 ```
 
 ---
@@ -1070,19 +1071,25 @@ Main functions for writing data from R:
 
 
 ```r
-irisFile <- read.table(file = "/Users/sepehrakhavan/Documents/Statistics/Stat Courses/DataScience_Dr.PadhraicSmyth/RWorkShop_Nov_2014/SupportingFiles/iris", header = TRUE)
+irisFile <- read.table(file = "/Users/sepehrakhavan/Documents/R_Workshop/iris.csv", header = TRUE)
+```
 
+```
+## Warning: cannot open file
+## '/Users/sepehrakhavan/Documents/R_Workshop/iris.csv': No such file or
+## directory
+```
+
+```
+## Error: cannot open the connection
+```
+
+```r
 head(irisFile)
 ```
 
 ```
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa
+## Error: object 'irisFile' not found
 ```
 
 + to make read.table() run faster:
@@ -1116,8 +1123,8 @@ write.table(irisFile, file = "path/to/the/file")
 
 + There are 3 ways in R to write loops:
   + for 
-  + while (skipped!)
   + repeat (skipped!)
+  + while (skipped!)
 
 ---
 
@@ -1137,29 +1144,6 @@ for(i in 1:4){
 ## [1] "cycle #3"
 ## [1] "cycle #4"
 ```
-
----
-
-## next:
-
-+ next is useful in skipping an iteration of a loop:
-
-```r
-for(i in 1:4){
-  if (i == 3){
-    next
-  }
-  print(paste("cycle #", i, sep = ""))
-  i <- i + 1 
-}
-```
-
-```
-## [1] "cycle #1"
-## [1] "cycle #2"
-## [1] "cycle #4"
-```
-
 
 ---
 
@@ -1202,10 +1186,10 @@ age.df[1:3,]
 ```
 
 ```
-##   age ageCat
-## 1  72    Old
-## 2  79    Old
-## 3  96    Old
+##   age      ageCat
+## 1  51 Middle-Aged
+## 2  30       Young
+## 3  34       Young
 ```
 
 ---
@@ -1229,8 +1213,7 @@ There are some terms which sometimes get confused and should be clarified:
 2. Library: A directory containing installed packages
 3. Repository: A website providing packages for installation
 4. Source: The original version of a package with human-readable text and code
-5. Binary: A compiled version of a package with computer-readable text and code, may work only on a specific platform
-6. Base packages: Part of the R source tree, maintained by R Core
+5. Base packages: Part of the R source tree, maintained by R Core
 
 + for more info on how R packages are developed, please read: "Creating R Packages: A Tutorial" (Friedrich Leisch)
   + http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf
@@ -1240,7 +1223,7 @@ There are some terms which sometimes get confused and should be clarified:
 
 ## How to install a package in R:
 
-There are two ways to install a package in R:
+There are three main ways to install a package in R:
 
 1. Installing from CRAN: install a package directly from the repository
   + Using R studio: tools/install packages
@@ -1249,9 +1232,31 @@ There are two ways to install a package in R:
 2. Installing from Source: In this method, you should first download the add-on R package and use the following unix command in the console to install the package:
   + R CMD INSTALL packageName -l path/to/your/Rpackage/Directory
 
+3. Installing from a version control (Github): 
+  + Check-out https://github.com/hadley/devtools
+
 + Once you install a package, you need to load it into R using the function library()
 
 
+---
+
+## Popular Packages in R:
+
+1. To visualize data:
+  + ggplot2: to create beautiful graphics
+  + googleVis: to use Google Chart tools
+  
+2. To report results:
+  + shiny: to create interactive web-based apps
+  + knitr: to combine R codes and Latex/Markdown codes
+  + slidify: to build HTML 5 slide shows
+  
+3. To write high-performance R code:
+  + Rcpp: to write R functions that call C++ code
+  + data.table: to organize datasets for fast operations
+  + parallel: to use parallel processing in R
+  
+  
 ---
 
 ## Calling a function in R
@@ -1288,7 +1293,7 @@ sample(sampSpace, 1) # arguments with default values can be omitted
 ```
 
 ```
-## [1] 5
+## [1] 4
 ```
 
 ```r
@@ -1304,7 +1309,7 @@ sample(size = 1, sampSpace)
 ```
 
 ```
-## [1] 2
+## [1] 1
 ```
 
 
@@ -1398,7 +1403,7 @@ myLazyFn2(10) # No error!
 ```
 
 ```
-## Error in print(b): argument "b" is missing, with no default
+## Error: argument "b" is missing, with no default
 ```
 
 
@@ -1441,7 +1446,7 @@ str(genderF)
 ```
 
 ```
-##  Factor w/ 2 levels "Female","Male": 2 2 2 1 1 2 1 2 1 2 ...
+##  Factor w/ 2 levels "Female","Male": 1 2 1 2 1 1 1 2 2 1 ...
 ```
 
 
@@ -1620,7 +1625,7 @@ sapply(myList, mean)
 
 ### lapply() v. sapply()?:
 
-+ sapply() simplfies the result of lapply.
++ sapply() simplifies the result of lapply.
   
 + If the result of lapply is a list with all elements of the same length:
     + if length == 1: sapply() returns a vector
@@ -1686,13 +1691,13 @@ head(HeightDF)
 ```
 
 ```
-##     heigth gender
-## 1 179.9530      M
-## 2 175.1204      M
-## 3 185.5293      M
-## 4 180.8452      M
-## 5 177.7442      M
-## 6 186.0067      M
+##   heigth gender
+## 1  179.4      M
+## 2  178.1      M
+## 3  182.9      M
+## 4  177.3      M
+## 5  183.0      M
+## 6  184.2      M
 ```
 
 ```r
@@ -1700,8 +1705,8 @@ tapply(HeightDF$heigth, HeightDF$gender, mean)
 ```
 
 ```
-##        F        M 
-## 170.2082 179.6986
+##     F     M 
+## 169.9 180.1
 ```
 
 
@@ -1767,7 +1772,7 @@ str(HeightDF)
 
 ```
 ## 'data.frame':	200 obs. of  2 variables:
-##  $ heigth: num  180 175 186 181 178 ...
+##  $ heigth: num  179 178 183 177 183 ...
 ##  $ gender: Factor w/ 2 levels "F","M": 2 2 2 2 2 2 2 2 2 2 ...
 ```
 
@@ -1779,8 +1784,8 @@ str(splitData)
 
 ```
 ## List of 2
-##  $ F: num [1:100] 168 171 171 168 170 ...
-##  $ M: num [1:100] 180 175 186 181 178 ...
+##  $ F: num [1:100] 171 170 169 173 167 ...
+##  $ M: num [1:100] 179 178 183 177 183 ...
 ```
 
 
@@ -1789,12 +1794,12 @@ str(splitData)
 ## Exercises: Analysis for Auto-Mpg Data
 
 1. Dataset: Auto-Mpg Data from UCI Machine Learning Repository (some modification is done on the data for the exercise of this workshop)
-2. Download:   https://github.com/UCIDataScienceInitiative/IntroR_Workshop/data/
+2. Download: click the "download" button in slide 1, extract the zip file and the data files will be in the folder "data"
 3. Variables (names saved in auto-mpg-names.txt): 
   + continuous: mpg, displacement, horsepower, weight, acceleration
   + discrete: cylinders, model year, origin
   + string: car name (not used in the analysis)
-  + descriptions: mpg (city-cycle fuel consumption in miles per gallon), cylinders (# of cylinders), displacement (engine displacement in cu. inches), weight (vehichle weight in lbs.), accelerate (time to accelerate from O to 60 mph in sec.), model year (modulo 100), origin (1: American, 2: European, 3: Japanese).
+  + descriptions: mpg (city-cycle fuel consumption in miles per gallon), cylinders (# of cylinders), displacement (engine displacement in cu. inches), weight (vehicle weight in lbs.), accelerate (time to accelerate from O to 60 mph in sec.), model year (modulo 100), origin (1: American, 2: European, 3: Japanese).
 4. More information:   https://archive.ics.uci.edu/ml/datasets/Auto+MPG
 
 ---
@@ -1806,29 +1811,31 @@ str(splitData)
 4. Predict mpg using the other variables provided in the data.
 
 ---
-
-1. The exercises will generally follow the typical process of a statistical analysis. 
-2. 30 min for R exercise for each exercise session, and 10 min for summary of FAQ.  
-3. Suggestion for the exercises
+# Some suggestions
   + First work on the regular problems (with no "optional" marks) and skip the optional ones, especially if you are very new to R.
   + If you still have time after finishing all the regular problems, come back to work on the optional ones. 
-
+  + Feel free to ask us for help
+  + Take a look at the data files by opening them in any text editor or Excel 
+  + Disable "hide file extensions" so you can easily see the full file names
+  + Create a new R script file for the exercises; write your code in the code file instead of directly in the console so you can easily save and edit your code; execute the code by highlighting the code and press Ctrl+Enter (PC) or Cmd+Return (Mac). 
 
 ---
+EX0. Set working directory
+  + use setwd() to set the working directory to the folder where the data files are. 
 
 EX1. Import data
-  + 1.1 Import the data "auto-mpg.csv" and store it as an object "data". Check what string/symbol is used to denote missing values in the data and specify the argument "na.strings" for the function you used to read the data. 
+  + 1.1  to import the data "auto-mpg.csv" and store it as an object "data", run the code data = read.csv(file = "auto-mpg.csv", header = FALSE, na.strings= "NA"). We need to set header = FALSE since the data starts right from the first line (no header). Look at the data set to see what string/symbol is used to denote missing values; in this data "NA" is used, so na.strings = "NA" is specified in the read.csv(). You can also use read.table() but you will need to specify sep="," additionally. 
   + 1.2 (optional) Read data file "auto-mpg.data-original". What happens and why? Check the original data file.
 
 EX2. General check for the data
-  + 2.1 check the top 6 rows of data; open the original data in excel or notepad and compare with the rows printed in R. Hint: need to set header = FALSE since the data starts right from the first line (no header). 
+  + 2.1 check the top 6 rows of data; open the original data in excel or notepad and compare with the rows printed in R.  
   + 2.2. check the dimension of data
 
 ---
 
 EX3. Add variable names to data
-  + 3.1 read variable names from "auto-mpg-names.txt"
-  + 3.2 assign variable names to data
+  + 3.1 read variable names from "auto-mpg-names.txt" using readLines(). The difference between readLines() and read.table() is that readLines() imports the data file into a vector of strings, but read.table() imports the data file into a data frame (could be any data type depending on the actual data values). Each element of the vector returned by readLines() is the content of a entire line in the data file. 
+  + 3.2 assign variable names to data (you can assign values to names(data) to change the names of data)
   + 3.3 check if the variable names are correctly assigned. Hint: you can either print the variable names of the data or print the top rows of the data
 
 EX4. Data summary
@@ -1839,9 +1846,9 @@ EX4. Data summary
 EX5. Subset exercises 
   + 5.1 summarize the variable mpg (use summary()). (There are 3 ways you can get the variable mpg.) Do you see something weird in the result? What might be the reason? We will get back to this later. 
 
-  + 5.2 create a vector of the column indicies for the continuous variables (refer to dataset description to see which ones are continuous variables) and extract the continuous variables. Summarize the continuous variables (use summary()).
+  + 5.2 create a vector in R for the numbers 1,3,4,5,6, which are the column indices for the continuous variables; use that vector to extract the continuous variables and summarize the continuous variables (use summary()).
 
-  + 5.3 use the index vector you created above to extract the non-continous variables and summarize them; compare how summary() works differently for a factor variable (car_name) from a numerical variable.
+  + 5.3 use the index vector you created above to extract the non-continuous variables and summarize them; compare how summary() works differently for a factor variable (car_name) from a numerical variable.
 
   + 5.4 (optional) read the help file for which(); create a vector of indices for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or, ! for NOT.  
 
@@ -1865,7 +1872,7 @@ EX7. Missing values
   + 7.2 use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  
   + 7.3 using is.na() function, take a subset of the dataset that has non-missing mpg and check the dimension of the subset. Hint: !is.na() refers to NOT NA. 
   + 7.4 write a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument "x". Test your function on the current data, it should return 17. 
-  + 7.5 read the help file for function na.omit(), and use this function to create a new data that contains only the instances that has no missing value on any variables
+  + 7.5 read the help file for function na.omit(), and use this function to create a new data (name it as data_noNA) that contains only the instances that has no missing value on any variables
 
 ---
 
@@ -1873,7 +1880,7 @@ EX7. Missing values
 EX8. (optional) Exercises for *apply() and split()
   + 8.1 use one of the *apply() functions to get the frequency table on all discrete variables. Note that if these variables were all of factor type instead of numerical type, this could be directly done by summary(data[,c(2,7,8)]) 
   + 8.2 find average mpg for each # cylinders
-  + 8.3 find 2.5 and 97.5 percentile of mpg for each # cynlinders 
+  + 8.3 find 2.5 and 97.5 percentile of mpg for each # cylinders 
   + 8.4 split the dataset based on # cylinders 
 
 
@@ -1887,6 +1894,7 @@ EX8. (optional) Exercises for *apply() and split()
 
 1. Useful Matrix Functions
 2. Statistical Distributions in R
+3. Intro to plotting in R
 
 ---
 
@@ -1943,10 +1951,10 @@ solve(A)%*%A
 ```
 
 ```
-##      [,1] [,2]          [,3]
-## [1,]    1    0  0.000000e+00
-## [2,]    0    1 -8.881784e-16
-## [3,]    0    0  1.000000e+00
+##      [,1] [,2]       [,3]
+## [1,]    1    0  0.000e+00
+## [2,]    0    1 -8.882e-16
+## [3,]    0    0  1.000e+00
 ```
 + Machine epsilon is defined to be the smallest positive number which, when added to 1, gives a number different from 1.
 + Please visit http://en.wikipedia.org/wiki/Machine_epsilon for more info
@@ -1959,7 +1967,7 @@ solve(A)%*%A
   + examples: binomial, poisson, normal, chi square, ...
 
 + Each distribution in R has four functions:
-  + these functions beging with a "d", "p", "q", or "r" and followed by the name of the distribution
+  + these functions begin with a "d", "p", "q", or "r" and are followed by the name of the distribution
 
 + ddist(parameters): refers to the density of each distribution
 + rdist(parameters): generates random numbers out of each distribution
@@ -1985,7 +1993,7 @@ dbinom(5, 10, 0.5) # prob of getting five heads
 ```
 
 ```
-## [1] 0.2460938
+## [1] 0.2461
 ```
 
 ```r
@@ -2001,7 +2009,7 @@ pbinom(5, 10, 0.5) # Pr[X <= 5]
 ```
 
 ```
-## [1] 0.6230469
+## [1] 0.623
 ```
 
 
@@ -2038,7 +2046,7 @@ rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 ```
 
 ```
-##  [1] 5 5 3 6 3 3 7 4 6 4 4 6 7 3 3 6 4 6 4 8
+##  [1] 5 6 5 6 4 7 5 3 7 5 3 7 5 2 5 6 4 6 6 3
 ```
 
 
@@ -2060,7 +2068,7 @@ dnorm(x = 0, mean = 0, sd = 1, log = FALSE)
 ```
 
 ```
-## [1] 0.3989423
+## [1] 0.3989
 ```
 
 ```r
@@ -2113,8 +2121,8 @@ rnorm(10, mean = 0, sd = 1)
 ```
 
 ```
-##  [1] -0.7735307 -0.8198088 -0.3149976  0.3073127 -0.1390719 -0.7339548
-##  [7] -0.4427237 -0.3758955  0.4063727 -0.4696300
+##  [1] -2.0271 -0.5438  1.0976  0.3732 -0.5845 -0.8784 -1.5606  1.0805
+##  [9]  1.0381  0.9862
 ```
 
 
@@ -2129,7 +2137,67 @@ y <- dnorm(x, mean = 0, sd = 1)
 plot(x, y, type = "l")
 ```
 
-<img src="assets/fig/unnamed-chunk-66-1.png" title="plot of chunk unnamed-chunk-66" alt="plot of chunk unnamed-chunk-66" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-65.png" title="plot of chunk unnamed-chunk-65" alt="plot of chunk unnamed-chunk-65" style="display: block; margin: auto;" />
+
+---
+
+## Plotting Systems in R
+
+There are three main plotting systems in R:
+  + Base Plotting System
+  + ggplot2
+  + Lattice
+
+---
+
+## Base System (intro)
+
+In Base plotting system:
+  + We start with a blank canvas
+  + by calling a plot function, we start our plot
+  + Using annotation functions we can add more elements to our plot
+  
+In general, plotting functions under the base system are:
+  + Functions to generate plots: plot()
+  + Functions to annotate plots: text(), lines(), points()
+
+
+---
+
+## Base Plotting System - Histogram
+
+
+```r
+x <- rnorm(100)
+hist(x)
+```
+
+<img src="assets/fig/unnamed-chunk-66.png" title="plot of chunk unnamed-chunk-66" alt="plot of chunk unnamed-chunk-66" style="display: block; margin: auto;" />
+
+---
+
+## Base Plotting System - Scatter Plot
+
+```r
+x <- rnorm(100)
+y <- rnorm(100)
+plot(x, y)
+```
+
+<img src="assets/fig/unnamed-chunk-67.png" title="plot of chunk unnamed-chunk-67" alt="plot of chunk unnamed-chunk-67" style="display: block; margin: auto;" />
+
+---
+
+## Base Plotting System - BoxPlot
+
+```r
+x <- rnorm(100, 0, 1)
+y <- rnorm(100, 1, 1)
+z <- rnorm(100, 2, 2)
+boxplot(x, y , z)
+```
+
+<img src="assets/fig/unnamed-chunk-68.png" title="plot of chunk unnamed-chunk-68" alt="plot of chunk unnamed-chunk-68" style="display: block; margin: auto;" />
 
 ---
 
@@ -2139,7 +2207,7 @@ plot(x, y, type = "l")
 
 ## Session 4 - Agenda
 
-+ Goal: use gglot2 to explore data afterwards
++ Goal: use ggplot2 to explore data afterwards
 + Emphasize simple examples
 + Emphasize principles
 + Some examples will be developed today
@@ -2152,7 +2220,7 @@ plot(x, y, type = "l")
 + Efficiency
 + Interpretability
 + Parsimony
-+ ggplto2 lies in "sweet spot" of functionality
++ ggplot2 lies in "sweet spot" of functionality
 
 ---
 
@@ -2192,7 +2260,7 @@ ggplot(diamonds, aes(price)) + geom_histogram()
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-68](assets/fig/unnamed-chunk-68-1.png) 
+![plot of chunk unnamed-chunk-70](assets/fig/unnamed-chunk-70.png) 
 
 
 ---
@@ -2235,7 +2303,7 @@ m + geom_histogram(aes(fill=cut))
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-70](assets/fig/unnamed-chunk-70-1.png) 
+![plot of chunk unnamed-chunk-72](assets/fig/unnamed-chunk-72.png) 
 
 ---
 
@@ -2249,7 +2317,7 @@ m <- ggplot(diamonds, aes(price))
 m + geom_histogram(binwidth=100) + facet_grid(cut~color)
 ```
 
-![plot of chunk unnamed-chunk-71](assets/fig/unnamed-chunk-71-1.png) 
+![plot of chunk unnamed-chunk-73](assets/fig/unnamed-chunk-73.png) 
 
 
 ---
@@ -2279,7 +2347,7 @@ Note: There's no "scatterplot" function. Use `geom_point`.
 ggplot(diamonds, aes(price, carat)) + geom_point()
 ```
 
-![plot of chunk unnamed-chunk-72](assets/fig/unnamed-chunk-72-1.png) 
+![plot of chunk unnamed-chunk-74](assets/fig/unnamed-chunk-74.png) 
 
 ---
 ### Log scales
@@ -2290,7 +2358,7 @@ ggplot(diamonds, aes(price, carat)) + geom_point()
 ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
 ```
 
-![plot of chunk unnamed-chunk-73](assets/fig/unnamed-chunk-73-1.png) 
+![plot of chunk unnamed-chunk-75](assets/fig/unnamed-chunk-75.png) 
 
 Scales begin with `scale_`, and are not only for continuous variables: also `datetime`, `shape`, `colour`, etc
 
@@ -2304,7 +2372,7 @@ Similar to histogram
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
 ```
 
-![plot of chunk unnamed-chunk-74](assets/fig/unnamed-chunk-74-1.png) 
+![plot of chunk unnamed-chunk-76](assets/fig/unnamed-chunk-76.png) 
 
 Note the legend for each mapping!
 
@@ -2328,7 +2396,7 @@ Try lowering opacity
 ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
 ```
 
-![plot of chunk unnamed-chunk-75](assets/fig/unnamed-chunk-75-1.png) 
+![plot of chunk unnamed-chunk-77](assets/fig/unnamed-chunk-77.png) 
 
 
 ---
@@ -2341,7 +2409,7 @@ Try mapping the inverse of a variable to opacity.
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
 ```
 
-![plot of chunk unnamed-chunk-76](assets/fig/unnamed-chunk-76-1.png) 
+![plot of chunk unnamed-chunk-78](assets/fig/unnamed-chunk-78.png) 
 
 
 ---
@@ -2354,7 +2422,7 @@ Shake the points around a little bit.
 ggplot(diamonds, aes(price, carat)) + geom_jitter()
 ```
 
-![plot of chunk unnamed-chunk-77](assets/fig/unnamed-chunk-77-1.png) 
+![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79.png) 
 
 
 ---
@@ -2368,7 +2436,7 @@ library(hexbin)
 ggplot(diamonds, aes(price, carat)) + geom_hex()
 ```
 
-![plot of chunk unnamed-chunk-78](assets/fig/unnamed-chunk-78-1.png) 
+![plot of chunk unnamed-chunk-80](assets/fig/unnamed-chunk-80.png) 
 
 
 ---
@@ -2381,7 +2449,7 @@ Smooth with a 2d density
 ggplot(diamonds, aes(price, carat)) + stat_density2d()
 ```
 
-![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79-1.png) 
+![plot of chunk unnamed-chunk-81](assets/fig/unnamed-chunk-81.png) 
 
 
 ---
@@ -2395,7 +2463,7 @@ states <- map_data("state")
 ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-80](assets/fig/unnamed-chunk-80-1.png) 
+![plot of chunk unnamed-chunk-82](assets/fig/unnamed-chunk-82.png) 
 
 ---
 ### The world is your oyster
@@ -2406,7 +2474,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ggplot(map_data("world")) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-81](assets/fig/unnamed-chunk-81-1.png) 
+![plot of chunk unnamed-chunk-83](assets/fig/unnamed-chunk-83.png) 
 
 ---
 ### What's the point?
@@ -2419,7 +2487,7 @@ m <- ggplot(map_data("state"), aes(x=long, y=lat)) + geom_polygon(aes(group=grou
 m + geom_point(data=ucs, colour="red", size=5)
 ```
 
-![plot of chunk unnamed-chunk-82](assets/fig/unnamed-chunk-82-1.png) 
+![plot of chunk unnamed-chunk-84](assets/fig/unnamed-chunk-84.png) 
 
 
 ---
@@ -2445,266 +2513,8 @@ m + geom_point(data=ucs, colour="red", size=5)
 
 ---
 
-## Time for Lunch Break for 10 Minutes :)
-
----
-
-## Session 4 - Agenda
-
-1. Plotting Systems in R
-2. Preparing Data for ggplot2
-3. ggplot2 simple examples
-4. ggplot2 philosophy
-5. more interesting ggplot2 examples
-
----
-
-## Plotting Systems in R
-
-There are three popular plotting systems in R:
-  + Base Plotting System (bultin to R)
-  + Lattice
-  + ggplot2
-
-We'll focus entirely on ggplot2.
-
----
-
-### Base System
-
-Ugly, but easy to use and always available.
-
-
-```r
-hist(rnorm(100,4,20))
-```
-
-<img src="assets/fig/unnamed-chunk-83-1.png" title="plot of chunk unnamed-chunk-83" alt="plot of chunk unnamed-chunk-83" style="display: block; margin: auto;" />
-
----
-
-### Hello, ggplot2
-
-+ ggplot2 is a very popular graphics system written by Hadley Wickham
-+ implementation of Leland Wilkinson' Grammar of Graphics
-
-----
-
-### Preliminary: reshape2
-
-+ data must have right "shape" before plotting
-+ + (although this is very useful tool to have, generally)
-+ just 2 functions: `melt` and `cast`
-+ `melt` turns wide data into long data
-+ `cast` turns long data
-
-
----
-
-### Example: airquality
-
-
-```r
-names(airquality) <- tolower(names(airquality))
-head(airquality)
-```
-
-```
-##   ozone solar.r wind temp month day
-## 1    41     190  7.4   67     5   1
-## 2    36     118  8.0   72     5   2
-## 3    12     149 12.6   74     5   3
-## 4    18     313 11.5   62     5   4
-## 5    NA      NA 14.3   56     5   5
-## 6    28      NA 14.9   66     5   6
-```
-
-```r
-# vs. 
-head(melt(airquality))
-```
-
-```
-## Error in head(melt(airquality)): could not find function "melt"
-```
-
-```r
-# vs.
-head(melt(airquality, id.vars = c("month", "day")))
-```
-
-```
-## Error in head(melt(airquality, id.vars = c("month", "day"))): could not find function "melt"
-```
-
-
----
-
-
-## Graphics Devices in R
-
-+ Graphics devices are places where plots in R appear:
-  + screen device
-  + file device
-
-+ Screen Devices:
-  + quartz() (Mac OS), x11() (Unix/Linux), windows() (Windows)
-
-+ File Devices:
-  + pdf(), png(), svg(), ...
-  
-+ By default, plots are sent to the screen device
-  
-+ for more info, please see ?Devices
-
----
-
-## Graphics Devices in R
-
-+ There is nothing special to do to use the screen device
-+ For file devices:
-  + Graphics device of interest should be opened
-  + Plotting codes
-  + closing the device using dev.off()
-
-
-```r
-x <- rnorm(100)
-pdf(file = "path/to/file.pdf")
-hist(x)
-dev.off()
-```
-
----
-
-## File Devices
-
-+ File devices are in two main types:
-  + Vector formats: pdf(), svg(), postscript()
-  + Bitmap formats: png(), jpeg(), bmp()
-
-
----
-
-## Lattice Plotting System
-+ In Lattice plotting system, plotting is a one-step process with a single function call
-+ Important functions:
-  + xyplot(): to create scatterplot
-  + bwplot(): to create boxplot
-  + histogram()
-  + stripplot(): boxplot with overlaid data points
-
-
----
-
-### Lattice Scatter plot
-
-```r
-library(lattice)
-data(diamonds)
-diamonds_subset <- diamonds[sample(1:nrow(diamonds),500),]
-xyplot(price ~ carat, data = diamonds_subset)
-```
-
-<img src="assets/fig/unnamed-chunk-86-1.png" title="plot of chunk unnamed-chunk-86" alt="plot of chunk unnamed-chunk-86" style="display: block; margin: auto;" />
-
-
----
-
-### Lattice Scatterplot across 
-
-```r
-xyplot(price ~ carat | cut, data = diamonds_subset, layout = c(5,1))
-```
-
-<img src="assets/fig/unnamed-chunk-87-1.png" title="plot of chunk unnamed-chunk-87" alt="plot of chunk unnamed-chunk-87" style="display: block; margin: auto;" />
-
-
----
-
-### Lattice Scatterplot with Linear fit
-
-```r
-xyplot(price ~ carat | cut, panel = function(x, y, ...){
-  panel.xyplot(x, y, ...) # Here we call the default panel function
-  panel.lmline(x, y, col = "red") # We overlay lm fit
-}, data = diamonds_subset, layout = c(5,1))
-```
-
-<img src="assets/fig/unnamed-chunk-88-1.png" title="plot of chunk unnamed-chunk-88" alt="plot of chunk unnamed-chunk-88" style="display: block; margin: auto;" />
-
-
----
-
-## ggplot2
-+ As Hadley Wickham explained in his ggplot2 book: ggplot2 is a package to "shorten the distance from mind to page"
-+ Here we briefly mention some examples. For more information please visit: http://ggplot2.org
-+ We focus on qplot() function to:
-  + create scatter plot
-  + create histogram
-
-
----
-
-### qplot()
-+ qplot() stands for quick plot
-+ it's analogous to plot() in the base package
-+ main elements of each plot are:
-  + aesthetics: refers to size, shape, color, ...
-  + geoms: refers to points, lines, bars, ...
-  + for a complete list of aesthetics and geoms as well as other elements, please visit: http://docs.ggplot2.org/current/  
-  
-
----
-
-### qplot() - Scatterplot
-
-```r
-library(ggplot2)
-qplot(carat, price, data = diamonds_subset)
-```
-
-<img src="assets/fig/unnamed-chunk-89-1.png" title="plot of chunk unnamed-chunk-89" alt="plot of chunk unnamed-chunk-89" style="display: block; margin: auto;" />
-  
-
----
-
-### qplot() - Scatterplot
-
-```r
-qplot(carat, price, data = diamonds_subset, col = cut)
-```
-
-<img src="assets/fig/unnamed-chunk-90-1.png" title="plot of chunk unnamed-chunk-90" alt="plot of chunk unnamed-chunk-90" style="display: block; margin: auto;" />
-  
-
----
-
-### qplot() - Facets
-
-```r
-qplot(carat, price, data = diamonds_subset, facets = . ~ cut) # rows ~ columns
-```
-
-<img src="assets/fig/unnamed-chunk-91-1.png" title="plot of chunk unnamed-chunk-91" alt="plot of chunk unnamed-chunk-91" style="display: block; margin: auto;" />
-
-  
-
----
-
-### qplot() - Histogram
-
-```r
-qplot(price, data = diamonds_subset, fill = cut, binwidth = 1000)
-```
-
-<img src="assets/fig/unnamed-chunk-92-1.png" title="plot of chunk unnamed-chunk-92" alt="plot of chunk unnamed-chunk-92" style="display: block; margin: auto;" />
-
-
----
 
 ## Time for Break for 10 Minutes :)
-
 
 ---
 
@@ -2739,13 +2549,13 @@ oneSampTest.0
 ## 	One Sample t-test
 ## 
 ## data:  oneSampData
-## t = -0.2383, df = 99, p-value = 0.8122
+## t = -0.0571, df = 99, p-value = 0.9546
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.2160898  0.1697585
+##  -0.2136  0.2016
 ## sample estimates:
-##   mean of x 
-## -0.02316566
+## mean of x 
+## -0.005971
 ```
 
 
@@ -2787,13 +2597,13 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ## 	Welch Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -13.0876, df = 56.024, p-value < 2.2e-16
+## t = -14.18, df = 47.96, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.925199 -2.883104
+##  -3.968 -2.983
 ## sample estimates:
 ## mean of x mean of y 
-##  2.299010  5.703161
+##     2.190     5.665
 ```
 
 
@@ -2810,13 +2620,13 @@ t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 ## 	Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -13.4521, df = 78, p-value < 2.2e-16
+## t = -15.29, df = 78, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.907948 -2.900354
+##  -3.928 -3.023
 ## sample estimates:
 ## mean of x mean of y 
-##  2.299010  5.703161
+##     2.190     5.665
 ```
 
 
@@ -2825,7 +2635,7 @@ t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 ###  Two-Sample T-Test (Paired T Test)
 
 ```r
-t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assumption: unequal variances
+t.test(Samp1, Samp2[1:30], paired = TRUE)
 ```
 
 ```
@@ -2833,13 +2643,13 @@ t.test(Samp1, Samp2[1:30], paired = TRUE)  # default assumption: unequal varianc
 ## 	Paired t-test
 ## 
 ## data:  Samp1 and Samp2[1:30]
-## t = -14.8012, df = 29, p-value = 4.737e-15
+## t = -12.2157, df = 29, p-value = 5.871e-13
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -4.036730 -3.056576
+##  -4.062664 -2.897369
 ## sample estimates:
 ## mean of the differences 
-##               -3.546653
+##               -3.480017
 ```
 
 
@@ -2860,7 +2670,7 @@ str(myDF)
 
 ```
 ## 'data.frame':	30 obs. of  2 variables:
-##  $ y    : num  23.6 25.5 27.6 25.4 24.1 24.7 24.5 23.3 25.6 23.8 ...
+##  $ y    : num  24.1 25.4 24.4 25.2 25.4 24.4 24.1 24.7 25.6 25.4 ...
 ##  $ group: Factor w/ 3 levels "1","2","3": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
@@ -2878,10 +2688,10 @@ str(myANOVA) # see what is
 ```
 ## Classes 'anova' and 'data.frame':	2 obs. of  5 variables:
 ##  $ Df     : int  2 27
-##  $ Sum Sq : num  474.7 29.8
-##  $ Mean Sq: num  237.33 1.11
-##  $ F value: num  215 NA
-##  $ Pr(>F) : num  2.64e-17 NA
+##  $ Sum Sq : num  495.6 25.1
+##  $ Mean Sq: num  247.78 0.93
+##  $ F value: num  267 NA
+##  $ Pr(>F) : num  1.67e-18 NA
 ##  - attr(*, "heading")= chr  "Analysis of Variance Table\n" "Response: y"
 ```
 
@@ -2933,7 +2743,7 @@ myReg # summary(myReg)
 ## 
 ## Coefficients:
 ## (Intercept)    education       income        women  
-##   -6.794334     4.186637     0.001314    -0.008905
+##    -6.79433      4.18664      0.00131     -0.00891
 ```
 
 ```r
@@ -2957,9 +2767,9 @@ head(myReg$fitted.values)
 
 ```
 ##  gov.administrators    general.managers         accountants 
-##            64.21688            78.49167            58.70723 
+##               64.22               78.49               58.71 
 ## purchasing.officers            chemists          physicists 
-##            52.58065            65.34814            73.12756
+##               52.58               65.35               73.13
 ```
 
 ```r
@@ -2968,9 +2778,9 @@ head(myReg$residuals) # y - y.hat
 
 ```
 ##  gov.administrators    general.managers         accountants 
-##            4.583116           -9.391670            4.692768 
+##               4.583              -9.392               4.693 
 ## purchasing.officers            chemists          physicists 
-##            4.219349            8.151861            4.472439
+##               4.219               8.152               4.472
 ```
   
 
@@ -2993,7 +2803,7 @@ head(myReg$residuals) # y - y.hat
 qqPlot(myReg, main = "QQ Plot")
 ```
 
-![plot of chunk unnamed-chunk-103](assets/fig/unnamed-chunk-103-1.png) 
+![plot of chunk unnamed-chunk-95](assets/fig/unnamed-chunk-95.png) 
   
 
 ---
@@ -3005,7 +2815,7 @@ qqPlot(myReg, main = "QQ Plot")
 spreadLevelPlot(myReg)
 ```
 
-![plot of chunk unnamed-chunk-104](assets/fig/unnamed-chunk-104-1.png) 
+![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96.png) 
   
 
 
@@ -3034,7 +2844,7 @@ EX10. Histogram of the continuous variables: to check the outliers and the distr
   + 10.1 generate a histogram for each variable (one histogram per plot); save all plots in a pdf file and check the file. Need to install and load "ggplot2" package if you have not done so. 
   + 10.2 (optional) reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the "reshape2" package. 
 
-EX11. Boxplot of mpg by different levels of origin to visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. Mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. 
+EX11. Boxplot of mpg by different levels of origin to visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. In order for boxplot to work, make sure the variable for the x-axis (origin in this case) needs to be of factor type. After you've generated the plots, you can see mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later.   
   + (optional) add an additional layer a)geom_point or b)geom_jitter() and see what happens
 
 ---
@@ -3047,7 +2857,7 @@ EX12. Scatterplot of mpg vs cylinders to check what the relationship is like, an
 ---
 
 
-EX13. Scatterplot matrix 
+EX13. Scatterplot matrix. Apply function pairs() or ggpairs() on the data to create the scatterplot matrix. If you use ggpairs(), you need to install and load R package "GGally".   
   + to check the relationship between any pair of variable
   + to check for linearity assumption and homogeneity assumption
   + If violated, data transformation will be needed when building a linear regression model
@@ -3056,15 +2866,11 @@ EX13. Scatterplot matrix
 
 EX14. Data transformation
   + Based on scatterplot matrix, we see increasing variance as mpg increases, and also non-linear relationship between mpg and other variables. We need to transform the variables.
-  + Add new variables to the data: 
-    + (a) log transformed versions of mpg, horsepower, displacement, and weight.
+  + Add new variables to the data.  
+    + (a) log transformed versions of mpg, horsepower, displacement, and weight. Hint: to add a new variable, e.g. log of mpg, you can run data_noNA$logmpg = log(data_noNA$mpg), where "logmpg" is the name for the new variable you choose. 
     + (b) a factor version of cylinders.
-    
-
 
 ---
-
-
 
 EX15. Statistical analysis  
   + 15.1 ANOVA for origin. To formally test whether mean mpg is different across cars of the three origins. Use significance level 0.05. First build a linear regression for mpg against origin. And then use both ANOVA() and summary() to check the results. 
