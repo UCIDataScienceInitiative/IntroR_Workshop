@@ -1824,55 +1824,51 @@ EX0. Set working directory
   + use setwd() to set the working directory to the folder where the data files are. 
 
 EX1. Import data
-  + 1.1  to import the data "auto-mpg.csv" and store it as an object "data", run the code data = read.csv(file = "auto-mpg.csv", header = FALSE, na.strings= "NA"). We need to set header = FALSE since the data starts right from the first line (no header). Look at the data set to see what string/symbol is used to denote missing values; in this data "NA" is used, so na.strings = "NA" is specified in the read.csv(). You can also use read.table() but you will need to specify sep="," additionally. 
+  + 1.1  use read.csv() to import the data "auto-mpg.csv" (the data is of comma separated value file format), and store it as an object "data" ( data = read.csv(....) ). We need to set header = FALSE since the data starts right from the first line (i.e. the data has no header). Look at the data set to see what string/symbols are used to denote missing values; in this data "NA" is used, so na.strings = "NA" should be specified in read.csv(). 
   + 1.2 (optional) Read data file "auto-mpg.data-original". What happens and why? Check the original data file.
 
 EX2. General check for the data
-  + 2.1 check the top 6 rows of data; open the original data in excel or notepad and compare with the rows printed in R.  
+  + 2.1 check the top few rows of data; open the original data in excel or notepad and compare with the rows printed in R.  
   + 2.2. check the dimension of data
 
 ---
 
 EX3. Add variable names to data
-  + 3.1 read variable names from "auto-mpg-names.txt" using readLines(). The difference between readLines() and read.table() is that readLines() imports the data file into a vector of strings, but read.table() imports the data file into a data frame (could be any data type depending on the actual data values). Each element of the vector returned by readLines() is the content of a entire line in the data file. 
-  + 3.2 assign variable names to data (you can assign values to names(data) to change the names of data)
-  + 3.3 check if the variable names are correctly assigned. Hint: you can either print the variable names of the data or print the top rows of the data
+  + 3.1 read variable names from "auto-mpg-names.txt" using readLines() and store as an object "varnames" (varnames = readLines(...)). Type "varnames" in the console to see what's inside. The difference between readLines() and read.table() is that readLines() imports the data file into a vector of strings, but read.table() imports the data file into a data frame. Each element of the vector returned by readLines() is the content of a entire line in the data file.
+  + 3.2 Run "names(data)". It returns the variable names of the data. Assign the new variable names to data by "names(data) = varnames". 
+  + 3.3 check again the variable names, to see if they are updated correctly.
 
 EX4. Data summary
-  + 4.1. use a function to summarize the data structure and the class of each column;
-  + 4.2 apply function summary() on data and see how it is different from the function above. One nice thing is that it tells you #missing values for each variable
+  + 4.1 summarize the data structure and the class of each column (use str() );
+  + 4.2 apply function summary() on data and see how it is different from the function above. One nice thing is that it tells you #missing values for each variable (NA's). 
 
 ---
 EX5. Subset exercises 
   + 5.1 summarize the variable mpg (use summary()). (There are 3 ways you can get the variable mpg.) Do you see something weird in the result? What might be the reason? We will get back to this later. 
 
-  + 5.2 create a vector in R for the numbers 1,3,4,5,6, which are the column indices for the continuous variables; use that vector to extract the continuous variables and summarize the continuous variables (use summary()).
+  + 5.2 create a vector "index_cont" in R for the numbers 1,3,4,5,6, which are the column indices for the continuous variables; use that vector to extract the continuous variables and summarize the continuous variables (use summary()).
 
-  + 5.3 use the index vector you created above to extract the non-continuous variables and summarize them; compare how summary() works differently for a factor variable (car_name) from a numerical variable.
+  + 5.3 (optional) use the index vector you created above to extract the non-continuous variables and summarize them ( using "-index_cont" for subsetting will return the complement of "index_cont");
 
-  + 5.4 (optional) read the help file for which(); create a vector of indices for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or, ! for NOT.  
+  + 5.4 (optional) read the help file for which(); create a vector of indices "index_origin_23" for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or, ! for NOT.    
 
-  + 5.5 drop variable "car_name". We will not use it in our analysis. Hint: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name". 
+  + 5.5 drop variable "car_name" (we will not use it in our analysis). Check the top few lines of the data. Hint: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name". 
 
 ---
 
 EX6. Discrete variables 
-  + 6.1 check and apply function table() on variable cylinders
-  + 6.2 use a loop to print the name and the frequency table for each discrete variable. Note that there are very few instances with odd number of cylinders. We will revisit this. Also... weird value -99 again? 
-  + 6.3 we are going to change the data, so please first make a copy of the original data; in case you do something wrong later you can easily reset the new data to be the original data. 
-  + 6.4 origin is a categorical variable by nature, so we are going to convert it to a factor type. But before doing that, we need to first fix the weird values "-99" - sometimes the coding gets messed up and the unlikely values like "-99" are used to code missing values - in which case we should confirm this with the data entry clerk. Now assuming this has been confirmed, let's replace all "-99" in origin with NA (not "NA"). 
-  + 6.5 table() the new variable and check if "-99" is successfully replaced. 
-  + 6.6 convert variable origin into factor type, and then add the labels for the values (1: American, 2: European, 3:Japanese). 
-  + 6.7 check the variable type of the converted variable and the variable from the original data
+  + 6.1 we are going to change the data, so please first make a copy of the original data (assign data to a new object "data_ori"); in case you do something wrong later you can easily reset the new data to be the original data.
+  + 6.2 origin is a categorical variable by nature, so we need to convert it to a factor type (use factor()), and assign it back to data$origin. 
+  + 6.3 Add the labels for the values (1: American, 2: European, 3:Japanese).
+  + 6.4 use summary() on the converted variable and see how the summary output changes for a factor variable. 
 
 ---
 
 EX7. Missing values
-  + 7.1 First let's also fix the "-99" in mpg as for origin. 
+  + 7.1 recall the weird values '-99' we saw before in 'mpg'. Sometimes the coding gets messed up and the unlikely values like "-99" are used to code missing values - in which case we should confirm this with the data entry clerk. Now assuming this has been confirmed, let's replace all "-99" with NA (not "NA").  
   + 7.2 use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  
-  + 7.3 using is.na() function, take a subset of the dataset that has non-missing mpg and check the dimension of the subset. Hint: !is.na() refers to NOT NA. 
-  + 7.4 write a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument "x". Test your function on the current data, it should return 17. 
-  + 7.5 read the help file for function na.omit(), and use this function to create a new data (name it as data_noNA) that contains only the instances that has no missing value on any variables
+  + 7.3 calculate the total number of missing values in data (use is.na() and sum()). And then rewrite it to make it a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument "x". Test your function on the current data, it should return 17. 
+  + 7.4 read the help file for function na.omit(), and use this function to create a new data (store it as data_noNA) that contains only the instances that has no missing value on any variables 
 
 ---
 
@@ -2841,18 +2837,18 @@ EX9. (optional) Randomization testing for whether mean mpg is higher for Japanes
 
 
 EX10. Histogram of the continuous variables: to check the outliers and the distribution of the variables
-  + 10.1 generate a histogram for each variable (one histogram per plot); save all plots in a pdf file and check the file. Need to install and load "ggplot2" package if you have not done so. 
-  + 10.2 (optional) reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the "reshape2" package. 
+  + 10.1 generate a histogram for each continuous variable (mpg, displacement, horsepower, weight, acceleration) (manually plot each variable or use a for loop); save all plots in a pdf file and check the file (use pdf() and dev.off()). Need to install and load "ggplot2" package if you have not done so. 
+  + 10.2 (optional) reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the "reshape2" package.
 
-EX11. Boxplot of mpg by different levels of origin to visually check if mpg is different across different categories. First look up how to make a boxplot in the online ggplot2 documentation. In order for boxplot to work, make sure the variable for the x-axis (origin in this case) needs to be of factor type. After you've generated the plots, you can see mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later.   
+EX11. Boxplot of mpg by origin to visually check if mpg is different across different countries of origin. First look up how to make a boxplot in the online ggplot2 documentation. In order for boxplot to work, make sure the variable for the x-axis (origin in this case) is converted to factor type. After you've generated the plots, you can see mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. 
   + (optional) add an additional layer a)geom_point or b)geom_jitter() and see what happens
 
 ---
 
 EX12. Scatterplot of mpg vs cylinders to check what the relationship is like, and to check if it is suitable to treat cylinder as a numerical variable or categorical variable.
-  + 12.1. check the use of stat_smooth() and the argument "method". Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed. The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
+  + 12.1. check the use of stat_smooth() and the argument "method". Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed (method="lm"). The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
  
-  + 12.2 (optional) create another data with instances with odd number of cylinders removed, and check the above plots again. The two fitted curves look similar -> could treat cylinder as numerical
+  + 12.2 (optional) create another data with instances with odd number of cylinders removed, and check the above plots again. The two fitted curves look similar -> could treat cylinder as numerical. 
 
 ---
 
@@ -2874,7 +2870,7 @@ EX14. Data transformation
 
 EX15. Statistical analysis  
   + 15.1 ANOVA for origin. To formally test whether mean mpg is different across cars of the three origins. Use significance level 0.05. First build a linear regression for mpg against origin. And then use both ANOVA() and summary() to check the results. 
-  + 15.2 linear regression. Build a linear regression model to predict mpg. Include all other variables but if a transformed version is available for a variable, use only the transformed version) (name the regression object as model); build another regression model using the same predictors but to predict log(mpg) (name the regression object as model_log). 
+  + 15.2 linear regression. Build a linear regression model to predict mpg. Include all other variables (use only the transformed version if available) (store the regression result in object 'model'); build another regression model using the same predictors but to predict log(mpg) (store in object 'model_log').
   + 15.3 Apply summary() on the regression objects and read the outputs. Is origin still helpful in predicting mpg/log(mpg) after including other predictors? 
   + 15.4 Which column is to answer the relationship between mpg and other variables? 
   + 15.5 Diagnostics (important in statistical analysis). Execute plot(model) and plot(model_log) in R and check the four plots for each model. You can find the specific help file for "plot()" for a lm object by executing "?plot.lm". Based on the diagnostic plots, are these reasonable models? Which one is better? Check the following aspects.  
