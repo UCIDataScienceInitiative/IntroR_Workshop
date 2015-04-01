@@ -1272,7 +1272,7 @@ x + y # R does an element by element summation
     <h2>read.table():</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">irisFile &lt;- read.csv(file = &quot;iris.csv&quot;,  header = TRUE)
+    <pre><code class="r">irisFile &lt;- read.table(file = &quot;iris.csv&quot;, sep=&quot;,&quot;, header = TRUE)
 head(irisFile)
 </code></pre>
 
@@ -1283,13 +1283,6 @@ head(irisFile)
 ## 4          4.6         3.1          1.5         0.2 Iris-setosa
 ## 5          5.0         3.6          1.4         0.2 Iris-setosa
 ## 6          5.4         3.9          1.7         0.4 Iris-setosa
-</code></pre>
-
-<pre><code class="r">head(irisFile[,5])
-</code></pre>
-
-<pre><code>## [1] Iris-setosa Iris-setosa Iris-setosa Iris-setosa Iris-setosa Iris-setosa
-## Levels: Iris-setosa Iris-versicolor Iris-virginica
 </code></pre>
 
 <ul>

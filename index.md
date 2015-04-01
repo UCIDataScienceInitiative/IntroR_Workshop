@@ -1071,7 +1071,7 @@ Main functions for writing data from R:
 
 
 ```r
-irisFile <- read.csv(file = "iris.csv",  header = TRUE)
+irisFile <- read.table(file = "iris.csv", sep=",", header = TRUE)
 head(irisFile)
 ```
 
@@ -1083,15 +1083,6 @@ head(irisFile)
 ## 4          4.6         3.1          1.5         0.2 Iris-setosa
 ## 5          5.0         3.6          1.4         0.2 Iris-setosa
 ## 6          5.4         3.9          1.7         0.4 Iris-setosa
-```
-
-```r
-head(irisFile[,5])
-```
-
-```
-## [1] Iris-setosa Iris-setosa Iris-setosa Iris-setosa Iris-setosa Iris-setosa
-## Levels: Iris-setosa Iris-versicolor Iris-virginica
 ```
 
 + to make read.table() run faster:
