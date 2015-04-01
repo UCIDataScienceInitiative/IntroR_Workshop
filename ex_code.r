@@ -1,5 +1,8 @@
 # EX1. Import data
 # + 1.1  find the folder where the data files are saved, and set working directory to that folder using setwd().
+setwd("D:\My Documents\Documents\IntroR_Workshop")
+# this is just an example code; you should replace the content inside setwd() with your folder path
+
 # + 1.2 use read.csv() to import the data "auto-mpg.csv" (the data is of comma separated value file format), and store it as an object "data" ( data = read.csv(....) ). We need to set header = FALSE since the data starts right from the first line (i.e. the data has no header). Look at the data set to see what string/symbols are used to denote missing values; in this data "NA" is used, so na.strings = "NA" should be specified in read.csv().  
 data = read.csv(file = "auto-mpg.csv", header = FALSE, na.strings= "NA")
 
@@ -213,11 +216,10 @@ newcase = data_noNA[1:10,]
 predict(model, newcase)
 exp(predict(model_log, newcase))
 
-# + 15.6 Diagnostics (important in statistical analysis). Execute plot(model) and plot(model_log) in R and check the four plots for each model. You can find the specific help file for "plot()" for a lm object by executing "?plot.lm". Based on the diagnostic plots, are these reasonable models? Which one is better? Check the following aspects.  
+# + 15.6 Diagnostics is important in statistical analysis. Execute plot(model) and plot(model_log) in R and check the four plots for each model. Based on the diagnostic plots, are these reasonable models? Which one is better? Check the following aspects.    
 # + (a) linearity assumption, (b) normality assumption, (c) constant variance (d) outliers
 plot(model)
 plot(model_log)
-?plot.lm
 # The residual plot for "model" has a non-linear trend, the residual does not look normal (quite skewed the right), the variance seems to go up as the fitted value goes up, and there are some outliers in the predictors. 
 # The residual plot for "model_log" has no obvious pattern, the residual look closer to normal (still longer tail than normal but at least symmetric), the variance seems quite stable, although there are still some outliers in the predictors. 
 # "model_log" looks more reasonable. 

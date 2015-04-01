@@ -1275,18 +1275,18 @@ x + y # R does an element by element summation
     <pre><code class="r">irisFile &lt;- read.table(file = &quot;/Users/sepehrakhavan/Documents/R_Workshop/iris.csv&quot;, header = TRUE)
 </code></pre>
 
-<pre><code>## Warning: cannot open file
+<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file
 ## &#39;/Users/sepehrakhavan/Documents/R_Workshop/iris.csv&#39;: No such file or
 ## directory
 </code></pre>
 
-<pre><code>## Error: cannot open the connection
+<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection
 </code></pre>
 
 <pre><code class="r">head(irisFile)
 </code></pre>
 
-<pre><code>## Error: object &#39;irisFile&#39; not found
+<pre><code>## Error in head(irisFile): object &#39;irisFile&#39; not found
 </code></pre>
 
 <ul>
@@ -2494,10 +2494,10 @@ A
 solve(A)%*%A
 </code></pre>
 
-<pre><code>##      [,1] [,2]       [,3]
-## [1,]    1    0  0.000e+00
-## [2,]    0    1 -8.882e-16
-## [3,]    0    0  1.000e+00
+<pre><code>##      [,1] [,2]          [,3]
+## [1,]    1    0  0.000000e+00
+## [2,]    0    1 -8.881784e-16
+## [3,]    0    0  1.000000e+00
 </code></pre>
 
 <ul>
@@ -2859,7 +2859,7 @@ boxplot(x, y , z)
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-70.png" alt="plot of chunk unnamed-chunk-70"> </p>
+<p><img src="assets/fig/unnamed-chunk-70-1.png" alt="plot of chunk unnamed-chunk-70"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2903,7 +2903,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-72.png" alt="plot of chunk unnamed-chunk-72"> </p>
+<p><img src="assets/fig/unnamed-chunk-72-1.png" alt="plot of chunk unnamed-chunk-72"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2920,7 +2920,7 @@ m + geom_histogram(aes(fill=cut))
 m + geom_histogram(binwidth=100) + facet_grid(cut~color)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-73.png" alt="plot of chunk unnamed-chunk-73"> </p>
+<p><img src="assets/fig/unnamed-chunk-73-1.png" alt="plot of chunk unnamed-chunk-73"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2962,7 +2962,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-74.png" alt="plot of chunk unnamed-chunk-74"> </p>
+<p><img src="assets/fig/unnamed-chunk-74-1.png" alt="plot of chunk unnamed-chunk-74"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2976,7 +2976,7 @@ m + geom_histogram(aes(fill=cut))
     <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-75.png" alt="plot of chunk unnamed-chunk-75"> </p>
+<p><img src="assets/fig/unnamed-chunk-75-1.png" alt="plot of chunk unnamed-chunk-75"> </p>
 
 <p>Scales begin with <code>scale_</code>, and are not only for continuous variables: also <code>datetime</code>, <code>shape</code>, <code>colour</code>, etc</p>
 
@@ -2994,7 +2994,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-76.png" alt="plot of chunk unnamed-chunk-76"> </p>
+<p><img src="assets/fig/unnamed-chunk-76-1.png" alt="plot of chunk unnamed-chunk-76"> </p>
 
 <p>Note the legend for each mapping!</p>
 
@@ -3031,7 +3031,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-77.png" alt="plot of chunk unnamed-chunk-77"> </p>
+<p><img src="assets/fig/unnamed-chunk-77-1.png" alt="plot of chunk unnamed-chunk-77"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3047,7 +3047,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-78.png" alt="plot of chunk unnamed-chunk-78"> </p>
+<p><img src="assets/fig/unnamed-chunk-78-1.png" alt="plot of chunk unnamed-chunk-78"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3063,7 +3063,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_jitter()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-79.png" alt="plot of chunk unnamed-chunk-79"> </p>
+<p><img src="assets/fig/unnamed-chunk-79-1.png" alt="plot of chunk unnamed-chunk-79"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3080,7 +3080,7 @@ m + geom_histogram(aes(fill=cut))
 ggplot(diamonds, aes(price, carat)) + geom_hex()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-80.png" alt="plot of chunk unnamed-chunk-80"> </p>
+<p><img src="assets/fig/unnamed-chunk-80-1.png" alt="plot of chunk unnamed-chunk-80"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3096,7 +3096,7 @@ ggplot(diamonds, aes(price, carat)) + geom_hex()
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + stat_density2d()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-81.png" alt="plot of chunk unnamed-chunk-81"> </p>
+<p><img src="assets/fig/unnamed-chunk-81-1.png" alt="plot of chunk unnamed-chunk-81"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3112,7 +3112,7 @@ states &lt;- map_data(&quot;state&quot;)
 ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;white&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-82.png" alt="plot of chunk unnamed-chunk-82"> </p>
+<p><img src="assets/fig/unnamed-chunk-82-1.png" alt="plot of chunk unnamed-chunk-82"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3126,7 +3126,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;wh
     <pre><code class="r">ggplot(map_data(&quot;world&quot;)) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;white&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-83.png" alt="plot of chunk unnamed-chunk-83"> </p>
+<p><img src="assets/fig/unnamed-chunk-83-1.png" alt="plot of chunk unnamed-chunk-83"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3142,7 +3142,7 @@ m &lt;- ggplot(map_data(&quot;state&quot;), aes(x=long, y=lat)) + geom_polygon(a
 m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-84.png" alt="plot of chunk unnamed-chunk-84"> </p>
+<p><img src="assets/fig/unnamed-chunk-84-1.png" alt="plot of chunk unnamed-chunk-84"> </p>
 
   </article>
   <!-- Presenter Notes -->

@@ -1075,13 +1075,13 @@ irisFile <- read.table(file = "/Users/sepehrakhavan/Documents/R_Workshop/iris.cs
 ```
 
 ```
-## Warning: cannot open file
+## Warning in file(file, "rt"): cannot open file
 ## '/Users/sepehrakhavan/Documents/R_Workshop/iris.csv': No such file or
 ## directory
 ```
 
 ```
-## Error: cannot open the connection
+## Error in file(file, "rt"): cannot open the connection
 ```
 
 ```r
@@ -1089,7 +1089,7 @@ head(irisFile)
 ```
 
 ```
-## Error: object 'irisFile' not found
+## Error in head(irisFile): object 'irisFile' not found
 ```
 
 + to make read.table() run faster:
@@ -2007,10 +2007,10 @@ solve(A)%*%A
 ```
 
 ```
-##      [,1] [,2]       [,3]
-## [1,]    1    0  0.000e+00
-## [2,]    0    1 -8.882e-16
-## [3,]    0    0  1.000e+00
+##      [,1] [,2]          [,3]
+## [1,]    1    0  0.000000e+00
+## [2,]    0    1 -8.881784e-16
+## [3,]    0    0  1.000000e+00
 ```
 + Machine epsilon is defined to be the smallest positive number which, when added to 1, gives a number different from 1.
 + Please visit http://en.wikipedia.org/wiki/Machine_epsilon for more info
@@ -2316,7 +2316,7 @@ ggplot(diamonds, aes(price)) + geom_histogram()
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-70](assets/fig/unnamed-chunk-70.png) 
+![plot of chunk unnamed-chunk-70](assets/fig/unnamed-chunk-70-1.png) 
 
 
 ---
@@ -2359,7 +2359,7 @@ m + geom_histogram(aes(fill=cut))
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-72](assets/fig/unnamed-chunk-72.png) 
+![plot of chunk unnamed-chunk-72](assets/fig/unnamed-chunk-72-1.png) 
 
 ---
 
@@ -2373,7 +2373,7 @@ m <- ggplot(diamonds, aes(price))
 m + geom_histogram(binwidth=100) + facet_grid(cut~color)
 ```
 
-![plot of chunk unnamed-chunk-73](assets/fig/unnamed-chunk-73.png) 
+![plot of chunk unnamed-chunk-73](assets/fig/unnamed-chunk-73-1.png) 
 
 
 ---
@@ -2403,7 +2403,7 @@ Note: There's no "scatterplot" function. Use `geom_point`.
 ggplot(diamonds, aes(price, carat)) + geom_point()
 ```
 
-![plot of chunk unnamed-chunk-74](assets/fig/unnamed-chunk-74.png) 
+![plot of chunk unnamed-chunk-74](assets/fig/unnamed-chunk-74-1.png) 
 
 ---
 ### Log scales
@@ -2414,7 +2414,7 @@ ggplot(diamonds, aes(price, carat)) + geom_point()
 ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
 ```
 
-![plot of chunk unnamed-chunk-75](assets/fig/unnamed-chunk-75.png) 
+![plot of chunk unnamed-chunk-75](assets/fig/unnamed-chunk-75-1.png) 
 
 Scales begin with `scale_`, and are not only for continuous variables: also `datetime`, `shape`, `colour`, etc
 
@@ -2428,7 +2428,7 @@ Similar to histogram
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
 ```
 
-![plot of chunk unnamed-chunk-76](assets/fig/unnamed-chunk-76.png) 
+![plot of chunk unnamed-chunk-76](assets/fig/unnamed-chunk-76-1.png) 
 
 Note the legend for each mapping!
 
@@ -2452,7 +2452,7 @@ Try lowering opacity
 ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
 ```
 
-![plot of chunk unnamed-chunk-77](assets/fig/unnamed-chunk-77.png) 
+![plot of chunk unnamed-chunk-77](assets/fig/unnamed-chunk-77-1.png) 
 
 
 ---
@@ -2465,7 +2465,7 @@ Try mapping the inverse of a variable to opacity.
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
 ```
 
-![plot of chunk unnamed-chunk-78](assets/fig/unnamed-chunk-78.png) 
+![plot of chunk unnamed-chunk-78](assets/fig/unnamed-chunk-78-1.png) 
 
 
 ---
@@ -2478,7 +2478,7 @@ Shake the points around a little bit.
 ggplot(diamonds, aes(price, carat)) + geom_jitter()
 ```
 
-![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79.png) 
+![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79-1.png) 
 
 
 ---
@@ -2492,7 +2492,7 @@ library(hexbin)
 ggplot(diamonds, aes(price, carat)) + geom_hex()
 ```
 
-![plot of chunk unnamed-chunk-80](assets/fig/unnamed-chunk-80.png) 
+![plot of chunk unnamed-chunk-80](assets/fig/unnamed-chunk-80-1.png) 
 
 
 ---
@@ -2505,7 +2505,7 @@ Smooth with a 2d density
 ggplot(diamonds, aes(price, carat)) + stat_density2d()
 ```
 
-![plot of chunk unnamed-chunk-81](assets/fig/unnamed-chunk-81.png) 
+![plot of chunk unnamed-chunk-81](assets/fig/unnamed-chunk-81-1.png) 
 
 
 ---
@@ -2519,7 +2519,7 @@ states <- map_data("state")
 ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-82](assets/fig/unnamed-chunk-82.png) 
+![plot of chunk unnamed-chunk-82](assets/fig/unnamed-chunk-82-1.png) 
 
 ---
 ### The world is your oyster
@@ -2530,7 +2530,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ggplot(map_data("world")) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-83](assets/fig/unnamed-chunk-83.png) 
+![plot of chunk unnamed-chunk-83](assets/fig/unnamed-chunk-83-1.png) 
 
 ---
 ### What's the point?
@@ -2543,7 +2543,7 @@ m <- ggplot(map_data("state"), aes(x=long, y=lat)) + geom_polygon(aes(group=grou
 m + geom_point(data=ucs, colour="red", size=5)
 ```
 
-![plot of chunk unnamed-chunk-84](assets/fig/unnamed-chunk-84.png) 
+![plot of chunk unnamed-chunk-84](assets/fig/unnamed-chunk-84-1.png) 
 
 
 ---
