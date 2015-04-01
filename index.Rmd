@@ -593,9 +593,9 @@ Main functions for writing data from R:
 ## read.table():
 
 ```{r echo = TRUE, eval=TRUE}
-irisFile <- read.table(file = "/Users/sepehrakhavan/Documents/R_Workshop/iris.csv", header = TRUE)
-
+irisFile <- read.csv(file = "iris.csv",  header = TRUE)
 head(irisFile)
+head(irisFile[,5])
 ```
 
 + to make read.table() run faster:
