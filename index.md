@@ -1085,15 +1085,6 @@ head(irisFile)
 ## 6          5.4         3.9          1.7         0.4 Iris-setosa
 ```
 
-```r
-head(irisFile[,5])
-```
-
-```
-## [1] Iris-setosa Iris-setosa Iris-setosa Iris-setosa Iris-setosa Iris-setosa
-## Levels: Iris-setosa Iris-versicolor Iris-virginica
-```
-
 + to make read.table() run faster:
   + set comment.char = " "
   + set colClasses upfront
