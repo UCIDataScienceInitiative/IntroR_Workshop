@@ -1744,23 +1744,11 @@ confint(myReg, level=0.95)
   
 
 ---
-
-###  Testing for Normality
-
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=5}
-qqPlot(myReg, main = "QQ Plot")
+## Model diagnostic plot
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=6.5, fig.width=8}
+par(mfrow = c(2, 2), oma = c(0, 0, 2, 0))
+plot(myReg)
 ```
-  
-
----
-
-###  Testing for Constant Variance
-
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=5, warning=FALSE, message=FALSE, error=FALSE, results='hide'}
-spreadLevelPlot(myReg)
-```
-  
-
 
 ---
 

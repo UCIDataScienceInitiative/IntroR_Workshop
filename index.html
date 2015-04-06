@@ -589,10 +589,10 @@ colMat
 </code></pre>
 
 <pre><code>##      vec1 vec2       vec3
-## [1,]    1   81 -1.4742404
-## [2,]    2   42  0.2582076
-## [3,]    3   82 -0.1814866
-## [4,]    4   54 -0.4186362
+## [1,]    1   10 -1.2000605
+## [2,]    2   74  1.2422547
+## [3,]    3   70 -0.9061899
+## [4,]    4   32  0.4954042
 </code></pre>
 
   </article>
@@ -611,10 +611,10 @@ rowMat &lt;- rbind(vec1, vec2, vec3)
 rowMat
 </code></pre>
 
-<pre><code>##            [,1]      [,2]       [,3]       [,4]
-## vec1  1.0000000  2.000000  3.0000000  4.0000000
-## vec2 34.0000000 78.000000 72.0000000 12.0000000
-## vec3 -0.5244013 -0.370801 -0.3405051  0.6171118
+<pre><code>##           [,1]      [,2]      [,3]      [,4]
+## vec1  1.000000  2.000000  3.000000  4.000000
+## vec2 59.000000 89.000000 15.000000 73.000000
+## vec3  0.343683  0.178752 -1.742919  1.385166
 </code></pre>
 
   </article>
@@ -697,12 +697,12 @@ head(data)
 </code></pre>
 
 <pre><code>##   studentID score gender
-## 1    S#7041    44 female
-## 2    S#7040    57   male
-## 3    S#7121    27   male
-## 4    S#7264    89 female
-## 5    S#6726    17   male
-## 6    S#6537    77   male
+## 1    S#6632    26 female
+## 2    S#7181    50   male
+## 3    S#6866    80 female
+## 4    S#7262    11   male
+## 5    S#7202    31 female
+## 6    S#7011    87   male
 </code></pre>
 
   </article>
@@ -1418,10 +1418,10 @@ age.df &lt;- data.frame(age = age, ageCat = ageCat)
 age.df[1:3,]
 </code></pre>
 
-<pre><code>##   age      ageCat
-## 1  44 Middle-Aged
-## 2  55 Middle-Aged
-## 3  38 Middle-Aged
+<pre><code>##   age ageCat
+## 1  35  Young
+## 2  56    Old
+## 3  27  Young
 </code></pre>
 
   </article>
@@ -1572,19 +1572,19 @@ sampSpace &lt;- 1:6 # rolling a die
 sample(sampSpace, 1) # arguments with default values can be omitted
 </code></pre>
 
-<pre><code>## [1] 6
+<pre><code>## [1] 3
 </code></pre>
 
 <pre><code class="r">sample(size = 1, x = sampSpace) # no need to remember the order 
 </code></pre>
 
-<pre><code>## [1] 6
+<pre><code>## [1] 5
 </code></pre>
 
 <pre><code class="r">sample(size = 1, sampSpace)
 </code></pre>
 
-<pre><code>## [1] 2
+<pre><code>## [1] 5
 </code></pre>
 
   </article>
@@ -1734,7 +1734,7 @@ myLazyFn2(10) # No error!
 str(genderF)
 </code></pre>
 
-<pre><code>##  Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 2 2 2 1 2 1 1 2 2 1 ...
+<pre><code>##  Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 2 2 1 2 1 1 2 2 1 2 ...
 </code></pre>
 
   </article>
@@ -1998,19 +1998,19 @@ head(HeightDF)
 </code></pre>
 
 <pre><code>##     heigth gender
-## 1 179.8406      M
-## 2 178.8383      M
-## 3 180.3455      M
-## 4 176.1052      M
-## 5 183.6159      M
-## 6 177.4524      M
+## 1 177.1589      M
+## 2 180.5204      M
+## 3 182.2732      M
+## 4 179.1636      M
+## 5 179.8828      M
+## 6 173.6134      M
 </code></pre>
 
 <pre><code class="r">tapply(HeightDF$heigth, HeightDF$gender, mean)
 </code></pre>
 
 <pre><code>##        F        M 
-## 170.2259 180.1515
+## 169.8971 180.0283
 </code></pre>
 
   </article>
@@ -2093,7 +2093,7 @@ mapply(sum, l1$e1, l1$e2, l2$e1, l2$e2)
 </code></pre>
 
 <pre><code>## &#39;data.frame&#39;:    200 obs. of  2 variables:
-##  $ heigth: num  180 179 180 176 184 ...
+##  $ heigth: num  177 181 182 179 180 ...
 ##  $ gender: Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 2 2 2 2 2 2 2 2 2 2 ...
 </code></pre>
 
@@ -2103,8 +2103,8 @@ str(splitData)
 </code></pre>
 
 <pre><code>## List of 2
-##  $ F: num [1:100] 172 169 166 168 170 ...
-##  $ M: num [1:100] 180 179 180 176 184 ...
+##  $ F: num [1:100] 171 170 166 166 173 ...
+##  $ M: num [1:100] 177 181 182 179 180 ...
 </code></pre>
 
   </article>
@@ -2473,7 +2473,7 @@ str(dbinom)
 <pre><code class="r">rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 </code></pre>
 
-<pre><code>##  [1] 8 4 3 5 4 2 6 6 6 7 5 1 6 6 7 3 5 5 3 4
+<pre><code>##  [1] 6 5 6 6 2 5 6 5 6 7 5 5 5 6 6 7 3 4 4 5
 </code></pre>
 
   </article>
@@ -2540,8 +2540,8 @@ str(dnorm)
 <pre><code class="r">rnorm(10, mean = 0, sd = 1)
 </code></pre>
 
-<pre><code>##  [1] -1.4943309 -1.3176107  2.2691433  1.4563769  0.9447776  1.3021847
-##  [7] -1.3168818  0.4869442  1.1041109  1.7653580
+<pre><code>##  [1]  0.07634592  1.70176022 -1.06957995 -1.84073970  1.75521699
+##  [6]  0.29107459 -0.42584300  1.16473896  0.97229768  0.02066258
 </code></pre>
 
   </article>
@@ -3140,13 +3140,13 @@ oneSampTest.0
 ##  One Sample t-test
 ## 
 ## data:  oneSampData
-## t = -0.162, df = 99, p-value = 0.8716
+## t = -0.9226, df = 99, p-value = 0.3585
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.2088591  0.1773202
+##  -0.3124861  0.1141283
 ## sample estimates:
 ##   mean of x 
-## -0.01576948
+## -0.09917887
 </code></pre>
 
   </article>
@@ -3200,13 +3200,13 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ##  Welch Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -12.2868, df = 58.346, p-value &lt; 2.2e-16
+## t = -15.5974, df = 62.306, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.502425 -2.521206
+##  -3.511734 -2.713928
 ## sample estimates:
 ## mean of x mean of y 
-##  2.488699  5.500515
+##  2.344588  5.457420
 </code></pre>
 
   </article>
@@ -3225,13 +3225,13 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ##  Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -12.472, df = 78, p-value &lt; 2.2e-16
+## t = -15.5084, df = 78, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.492576 -2.531056
+##  -3.512432 -2.713230
 ## sample estimates:
 ## mean of x mean of y 
-##  2.488699  5.500515
+##  2.344588  5.457420
 </code></pre>
 
   </article>
@@ -3250,13 +3250,13 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ##  Paired t-test
 ## 
 ## data:  Samp1 and Samp2[1:30]
-## t = -10.269, df = 29, p-value = 3.602e-11
+## t = -12.6728, df = 29, p-value = 2.38e-13
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.530358 -2.357667
+##  -3.567570 -2.576067
 ## sample estimates:
 ## mean of the differences 
-##               -2.944012
+##               -3.071819
 </code></pre>
 
   </article>
@@ -3279,7 +3279,7 @@ str(myDF)
 </code></pre>
 
 <pre><code>## &#39;data.frame&#39;:    30 obs. of  2 variables:
-##  $ y    : num  26.1 25.9 24.7 26.3 22.4 25.1 25.7 26.7 24.1 26.6 ...
+##  $ y    : num  26.1 25.4 25.9 24 25.3 25.6 24.7 26.1 24.3 24.7 ...
 ##  $ group: Factor w/ 3 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 </code></pre>
 
@@ -3299,10 +3299,10 @@ str(myANOVA) # see what is
 
 <pre><code>## Classes &#39;anova&#39; and &#39;data.frame&#39;:    2 obs. of  5 variables:
 ##  $ Df     : int  2 27
-##  $ Sum Sq : num  455.2 24.6
-##  $ Mean Sq: num  227.585 0.912
-##  $ F value: num  250 NA
-##  $ Pr(&gt;F) : num  3.88e-18 NA
+##  $ Sum Sq : num  501.7 16.8
+##  $ Mean Sq: num  250.873 0.624
+##  $ F value: num  402 NA
+##  $ Pr(&gt;F) : num  8.1e-21 NA
 ##  - attr(*, &quot;heading&quot;)= chr  &quot;Analysis of Variance Table\n&quot; &quot;Response: y&quot;
 </code></pre>
 
@@ -3509,10 +3509,11 @@ predict(myReg, newData, interval=&quot;predict&quot;);
 
 <slide class="" id="slide-145" style="background:;">
   <hgroup>
-    <h3>Testing for Normality</h3>
+    <h2>Model diagnostic plot</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">qqPlot(myReg, main = &quot;QQ Plot&quot;)
+    <pre><code class="r">par(mfrow = c(2, 2), oma = c(0, 0, 2, 0))
+plot(myReg)
 </code></pre>
 
 <p><img src="figure/unnamed-chunk-98-1.png" alt="plot of chunk unnamed-chunk-98"> </p>
@@ -3522,20 +3523,6 @@ predict(myReg, newData, interval=&quot;predict&quot;);
 </slide>
 
 <slide class="" id="slide-146" style="background:;">
-  <hgroup>
-    <h3>Testing for Constant Variance</h3>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">spreadLevelPlot(myReg)
-</code></pre>
-
-<p><img src="figure/unnamed-chunk-99-1.png" alt="plot of chunk unnamed-chunk-99"> </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-147" style="background:;">
   <hgroup>
     <h2>Logistic Regression - Data:</h2>
   </hgroup>
@@ -3564,7 +3551,7 @@ data(Mroz); # load Mroz data</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-148" style="background:;">
+<slide class="" id="slide-147" style="background:;">
   <hgroup>
     <h2>Logistic Regression - Data Description</h2>
   </hgroup>
@@ -3584,7 +3571,7 @@ data(Mroz); # load Mroz data</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-149" style="background:;">
+<slide class="" id="slide-148" style="background:;">
   <hgroup>
     <h2>Logistic Regression - Model Fit</h2>
   </hgroup>
@@ -3625,7 +3612,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-150" style="background:;">
+<slide class="" id="slide-149" style="background:;">
   <hgroup>
     <h2>Summary of Fit</h2>
   </hgroup>
@@ -3662,7 +3649,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-151" style="background:;">
+<slide class="" id="slide-150" style="background:;">
   <article data-timings="">
     <ul>
 <li>95% CI for exp(coefficients) (profile liklihood mehtod)</li>
@@ -3694,7 +3681,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-152" style="background:;">
+<slide class="" id="slide-151" style="background:;">
   <article data-timings="">
     <ul>
 <li>Update model by adding &#39;inc&#39; and &#39;lwg&#39;</li>
@@ -3727,7 +3714,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-153" style="background:;">
+<slide class="" id="slide-152" style="background:;">
   <hgroup>
     <h2>Model Comparison</h2>
   </hgroup>
@@ -3754,7 +3741,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-154" style="background:;">
+<slide class="" id="slide-153" style="background:;">
   <article data-timings="">
     <p>EX9. (optional) Randomization testing for whether mean mpg is higher for Japanese cars than European cars</p>
 
@@ -3777,7 +3764,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-155" style="background:;">
+<slide class="" id="slide-154" style="background:;">
   <article data-timings="">
     <p>EX10. Histogram of the continuous variables: to check the outliers and the distribution of the variables</p>
 
@@ -3796,7 +3783,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-156" style="background:;">
+<slide class="" id="slide-155" style="background:;">
   <article data-timings="">
     <p>EX12. Scatterplot of mpg vs cylinders to check what the relationship is like, and to check if it is suitable to treat cylinder as a numerical variable or categorical variable.</p>
 
@@ -3809,7 +3796,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-157" style="background:;">
+<slide class="" id="slide-156" style="background:;">
   <article data-timings="">
     <p>EX13. Scatterplot matrix. Apply function pairs() or ggpairs() on the data to create the scatterplot matrix. If you use ggpairs(), you need to install and load R package &quot;GGally&quot;.   </p>
 
@@ -3835,7 +3822,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-158" style="background:;">
+<slide class="" id="slide-157" style="background:;">
   <article data-timings="">
     <p>EX15. Statistical analysis  </p>
 
@@ -3855,7 +3842,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-159" style="background:;">
+<slide class="" id="slide-158" style="background:;">
   <article data-timings="">
     <p>EX16. (optional) An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens </p>
 
@@ -3863,7 +3850,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-160" style="background:;">
+<slide class="" id="slide-159" style="background:;">
   <hgroup>
     <h2>Online Resources to Learn R:</h2>
   </hgroup>
@@ -3893,7 +3880,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-161" style="background:;">
+<slide class="" id="slide-160" style="background:;">
   <hgroup>
     <h2>Useful Books in learning R:</h2>
   </hgroup>
@@ -3909,7 +3896,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-162" style="background:;">
+<slide class="" id="slide-161" style="background:;">
   <hgroup>
     <h2>How to get help in R:</h2>
   </hgroup>
@@ -4809,37 +4796,37 @@ fitLogistic # summary(fitLogistic)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=145 title='Testing for Normality'>
+        data-slide=145 title='Model diagnostic plot'>
          145
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=146 title='Testing for Constant Variance'>
+        data-slide=146 title='Logistic Regression - Data:'>
          146
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=147 title='Logistic Regression - Data:'>
+        data-slide=147 title='Logistic Regression - Data Description'>
          147
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=148 title='Logistic Regression - Data Description'>
+        data-slide=148 title='Logistic Regression - Model Fit'>
          148
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=149 title='Logistic Regression - Model Fit'>
+        data-slide=149 title='Summary of Fit'>
          149
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=150 title='Summary of Fit'>
+        data-slide=150 title=''>
          150
       </a>
     </li>
@@ -4851,13 +4838,13 @@ fitLogistic # summary(fitLogistic)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=152 title=''>
+        data-slide=152 title='Model Comparison'>
          152
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=153 title='Model Comparison'>
+        data-slide=153 title=''>
          153
       </a>
     </li>
@@ -4893,26 +4880,20 @@ fitLogistic # summary(fitLogistic)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=159 title=''>
+        data-slide=159 title='Online Resources to Learn R:'>
          159
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=160 title='Online Resources to Learn R:'>
+        data-slide=160 title='Useful Books in learning R:'>
          160
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=161 title='Useful Books in learning R:'>
+        data-slide=161 title='How to get help in R:'>
          161
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=162 title='How to get help in R:'>
-         162
       </a>
     </li>
   </ul>

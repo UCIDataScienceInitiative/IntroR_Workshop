@@ -481,10 +481,10 @@ colMat
 
 ```
 ##      vec1 vec2       vec3
-## [1,]    1   81 -1.4742404
-## [2,]    2   42  0.2582076
-## [3,]    3   82 -0.1814866
-## [4,]    4   54 -0.4186362
+## [1,]    1   10 -1.2000605
+## [2,]    2   74  1.2422547
+## [3,]    3   70 -0.9061899
+## [4,]    4   32  0.4954042
 ```
 
 ---
@@ -501,10 +501,10 @@ rowMat
 ```
 
 ```
-##            [,1]      [,2]       [,3]       [,4]
-## vec1  1.0000000  2.000000  3.0000000  4.0000000
-## vec2 34.0000000 78.000000 72.0000000 12.0000000
-## vec3 -0.5244013 -0.370801 -0.3405051  0.6171118
+##           [,1]      [,2]      [,3]      [,4]
+## vec1  1.000000  2.000000  3.000000  4.000000
+## vec2 59.000000 89.000000 15.000000 73.000000
+## vec3  0.343683  0.178752 -1.742919  1.385166
 ```
 
 ---
@@ -569,12 +569,12 @@ head(data)
 
 ```
 ##   studentID score gender
-## 1    S#7041    44 female
-## 2    S#7040    57   male
-## 3    S#7121    27   male
-## 4    S#7264    89 female
-## 5    S#6726    17   male
-## 6    S#6537    77   male
+## 1    S#6632    26 female
+## 2    S#7181    50   male
+## 3    S#6866    80 female
+## 4    S#7262    11   male
+## 5    S#7202    31 female
+## 6    S#7011    87   male
 ```
 
 ---
@@ -1184,10 +1184,10 @@ age.df[1:3,]
 ```
 
 ```
-##   age      ageCat
-## 1  44 Middle-Aged
-## 2  55 Middle-Aged
-## 3  38 Middle-Aged
+##   age ageCat
+## 1  35  Young
+## 2  56    Old
+## 3  27  Young
 ```
 
 ---
@@ -1291,7 +1291,7 @@ sample(sampSpace, 1) # arguments with default values can be omitted
 ```
 
 ```
-## [1] 6
+## [1] 3
 ```
 
 ```r
@@ -1299,7 +1299,7 @@ sample(size = 1, x = sampSpace) # no need to remember the order
 ```
 
 ```
-## [1] 6
+## [1] 5
 ```
 
 ```r
@@ -1307,7 +1307,7 @@ sample(size = 1, sampSpace)
 ```
 
 ```
-## [1] 2
+## [1] 5
 ```
 
 
@@ -1444,7 +1444,7 @@ str(genderF)
 ```
 
 ```
-##  Factor w/ 2 levels "Female","Male": 2 2 2 1 2 1 1 2 2 1 ...
+##  Factor w/ 2 levels "Female","Male": 2 2 1 2 1 1 2 2 1 2 ...
 ```
 
 
@@ -1690,12 +1690,12 @@ head(HeightDF)
 
 ```
 ##     heigth gender
-## 1 179.8406      M
-## 2 178.8383      M
-## 3 180.3455      M
-## 4 176.1052      M
-## 5 183.6159      M
-## 6 177.4524      M
+## 1 177.1589      M
+## 2 180.5204      M
+## 3 182.2732      M
+## 4 179.1636      M
+## 5 179.8828      M
+## 6 173.6134      M
 ```
 
 ```r
@@ -1704,7 +1704,7 @@ tapply(HeightDF$heigth, HeightDF$gender, mean)
 
 ```
 ##        F        M 
-## 170.2259 180.1515
+## 169.8971 180.0283
 ```
 
 
@@ -1770,7 +1770,7 @@ str(HeightDF)
 
 ```
 ## 'data.frame':	200 obs. of  2 variables:
-##  $ heigth: num  180 179 180 176 184 ...
+##  $ heigth: num  177 181 182 179 180 ...
 ##  $ gender: Factor w/ 2 levels "F","M": 2 2 2 2 2 2 2 2 2 2 ...
 ```
 
@@ -1782,8 +1782,8 @@ str(splitData)
 
 ```
 ## List of 2
-##  $ F: num [1:100] 172 169 166 168 170 ...
-##  $ M: num [1:100] 180 179 180 176 184 ...
+##  $ F: num [1:100] 171 170 166 166 173 ...
+##  $ M: num [1:100] 177 181 182 179 180 ...
 ```
 
 
@@ -2044,7 +2044,7 @@ rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 ```
 
 ```
-##  [1] 8 4 3 5 4 2 6 6 6 7 5 1 6 6 7 3 5 5 3 4
+##  [1] 6 5 6 6 2 5 6 5 6 7 5 5 5 6 6 7 3 4 4 5
 ```
 
 
@@ -2119,8 +2119,8 @@ rnorm(10, mean = 0, sd = 1)
 ```
 
 ```
-##  [1] -1.4943309 -1.3176107  2.2691433  1.4563769  0.9447776  1.3021847
-##  [7] -1.3168818  0.4869442  1.1041109  1.7653580
+##  [1]  0.07634592  1.70176022 -1.06957995 -1.84073970  1.75521699
+##  [6]  0.29107459 -0.42584300  1.16473896  0.97229768  0.02066258
 ```
 
 
@@ -2583,13 +2583,13 @@ oneSampTest.0
 ## 	One Sample t-test
 ## 
 ## data:  oneSampData
-## t = -0.162, df = 99, p-value = 0.8716
+## t = -0.9226, df = 99, p-value = 0.3585
 ## alternative hypothesis: true mean is not equal to 0
 ## 95 percent confidence interval:
-##  -0.2088591  0.1773202
+##  -0.3124861  0.1141283
 ## sample estimates:
 ##   mean of x 
-## -0.01576948
+## -0.09917887
 ```
 
 
@@ -2631,13 +2631,13 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ## 	Welch Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -12.2868, df = 58.346, p-value < 2.2e-16
+## t = -15.5974, df = 62.306, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.502425 -2.521206
+##  -3.511734 -2.713928
 ## sample estimates:
 ## mean of x mean of y 
-##  2.488699  5.500515
+##  2.344588  5.457420
 ```
 
 
@@ -2654,13 +2654,13 @@ t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 ## 	Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -12.472, df = 78, p-value < 2.2e-16
+## t = -15.5084, df = 78, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.492576 -2.531056
+##  -3.512432 -2.713230
 ## sample estimates:
 ## mean of x mean of y 
-##  2.488699  5.500515
+##  2.344588  5.457420
 ```
 
 
@@ -2677,13 +2677,13 @@ t.test(Samp1, Samp2[1:30], paired = TRUE)
 ## 	Paired t-test
 ## 
 ## data:  Samp1 and Samp2[1:30]
-## t = -10.269, df = 29, p-value = 3.602e-11
+## t = -12.6728, df = 29, p-value = 2.38e-13
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -3.530358 -2.357667
+##  -3.567570 -2.576067
 ## sample estimates:
 ## mean of the differences 
-##               -2.944012
+##               -3.071819
 ```
 
 
@@ -2704,7 +2704,7 @@ str(myDF)
 
 ```
 ## 'data.frame':	30 obs. of  2 variables:
-##  $ y    : num  26.1 25.9 24.7 26.3 22.4 25.1 25.7 26.7 24.1 26.6 ...
+##  $ y    : num  26.1 25.4 25.9 24 25.3 25.6 24.7 26.1 24.3 24.7 ...
 ##  $ group: Factor w/ 3 levels "1","2","3": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
@@ -2722,10 +2722,10 @@ str(myANOVA) # see what is
 ```
 ## Classes 'anova' and 'data.frame':	2 obs. of  5 variables:
 ##  $ Df     : int  2 27
-##  $ Sum Sq : num  455.2 24.6
-##  $ Mean Sq: num  227.585 0.912
-##  $ F value: num  250 NA
-##  $ Pr(>F) : num  3.88e-18 NA
+##  $ Sum Sq : num  501.7 16.8
+##  $ Mean Sq: num  250.873 0.624
+##  $ F value: num  402 NA
+##  $ Pr(>F) : num  8.1e-21 NA
 ##  - attr(*, "heading")= chr  "Analysis of Variance Table\n" "Response: y"
 ```
 
@@ -2895,29 +2895,14 @@ confint(myReg, level=0.95)
   
 
 ---
-
-###  Testing for Normality
-
+## Model diagnostic plot
 
 ```r
-qqPlot(myReg, main = "QQ Plot")
+par(mfrow = c(2, 2), oma = c(0, 0, 2, 0))
+plot(myReg)
 ```
 
 ![plot of chunk unnamed-chunk-98](figure/unnamed-chunk-98-1.png) 
-  
-
----
-
-###  Testing for Constant Variance
-
-
-```r
-spreadLevelPlot(myReg)
-```
-
-![plot of chunk unnamed-chunk-99](figure/unnamed-chunk-99-1.png) 
-  
-
 
 ---
 
