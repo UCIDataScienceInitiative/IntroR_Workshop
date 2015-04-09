@@ -2111,301 +2111,7 @@ str(splitData)
 
 <slide class="" id="slide-79" style="background:;">
   <hgroup>
-    <h2>Exercises: Analysis for Auto-Mpg Data</h2>
-  </hgroup>
-  <article data-timings="">
-    <ol>
-<li>Dataset: Auto-Mpg Data from UCI Machine Learning Repository (some modification is done on the data for the exercise of this workshop)</li>
-<li>Download: click the &quot;download&quot; button in slide 1, extract the zip file and the data files will be in the folder &quot;data&quot;</li>
-<li>Variables (names saved in auto-mpg-names.txt): 
-
-<ul>
-<li>continuous: mpg, displacement, horsepower, weight, acceleration</li>
-<li>discrete: cylinders, model year, origin</li>
-<li>string: car name (not used in the analysis)</li>
-<li>descriptions: mpg (city-cycle fuel consumption in miles per gallon), cylinders (# of cylinders), displacement (engine displacement in cu. inches), weight (vehicle weight in lbs.), accelerate (time to accelerate from O to 60 mph in sec.), model year (modulo 100), origin (1: American, 2: European, 3: Japanese).</li>
-</ul></li>
-<li>More information:   <a href="https://archive.ics.uci.edu/ml/datasets/Auto+MPG">https://archive.ics.uci.edu/ml/datasets/Auto+MPG</a></li>
-</ol>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-80" style="background:;">
-  <hgroup>
-    <h2>Questions to answer</h2>
-  </hgroup>
-  <article data-timings="">
-    <ol>
-<li>Does mpg depend on the origin of the car?</li>
-<li>How is mpg related with #cylinders of the car?</li>
-<li>How is mpg related with other variables?</li>
-<li>Predict mpg using the other variables provided in the data.</li>
-</ol>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-81" style="background:;">
-  <hgroup>
-    <h1>Some suggestions</h1>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>First skip the optional problems, especially if you are very new to R; if you still have time after finishing all the regular problems, come back to work on the optional ones</li>
-<li>Disable &quot;hide file extensions&quot; so you can easily see the full file names</li>
-<li>Feel free to ask us for help</li>
-<li>Try to solve the exercises without looking at the solutions (ex_code.r)</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-82" style="background:;">
-  <hgroup>
-    <h2>EX0. Getting ready</h2>
-  </hgroup>
-  <article data-timings="">
-    <h1>Overview of data analysis</h1>
-
-<p>Data checking &amp; cleaning, data visualization, data transformation, statistical modeling</p>
-
-<h1>R script</h1>
-
-<p>open a new R script file to write and save your code for the exercises. </p>
-
-<h1>Execute code</h1>
-
-<p>to execute the code you can either highlight the code and press Ctrl+Enter (Cmd+Return), or copy and paste the code to the console and press Enter (Return).</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-83" style="background:;">
-  <hgroup>
-    <h2>EX1. Import data</h2>
-  </hgroup>
-  <article data-timings="">
-    <h1>1.1 Set working directory</h1>
-
-<p>find the folder where the data files are saved, and set working directory to that folder using setwd().</p>
-
-<h1>1.2  Import CSV file</h1>
-
-<p>use read.csv() to import the data &quot;auto-mpg.csv&quot; (the data is of comma separated value file format), and store it as an object &quot;data&quot; ( data = read.csv(....) ). We need to set header = FALSE since the data starts right from the first line (i.e. the data has no header). Look at the data set to see what string/symbols are used to denote missing values; in this data &quot;NA&quot; is used, so na.strings = &quot;NA&quot; should be specified in read.csv(). </p>
-
-<h1>1.3 (optional) Other data format</h1>
-
-<p>Read data file &quot;auto-mpg.data-original.txt&quot;. What happens and why? Check the original data file. </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-84" style="background:;">
-  <hgroup>
-    <h2>EX2. Check data</h2>
-  </hgroup>
-  <article data-timings="">
-    <h1>2.1 Variables and Values</h1>
-
-<p>check the top few rows of data; open the original data in excel or notepad and compare with the rows printed in R.  </p>
-
-<h1>2.2. Dimension</h1>
-
-<p>check the dimension of data</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-85" style="background:;">
-  <hgroup>
-    <h2>EX3. Add variable names</h2>
-  </hgroup>
-  <article data-timings="">
-    <h1>3.1 Import variable names</h1>
-
-<p>import variable names from &quot;auto-mpg-names.txt&quot; using readLines() and store as an object &quot;varnames&quot; (varnames = readLines(...)). Type &quot;varnames&quot; in the console to see what&#39;s inside. The difference between readLines() and read.table() is that readLines() imports the data file into a vector of strings, but read.table() imports the data file into a data frame. Each element of the vector returned by readLines() is the content of an entire line in the data file.</p>
-
-<h1>3.2 Name the variables</h1>
-
-<p>Run &quot;names(data)&quot;. It returns the variable names of the data. Assign the new variable names to data by &quot;names(data) = varnames&quot;. Check again the variable names, to see if they are updated correctly.</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-86" style="background:;">
-  <hgroup>
-    <h2>EX4. Data summary</h2>
-  </hgroup>
-  <article data-timings="">
-    <h1>4.1 Summarize data structure</h1>
-
-<p>summarize the data structure and the class of each column (use str() );</p>
-
-<h1>4.2 Summarize data content</h1>
-
-<p>apply function summary() on data and see how it is different from the function above. One nice thing is that it tells you #missing values for each variable (NA&#39;s). </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-87" style="background:;">
-  <hgroup>
-    <h2>EX5. Subset exercises</h2>
-  </hgroup>
-  <article data-timings="">
-    <h1>5.1 Subset single variable</h1>
-
-<p>summarize the variable mpg (use summary()). (There are 3 ways you can get the variable mpg.) Do you see something weird in the result? What might be the reason? We will get back to this later. </p>
-
-<h1>5.2 Subset multiple variables (columns)</h1>
-
-<p>create a vector &quot;index_cont&quot; in R for the numbers 1,3,4,5,6, which are the column indices for the continuous variables; use that vector to extract the continuous variables and summarize the continuous variables (use summary()).</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-88" style="background:;">
-  <hgroup>
-    <h1>5.3 (optional) Subset the complement set</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>use the index vector you created above to extract the non-continuous variables and summarize them ( using &quot;-index_cont&quot; for subsetting will return the complement of &quot;index_cont&quot;);</p>
-
-<h1>5.4 (optional) Subset the instances</h1>
-
-<p>read the help file for which(); create a vector of indices &quot;index_origin_23&quot; for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: &amp; for and, | for or, ! for NOT.    </p>
-
-<h1>5.5 Drop a variable</h1>
-
-<p>drop variable &quot;car_name&quot; (we will not use it in our analysis). Check the top few lines of the data. Hint: you can either assign NULL (empty) to the variable &quot;car_name&quot;, or redefine data to be the subset of the data that does not contain &quot;car_name&quot;. </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-89" style="background:;">
-  <hgroup>
-    <h2>EX6. Discrete variables</h2>
-  </hgroup>
-  <article data-timings="">
-    <h1>6.1 Make a copy of the data</h1>
-
-<p>we are going to change the data, so please first make a copy of the original data (assign data to a new object &quot;data_ori&quot;); in case you do something wrong later you can easily reset the new data to be the original data.</p>
-
-<h1>6.2 Convert numerical to factor</h1>
-
-<p>origin is a categorical variable by nature, so we need to convert it to a factor type (use factor()), and assign it back to data$origin. </p>
-
-<h1>6.3 Add labels</h1>
-
-<p>run &quot;levels(data$origin)&quot; to see the current labels for the variable origin. Change the labels for the values (1: American, 2: European, 3:Japanese). </p>
-
-<h1>6.4 Summarize a factor variable</h1>
-
-<p>use summary() on the converted variable and see how the summary output changes for a factor variable. </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-90" style="background:;">
-  <hgroup>
-    <h2>EX7. Missing values</h2>
-  </hgroup>
-  <article data-timings="">
-    <h1>7.1 Fix inappropriate coding</h1>
-
-<p>recall the weird values &#39;-99&#39; we saw before in &#39;mpg&#39;. Sometimes the coding gets messed up and the unlikely values like &quot;-99&quot; are used to code missing values - in which case we should confirm this with the data entry clerk. Now assuming this has been confirmed, let&#39;s replace all &quot;-99&quot; with NA (not &quot;NA&quot;).  </p>
-
-<h1>7.2 Data check</h1>
-
-<p>use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-91" style="background:;">
-  <hgroup>
-    <h1>7.3 Check missing values</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>calculate the total number of missing values in data (use is.na() and sum()). And then rewrite it to make it a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument &quot;x&quot;. Test your function on the current data, it should return 17. </p>
-
-<h1>7.4 Discard missing values</h1>
-
-<p>read the help file for function na.omit(), and use this function to create a new data (store it as data_noNA) that contains only the instances that has no missing value on any variables </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-92" style="background:;">
-  <hgroup>
-    <h1>From now on use the data set that contains no missing values</h1>
-  </hgroup>
-  <article data-timings="">
-    <h1>EX8. (optional) *apply() &amp; split()</h1>
-
-<ul>
-<li>8.1 use one of the *apply() functions to get the frequency table on all discrete variables. Note that if these variables were all of factor type instead of numerical type, this could be directly done by summary(data[,c(2,7,8)]) </li>
-<li>8.2 find average mpg for each # cylinders</li>
-<li>8.3 find 2.5 and 97.5 percentile of mpg for each # cylinders </li>
-<li>8.4 split the dataset based on # cylinders </li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-93" style="background:;">
-  <hgroup>
-    <h1>EX9. (optional) Loop, subset &amp; sample</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>Randomization testing for whether mean mpg is higher for Japanese cars than European cars</p>
-
-<ul>
-<li>9.1 calculate the difference between mean mpg for Japanese cars and European cars and save in object dif_JapVSEuro</li>
-<li>9.2 find the number of instances for European cars and save in object n_European</li>
-<li>9.3 write a for loop that does the following in each iteration:
-
-<ul>
-<li>find the subset of European cars and Japanese cars</li>
-<li>randomize the origin of the cars: randomly sample n_European instances to be &quot;European&quot; and the rest to be &quot;Japanese&quot;</li>
-<li>calculate the new difference in the mean mpg of the randomized data (Jap - Euro)</li>
-<li>record whether the new difference &gt;= the observed difference, dif_JapVSEuro</li>
-</ul></li>
-<li>9.4 run the simulation of 1000 iterations</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-94" style="background:;">
-  <article data-timings="">
-    <ul>
-<li>9.5 obtain the p value by calculating the proportion of times that the difference of the randomized data &gt;= the observed difference. If this p value &lt;= the alpha level we set for the test, then we can conclude mean mpg is higher for Japanese cars than European cars. </li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-95" style="background:;">
-  <hgroup>
-    <h2>Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)</h2>
+    <h2>Time for Break for 10 Minutes :)</h2>
   </hgroup>
   <article data-timings="">
     
@@ -2413,7 +2119,7 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-96" style="background:;">
+<slide class="" id="slide-80" style="background:;">
   <hgroup>
     <h2>Session 3 - Agenda</h2>
   </hgroup>
@@ -2427,7 +2133,7 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-97" style="background:;">
+<slide class="" id="slide-81" style="background:;">
   <hgroup>
     <h2>Useful Matrix Functions</h2>
   </hgroup>
@@ -2445,7 +2151,7 @@ str(splitData)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-98" style="background:;">
+<slide class="" id="slide-82" style="background:;">
   <hgroup>
     <h3>solve():</h3>
   </hgroup>
@@ -2473,7 +2179,7 @@ A
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-99" style="background:;">
+<slide class="" id="slide-83" style="background:;">
   <hgroup>
     <h3>solve():</h3>
   </hgroup>
@@ -2506,7 +2212,7 @@ solve(A)%*%A
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-100" style="background:;">
+<slide class="" id="slide-84" style="background:;">
   <hgroup>
     <h2>Statistical Distributions in R:</h2>
   </hgroup>
@@ -2532,7 +2238,7 @@ solve(A)%*%A
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-101" style="background:;">
+<slide class="" id="slide-85" style="background:;">
   <hgroup>
     <h3>Example of a Discrete Distribution:</h3>
   </hgroup>
@@ -2566,7 +2272,7 @@ str(dbinom)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-102" style="background:;">
+<slide class="" id="slide-86" style="background:;">
   <hgroup>
     <h3>Example of a Discrete Distribution:</h3>
   </hgroup>
@@ -2599,7 +2305,7 @@ str(dbinom)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-103" style="background:;">
+<slide class="" id="slide-87" style="background:;">
   <hgroup>
     <h3>Example of a Continuous Distribution:</h3>
   </hgroup>
@@ -2633,7 +2339,7 @@ str(dnorm)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-104" style="background:;">
+<slide class="" id="slide-88" style="background:;">
   <hgroup>
     <h3>Example of a Continuous Distribution:</h3>
   </hgroup>
@@ -2667,7 +2373,7 @@ str(dnorm)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-105" style="background:;">
+<slide class="" id="slide-89" style="background:;">
   <hgroup>
     <h3>Example of a Continuous Distribution:</h3>
   </hgroup>
@@ -2684,12 +2390,306 @@ plot(x, y, type = &quot;l&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-106" style="background:;">
+<slide class="" id="slide-90" style="background:;">
   <hgroup>
-    <h2>Time for Break for 10 Minutes :)</h2>
+    <h2>Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)</h2>
   </hgroup>
   <article data-timings="">
     
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-91" style="background:;">
+  <hgroup>
+    <h2>Exercises: Analysis for Auto-Mpg Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Dataset: Auto-Mpg Data from UCI Machine Learning Repository (some modification is done on the data for the exercise of this workshop)</li>
+<li>Download: click the &quot;download&quot; button in slide 1, extract the zip file and the data files will be in the folder &quot;data&quot;</li>
+<li>Variables (names saved in auto-mpg-names.txt): 
+
+<ul>
+<li>continuous: mpg, displacement, horsepower, weight, acceleration</li>
+<li>discrete: cylinders, model year, origin</li>
+<li>string: car name (not used in the analysis)</li>
+<li>descriptions: mpg (city-cycle fuel consumption in miles per gallon), cylinders (# of cylinders), displacement (engine displacement in cu. inches), weight (vehicle weight in lbs.), accelerate (time to accelerate from O to 60 mph in sec.), model year (modulo 100), origin (1: American, 2: European, 3: Japanese).</li>
+</ul></li>
+<li>More information:   <a href="https://archive.ics.uci.edu/ml/datasets/Auto+MPG">https://archive.ics.uci.edu/ml/datasets/Auto+MPG</a></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-92" style="background:;">
+  <hgroup>
+    <h2>Questions to answer</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Does mpg depend on the origin of the car?</li>
+<li>How is mpg related with #cylinders of the car?</li>
+<li>How is mpg related with other variables?</li>
+<li>Predict mpg using the other variables provided in the data.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-93" style="background:;">
+  <hgroup>
+    <h1>Some suggestions</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>First skip the optional problems, especially if you are very new to R; if you still have time after finishing all the regular problems, come back to work on the optional ones</li>
+<li>Disable &quot;hide file extensions&quot; so you can easily see the full file names</li>
+<li>Feel free to ask us for help</li>
+<li>Try to solve the exercises without looking at the solutions (ex_code.r)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-94" style="background:;">
+  <hgroup>
+    <h2>EX0. Getting ready</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>Overview of data analysis</h1>
+
+<p>Data checking &amp; cleaning, data visualization, data transformation, statistical modeling</p>
+
+<h1>R script</h1>
+
+<p>open a new R script file to write and save your code for the exercises. </p>
+
+<h1>Execute code</h1>
+
+<p>to execute the code you can either highlight the code and press Ctrl+Enter (Cmd+Return), or copy and paste the code to the console and press Enter (Return).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-95" style="background:;">
+  <hgroup>
+    <h2>EX1. Import data</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>1.1 Set working directory</h1>
+
+<p>find the folder where the data files are saved, and set working directory to that folder using setwd().</p>
+
+<h1>1.2  Import CSV file</h1>
+
+<p>use read.csv() to import the data &quot;auto-mpg.csv&quot; (the data is of comma separated value file format), and store it as an object &quot;data&quot; ( data = read.csv(....) ). We need to set header = FALSE since the data starts right from the first line (i.e. the data has no header). Look at the data set to see what string/symbols are used to denote missing values; in this data &quot;NA&quot; is used, so na.strings = &quot;NA&quot; should be specified in read.csv(). </p>
+
+<h1>1.3 (optional) Other data format</h1>
+
+<p>Read data file &quot;auto-mpg.data-original.txt&quot;. What happens and why? Check the original data file. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-96" style="background:;">
+  <hgroup>
+    <h2>EX2. Check data</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>2.1 Variables and Values</h1>
+
+<p>check the top few rows of data; open the original data in excel or notepad and compare with the rows printed in R.  </p>
+
+<h1>2.2. Dimension</h1>
+
+<p>check the dimension of data</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-97" style="background:;">
+  <hgroup>
+    <h2>EX3. Add variable names</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>3.1 Import variable names</h1>
+
+<p>import variable names from &quot;auto-mpg-names.txt&quot; using readLines() and store as an object &quot;varnames&quot; (varnames = readLines(...)). Type &quot;varnames&quot; in the console to see what&#39;s inside. The difference between readLines() and read.table() is that readLines() imports the data file into a vector of strings, but read.table() imports the data file into a data frame. Each element of the vector returned by readLines() is the content of an entire line in the data file.</p>
+
+<h1>3.2 Name the variables</h1>
+
+<p>Run &quot;names(data)&quot;. It returns the variable names of the data. Assign the new variable names to data by &quot;names(data) = varnames&quot;. Check again the variable names, to see if they are updated correctly.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-98" style="background:;">
+  <hgroup>
+    <h2>EX4. Data summary</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>4.1 Summarize data structure</h1>
+
+<p>summarize the data structure and the class of each column (use str() );</p>
+
+<h1>4.2 Summarize data content</h1>
+
+<p>apply function summary() on data and see how it is different from the function above. One nice thing is that it tells you #missing values for each variable (NA&#39;s). </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-99" style="background:;">
+  <hgroup>
+    <h2>EX5. Subset exercises</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>5.1 Subset single variable</h1>
+
+<p>summarize the variable mpg (use summary()). (There are 3 ways you can get the variable mpg.) Do you see something weird in the result? What might be the reason? We will get back to this later. </p>
+
+<h1>5.2 Subset multiple variables (columns)</h1>
+
+<p>create a vector &quot;index_cont&quot; in R for the numbers 1,3,4,5,6, which are the column indices for the continuous variables; use that vector to extract the continuous variables and summarize the continuous variables (use summary()).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-100" style="background:;">
+  <hgroup>
+    <h1>5.3 (optional) Subset the complement set</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>use the index vector you created above to extract the non-continuous variables and summarize them ( using &quot;-index_cont&quot; for subsetting will return the complement of &quot;index_cont&quot;);</p>
+
+<h1>5.4 (optional) Subset the instances</h1>
+
+<p>read the help file for which(); create a vector of indices &quot;index_origin_23&quot; for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: &amp; for and, | for or, ! for NOT.    </p>
+
+<h1>5.5 Drop a variable</h1>
+
+<p>drop variable &quot;car_name&quot; (we will not use it in our analysis). Check the top few lines of the data. Hint: you can either assign NULL (empty) to the variable &quot;car_name&quot;, or redefine data to be the subset of the data that does not contain &quot;car_name&quot;. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-101" style="background:;">
+  <hgroup>
+    <h2>EX6. Discrete variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>6.1 Make a copy of the data</h1>
+
+<p>we are going to change the data, so please first make a copy of the original data (assign data to a new object &quot;data_ori&quot;); in case you do something wrong later you can easily reset the new data to be the original data.</p>
+
+<h1>6.2 Convert numerical to factor</h1>
+
+<p>origin is a categorical variable by nature, so we need to convert it to a factor type (use factor()), and assign it back to data$origin. </p>
+
+<h1>6.3 Add labels</h1>
+
+<p>run &quot;levels(data$origin)&quot; to see the current labels for the variable origin. Change the labels for the values (1: American, 2: European, 3:Japanese). </p>
+
+<h1>6.4 Summarize a factor variable</h1>
+
+<p>use summary() on the converted variable and see how the summary output changes for a factor variable. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-102" style="background:;">
+  <hgroup>
+    <h2>EX7. Missing values</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>7.1 Fix inappropriate coding</h1>
+
+<p>recall the weird values &#39;-99&#39; we saw before in &#39;mpg&#39;. Sometimes the coding gets messed up and the unlikely values like &quot;-99&quot; are used to code missing values - in which case we should confirm this with the data entry clerk. Now assuming this has been confirmed, let&#39;s replace all &quot;-99&quot; with NA (not &quot;NA&quot;).  </p>
+
+<h1>7.2 Data check</h1>
+
+<p>use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-103" style="background:;">
+  <hgroup>
+    <h1>7.3 Check missing values</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>calculate the total number of missing values in data (use is.na() and sum()). And then rewrite it to make it a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument &quot;x&quot;. Test your function on the current data, it should return 17. </p>
+
+<h1>7.4 Discard missing values</h1>
+
+<p>read the help file for function na.omit(), and use this function to create a new data (store it as data_noNA) that contains only the instances that has no missing value on any variables </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-104" style="background:;">
+  <hgroup>
+    <h1>From now on use the data set that contains no missing values</h1>
+  </hgroup>
+  <article data-timings="">
+    <h1>EX8. (optional) *apply() &amp; split()</h1>
+
+<ul>
+<li>8.1 use one of the *apply() functions to get the frequency table on all discrete variables. Note that if these variables were all of factor type instead of numerical type, this could be directly done by summary(data[,c(2,7,8)]) </li>
+<li>8.2 find average mpg for each # cylinders</li>
+<li>8.3 find 2.5 and 97.5 percentile of mpg for each # cylinders </li>
+<li>8.4 split the dataset based on # cylinders </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-105" style="background:;">
+  <hgroup>
+    <h1>EX9. (optional) Loop, subset &amp; sample</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Randomization testing for whether mean mpg is higher for Japanese cars than European cars</p>
+
+<ul>
+<li>9.1 calculate the difference between mean mpg for Japanese cars and European cars and save in object dif_JapVSEuro</li>
+<li>9.2 find the number of instances for European cars and save in object n_European</li>
+<li>9.3 write a for loop that does the following in each iteration:
+
+<ul>
+<li>find the subset of European cars and Japanese cars</li>
+<li>randomize the origin of the cars: randomly sample n_European instances to be &quot;European&quot; and the rest to be &quot;Japanese&quot;</li>
+<li>calculate the new difference in the mean mpg of the randomized data (Jap - Euro)</li>
+<li>record whether the new difference &gt;= the observed difference, dif_JapVSEuro</li>
+</ul></li>
+<li>9.4 run the simulation of 1000 iterations</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-106" style="background:;">
+  <article data-timings="">
+    <ul>
+<li>9.5 obtain the p value by calculating the proportion of times that the difference of the randomized data &gt;= the observed difference. If this p value &lt;= the alpha level we set for the test, then we can conclude mean mpg is higher for Japanese cars than European cars. </li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -4541,169 +4541,169 @@ exp(predict(model_log, newcase))</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=79 title='Exercises: Analysis for Auto-Mpg Data'>
+        data-slide=79 title='Time for Break for 10 Minutes :)'>
          79
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=80 title='Questions to answer'>
+        data-slide=80 title='Session 3 - Agenda'>
          80
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=81 title='Some suggestions'>
+        data-slide=81 title='Useful Matrix Functions'>
          81
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=82 title='EX0. Getting ready'>
+        data-slide=82 title='solve():'>
          82
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=83 title='EX1. Import data'>
+        data-slide=83 title='solve():'>
          83
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=84 title='EX2. Check data'>
+        data-slide=84 title='Statistical Distributions in R:'>
          84
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=85 title='EX3. Add variable names'>
+        data-slide=85 title='Example of a Discrete Distribution:'>
          85
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=86 title='EX4. Data summary'>
+        data-slide=86 title='Example of a Discrete Distribution:'>
          86
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=87 title='EX5. Subset exercises'>
+        data-slide=87 title='Example of a Continuous Distribution:'>
          87
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=88 title='5.3 (optional) Subset the complement set'>
+        data-slide=88 title='Example of a Continuous Distribution:'>
          88
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=89 title='EX6. Discrete variables'>
+        data-slide=89 title='Example of a Continuous Distribution:'>
          89
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=90 title='EX7. Missing values'>
+        data-slide=90 title='Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)'>
          90
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=91 title='7.3 Check missing values'>
+        data-slide=91 title='Exercises: Analysis for Auto-Mpg Data'>
          91
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=92 title='From now on use the data set that contains no missing values'>
+        data-slide=92 title='Questions to answer'>
          92
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=93 title='EX9. (optional) Loop, subset &amp; sample'>
+        data-slide=93 title='Some suggestions'>
          93
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=94 title=''>
+        data-slide=94 title='EX0. Getting ready'>
          94
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=95 title='Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)'>
+        data-slide=95 title='EX1. Import data'>
          95
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=96 title='Session 3 - Agenda'>
+        data-slide=96 title='EX2. Check data'>
          96
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=97 title='Useful Matrix Functions'>
+        data-slide=97 title='EX3. Add variable names'>
          97
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=98 title='solve():'>
+        data-slide=98 title='EX4. Data summary'>
          98
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=99 title='solve():'>
+        data-slide=99 title='EX5. Subset exercises'>
          99
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=100 title='Statistical Distributions in R:'>
+        data-slide=100 title='5.3 (optional) Subset the complement set'>
          100
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=101 title='Example of a Discrete Distribution:'>
+        data-slide=101 title='EX6. Discrete variables'>
          101
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=102 title='Example of a Discrete Distribution:'>
+        data-slide=102 title='EX7. Missing values'>
          102
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=103 title='Example of a Continuous Distribution:'>
+        data-slide=103 title='7.3 Check missing values'>
          103
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=104 title='Example of a Continuous Distribution:'>
+        data-slide=104 title='From now on use the data set that contains no missing values'>
          104
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=105 title='Example of a Continuous Distribution:'>
+        data-slide=105 title='EX9. (optional) Loop, subset &amp; sample'>
          105
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=106 title='Time for Break for 10 Minutes :)'>
+        data-slide=106 title=''>
          106
       </a>
     </li>

@@ -1790,160 +1790,12 @@ str(splitData)
 
 ---
 
-## Exercises: Analysis for Auto-Mpg Data
 
-1. Dataset: Auto-Mpg Data from UCI Machine Learning Repository (some modification is done on the data for the exercise of this workshop)
-2. Download: click the "download" button in slide 1, extract the zip file and the data files will be in the folder "data"
-3. Variables (names saved in auto-mpg-names.txt): 
-  + continuous: mpg, displacement, horsepower, weight, acceleration
-  + discrete: cylinders, model year, origin
-  + string: car name (not used in the analysis)
-  + descriptions: mpg (city-cycle fuel consumption in miles per gallon), cylinders (# of cylinders), displacement (engine displacement in cu. inches), weight (vehicle weight in lbs.), accelerate (time to accelerate from O to 60 mph in sec.), model year (modulo 100), origin (1: American, 2: European, 3: Japanese).
-4. More information:   https://archive.ics.uci.edu/ml/datasets/Auto+MPG
-
----
-
-## Questions to answer
-1. Does mpg depend on the origin of the car?
-2. How is mpg related with #cylinders of the car?
-3. How is mpg related with other variables?
-4. Predict mpg using the other variables provided in the data.
-
----
-
-# Some suggestions
-  + First skip the optional problems, especially if you are very new to R; if you still have time after finishing all the regular problems, come back to work on the optional ones
-  + Disable "hide file extensions" so you can easily see the full file names
-  + Feel free to ask us for help
-  + Try to solve the exercises without looking at the solutions (ex_code.r)
-
----
-
-## EX0. Getting ready
-# Overview of data analysis
-Data checking & cleaning, data visualization, data transformation, statistical modeling
-# R script
-open a new R script file to write and save your code for the exercises. 
-# Execute code
-to execute the code you can either highlight the code and press Ctrl+Enter (Cmd+Return), or copy and paste the code to the console and press Enter (Return).
+## Time for Break for 10 Minutes :)
 
 
 ---
 
-
-## EX1. Import data
-# 1.1 Set working directory
-find the folder where the data files are saved, and set working directory to that folder using setwd().
-# 1.2  Import CSV file
-use read.csv() to import the data "auto-mpg.csv" (the data is of comma separated value file format), and store it as an object "data" ( data = read.csv(....) ). We need to set header = FALSE since the data starts right from the first line (i.e. the data has no header). Look at the data set to see what string/symbols are used to denote missing values; in this data "NA" is used, so na.strings = "NA" should be specified in read.csv(). 
-# 1.3 (optional) Other data format
-Read data file "auto-mpg.data-original.txt". What happens and why? Check the original data file. 
-
----
-
-## EX2. Check data
-# 2.1 Variables and Values
-check the top few rows of data; open the original data in excel or notepad and compare with the rows printed in R.  
-# 2.2. Dimension
-check the dimension of data
-
----
-
-## EX3. Add variable names
-# 3.1 Import variable names
-import variable names from "auto-mpg-names.txt" using readLines() and store as an object "varnames" (varnames = readLines(...)). Type "varnames" in the console to see what's inside. The difference between readLines() and read.table() is that readLines() imports the data file into a vector of strings, but read.table() imports the data file into a data frame. Each element of the vector returned by readLines() is the content of an entire line in the data file.
-# 3.2 Name the variables
-Run "names(data)". It returns the variable names of the data. Assign the new variable names to data by "names(data) = varnames". Check again the variable names, to see if they are updated correctly.
-
----
-
-## EX4. Data summary
-# 4.1 Summarize data structure
-summarize the data structure and the class of each column (use str() );
-# 4.2 Summarize data content
-apply function summary() on data and see how it is different from the function above. One nice thing is that it tells you #missing values for each variable (NA's). 
-
----
-
-## EX5. Subset exercises 
-# 5.1 Subset single variable
-summarize the variable mpg (use summary()). (There are 3 ways you can get the variable mpg.) Do you see something weird in the result? What might be the reason? We will get back to this later. 
-
-# 5.2 Subset multiple variables (columns)
-create a vector "index_cont" in R for the numbers 1,3,4,5,6, which are the column indices for the continuous variables; use that vector to extract the continuous variables and summarize the continuous variables (use summary()).
-
----
-
-# 5.3 (optional) Subset the complement set  
-use the index vector you created above to extract the non-continuous variables and summarize them ( using "-index_cont" for subsetting will return the complement of "index_cont");
-
-# 5.4 (optional) Subset the instances
-read the help file for which(); create a vector of indices "index_origin_23" for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or, ! for NOT.    
-
-# 5.5 Drop a variable
-drop variable "car_name" (we will not use it in our analysis). Check the top few lines of the data. Hint: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name". 
-
----
-
-## EX6. Discrete variables 
-# 6.1 Make a copy of the data
-we are going to change the data, so please first make a copy of the original data (assign data to a new object "data_ori"); in case you do something wrong later you can easily reset the new data to be the original data.
-# 6.2 Convert numerical to factor
-origin is a categorical variable by nature, so we need to convert it to a factor type (use factor()), and assign it back to data$origin. 
-# 6.3 Add labels
-run "levels(data$origin)" to see the current labels for the variable origin. Change the labels for the values (1: American, 2: European, 3:Japanese). 
-# 6.4 Summarize a factor variable
-use summary() on the converted variable and see how the summary output changes for a factor variable. 
-
----
-
-## EX7. Missing values
-# 7.1 Fix inappropriate coding 
-recall the weird values '-99' we saw before in 'mpg'. Sometimes the coding gets messed up and the unlikely values like "-99" are used to code missing values - in which case we should confirm this with the data entry clerk. Now assuming this has been confirmed, let's replace all "-99" with NA (not "NA").  
-# 7.2 Data check
-use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  
-
-
----
-
-
-# 7.3 Check missing values
-calculate the total number of missing values in data (use is.na() and sum()). And then rewrite it to make it a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument "x". Test your function on the current data, it should return 17. 
-# 7.4 Discard missing values
-read the help file for function na.omit(), and use this function to create a new data (store it as data_noNA) that contains only the instances that has no missing value on any variables 
-
----
-
-# From now on use the data set that contains no missing values
-# EX8. (optional) *apply() & split()
-  + 8.1 use one of the *apply() functions to get the frequency table on all discrete variables. Note that if these variables were all of factor type instead of numerical type, this could be directly done by summary(data[,c(2,7,8)]) 
-  + 8.2 find average mpg for each # cylinders
-  + 8.3 find 2.5 and 97.5 percentile of mpg for each # cylinders 
-  + 8.4 split the dataset based on # cylinders 
-
-
----
-
-# EX9. (optional) Loop, subset & sample
-Randomization testing for whether mean mpg is higher for Japanese cars than European cars
-  + 9.1 calculate the difference between mean mpg for Japanese cars and European cars and save in object dif_JapVSEuro
-  + 9.2 find the number of instances for European cars and save in object n_European
-  + 9.3 write a for loop that does the following in each iteration:
-     + find the subset of European cars and Japanese cars
-     + randomize the origin of the cars: randomly sample n_European instances to be "European" and the rest to be "Japanese"
-     + calculate the new difference in the mean mpg of the randomized data (Jap - Euro)
-     + record whether the new difference >= the observed difference, dif_JapVSEuro
-  + 9.4 run the simulation of 1000 iterations
-
----
-
-+ 9.5 obtain the p value by calculating the proportion of times that the difference of the randomized data >= the observed difference. If this p value <= the alpha level we set for the test, then we can conclude mean mpg is higher for Japanese cars than European cars. 
-
----
-
-## Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)
-
----
 
 ## Session 3 - Agenda
 
@@ -1951,6 +1803,7 @@ Randomization testing for whether mean mpg is higher for Japanese cars than Euro
 2. Statistical Distributions in R
 
 ---
+
 
 ## Useful Matrix Functions
 
@@ -2196,9 +2049,162 @@ plot(x, y, type = "l")
 ---
 
 
-## Time for Break for 10 Minutes :)
+## Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)
+
 
 ---
+
+## Exercises: Analysis for Auto-Mpg Data
+
+1. Dataset: Auto-Mpg Data from UCI Machine Learning Repository (some modification is done on the data for the exercise of this workshop)
+2. Download: click the "download" button in slide 1, extract the zip file and the data files will be in the folder "data"
+3. Variables (names saved in auto-mpg-names.txt): 
+  + continuous: mpg, displacement, horsepower, weight, acceleration
+  + discrete: cylinders, model year, origin
+  + string: car name (not used in the analysis)
+  + descriptions: mpg (city-cycle fuel consumption in miles per gallon), cylinders (# of cylinders), displacement (engine displacement in cu. inches), weight (vehicle weight in lbs.), accelerate (time to accelerate from O to 60 mph in sec.), model year (modulo 100), origin (1: American, 2: European, 3: Japanese).
+4. More information:   https://archive.ics.uci.edu/ml/datasets/Auto+MPG
+
+---
+
+## Questions to answer
+1. Does mpg depend on the origin of the car?
+2. How is mpg related with #cylinders of the car?
+3. How is mpg related with other variables?
+4. Predict mpg using the other variables provided in the data.
+
+---
+
+# Some suggestions
+  + First skip the optional problems, especially if you are very new to R; if you still have time after finishing all the regular problems, come back to work on the optional ones
+  + Disable "hide file extensions" so you can easily see the full file names
+  + Feel free to ask us for help
+  + Try to solve the exercises without looking at the solutions (ex_code.r)
+
+---
+
+## EX0. Getting ready
+# Overview of data analysis
+Data checking & cleaning, data visualization, data transformation, statistical modeling
+# R script
+open a new R script file to write and save your code for the exercises. 
+# Execute code
+to execute the code you can either highlight the code and press Ctrl+Enter (Cmd+Return), or copy and paste the code to the console and press Enter (Return).
+
+
+---
+
+
+## EX1. Import data
+# 1.1 Set working directory
+find the folder where the data files are saved, and set working directory to that folder using setwd().
+# 1.2  Import CSV file
+use read.csv() to import the data "auto-mpg.csv" (the data is of comma separated value file format), and store it as an object "data" ( data = read.csv(....) ). We need to set header = FALSE since the data starts right from the first line (i.e. the data has no header). Look at the data set to see what string/symbols are used to denote missing values; in this data "NA" is used, so na.strings = "NA" should be specified in read.csv(). 
+# 1.3 (optional) Other data format
+Read data file "auto-mpg.data-original.txt". What happens and why? Check the original data file. 
+
+---
+
+## EX2. Check data
+# 2.1 Variables and Values
+check the top few rows of data; open the original data in excel or notepad and compare with the rows printed in R.  
+# 2.2. Dimension
+check the dimension of data
+
+---
+
+## EX3. Add variable names
+# 3.1 Import variable names
+import variable names from "auto-mpg-names.txt" using readLines() and store as an object "varnames" (varnames = readLines(...)). Type "varnames" in the console to see what's inside. The difference between readLines() and read.table() is that readLines() imports the data file into a vector of strings, but read.table() imports the data file into a data frame. Each element of the vector returned by readLines() is the content of an entire line in the data file.
+# 3.2 Name the variables
+Run "names(data)". It returns the variable names of the data. Assign the new variable names to data by "names(data) = varnames". Check again the variable names, to see if they are updated correctly.
+
+---
+
+## EX4. Data summary
+# 4.1 Summarize data structure
+summarize the data structure and the class of each column (use str() );
+# 4.2 Summarize data content
+apply function summary() on data and see how it is different from the function above. One nice thing is that it tells you #missing values for each variable (NA's). 
+
+---
+
+## EX5. Subset exercises 
+# 5.1 Subset single variable
+summarize the variable mpg (use summary()). (There are 3 ways you can get the variable mpg.) Do you see something weird in the result? What might be the reason? We will get back to this later. 
+
+# 5.2 Subset multiple variables (columns)
+create a vector "index_cont" in R for the numbers 1,3,4,5,6, which are the column indices for the continuous variables; use that vector to extract the continuous variables and summarize the continuous variables (use summary()).
+
+---
+
+# 5.3 (optional) Subset the complement set  
+use the index vector you created above to extract the non-continuous variables and summarize them ( using "-index_cont" for subsetting will return the complement of "index_cont");
+
+# 5.4 (optional) Subset the instances
+read the help file for which(); create a vector of indices "index_origin_23" for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or, ! for NOT.    
+
+# 5.5 Drop a variable
+drop variable "car_name" (we will not use it in our analysis). Check the top few lines of the data. Hint: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name". 
+
+---
+
+## EX6. Discrete variables 
+# 6.1 Make a copy of the data
+we are going to change the data, so please first make a copy of the original data (assign data to a new object "data_ori"); in case you do something wrong later you can easily reset the new data to be the original data.
+# 6.2 Convert numerical to factor
+origin is a categorical variable by nature, so we need to convert it to a factor type (use factor()), and assign it back to data$origin. 
+# 6.3 Add labels
+run "levels(data$origin)" to see the current labels for the variable origin. Change the labels for the values (1: American, 2: European, 3:Japanese). 
+# 6.4 Summarize a factor variable
+use summary() on the converted variable and see how the summary output changes for a factor variable. 
+
+---
+
+## EX7. Missing values
+# 7.1 Fix inappropriate coding 
+recall the weird values '-99' we saw before in 'mpg'. Sometimes the coding gets messed up and the unlikely values like "-99" are used to code missing values - in which case we should confirm this with the data entry clerk. Now assuming this has been confirmed, let's replace all "-99" with NA (not "NA").  
+# 7.2 Data check
+use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  
+
+
+---
+
+
+# 7.3 Check missing values
+calculate the total number of missing values in data (use is.na() and sum()). And then rewrite it to make it a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument "x". Test your function on the current data, it should return 17. 
+# 7.4 Discard missing values
+read the help file for function na.omit(), and use this function to create a new data (store it as data_noNA) that contains only the instances that has no missing value on any variables 
+
+---
+
+# From now on use the data set that contains no missing values
+# EX8. (optional) *apply() & split()
+  + 8.1 use one of the *apply() functions to get the frequency table on all discrete variables. Note that if these variables were all of factor type instead of numerical type, this could be directly done by summary(data[,c(2,7,8)]) 
+  + 8.2 find average mpg for each # cylinders
+  + 8.3 find 2.5 and 97.5 percentile of mpg for each # cylinders 
+  + 8.4 split the dataset based on # cylinders 
+
+
+---
+
+# EX9. (optional) Loop, subset & sample
+Randomization testing for whether mean mpg is higher for Japanese cars than European cars
+  + 9.1 calculate the difference between mean mpg for Japanese cars and European cars and save in object dif_JapVSEuro
+  + 9.2 find the number of instances for European cars and save in object n_European
+  + 9.3 write a for loop that does the following in each iteration:
+     + find the subset of European cars and Japanese cars
+     + randomize the origin of the cars: randomly sample n_European instances to be "European" and the rest to be "Japanese"
+     + calculate the new difference in the mean mpg of the randomized data (Jap - Euro)
+     + record whether the new difference >= the observed difference, dif_JapVSEuro
+  + 9.4 run the simulation of 1000 iterations
+
+---
+
++ 9.5 obtain the p value by calculating the proportion of times that the difference of the randomized data >= the observed difference. If this p value <= the alpha level we set for the test, then we can conclude mean mpg is higher for Japanese cars than European cars. 
+
+---
+
 
 ## Session 4 - Agenda
 

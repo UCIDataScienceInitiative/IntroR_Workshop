@@ -1054,6 +1054,137 @@ str(splitData)
 
 ---
 
+
+## Time for Break for 10 Minutes :)
+
+
+---
+
+
+## Session 3 - Agenda
+
+1. Useful Matrix Functions
+2. Statistical Distributions in R
+
+---
+
+
+## Useful Matrix Functions
+
+Consider matrix "A". We can then have:
+> 1. t(A): transpose of A
+> 2. solve(): to get inverse of A
+> 3. eigen(): to get eigen values and eigen vectors (if A is symmetric)
+> 4. We only cover solve() in this lecture
+
+---
+
+### solve():
++ Consider B = A %*% X (where X is an unknown matrix)
++ Then: X = solve(A, B)
++ In a special case where B = I, X = $A^{-1}$
+
+```{r echo=TRUE}
+A <- matrix(c(1, 2, 3, 2, 4, 5, 3, 5, 6), ncol = 3)
+A
+# to get inverse of A: solve(A)
+```
+
+---
+
+### solve():
+```{r echo=TRUE}
+solve(A)
+# To check that solve(A) is inverse of A:
+solve(A)%*%A
+```
++ Machine epsilon is defined to be the smallest positive number which, when added to 1, gives a number different from 1.
++ Please visit http://en.wikipedia.org/wiki/Machine_epsilon for more info
+
+---
+
+## Statistical Distributions in R:
+
++ R has many in-built statistical distributions
+  + examples: binomial, poisson, normal, chi square, ...
+
++ Each distribution in R has four functions:
+  + these functions begin with a "d", "p", "q", or "r" and are followed by the name of the distribution
+
++ ddist(parameters): refers to the density of each distribution
++ rdist(parameters): generates random numbers out of each distribution
++ qdist(parameters): to get quantile of a distribution
++ pdist(parameters): to calculate CDF
+
+
+---
+
+### Example of a Discrete Distribution:
+```{r echo=TRUE}  
+# Consider tossing a coin 10 times
+str(dbinom)
+dbinom(5, 10, 0.5) # prob of getting five heads
+
+str(pbinom) # cumulative dist
+pbinom(5, 10, 0.5) # Pr[X <= 5]
+```
+
+
+---
+
+### Example of a Discrete Distribution:
+```{r echo=TRUE}  
+str(qbinom) # quantile: Pr[X <= ?] = known value
+qbinom(0.6230, 10, 0.5) # get the value of ? s.t. Pr[X <= ?]=0.6230
+
+str(rbinom) # Generating random numbers
+rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
+```
+
+
+---
+
+### Example of a Continuous Distribution:
+```{r echo=TRUE}  
+# Consider a standard Normal distribution
+str(dnorm)
+dnorm(x = 0, mean = 0, sd = 1, log = FALSE)
+
+str(pnorm) # cumulative dist
+pnorm(0, mean = 0, sd = 1)
+```
+
+
+---
+
+### Example of a Continuous Distribution:
+```{r echo=TRUE}  
+str(qnorm) # quantile
+qnorm(0.5, mean = 0, sd = 1)
+
+str(pnorm) # cumulative dist
+rnorm(10, mean = 0, sd = 1)
+```
+
+
+---
+
+### Example of a Continuous Distribution:
+```{r echo=TRUE, fig.height = 4.5, fig.align='center'}  
+# Let's try plotting Normal curve (more on plotting later)
+x <- seq(from = -3, to = 3, by = 0.05)
+y <- dnorm(x, mean = 0, sd = 1)
+plot(x, y, type = "l")
+```
+
+---
+
+
+## Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)
+
+
+---
+
 ## Exercises: Analysis for Auto-Mpg Data
 
 1. Dataset: Auto-Mpg Data from UCI Machine Learning Repository (some modification is done on the data for the exercise of this workshop)
@@ -1205,131 +1336,6 @@ Randomization testing for whether mean mpg is higher for Japanese cars than Euro
 
 ---
 
-## Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)
-
----
-
-## Session 3 - Agenda
-
-1. Useful Matrix Functions
-2. Statistical Distributions in R
-
----
-
-## Useful Matrix Functions
-
-Consider matrix "A". We can then have:
-> 1. t(A): transpose of A
-> 2. solve(): to get inverse of A
-> 3. eigen(): to get eigen values and eigen vectors (if A is symmetric)
-> 4. We only cover solve() in this lecture
-
----
-
-### solve():
-+ Consider B = A %*% X (where X is an unknown matrix)
-+ Then: X = solve(A, B)
-+ In a special case where B = I, X = $A^{-1}$
-
-```{r echo=TRUE}
-A <- matrix(c(1, 2, 3, 2, 4, 5, 3, 5, 6), ncol = 3)
-A
-# to get inverse of A: solve(A)
-```
-
----
-
-### solve():
-```{r echo=TRUE}
-solve(A)
-# To check that solve(A) is inverse of A:
-solve(A)%*%A
-```
-+ Machine epsilon is defined to be the smallest positive number which, when added to 1, gives a number different from 1.
-+ Please visit http://en.wikipedia.org/wiki/Machine_epsilon for more info
-
----
-
-## Statistical Distributions in R:
-
-+ R has many in-built statistical distributions
-  + examples: binomial, poisson, normal, chi square, ...
-
-+ Each distribution in R has four functions:
-  + these functions begin with a "d", "p", "q", or "r" and are followed by the name of the distribution
-
-+ ddist(parameters): refers to the density of each distribution
-+ rdist(parameters): generates random numbers out of each distribution
-+ qdist(parameters): to get quantile of a distribution
-+ pdist(parameters): to calculate CDF
-
-
----
-
-### Example of a Discrete Distribution:
-```{r echo=TRUE}  
-# Consider tossing a coin 10 times
-str(dbinom)
-dbinom(5, 10, 0.5) # prob of getting five heads
-
-str(pbinom) # cumulative dist
-pbinom(5, 10, 0.5) # Pr[X <= 5]
-```
-
-
----
-
-### Example of a Discrete Distribution:
-```{r echo=TRUE}  
-str(qbinom) # quantile: Pr[X <= ?] = known value
-qbinom(0.6230, 10, 0.5) # get the value of ? s.t. Pr[X <= ?]=0.6230
-
-str(rbinom) # Generating random numbers
-rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
-```
-
-
----
-
-### Example of a Continuous Distribution:
-```{r echo=TRUE}  
-# Consider a standard Normal distribution
-str(dnorm)
-dnorm(x = 0, mean = 0, sd = 1, log = FALSE)
-
-str(pnorm) # cumulative dist
-pnorm(0, mean = 0, sd = 1)
-```
-
-
----
-
-### Example of a Continuous Distribution:
-```{r echo=TRUE}  
-str(qnorm) # quantile
-qnorm(0.5, mean = 0, sd = 1)
-
-str(pnorm) # cumulative dist
-rnorm(10, mean = 0, sd = 1)
-```
-
-
----
-
-### Example of a Continuous Distribution:
-```{r echo=TRUE, fig.height = 4.5, fig.align='center'}  
-# Let's try plotting Normal curve (more on plotting later)
-x <- seq(from = -3, to = 3, by = 0.05)
-y <- dnorm(x, mean = 0, sd = 1)
-plot(x, y, type = "l")
-```
-
----
-
-
-## Time for Break for 10 Minutes :)
-
----
 
 ## Session 4 - Agenda
 
