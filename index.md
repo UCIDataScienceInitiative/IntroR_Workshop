@@ -16,6 +16,7 @@ github:
 
 ---
 
+
 ## Introduction
 
 1) The class will include 5 sessions: 
@@ -27,7 +28,10 @@ github:
   + Session 5  (3:00-4:20): Plotting and Data Visualization in R
   + Exercise 2 (4:20-5:00): Data visualization & Statistical Analysis
   
+
 ---
+
+
 
 
 ## Introduction
@@ -1945,7 +1949,6 @@ Randomization testing for whether mean mpg is higher for Japanese cars than Euro
 
 1. Useful Matrix Functions
 2. Statistical Distributions in R
-3. Intro to plotting in R
 
 ---
 
