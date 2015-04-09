@@ -1,6 +1,6 @@
 # EX1. Import data
 # + 1.1  find the folder where the data files are saved, and set working directory to that folder using setwd().
-setwd("D:\My Documents\Documents\IntroR_Workshop")
+setwd("D:/My Documents/Documents/IntroR_Workshop/data/")
 # this is just an example code; you should replace the content inside setwd() with your folder path
 
 # + 1.2 use read.csv() to import the data "auto-mpg.csv" (the data is of comma separated value file format), and store it as an object "data" ( data = read.csv(....) ). We need to set header = FALSE since the data starts right from the first line (i.e. the data has no header). Look at the data set to see what string/symbols are used to denote missing values; in this data "NA" is used, so na.strings = "NA" should be specified in read.csv().  
@@ -9,7 +9,7 @@ data = read.csv(file = "auto-mpg.csv", header = FALSE, na.strings= "NA")
 # + 1.3 (optional) Read data file "auto-mpg.data-original.txt". What happens and why? Check the original data file.
 data2 = read.table(file = "auto-mpg.data-original.txt", header = FALSE, sep=" ")
 # It returns error because the data format is not suitable for read.table or read.csv. It has fixed width format so you need to use read.fwf() and specify the column widths. Therefore you need to know the column widths in advance; if you don't know, you can look at the data and count the widths). Or, you can open the data in Excel which automatically obtains the column widths, convert it to a csv file, and import the data using read.csv(). 
-data2 = read.fwf("data/auto-mpg.data-original.txt", widths = c(7, 5, 11, 11, 11, 7, 5, 3, 50))
+data2 = read.fwf("auto-mpg.data-original.txt", widths = c(7, 5, 11, 11, 11, 7, 5, 3, 50))
 
 # EX2. General check for the data
 # + 2.1 check the top few rows of data; open the original data in excel or notepad and compare with the rows printed in R.  
@@ -76,7 +76,7 @@ data$mpg[data$mpg == -99] = NA
 # + 7.2 use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  
 summary(data)
 # + 7.3 calculate the total number of missing values in data (use is.na() and sum()). And then rewrite it to make it a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument "x". Test your function on the current data, it should return 17. 
-sum(is.na(x))
+sum(is.na(data))
 total_NAs = function(x){
   return(sum(is.na(x)))
 }
