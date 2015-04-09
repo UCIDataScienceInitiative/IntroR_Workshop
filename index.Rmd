@@ -1561,10 +1561,18 @@ head(Mroz)
 ## Logistic Regression - Model Fit
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 fitLogistic <- glm(lfp ~ k5 + age, 
-                   family=binomial(logit), data=Mroz);
+                   family=binomial(logit), data=Mroz); 
 fitLogistic # summary(fitLogistic)
+```
+
+---
+
+
+## Logistic Regression - Model Fit
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 names(fitLogistic)
 ```
+
 
 ---
 ## Summary of Fit

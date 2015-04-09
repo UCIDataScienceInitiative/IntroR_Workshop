@@ -2605,7 +2605,7 @@ head(Mroz)
 
 ```r
 fitLogistic <- glm(lfp ~ k5 + age, 
-                   family=binomial(logit), data=Mroz);
+                   family=binomial(logit), data=Mroz); 
 fitLogistic # summary(fitLogistic)
 ```
 
@@ -2621,6 +2621,11 @@ fitLogistic # summary(fitLogistic)
 ## Null Deviance:	    1030 
 ## Residual Deviance: 964.5 	AIC: 970.5
 ```
+
+---
+
+
+## Logistic Regression - Model Fit
 
 ```r
 names(fitLogistic)
@@ -2638,6 +2643,7 @@ names(fitLogistic)
 ## [25] "data"              "offset"            "control"          
 ## [28] "method"            "contrasts"         "xlevels"
 ```
+
 
 ---
 ## Summary of Fit
@@ -2808,7 +2814,7 @@ ggplot(diamonds, aes(price)) + geom_histogram()
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-89](assets/fig/unnamed-chunk-89-1.png) 
+![plot of chunk unnamed-chunk-90](assets/fig/unnamed-chunk-90-1.png) 
 
 
 ---
@@ -2851,7 +2857,7 @@ m + geom_histogram(aes(fill=cut))
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-91](assets/fig/unnamed-chunk-91-1.png) 
+![plot of chunk unnamed-chunk-92](assets/fig/unnamed-chunk-92-1.png) 
 
 ---
 
@@ -2865,7 +2871,7 @@ m <- ggplot(diamonds, aes(price))
 m + geom_histogram(binwidth=100) + facet_grid(cut~color)
 ```
 
-![plot of chunk unnamed-chunk-92](assets/fig/unnamed-chunk-92-1.png) 
+![plot of chunk unnamed-chunk-93](assets/fig/unnamed-chunk-93-1.png) 
 
 
 ---
@@ -2895,7 +2901,7 @@ Note: There's no "scatterplot" function. Use `geom_point`.
 ggplot(diamonds, aes(price, carat)) + geom_point()
 ```
 
-![plot of chunk unnamed-chunk-93](assets/fig/unnamed-chunk-93-1.png) 
+![plot of chunk unnamed-chunk-94](assets/fig/unnamed-chunk-94-1.png) 
 
 ---
 ### Log scales
@@ -2906,7 +2912,7 @@ ggplot(diamonds, aes(price, carat)) + geom_point()
 ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
 ```
 
-![plot of chunk unnamed-chunk-94](assets/fig/unnamed-chunk-94-1.png) 
+![plot of chunk unnamed-chunk-95](assets/fig/unnamed-chunk-95-1.png) 
 
 Scales begin with `scale_`, and are not only for continuous variables: also `datetime`, `shape`, `colour`, etc
 
@@ -2920,7 +2926,7 @@ Similar to histogram
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
 ```
 
-![plot of chunk unnamed-chunk-95](assets/fig/unnamed-chunk-95-1.png) 
+![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96-1.png) 
 
 Note the legend for each mapping!
 
@@ -2944,7 +2950,7 @@ Try lowering opacity
 ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
 ```
 
-![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96-1.png) 
+![plot of chunk unnamed-chunk-97](assets/fig/unnamed-chunk-97-1.png) 
 
 
 ---
@@ -2957,7 +2963,7 @@ Try mapping the inverse of a variable to opacity.
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
 ```
 
-![plot of chunk unnamed-chunk-97](assets/fig/unnamed-chunk-97-1.png) 
+![plot of chunk unnamed-chunk-98](assets/fig/unnamed-chunk-98-1.png) 
 
 
 ---
@@ -2970,7 +2976,7 @@ Shake the points around a little bit.
 ggplot(diamonds, aes(price, carat)) + geom_jitter()
 ```
 
-![plot of chunk unnamed-chunk-98](assets/fig/unnamed-chunk-98-1.png) 
+![plot of chunk unnamed-chunk-99](assets/fig/unnamed-chunk-99-1.png) 
 
 
 ---
@@ -2984,7 +2990,7 @@ library(hexbin)
 ggplot(diamonds, aes(price, carat)) + geom_hex()
 ```
 
-![plot of chunk unnamed-chunk-99](assets/fig/unnamed-chunk-99-1.png) 
+![plot of chunk unnamed-chunk-100](assets/fig/unnamed-chunk-100-1.png) 
 
 
 ---
@@ -2997,7 +3003,7 @@ Smooth with a 2d density
 ggplot(diamonds, aes(price, carat)) + stat_density2d()
 ```
 
-![plot of chunk unnamed-chunk-100](assets/fig/unnamed-chunk-100-1.png) 
+![plot of chunk unnamed-chunk-101](assets/fig/unnamed-chunk-101-1.png) 
 
 
 ---
@@ -3011,7 +3017,7 @@ states <- map_data("state")
 ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-101](assets/fig/unnamed-chunk-101-1.png) 
+![plot of chunk unnamed-chunk-102](assets/fig/unnamed-chunk-102-1.png) 
 
 ---
 ### The world is your oyster
@@ -3022,7 +3028,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ggplot(map_data("world")) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-102](assets/fig/unnamed-chunk-102-1.png) 
+![plot of chunk unnamed-chunk-103](assets/fig/unnamed-chunk-103-1.png) 
 
 ---
 ### What's the point?
@@ -3035,7 +3041,7 @@ m <- ggplot(map_data("state"), aes(x=long, y=lat)) + geom_polygon(aes(group=grou
 m + geom_point(data=ucs, colour="red", size=5)
 ```
 
-![plot of chunk unnamed-chunk-103](assets/fig/unnamed-chunk-103-1.png) 
+![plot of chunk unnamed-chunk-104](assets/fig/unnamed-chunk-104-1.png) 
 
 
 ---
@@ -3093,7 +3099,7 @@ x <- rnorm(100)
 hist(x)
 ```
 
-<img src="assets/fig/unnamed-chunk-104-1.png" title="plot of chunk unnamed-chunk-104" alt="plot of chunk unnamed-chunk-104" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-105-1.png" title="plot of chunk unnamed-chunk-105" alt="plot of chunk unnamed-chunk-105" style="display: block; margin: auto;" />
 
 ---
 
@@ -3105,7 +3111,7 @@ y <- rnorm(100)
 plot(x, y)
 ```
 
-<img src="assets/fig/unnamed-chunk-105-1.png" title="plot of chunk unnamed-chunk-105" alt="plot of chunk unnamed-chunk-105" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-106-1.png" title="plot of chunk unnamed-chunk-106" alt="plot of chunk unnamed-chunk-106" style="display: block; margin: auto;" />
 
 ---
 
@@ -3118,7 +3124,7 @@ z <- rnorm(100, 2, 2)
 boxplot(x, y , z)
 ```
 
-<img src="assets/fig/unnamed-chunk-106-1.png" title="plot of chunk unnamed-chunk-106" alt="plot of chunk unnamed-chunk-106" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-107-1.png" title="plot of chunk unnamed-chunk-107" alt="plot of chunk unnamed-chunk-107" style="display: block; margin: auto;" />
 
 ---
 
