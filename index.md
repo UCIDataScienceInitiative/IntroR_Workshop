@@ -1,7 +1,7 @@
 ---
 title       : Intro to R Workshop
 subtitle    : UCI Data Science Initiative
-author      : Sepehr Akhavan, Homer Strong, Zhe Yu
+author      : Sepehr Akhavan, Homer Strong, Yuxiao Wang, Zhe Yu
 job         : Dept. of Statistics
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -19,12 +19,14 @@ github:
 ## Introduction
 
 1) The class will include 5 sessions: 
-  + Session 1 (9-10:20): Data Types in R 
-  + Session 2 (10:30-12): Control Structures and Functions
-  + Session 3 (12:30-1:50): Data Exploration in R
-  + Session 4 (2-3:20): Plotting and Data Visualization in R 
-  + Session 5 (3:30-5): Statistical Analysis in R
-
+  + Session 1  (9-10:20): Data Types in R 
+  + Session 2  (10:30-11:20): Control Structures and Functions
+  + Session 3  (11:30-12): Data Exploration in R
+  + Exercise 1 (12:30-1:20): Basic Data Exploration
+  + Session 4  (1:20-2:50): Statistical Analysis in R 
+  + Session 5  (3:00-4:20): Plotting and Data Visualization in R
+  + Exercise 2 (4:20-5:00): Data visualization & Statistical Analysis
+  
 ---
 
 
@@ -1388,7 +1390,7 @@ myLazyFn2 <- function(a, b){
   print(b)
   return(1)
 }
-myLazyFn2(10) # No error!
+myLazyFn2(10) 
 ```
 
 ```
@@ -1396,7 +1398,7 @@ myLazyFn2(10) # No error!
 ```
 
 ```
-## Error: argument "b" is missing, with no default
+## Error in print(b): argument "b" is missing, with no default
 ```
 
 
@@ -2190,65 +2192,6 @@ plot(x, y, type = "l")
 
 ---
 
-## Plotting Systems in R
-
-There are three main plotting systems in R:
-  + Base Plotting System
-  + ggplot2
-  + Lattice
-
----
-
-## Base System (intro)
-
-In Base plotting system:
-  + We start with a blank canvas
-  + by calling a plot function, we start our plot
-  + Using annotation functions we can add more elements to our plot
-  
-In general, plotting functions under the base system are:
-  + Functions to generate plots: plot()
-  + Functions to annotate plots: text(), lines(), points()
-
-
----
-
-## Base Plotting System - Histogram
-
-
-```r
-x <- rnorm(100)
-hist(x)
-```
-
-<img src="assets/fig/unnamed-chunk-66.png" title="plot of chunk unnamed-chunk-66" alt="plot of chunk unnamed-chunk-66" style="display: block; margin: auto;" />
-
----
-
-## Base Plotting System - Scatter Plot
-
-```r
-x <- rnorm(100)
-y <- rnorm(100)
-plot(x, y)
-```
-
-<img src="assets/fig/unnamed-chunk-67.png" title="plot of chunk unnamed-chunk-67" alt="plot of chunk unnamed-chunk-67" style="display: block; margin: auto;" />
-
----
-
-## Base Plotting System - BoxPlot
-
-```r
-x <- rnorm(100, 0, 1)
-y <- rnorm(100, 1, 1)
-z <- rnorm(100, 2, 2)
-boxplot(x, y , z)
-```
-
-<img src="assets/fig/unnamed-chunk-68.png" title="plot of chunk unnamed-chunk-68" alt="plot of chunk unnamed-chunk-68" style="display: block; margin: auto;" />
-
----
 
 ## Time for Break for 10 Minutes :)
 
@@ -2256,11 +2199,558 @@ boxplot(x, y , z)
 
 ## Session 4 - Agenda
 
+1. T-Test in R
+2. ANOVA in R
+3. Linear Regression in R
+4. Logistic Regression in R
+
+
+
+---
+
+## T-Test in R
+
+T-tests can be categorized into two groups:
+  + 1) One-Sample t-test
+  + 2) two-sample t-test
+
+
+---
+
+###  One-Sample T-Test
+
+```r
+oneSampData <- rnorm(100, mean = 0, sd = 1)
+oneSampTest.0 <- t.test(oneSampData) # ?t.test
+oneSampTest.0
+```
+
+```
+## 
+## 	One Sample t-test
+## 
+## data:  oneSampData
+## t = -1.1455, df = 99, p-value = 0.2548
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  -0.2914727  0.0781128
+## sample estimates:
+## mean of x 
+##  -0.10668
+```
+
+
+---
+
+###  One-Sample T-Test
+
+```r
+names(oneSampTest.0) # alternative to names()?? 
+```
+
+```
+## [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
+## [6] "null.value"  "alternative" "method"      "data.name"
+```
+
+
+---
+
+###  Two-Sample T-Test
+Two sample t-tests are categorized into 3 groups:
+  + T-Test with equal variances
+  + T-Test with un-equal variances
+  + Paired T-Test: can be also considered as one-sample t-test on deltas.
+
+
+---
+
+###  Two-Sample T-Test (Un-equal Variances)
+
+```r
+Samp1 <- rnorm(30, mean = 2.5, sd = 1)
+Samp2 <- rnorm(50, mean = 5.5, sd = 1)
+t.test(Samp1, Samp2)  # default assump: unequal variances
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  Samp1 and Samp2
+## t = -13.6442, df = 67.594, p-value < 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.377306 -2.515404
+## sample estimates:
+## mean of x mean of y 
+##  2.641157  5.587511
+```
+
+
+---
+
+###  Two-Sample T-Test (Equal Variances)
+
+```r
+t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
+```
+
+```
+## 
+## 	Two Sample t-test
+## 
+## data:  Samp1 and Samp2
+## t = -13.1985, df = 78, p-value < 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.390781 -2.501929
+## sample estimates:
+## mean of x mean of y 
+##  2.641157  5.587511
+```
+
+
+---
+
+###  Two-Sample T-Test (Paired T Test)
+
+```r
+t.test(Samp1, Samp2[1:30], paired = TRUE)
+```
+
+```
+## 
+## 	Paired t-test
+## 
+## data:  Samp1 and Samp2[1:30]
+## t = -10.0819, df = 29, p-value = 5.483e-11
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.279760 -2.173502
+## sample estimates:
+## mean of the differences 
+##               -2.726631
+```
+
+
+---
+
+##  ANOVA
+If you are not familiar with ANOVA, simply consider ANOVA as an extension to two-sample t-test where we have more than two groups.
+
+
+```r
+Samp1 <- round(rnorm(10, mean = 25, sd = 1), 1)
+Samp2 <- round(rnorm(10, mean = 30, sd = 1), 1)
+Samp3 <- round(rnorm(10, mean = 35, sd = 1), 1)
+myDF <- data.frame(y = c(Samp1, Samp2, Samp3), group = rep(c(1, 2, 3), each = 10))
+myDF$group <- as.factor(myDF$group)
+str(myDF)
+```
+
+```
+## 'data.frame':	30 obs. of  2 variables:
+##  $ y    : num  25 25.5 24.1 26.3 25.4 25.9 26.1 26.8 27.5 24.9 ...
+##  $ group: Factor w/ 3 levels "1","2","3": 1 1 1 1 1 1 1 1 1 1 ...
+```
+
+
+---
+
+##  ANOVA
+
+```r
+ANOVAfit <- lm(y ~ group, data = myDF)  # instead of lm, aov() can also be used!
+myANOVA <- anova(ANOVAfit)  # anova computes analysis of variance tables on a fitted model object.
+str(myANOVA) # see what is 
+```
+
+```
+## Classes 'anova' and 'data.frame':	2 obs. of  5 variables:
+##  $ Df     : int  2 27
+##  $ Sum Sq : num  462.1 22.5
+##  $ Mean Sq: num  231.074 0.834
+##  $ F value: num  277 NA
+##  $ Pr(>F) : num  1.01e-18 NA
+##  - attr(*, "heading")= chr  "Analysis of Variance Table\n" "Response: y"
+```
+
+
+---
+
+##  ANOVA
++ To learn more on how to fit ANOVA, please visit: 
+  + http://www.statmethods.net/stats/anova.html
+  
+
+---
+
+##  Linear Regression- Data:
++ lm() is used to fit linear regression
++ Here we use "Prestige" dataset from "car" package
+
+```r
+# install.package("car")
+library(car)
+data(Prestige) # load the data
+str(Prestige)
+```
+
+```
+## 'data.frame':	102 obs. of  6 variables:
+##  $ education: num  13.1 12.3 12.8 11.4 14.6 ...
+##  $ income   : int  12351 25879 9271 8865 8403 11030 8258 14163 11377 11023 ...
+##  $ women    : num  11.16 4.02 15.7 9.11 11.68 ...
+##  $ prestige : num  68.8 69.1 63.4 56.8 73.5 77.6 72.6 78.1 73.1 68.8 ...
+##  $ census   : int  1113 1130 1171 1175 2111 2113 2133 2141 2143 2153 ...
+##  $ type     : Factor w/ 3 levels "bc","prof","wc": 2 2 2 2 2 2 2 2 2 2 ...
+```
+
+---
+
+##  Linear Regression- Data Description: 
+
++ education: Average education of occupational incumbents, years, in 1971.
+
++ income: Average income of incumbents, dollars, in 1971.
+
++ women: Percentage of incumbents who are women.
+
++ prestige :Pineo-Porter prestige score for occupation, from a social survey conducted in the mid-1960s.
+
++ census: Canadian Census occupational code.
+
++ type: Type of occupation. A factor with levels (note: out of order): bc, Blue Collar; prof, Professional, Managerial, and Technical; wc, White Collar.
+
+
+---
+
+##  Linear Regression - Fit:
+
+```r
+myReg <- lm(prestige ~ education + income + women, data = Prestige)
+myReg # summary(myReg)
+```
+
+```
+## 
+## Call:
+## lm(formula = prestige ~ education + income + women, data = Prestige)
+## 
+## Coefficients:
+## (Intercept)    education       income        women  
+##   -6.794334     4.186637     0.001314    -0.008905
+```
+
+```r
+names(myReg)
+```
+
+```
+##  [1] "coefficients"  "residuals"     "effects"       "rank"         
+##  [5] "fitted.values" "assign"        "qr"            "df.residual"  
+##  [9] "xlevels"       "call"          "terms"         "model"
+```
+  
+
+---
+
+##  Linear Regression - Summary of Fit:
+
+```r
+summary(myReg) # summary(myReg)
+```
+
+```
+## 
+## Call:
+## lm(formula = prestige ~ education + income + women, data = Prestige)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -19.8246  -5.3332  -0.1364   5.1587  17.5045 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -6.7943342  3.2390886  -2.098   0.0385 *  
+## education    4.1866373  0.3887013  10.771  < 2e-16 ***
+## income       0.0013136  0.0002778   4.729 7.58e-06 ***
+## women       -0.0089052  0.0304071  -0.293   0.7702    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 7.846 on 98 degrees of freedom
+## Multiple R-squared:  0.7982,	Adjusted R-squared:  0.792 
+## F-statistic: 129.2 on 3 and 98 DF,  p-value: < 2.2e-16
+```
+
+
+---
+
+##  Linear Regression - Predict
++ Predict the output for a new input
+
+```r
+newData = data.frame(education=13.2, income=12000, women=12);
+predict(myReg, newData, interval="predict");
+```
+
+```
+##        fit    lwr      upr
+## 1 64.12514 48.358 79.89229
+```
+
+
+---
+
+
+##  Linear Regression - Confidence Interval:
++ 95% confidence interval for coefficient of 'income'
+
+```r
+confint(myReg, 'income', level=0.95)
+```
+
+```
+##               2.5 %      97.5 %
+## income 0.0007623127 0.001864808
+```
+
++ 95% confidence interval for each coefficient
+
+```r
+confint(myReg, level=0.95)
+```
+
+```
+##                     2.5 %       97.5 %
+## (Intercept) -1.322220e+01 -0.366468202
+## education    3.415272e+00  4.958002277
+## income       7.623127e-04  0.001864808
+## women       -6.924697e-02  0.051436660
+```
+  
+---
+
+##  Linear Regression - Diagnostics:
++ Here we cover some common regression diagnostics including:
+  + Testing for Normality
+  + Testing for Constant Variance
+  
++ Reference: http://www.statmethods.net/stats/rdiagnostics.html
+  
+
+---
+## Model diagnostic plot
+
+```r
+par(mfrow = c(2, 2), oma = c(0, 0, 2, 0))
+plot(myReg)
+```
+
+![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79-1.png) 
+
+---
+
+##  Logistic Regression - Data:
++ glm() is used to fit logistic regression model
+
++ Mroz data
+
+library(car)
+data(Mroz); # load Mroz data
+
+
+```r
+head(Mroz)
+```
+
+```
+##   lfp k5 k618 age  wc hc       lwg    inc
+## 1 yes  1    0  32  no no 1.2101647 10.910
+## 2 yes  0    2  30  no no 0.3285041 19.500
+## 3 yes  1    3  35  no no 1.5141279 12.040
+## 4 yes  0    3  34  no no 0.0921151  6.800
+## 5 yes  1    2  31 yes no 1.5242802 20.100
+## 6 yes  0    0  54  no no 1.5564855  9.859
+```
+
+---
+
+## Logistic Regression - Data Description
+
++ lfp: labor-force participation; a factor with levels: no; yes.
++ k5: number of children 5 years old or younger.
++ k618: number of children 6 to 18 years old.
++ age: in years.
++ wc: wife's college attendance; a factor with levels: no; yes.
++ hc: husband's college attendance; a factor with levels: no; yes.
++ lwg: log expected wage rate; for women in the labor force, the actual wage rate; for women not in the labor force, an imputed value based on the regression of lwg on the other variables.
++ inc: family income exclusive of wife's income.
+  
+
+---
+
+## Logistic Regression - Model Fit
+
+```r
+fitLogistic <- glm(lfp ~ k5 + age, 
+                   family=binomial(logit), data=Mroz);
+fitLogistic # summary(fitLogistic)
+```
+
+```
+## 
+## Call:  glm(formula = lfp ~ k5 + age, family = binomial(logit), data = Mroz)
+## 
+## Coefficients:
+## (Intercept)           k5          age  
+##     3.08578     -1.32042     -0.05847  
+## 
+## Degrees of Freedom: 752 Total (i.e. Null);  750 Residual
+## Null Deviance:	    1030 
+## Residual Deviance: 964.5 	AIC: 970.5
+```
+
+```r
+names(fitLogistic)
+```
+
+```
+##  [1] "coefficients"      "residuals"         "fitted.values"    
+##  [4] "effects"           "R"                 "rank"             
+##  [7] "qr"                "family"            "linear.predictors"
+## [10] "deviance"          "aic"               "null.deviance"    
+## [13] "iter"              "weights"           "prior.weights"    
+## [16] "df.residual"       "df.null"           "y"                
+## [19] "converged"         "boundary"          "model"            
+## [22] "call"              "formula"           "terms"            
+## [25] "data"              "offset"            "control"          
+## [28] "method"            "contrasts"         "xlevels"
+```
+
+---
+## Summary of Fit
+
+```r
+summary(fitLogistic)
+```
+
+```
+## 
+## Call:
+## glm(formula = lfp ~ k5 + age, family = binomial(logit), data = Mroz)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.7698  -1.1719   0.7588   1.0144   1.9663  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)  3.08578    0.49712   6.207 5.39e-10 ***
+## k5          -1.32042    0.18638  -7.085 1.39e-12 ***
+## age         -0.05847    0.01090  -5.364 8.13e-08 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1029.75  on 752  degrees of freedom
+## Residual deviance:  964.48  on 750  degrees of freedom
+## AIC: 970.48
+## 
+## Number of Fisher Scoring iterations: 4
+```
+
+---
++ 95% CI for exp(coefficients) (profile liklihood mehtod)
+
+```r
+exp(confint(fitLogistic, level=0.95))
+```
+
+```
+##                 2.5 %     97.5 %
+## (Intercept) 8.3698492 58.8728998
+## k5          0.1832502  0.3808541
+## age         0.9230190  0.9633534
+```
+
++ 95% CI for exp(coefficients) (Wald confident interval)
+
+```r
+exp(confint.default(fitLogistic, level=0.95))
+```
+
+```
+##                 2.5 %     97.5 %
+## (Intercept) 8.2602111 57.9810036
+## k5          0.1853124  0.3847626
+## age         0.9232736  0.9635756
+```
+
+---
++ Update model by adding 'inc' and 'lwg'
+
+```r
+fitLogistic2 = update(fitLogistic, . ~ . + inc + lwg, data=Mroz);
+```
+
++ After update
+
+```r
+fitLogistic2
+```
+
+```
+## 
+## Call:  glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial(logit), 
+##     data = Mroz)
+## 
+## Coefficients:
+## (Intercept)           k5          age          inc          lwg  
+##     2.75867     -1.34227     -0.05900     -0.02464      0.78765  
+## 
+## Degrees of Freedom: 752 Total (i.e. Null);  748 Residual
+## Null Deviance:	    1030 
+## Residual Deviance: 925.2 	AIC: 935.2
+```
+
+---
+## Model Comparison
++ Use change of deviance of fitted model
+
+```r
+anova(fitLogistic, fitLogistic2, test='Chisq');
+```
+
+```
+## Analysis of Deviance Table
+## 
+## Model 1: lfp ~ k5 + age
+## Model 2: lfp ~ k5 + age + inc + lwg
+##   Resid. Df Resid. Dev Df Deviance  Pr(>Chi)    
+## 1       750     964.48                          
+## 2       748     925.17  2   39.318 2.899e-09 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+---
+
+## Time for Break for 10 Minutes :)
+
+---
+
+## Session 5 - Agenda
+
 + Goal: use ggplot2 to explore data afterwards
 + Emphasize simple examples
 + Emphasize principles
 + Some examples will be developed today
 + ... but there's a lot that won't be covered
++ Base plotting system
 
 ---
 
@@ -2285,13 +2775,13 @@ head(diamonds)
 ```
 
 ```
-##   carat       cut color clarity depth table price    x    y    z
-## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
-## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31
-## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31
-## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63
-## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75
-## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48
+##   carat       cut color clarity depth table price    x    y    z     alpha
+## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43  4.339255
+## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31  1.514811
+## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31  4.339255
+## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63 11.536110
+## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75 13.606709
+## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48  5.660624
 ```
 
 ---
@@ -2309,7 +2799,7 @@ ggplot(diamonds, aes(price)) + geom_histogram()
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-70](assets/fig/unnamed-chunk-70-1.png) 
+![plot of chunk unnamed-chunk-89](assets/fig/unnamed-chunk-89-1.png) 
 
 
 ---
@@ -2352,7 +2842,7 @@ m + geom_histogram(aes(fill=cut))
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![plot of chunk unnamed-chunk-72](assets/fig/unnamed-chunk-72-1.png) 
+![plot of chunk unnamed-chunk-91](assets/fig/unnamed-chunk-91-1.png) 
 
 ---
 
@@ -2366,7 +2856,7 @@ m <- ggplot(diamonds, aes(price))
 m + geom_histogram(binwidth=100) + facet_grid(cut~color)
 ```
 
-![plot of chunk unnamed-chunk-73](assets/fig/unnamed-chunk-73-1.png) 
+![plot of chunk unnamed-chunk-92](assets/fig/unnamed-chunk-92-1.png) 
 
 
 ---
@@ -2396,7 +2886,7 @@ Note: There's no "scatterplot" function. Use `geom_point`.
 ggplot(diamonds, aes(price, carat)) + geom_point()
 ```
 
-![plot of chunk unnamed-chunk-74](assets/fig/unnamed-chunk-74-1.png) 
+![plot of chunk unnamed-chunk-93](assets/fig/unnamed-chunk-93-1.png) 
 
 ---
 ### Log scales
@@ -2407,7 +2897,7 @@ ggplot(diamonds, aes(price, carat)) + geom_point()
 ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
 ```
 
-![plot of chunk unnamed-chunk-75](assets/fig/unnamed-chunk-75-1.png) 
+![plot of chunk unnamed-chunk-94](assets/fig/unnamed-chunk-94-1.png) 
 
 Scales begin with `scale_`, and are not only for continuous variables: also `datetime`, `shape`, `colour`, etc
 
@@ -2421,7 +2911,7 @@ Similar to histogram
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
 ```
 
-![plot of chunk unnamed-chunk-76](assets/fig/unnamed-chunk-76-1.png) 
+![plot of chunk unnamed-chunk-95](assets/fig/unnamed-chunk-95-1.png) 
 
 Note the legend for each mapping!
 
@@ -2445,7 +2935,7 @@ Try lowering opacity
 ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
 ```
 
-![plot of chunk unnamed-chunk-77](assets/fig/unnamed-chunk-77-1.png) 
+![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96-1.png) 
 
 
 ---
@@ -2458,7 +2948,7 @@ Try mapping the inverse of a variable to opacity.
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
 ```
 
-![plot of chunk unnamed-chunk-78](assets/fig/unnamed-chunk-78-1.png) 
+![plot of chunk unnamed-chunk-97](assets/fig/unnamed-chunk-97-1.png) 
 
 
 ---
@@ -2471,7 +2961,7 @@ Shake the points around a little bit.
 ggplot(diamonds, aes(price, carat)) + geom_jitter()
 ```
 
-![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79-1.png) 
+![plot of chunk unnamed-chunk-98](assets/fig/unnamed-chunk-98-1.png) 
 
 
 ---
@@ -2485,7 +2975,7 @@ library(hexbin)
 ggplot(diamonds, aes(price, carat)) + geom_hex()
 ```
 
-![plot of chunk unnamed-chunk-80](assets/fig/unnamed-chunk-80-1.png) 
+![plot of chunk unnamed-chunk-99](assets/fig/unnamed-chunk-99-1.png) 
 
 
 ---
@@ -2498,7 +2988,7 @@ Smooth with a 2d density
 ggplot(diamonds, aes(price, carat)) + stat_density2d()
 ```
 
-![plot of chunk unnamed-chunk-81](assets/fig/unnamed-chunk-81-1.png) 
+![plot of chunk unnamed-chunk-100](assets/fig/unnamed-chunk-100-1.png) 
 
 
 ---
@@ -2512,7 +3002,7 @@ states <- map_data("state")
 ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-82](assets/fig/unnamed-chunk-82-1.png) 
+![plot of chunk unnamed-chunk-101](assets/fig/unnamed-chunk-101-1.png) 
 
 ---
 ### The world is your oyster
@@ -2523,7 +3013,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ggplot(map_data("world")) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-83](assets/fig/unnamed-chunk-83-1.png) 
+![plot of chunk unnamed-chunk-102](assets/fig/unnamed-chunk-102-1.png) 
 
 ---
 ### What's the point?
@@ -2536,7 +3026,7 @@ m <- ggplot(map_data("state"), aes(x=long, y=lat)) + geom_polygon(aes(group=grou
 m + geom_point(data=ucs, colour="red", size=5)
 ```
 
-![plot of chunk unnamed-chunk-84](assets/fig/unnamed-chunk-84-1.png) 
+![plot of chunk unnamed-chunk-103](assets/fig/unnamed-chunk-103-1.png) 
 
 
 ---
@@ -2562,392 +3052,64 @@ m + geom_point(data=ucs, colour="red", size=5)
 
 ---
 
-## EX10. Histogram for continuous variables
-to check the outliers and the distribution of the variables
-# 10.1 Histogram and pdf
-generate a histogram for each continuous variable (mpg, displacement, horsepower, weight, acceleration) (manually plot each variable or use a for loop); save all plots in a pdf file and check the file (use pdf() and dev.off()). Need to install and load "ggplot2" package if you have not done so. 
-# 10.2 (optional) Multiple histograms side-by-side
-reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the "reshape2" package.
+
+## Plotting Systems in R
+
+There are three main plotting systems in R:
+  + Base Plotting System
+  + ggplot2
+  + Lattice
 
 ---
 
-## EX11. Boxplot
-To check relationship between a continuous variable and a categorical variable
-# 11.1 Boxplot of mpg by origin
-Boxplot of mpg by origin to visually check if mpg is different across different countries of origin. First look up how to make a boxplot in the online ggplot2 documentation. In order for boxplot to work, make sure the variable for the x-axis (origin in this case) is converted to factor type. After you've generated the plots, you can see mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. 
-# 11.2 (optional) Show data points
-add an additional layer a)geom_point or b)geom_jitter() and see what happens
+## Base System (intro)
 
----
-
-## EX12. Scatterplot  
-To check what the relationship of the two variables is like, e.g. linear or not. 
-# 12.1 Scatterplot of mpg vs cylinders
-to check the relationship and see if it is suitable to treat cylinder as a numerical variable (linear) or categorical variable (not linear). For this task, first check the use of stat_smooth() and the argument "method". Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed (method="lm"). The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
- 
-# 12.2 (optional) Scatterplot with odd cases removed
-create another data with instances with odd number of cylinders removed, and check the above plots again. The two fitted curves look similar -> could treat cylinder as numerical. 
-
----
-
-
-## EX13. Scatterplot matrix 
-Apply function pairs() or ggpairs() on the data to create the scatterplot matrix. Save the plot in a pdf file. If you use ggpairs(), you need to install and load R package "GGally".   
-  + to check the relationship between any pair of variable
-  + to check for linearity assumption and homogeneity assumption
-  + If violated, data transformation will be needed when building a linear regression model
-
----
-
-
-## Time for Break for 10 Minutes :)
-
----
-
-## Session 5 - Agenda
-
-1. T-Test in R
-2. ANOVA in R
-3. Linear Regression in R
-
-
----
-
-## T-Test in R
-
-T-tests can be categorized into two groups:
-  + 1) One-Sample t-test
-  + 2) two-sample t-test
-
-
----
-
-###  One-Sample T-Test
-
-```r
-oneSampData <- rnorm(100, mean = 0, sd = 1)
-oneSampTest.0 <- t.test(oneSampData) # ?t.test
-oneSampTest.0
-```
-
-```
-## 
-## 	One Sample t-test
-## 
-## data:  oneSampData
-## t = -0.0571, df = 99, p-value = 0.9546
-## alternative hypothesis: true mean is not equal to 0
-## 95 percent confidence interval:
-##  -0.2136  0.2016
-## sample estimates:
-## mean of x 
-## -0.005971
-```
-
-
----
-
-###  One-Sample T-Test
-
-```r
-names(oneSampTest.0) # alternative to names()?? 
-```
-
-```
-## [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
-## [6] "null.value"  "alternative" "method"      "data.name"
-```
-
-
----
-
-###  Two-Sample T-Test
-Two sample t-tests are categorized into 3 groups:
-  + T-Test with equal variances
-  + T-Test with un-equal variances
-  + Paired T-Test: can be also considered as one-sample t-test on deltas.
-
-
----
-
-###  Two-Sample T-Test (Un-equal Variances)
-
-```r
-Samp1 <- rnorm(30, mean = 2.5, sd = 1)
-Samp2 <- rnorm(50, mean = 5.5, sd = 1)
-t.test(Samp1, Samp2)  # default assump: unequal variances
-```
-
-```
-## 
-## 	Welch Two Sample t-test
-## 
-## data:  Samp1 and Samp2
-## t = -14.18, df = 47.96, p-value < 2.2e-16
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -3.968 -2.983
-## sample estimates:
-## mean of x mean of y 
-##     2.190     5.665
-```
-
-
----
-
-###  Two-Sample T-Test (Equal Variances)
-
-```r
-t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
-```
-
-```
-## 
-## 	Two Sample t-test
-## 
-## data:  Samp1 and Samp2
-## t = -15.29, df = 78, p-value < 2.2e-16
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -3.928 -3.023
-## sample estimates:
-## mean of x mean of y 
-##     2.190     5.665
-```
-
-
----
-
-###  Two-Sample T-Test (Paired T Test)
-
-```r
-t.test(Samp1, Samp2[1:30], paired = TRUE)
-```
-
-```
-## 
-## 	Paired t-test
-## 
-## data:  Samp1 and Samp2[1:30]
-## t = -12.2157, df = 29, p-value = 5.871e-13
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -4.062664 -2.897369
-## sample estimates:
-## mean of the differences 
-##               -3.480017
-```
-
-
----
-
-##  ANOVA
-If you are not familiar with ANOVA, simply consider ANOVA as an extension to two-sample t-test where we have more than two groups.
-
-
-```r
-Samp1 <- round(rnorm(10, mean = 25, sd = 1), 1)
-Samp2 <- round(rnorm(10, mean = 30, sd = 1), 1)
-Samp3 <- round(rnorm(10, mean = 35, sd = 1), 1)
-myDF <- data.frame(y = c(Samp1, Samp2, Samp3), group = rep(c(1, 2, 3), each = 10))
-myDF$group <- as.factor(myDF$group)
-str(myDF)
-```
-
-```
-## 'data.frame':	30 obs. of  2 variables:
-##  $ y    : num  24.1 25.4 24.4 25.2 25.4 24.4 24.1 24.7 25.6 25.4 ...
-##  $ group: Factor w/ 3 levels "1","2","3": 1 1 1 1 1 1 1 1 1 1 ...
-```
-
-
----
-
-##  ANOVA
-
-```r
-ANOVAfit <- lm(y ~ group, data = myDF)  # instead of lm, aov() can also be used!
-myANOVA <- anova(ANOVAfit)  # anova computes analysis of variance tables on a fitted model object.
-str(myANOVA) # see what is 
-```
-
-```
-## Classes 'anova' and 'data.frame':	2 obs. of  5 variables:
-##  $ Df     : int  2 27
-##  $ Sum Sq : num  495.6 25.1
-##  $ Mean Sq: num  247.78 0.93
-##  $ F value: num  267 NA
-##  $ Pr(>F) : num  1.67e-18 NA
-##  - attr(*, "heading")= chr  "Analysis of Variance Table\n" "Response: y"
-```
-
-
----
-
-##  ANOVA
-+ To learn more on how to fit ANOVA, please visit: 
-  + http://www.statmethods.net/stats/anova.html
+In Base plotting system:
+  + We start with a blank canvas
+  + by calling a plot function, we start our plot
+  + Using annotation functions we can add more elements to our plot
   
+In general, plotting functions under the base system are:
+  + Functions to generate plots: plot()
+  + Functions to annotate plots: text(), lines(), points()
+
 
 ---
 
-##  Linear Regression:
-+ lm() is used to fit linear regression
-+ Here we use "Prestige" dataset from "car" package
-
-```r
-# install.package("car")
-library(car)
-data(Prestige) # load the data
-str(Prestige)
-```
-
-```
-## 'data.frame':	102 obs. of  6 variables:
-##  $ education: num  13.1 12.3 12.8 11.4 14.6 ...
-##  $ income   : int  12351 25879 9271 8865 8403 11030 8258 14163 11377 11023 ...
-##  $ women    : num  11.16 4.02 15.7 9.11 11.68 ...
-##  $ prestige : num  68.8 69.1 63.4 56.8 73.5 77.6 72.6 78.1 73.1 68.8 ...
-##  $ census   : int  1113 1130 1171 1175 2111 2113 2133 2141 2143 2153 ...
-##  $ type     : Factor w/ 3 levels "bc","prof","wc": 2 2 2 2 2 2 2 2 2 2 ...
-```
-  
-
----
-
-###  Linear Regression - Fit:
-
-```r
-myReg <- lm(prestige ~ education + income + women, data = Prestige)
-myReg # summary(myReg)
-```
-
-```
-## 
-## Call:
-## lm(formula = prestige ~ education + income + women, data = Prestige)
-## 
-## Coefficients:
-## (Intercept)    education       income        women  
-##    -6.79433      4.18664      0.00131     -0.00891
-```
-
-```r
-names(myReg)
-```
-
-```
-##  [1] "coefficients"  "residuals"     "effects"       "rank"         
-##  [5] "fitted.values" "assign"        "qr"            "df.residual"  
-##  [9] "xlevels"       "call"          "terms"         "model"
-```
-  
-
----
-
-###  Linear Regression - Fit:
-
-```r
-head(myReg$fitted.values)
-```
-
-```
-##  gov.administrators    general.managers         accountants 
-##               64.22               78.49               58.71 
-## purchasing.officers            chemists          physicists 
-##               52.58               65.35               73.13
-```
-
-```r
-head(myReg$residuals) # y - y.hat
-```
-
-```
-##  gov.administrators    general.managers         accountants 
-##               4.583              -9.392               4.693 
-## purchasing.officers            chemists          physicists 
-##               4.219               8.152               4.472
-```
-  
-
----
-
-##  Linear Regression - Diagnostics:
-+ Here we cover some common regression diagnostics including:
-  + Testing for Normality
-  + Testing for Constant Variance
-  
-+ Reference: http://www.statmethods.net/stats/rdiagnostics.html
-  
-
----
-
-###  Testing for Normality
+## Base Plotting System - Histogram
 
 
 ```r
-qqPlot(myReg, main = "QQ Plot")
+x <- rnorm(100)
+hist(x)
 ```
 
-![plot of chunk unnamed-chunk-95](assets/fig/unnamed-chunk-95.png) 
-  
+<img src="assets/fig/unnamed-chunk-104-1.png" title="plot of chunk unnamed-chunk-104" alt="plot of chunk unnamed-chunk-104" style="display: block; margin: auto;" />
 
 ---
 
-###  Testing for Constant Variance
-
+## Base Plotting System - Scatter Plot
 
 ```r
-spreadLevelPlot(myReg)
+x <- rnorm(100)
+y <- rnorm(100)
+plot(x, y)
 ```
 
-![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96.png) 
-  
-
+<img src="assets/fig/unnamed-chunk-105-1.png" title="plot of chunk unnamed-chunk-105" alt="plot of chunk unnamed-chunk-105" style="display: block; margin: auto;" />
 
 ---
 
+## Base Plotting System - BoxPlot
 
-## EX14. Data transformation
-  + Based on scatterplot matrix, we see increasing variance as mpg increases, and also non-linear relationship between mpg and other variables. We need to transform the variables.
-  + Add the following new variables to the data.  
+```r
+x <- rnorm(100, 0, 1)
+y <- rnorm(100, 1, 1)
+z <- rnorm(100, 2, 2)
+boxplot(x, y , z)
+```
 
-# (a) Log transformation
-  log transformed versions of mpg, horsepower, displacement, and weight; name the new variables as logmpg, loghorsepower, etc. Hint: to add a new variable, e.g. log of mpg, you can assign 'log(data**_**noNA$mpg)' to 'data**_**noNA$logmpg'. 
-# (b) Numerical converted to Factor 
-  a factor version of cylinders.
-
----
-
-## EX15. Statistical analysis  
-# 15.1 ANOVA for origin. 
-To formally test whether mean mpg is different across cars of the three origins. Use significance level 0.05. First build a linear regression for mpg against origin. And then use both ANOVA() and summary() to check the results. 
-# 15.2 Linear regression. 
-Build a linear regression model to predict mpg. Include all other variables (use only the transformed version if available) (store the regression result in object 'model'); build another regression model using the same predictors but to predict log(mpg) (store in object 'model_log').
-# 15.3 Regression results
-Apply summary() on the regression objects and read the outputs. Is origin still helpful in predicting mpg/log(mpg) after including other predictors? 
-
----
-
-# 15.4 Regression coefficients
-Which column is to answer the relationship between mpg and other variables? 
-
-# 15.5 Make prediction
-Run "newcase = data**_**noNA[1:10,]" to take the first 10 instances, and treat them as some new cars for which we want to predict mpg. Use predict() to predict mpg for them using respectively the object "model" and "model**_**log". Keep in mind that from "model**_**log", predict() returns the predictions for log(mpg) instead of mpg. 
-predict(model, newcase)
-exp(predict(model_log, newcase))
-
-# 15.6 Diagnostics
-Diagnostics is important in statistical analysis. Execute plot(model) and plot(model_log) in R and check the four plots for each model. Based on the diagnostic plots, are these reasonable models? Which one is better? Check the following aspects.  
-    + (a) linearity assumption
-    + (b) normality assumption
-    + (c) constant variance
-    + (d) outliers
-
----
-
-## EX16. (optional) Adjusting opacity for plotting
-An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens 
+<img src="assets/fig/unnamed-chunk-106-1.png" title="plot of chunk unnamed-chunk-106" alt="plot of chunk unnamed-chunk-106" style="display: block; margin: auto;" />
 
 ---
 
@@ -2995,3 +3157,88 @@ An independent exercise: play with opacity setting for scatterplot of carat vs p
   + crossValidated (http://stats.stackexchange.com): for Stats related questions.
   
 4. Google :)  
+
+
+---
+
+## EX10. Histogram for continuous variables
+to check the outliers and the distribution of the variables
+# 10.1 Histogram and pdf
+generate a histogram for each continuous variable (mpg, displacement, horsepower, weight, acceleration) (manually plot each variable or use a for loop); save all plots in a pdf file and check the file (use pdf() and dev.off()). Need to install and load "ggplot2" package if you have not done so. 
+# 10.2 (optional) Multiple histograms side-by-side
+reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the "reshape2" package.
+
+---
+
+## EX11. Boxplot
+To check relationship between a continuous variable and a categorical variable
+# 11.1 Boxplot of mpg by origin
+Boxplot of mpg by origin to visually check if mpg is different across different countries of origin. First look up how to make a boxplot in the online ggplot2 documentation. In order for boxplot to work, make sure the variable for the x-axis (origin in this case) is converted to factor type. After you've generated the plots, you can see mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. 
+# 11.2 (optional) Show data points
+add an additional layer a)geom_point or b)geom_jitter() and see what happens
+
+---
+
+## EX12. Scatterplot  
+To check what the relationship of the two variables is like, e.g. linear or not. 
+# 12.1 Scatterplot of mpg vs cylinders
+to check the relationship and see if it is suitable to treat cylinder as a numerical variable (linear) or categorical variable (not linear). For this task, first check the use of stat_smooth() and the argument "method". Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed (method="lm"). The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
+ 
+# 12.2 (optional) Scatterplot with odd cases removed
+create another data with instances with odd number of cylinders removed, and check the above plots again. The two fitted curves look similar -> could treat cylinder as numerical. 
+
+---
+
+
+## EX13. Scatterplot matrix 
+Apply function pairs() or ggpairs() on the data to create the scatterplot matrix. Save the plot in a pdf file. If you use ggpairs(), you need to install and load R package "GGally".   
+  + to check the relationship between any pair of variable
+  + to check for linearity assumption and homogeneity assumption
+  + If violated, data transformation will be needed when building a linear regression model
+
+
+
+---
+
+
+## EX14. Data transformation
+  + Based on scatterplot matrix, we see increasing variance as mpg increases, and also non-linear relationship between mpg and other variables. We need to transform the variables.
+  + Add the following new variables to the data.  
+
+# (a) Log transformation
+  log transformed versions of mpg, horsepower, displacement, and weight; name the new variables as logmpg, loghorsepower, etc. Hint: to add a new variable, e.g. log of mpg, you can assign 'log(data**_**noNA$mpg)' to 'data**_**noNA$logmpg'. 
+# (b) Numerical converted to Factor 
+  a factor version of cylinders.
+
+---
+
+## EX15. Statistical analysis  
+# 15.1 ANOVA for origin. 
+To formally test whether mean mpg is different across cars of the three origins. Use significance level 0.05. First build a linear regression for mpg against origin. And then use both ANOVA() and summary() to check the results. 
+# 15.2 Linear regression. 
+Build a linear regression model to predict mpg. Include all other variables (use only the transformed version if available) (store the regression result in object 'model'); build another regression model using the same predictors but to predict log(mpg) (store in object 'model_log').
+# 15.3 Regression results
+Apply summary() on the regression objects and read the outputs. Is origin still helpful in predicting mpg/log(mpg) after including other predictors? 
+
+---
+
+# 15.4 Regression coefficients
+Which column is to answer the relationship between mpg and other variables? 
+
+# 15.5 Make prediction
+Run "newcase = data**_**noNA[1:10,]" to take the first 10 instances, and treat them as some new cars for which we want to predict mpg. Use predict() to predict mpg for them using respectively the object "model" and "model**_**log". Keep in mind that from "model**_**log", predict() returns the predictions for log(mpg) instead of mpg. 
+predict(model, newcase)
+exp(predict(model_log, newcase))
+
+# 15.6 Diagnostics
+Diagnostics is important in statistical analysis. Execute plot(model) and plot(model_log) in R and check the four plots for each model. Based on the diagnostic plots, are these reasonable models? Which one is better? Check the following aspects.  
+    + (a) linearity assumption
+    + (b) normality assumption
+    + (c) constant variance
+    + (d) outliers
+
+---
+
+## EX16. (optional) Adjusting opacity for plotting
+An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens 
+
