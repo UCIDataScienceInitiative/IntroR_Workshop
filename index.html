@@ -58,7 +58,7 @@
 <ul>
 <li>Session 1  (9-10:20): Data Types in R </li>
 <li>Session 2  (10:30-11:20): Control Structures and Functions</li>
-<li>Session 3  (11:30-12): Data Exploration in R</li>
+<li>Session 3  (11:30-12): Statistical Distributions in R</li>
 <li>Exercise 1 (12:30-1:20): Basic Data Exploration</li>
 <li>Session 4  (1:20-2:50): Statistical Analysis in R </li>
 <li>Session 5  (3:00-4:20): Plotting and Data Visualization in R</li>
@@ -341,7 +341,7 @@ as(logVec, &quot;numeric&quot;)
 as(compVec, &quot;numeric&quot;)
 </code></pre>
 
-<pre><code>## Warning in asMethod(object): imaginary parts discarded in coercion
+<pre><code>## Warning: imaginary parts discarded in coercion
 </code></pre>
 
 <pre><code>## [1] 12  1 -3
@@ -351,7 +351,7 @@ as(compVec, &quot;numeric&quot;)
 as(charVec, &quot;numeric&quot;)
 </code></pre>
 
-<pre><code>## Warning in asMethod(object): NAs introduced by coercion
+<pre><code>## Warning: NAs introduced by coercion
 </code></pre>
 
 <pre><code>## [1] 2.5 3.0 2.8 1.5  NA
@@ -1082,7 +1082,7 @@ str(quakes)
 <pre><code class="r">head(quakes$long)
 </code></pre>
 
-<pre><code>## [1] 181.62 181.03 184.10 181.66 181.96 184.31
+<pre><code>## [1] 181.6 181.0 184.1 181.7 182.0 184.3
 </code></pre>
 
   </article>
@@ -1097,17 +1097,17 @@ str(quakes)
     <pre><code class="r">quakes[1:10,]
 </code></pre>
 
-<pre><code>##       lat   long depth mag stations
-## 1  -20.42 181.62   562 4.8       41
-## 2  -20.62 181.03   650 4.2       15
-## 3  -26.00 184.10    42 5.4       43
-## 4  -17.97 181.66   626 4.1       19
-## 5  -20.42 181.96   649 4.0       11
-## 6  -19.68 184.31   195 4.0       12
-## 7  -11.70 166.10    82 4.8       43
-## 8  -28.11 181.93   194 4.4       15
-## 9  -28.74 181.74   211 4.7       35
-## 10 -17.47 179.59   622 4.3       19
+<pre><code>##       lat  long depth mag stations
+## 1  -20.42 181.6   562 4.8       41
+## 2  -20.62 181.0   650 4.2       15
+## 3  -26.00 184.1    42 5.4       43
+## 4  -17.97 181.7   626 4.1       19
+## 5  -20.42 182.0   649 4.0       11
+## 6  -19.68 184.3   195 4.0       12
+## 7  -11.70 166.1    82 4.8       43
+## 8  -28.11 181.9   194 4.4       15
+## 9  -28.74 181.7   211 4.7       35
+## 10 -17.47 179.6   622 4.3       19
 </code></pre>
 
   </article>
@@ -2197,10 +2197,10 @@ A
 solve(A)%*%A
 </code></pre>
 
-<pre><code>##      [,1] [,2]          [,3]
-## [1,]    1    0  0.000000e+00
-## [2,]    0    1 -8.881784e-16
-## [3,]    0    0  1.000000e+00
+<pre><code>##      [,1] [,2]       [,3]
+## [1,]    1    0  0.000e+00
+## [2,]    0    1 -8.882e-16
+## [3,]    0    0  1.000e+00
 </code></pre>
 
 <ul>
@@ -3408,13 +3408,13 @@ fitLogistic # summary(fitLogistic)
 <pre><code class="r">head(diamonds)
 </code></pre>
 
-<pre><code>##   carat       cut color clarity depth table price    x    y    z     alpha
-## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43  4.339255
-## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31  1.514811
-## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31  4.339255
-## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63 11.536110
-## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75 13.606709
-## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48  5.660624
+<pre><code>##   carat       cut color clarity depth table price    x    y    z
+## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
+## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31
+## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31
+## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63
+## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75
+## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48
 </code></pre>
 
   </article>
@@ -3760,16 +3760,18 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
 
 <slide class="" id="slide-156" style="background:;">
   <hgroup>
-    <h2>Plotting Systems in R</h2>
+    <h2>EX10. Histogram for continuous variables</h2>
   </hgroup>
   <article data-timings="">
-    <p>There are three main plotting systems in R:</p>
+    <p>to check the outliers and the distribution of the variables</p>
 
-<ul>
-<li>Base Plotting System</li>
-<li>ggplot2</li>
-<li>Lattice</li>
-</ul>
+<h1>10.1 Histogram and pdf</h1>
+
+<p>generate a histogram for each continuous variable (mpg, displacement, horsepower, weight, acceleration) (manually plot each variable or use a for loop); save all plots in a pdf file and check the file (use pdf() and dev.off()). Need to install and load &quot;ggplot2&quot; package if you have not done so. </p>
+
+<h1>10.2 (optional) Multiple histograms side-by-side</h1>
+
+<p>reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the &quot;reshape2&quot; package.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3777,23 +3779,18 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
 
 <slide class="" id="slide-157" style="background:;">
   <hgroup>
-    <h2>Base System (intro)</h2>
+    <h2>EX11. Boxplot</h2>
   </hgroup>
   <article data-timings="">
-    <p>In Base plotting system:</p>
+    <p>To check relationship between a continuous variable and a categorical variable</p>
 
-<ul>
-<li>We start with a blank canvas</li>
-<li>by calling a plot function, we start our plot</li>
-<li>Using annotation functions we can add more elements to our plot</li>
-</ul>
+<h1>11.1 Boxplot of mpg by origin</h1>
 
-<p>In general, plotting functions under the base system are:</p>
+<p>Boxplot of mpg by origin to visually check if mpg is different across different countries of origin. First look up how to make a boxplot in the online ggplot2 documentation. In order for boxplot to work, make sure the variable for the x-axis (origin in this case) is converted to factor type. After you&#39;ve generated the plots, you can see mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. </p>
 
-<ul>
-<li>Functions to generate plots: plot()</li>
-<li>Functions to annotate plots: text(), lines(), points()</li>
-</ul>
+<h1>11.2 (optional) Show data points</h1>
+
+<p>add an additional layer a)geom_point or b)geom_jitter() and see what happens</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3801,14 +3798,18 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
 
 <slide class="" id="slide-158" style="background:;">
   <hgroup>
-    <h2>Base Plotting System - Histogram</h2>
+    <h2>EX12. Scatterplot</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">x &lt;- rnorm(100)
-hist(x)
-</code></pre>
+    <p>To check what the relationship of the two variables is like, e.g. linear or not. </p>
 
-<p><img src="assets/fig/unnamed-chunk-105-1.png" title="plot of chunk unnamed-chunk-105" alt="plot of chunk unnamed-chunk-105" style="display: block; margin: auto;" /></p>
+<h1>12.1 Scatterplot of mpg vs cylinders</h1>
+
+<p>to check the relationship and see if it is suitable to treat cylinder as a numerical variable (linear) or categorical variable (not linear). For this task, first check the use of stat_smooth() and the argument &quot;method&quot;. Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed (method=&quot;lm&quot;). The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. </p>
+
+<h1>12.2 (optional) Scatterplot with odd cases removed</h1>
+
+<p>create another data with instances with odd number of cylinders removed, and check the above plots again. The two fitted curves look similar -&gt; could treat cylinder as numerical. </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3816,15 +3817,16 @@ hist(x)
 
 <slide class="" id="slide-159" style="background:;">
   <hgroup>
-    <h2>Base Plotting System - Scatter Plot</h2>
+    <h2>EX13. Scatterplot matrix</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">x &lt;- rnorm(100)
-y &lt;- rnorm(100)
-plot(x, y)
-</code></pre>
+    <p>Apply function pairs() or ggpairs() on the data to create the scatterplot matrix. Save the plot in a pdf file. If you use ggpairs(), you need to install and load R package &quot;GGally&quot;.   </p>
 
-<p><img src="assets/fig/unnamed-chunk-106-1.png" title="plot of chunk unnamed-chunk-106" alt="plot of chunk unnamed-chunk-106" style="display: block; margin: auto;" /></p>
+<ul>
+<li>to check the relationship between any pair of variable</li>
+<li>to check for linearity assumption and homogeneity assumption</li>
+<li>If violated, data transformation will be needed when building a linear regression model</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -3832,22 +3834,84 @@ plot(x, y)
 
 <slide class="" id="slide-160" style="background:;">
   <hgroup>
-    <h2>Base Plotting System - BoxPlot</h2>
+    <h2>EX14. Data transformation</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">x &lt;- rnorm(100, 0, 1)
-y &lt;- rnorm(100, 1, 1)
-z &lt;- rnorm(100, 2, 2)
-boxplot(x, y , z)
-</code></pre>
+    <ul>
+<li>Based on scatterplot matrix, we see increasing variance as mpg increases, and also non-linear relationship between mpg and other variables. We need to transform the variables.</li>
+<li>Add the following new variables to the data.<br></li>
+</ul>
 
-<p><img src="assets/fig/unnamed-chunk-107-1.png" title="plot of chunk unnamed-chunk-107" alt="plot of chunk unnamed-chunk-107" style="display: block; margin: auto;" /></p>
+<h1>(a) Log transformation</h1>
+
+<p>log transformed versions of mpg, horsepower, displacement, and weight; name the new variables as logmpg, loghorsepower, etc. Hint: to add a new variable, e.g. log of mpg, you can assign &#39;log(data<strong>_</strong>noNA$mpg)&#39; to &#39;data<strong>_</strong>noNA$logmpg&#39;. </p>
+
+<h1>(b) Numerical converted to Factor</h1>
+
+<p>a factor version of cylinders.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-161" style="background:;">
+  <hgroup>
+    <h2>EX15. Statistical analysis</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1>15.1 ANOVA for origin.</h1>
+
+<p>To formally test whether mean mpg is different across cars of the three origins. Use significance level 0.05. First build a linear regression for mpg against origin. And then use both ANOVA() and summary() to check the results. </p>
+
+<h1>15.2 Linear regression.</h1>
+
+<p>Build a linear regression model to predict mpg. Include all other variables (use only the transformed version if available) (store the regression result in object &#39;model&#39;); build another regression model using the same predictors but to predict log(mpg) (store in object &#39;model_log&#39;).</p>
+
+<h1>15.3 Regression results</h1>
+
+<p>Apply summary() on the regression objects and read the outputs. Is origin still helpful in predicting mpg/log(mpg) after including other predictors? </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-162" style="background:;">
+  <hgroup>
+    <h1>15.4 Regression coefficients</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Which column is to answer the relationship between mpg and other variables? </p>
+
+<h1>15.5 Make prediction</h1>
+
+<p>Run &quot;newcase = data<strong>_</strong>noNA[1:10,]&quot; to take the first 10 instances, and treat them as some new cars for which we want to predict mpg. Use predict() to predict mpg for them using respectively the object &quot;model&quot; and &quot;model<strong>_</strong>log&quot;. Keep in mind that from &quot;model<strong>_</strong>log&quot;, predict() returns the predictions for log(mpg) instead of mpg. 
+predict(model, newcase)
+exp(predict(model_log, newcase))</p>
+
+<h1>15.6 Diagnostics</h1>
+
+<p>Diagnostics is important in statistical analysis. Execute plot(model) and plot(model_log) in R and check the four plots for each model. Based on the diagnostic plots, are these reasonable models? Which one is better? Check the following aspects.<br>
+    + (a) linearity assumption
+    + (b) normality assumption
+    + (c) constant variance
+    + (d) outliers</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-163" style="background:;">
+  <hgroup>
+    <h2>EX16. (optional) Adjusting opacity for plotting</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-164" style="background:;">
   <hgroup>
     <h2>Online Resources to Learn R:</h2>
   </hgroup>
@@ -3877,7 +3941,7 @@ boxplot(x, y , z)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-162" style="background:;">
+<slide class="" id="slide-165" style="background:;">
   <hgroup>
     <h2>Useful Books in learning R:</h2>
   </hgroup>
@@ -3893,7 +3957,7 @@ boxplot(x, y , z)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-163" style="background:;">
+<slide class="" id="slide-166" style="background:;">
   <hgroup>
     <h2>How to get help in R:</h2>
   </hgroup>
@@ -3918,159 +3982,6 @@ boxplot(x, y , z)
 </ul></li>
 <li><p>Google :)  </p></li>
 </ol>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-164" style="background:;">
-  <hgroup>
-    <h2>EX10. Histogram for continuous variables</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>to check the outliers and the distribution of the variables</p>
-
-<h1>10.1 Histogram and pdf</h1>
-
-<p>generate a histogram for each continuous variable (mpg, displacement, horsepower, weight, acceleration) (manually plot each variable or use a for loop); save all plots in a pdf file and check the file (use pdf() and dev.off()). Need to install and load &quot;ggplot2&quot; package if you have not done so. </p>
-
-<h1>10.2 (optional) Multiple histograms side-by-side</h1>
-
-<p>reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the &quot;reshape2&quot; package.</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-165" style="background:;">
-  <hgroup>
-    <h2>EX11. Boxplot</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>To check relationship between a continuous variable and a categorical variable</p>
-
-<h1>11.1 Boxplot of mpg by origin</h1>
-
-<p>Boxplot of mpg by origin to visually check if mpg is different across different countries of origin. First look up how to make a boxplot in the online ggplot2 documentation. In order for boxplot to work, make sure the variable for the x-axis (origin in this case) is converted to factor type. After you&#39;ve generated the plots, you can see mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. </p>
-
-<h1>11.2 (optional) Show data points</h1>
-
-<p>add an additional layer a)geom_point or b)geom_jitter() and see what happens</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-166" style="background:;">
-  <hgroup>
-    <h2>EX12. Scatterplot</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>To check what the relationship of the two variables is like, e.g. linear or not. </p>
-
-<h1>12.1 Scatterplot of mpg vs cylinders</h1>
-
-<p>to check the relationship and see if it is suitable to treat cylinder as a numerical variable (linear) or categorical variable (not linear). For this task, first check the use of stat_smooth() and the argument &quot;method&quot;. Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed (method=&quot;lm&quot;). The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. </p>
-
-<h1>12.2 (optional) Scatterplot with odd cases removed</h1>
-
-<p>create another data with instances with odd number of cylinders removed, and check the above plots again. The two fitted curves look similar -&gt; could treat cylinder as numerical. </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-167" style="background:;">
-  <hgroup>
-    <h2>EX13. Scatterplot matrix</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Apply function pairs() or ggpairs() on the data to create the scatterplot matrix. Save the plot in a pdf file. If you use ggpairs(), you need to install and load R package &quot;GGally&quot;.   </p>
-
-<ul>
-<li>to check the relationship between any pair of variable</li>
-<li>to check for linearity assumption and homogeneity assumption</li>
-<li>If violated, data transformation will be needed when building a linear regression model</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-168" style="background:;">
-  <hgroup>
-    <h2>EX14. Data transformation</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Based on scatterplot matrix, we see increasing variance as mpg increases, and also non-linear relationship between mpg and other variables. We need to transform the variables.</li>
-<li>Add the following new variables to the data.<br></li>
-</ul>
-
-<h1>(a) Log transformation</h1>
-
-<p>log transformed versions of mpg, horsepower, displacement, and weight; name the new variables as logmpg, loghorsepower, etc. Hint: to add a new variable, e.g. log of mpg, you can assign &#39;log(data<strong>_</strong>noNA$mpg)&#39; to &#39;data<strong>_</strong>noNA$logmpg&#39;. </p>
-
-<h1>(b) Numerical converted to Factor</h1>
-
-<p>a factor version of cylinders.</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-169" style="background:;">
-  <hgroup>
-    <h2>EX15. Statistical analysis</h2>
-  </hgroup>
-  <article data-timings="">
-    <h1>15.1 ANOVA for origin.</h1>
-
-<p>To formally test whether mean mpg is different across cars of the three origins. Use significance level 0.05. First build a linear regression for mpg against origin. And then use both ANOVA() and summary() to check the results. </p>
-
-<h1>15.2 Linear regression.</h1>
-
-<p>Build a linear regression model to predict mpg. Include all other variables (use only the transformed version if available) (store the regression result in object &#39;model&#39;); build another regression model using the same predictors but to predict log(mpg) (store in object &#39;model_log&#39;).</p>
-
-<h1>15.3 Regression results</h1>
-
-<p>Apply summary() on the regression objects and read the outputs. Is origin still helpful in predicting mpg/log(mpg) after including other predictors? </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-170" style="background:;">
-  <hgroup>
-    <h1>15.4 Regression coefficients</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>Which column is to answer the relationship between mpg and other variables? </p>
-
-<h1>15.5 Make prediction</h1>
-
-<p>Run &quot;newcase = data<strong>_</strong>noNA[1:10,]&quot; to take the first 10 instances, and treat them as some new cars for which we want to predict mpg. Use predict() to predict mpg for them using respectively the object &quot;model&quot; and &quot;model<strong>_</strong>log&quot;. Keep in mind that from &quot;model<strong>_</strong>log&quot;, predict() returns the predictions for log(mpg) instead of mpg. 
-predict(model, newcase)
-exp(predict(model_log, newcase))</p>
-
-<h1>15.6 Diagnostics</h1>
-
-<p>Diagnostics is important in statistical analysis. Execute plot(model) and plot(model_log) in R and check the four plots for each model. Based on the diagnostic plots, are these reasonable models? Which one is better? Check the following aspects.<br>
-    + (a) linearity assumption
-    + (b) normality assumption
-    + (c) constant variance
-    + (d) outliers</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-171" style="background:;">
-  <hgroup>
-    <h2>EX16. (optional) Adjusting opacity for plotting</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -5012,98 +4923,68 @@ exp(predict(model_log, newcase))</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=156 title='Plotting Systems in R'>
+        data-slide=156 title='EX10. Histogram for continuous variables'>
          156
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=157 title='Base System (intro)'>
+        data-slide=157 title='EX11. Boxplot'>
          157
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=158 title='Base Plotting System - Histogram'>
+        data-slide=158 title='EX12. Scatterplot'>
          158
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=159 title='Base Plotting System - Scatter Plot'>
+        data-slide=159 title='EX13. Scatterplot matrix'>
          159
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=160 title='Base Plotting System - BoxPlot'>
+        data-slide=160 title='EX14. Data transformation'>
          160
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=161 title='Online Resources to Learn R:'>
+        data-slide=161 title='EX15. Statistical analysis'>
          161
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=162 title='Useful Books in learning R:'>
+        data-slide=162 title='15.4 Regression coefficients'>
          162
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=163 title='How to get help in R:'>
+        data-slide=163 title='EX16. (optional) Adjusting opacity for plotting'>
          163
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=164 title='EX10. Histogram for continuous variables'>
+        data-slide=164 title='Online Resources to Learn R:'>
          164
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=165 title='EX11. Boxplot'>
+        data-slide=165 title='Useful Books in learning R:'>
          165
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=166 title='EX12. Scatterplot'>
+        data-slide=166 title='How to get help in R:'>
          166
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=167 title='EX13. Scatterplot matrix'>
-         167
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=168 title='EX14. Data transformation'>
-         168
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=169 title='EX15. Statistical analysis'>
-         169
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=170 title='15.4 Regression coefficients'>
-         170
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=171 title='EX16. (optional) Adjusting opacity for plotting'>
-         171
       </a>
     </li>
   </ul>

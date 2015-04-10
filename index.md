@@ -22,7 +22,7 @@ github:
 1) The class will include 5 sessions: 
   + Session 1  (9-10:20): Data Types in R 
   + Session 2  (10:30-11:20): Control Structures and Functions
-  + Session 3  (11:30-12): Data Exploration in R
+  + Session 3  (11:30-12): Statistical Distributions in R
   + Exercise 1 (12:30-1:20): Basic Data Exploration
   + Session 4  (1:20-2:50): Statistical Analysis in R 
   + Session 5  (3:00-4:20): Plotting and Data Visualization in R
@@ -260,7 +260,7 @@ as(compVec, "numeric")
 ```
 
 ```
-## Warning in asMethod(object): imaginary parts discarded in coercion
+## Warning: imaginary parts discarded in coercion
 ```
 
 ```
@@ -273,7 +273,7 @@ as(charVec, "numeric")
 ```
 
 ```
-## Warning in asMethod(object): NAs introduced by coercion
+## Warning: NAs introduced by coercion
 ```
 
 ```
@@ -933,7 +933,7 @@ head(quakes$long)
 ```
 
 ```
-## [1] 181.62 181.03 184.10 181.66 181.96 184.31
+## [1] 181.6 181.0 184.1 181.7 182.0 184.3
 ```
 
 ---
@@ -946,17 +946,17 @@ quakes[1:10,]
 ```
 
 ```
-##       lat   long depth mag stations
-## 1  -20.42 181.62   562 4.8       41
-## 2  -20.62 181.03   650 4.2       15
-## 3  -26.00 184.10    42 5.4       43
-## 4  -17.97 181.66   626 4.1       19
-## 5  -20.42 181.96   649 4.0       11
-## 6  -19.68 184.31   195 4.0       12
-## 7  -11.70 166.10    82 4.8       43
-## 8  -28.11 181.93   194 4.4       15
-## 9  -28.74 181.74   211 4.7       35
-## 10 -17.47 179.59   622 4.3       19
+##       lat  long depth mag stations
+## 1  -20.42 181.6   562 4.8       41
+## 2  -20.62 181.0   650 4.2       15
+## 3  -26.00 184.1    42 5.4       43
+## 4  -17.97 181.7   626 4.1       19
+## 5  -20.42 182.0   649 4.0       11
+## 6  -19.68 184.3   195 4.0       12
+## 7  -11.70 166.1    82 4.8       43
+## 8  -28.11 181.9   194 4.4       15
+## 9  -28.74 181.7   211 4.7       35
+## 10 -17.47 179.6   622 4.3       19
 ```
 
 ---
@@ -1858,10 +1858,10 @@ solve(A)%*%A
 ```
 
 ```
-##      [,1] [,2]          [,3]
-## [1,]    1    0  0.000000e+00
-## [2,]    0    1 -8.881784e-16
-## [3,]    0    0  1.000000e+00
+##      [,1] [,2]       [,3]
+## [1,]    1    0  0.000e+00
+## [2,]    0    1 -8.882e-16
+## [3,]    0    0  1.000e+00
 ```
 + Machine epsilon is defined to be the smallest positive number which, when added to 1, gives a number different from 1.
 + Please visit http://en.wikipedia.org/wiki/Machine_epsilon for more info
@@ -2790,13 +2790,13 @@ head(diamonds)
 ```
 
 ```
-##   carat       cut color clarity depth table price    x    y    z     alpha
-## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43  4.339255
-## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31  1.514811
-## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31  4.339255
-## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63 11.536110
-## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75 13.606709
-## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48  5.660624
+##   carat       cut color clarity depth table price    x    y    z
+## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
+## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31
+## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31
+## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63
+## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75
+## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48
 ```
 
 ---
@@ -3068,114 +3068,6 @@ m + geom_point(data=ucs, colour="red", size=5)
 ---
 
 
-## Plotting Systems in R
-
-There are three main plotting systems in R:
-  + Base Plotting System
-  + ggplot2
-  + Lattice
-
----
-
-## Base System (intro)
-
-In Base plotting system:
-  + We start with a blank canvas
-  + by calling a plot function, we start our plot
-  + Using annotation functions we can add more elements to our plot
-  
-In general, plotting functions under the base system are:
-  + Functions to generate plots: plot()
-  + Functions to annotate plots: text(), lines(), points()
-
-
----
-
-## Base Plotting System - Histogram
-
-
-```r
-x <- rnorm(100)
-hist(x)
-```
-
-<img src="assets/fig/unnamed-chunk-105-1.png" title="plot of chunk unnamed-chunk-105" alt="plot of chunk unnamed-chunk-105" style="display: block; margin: auto;" />
-
----
-
-## Base Plotting System - Scatter Plot
-
-```r
-x <- rnorm(100)
-y <- rnorm(100)
-plot(x, y)
-```
-
-<img src="assets/fig/unnamed-chunk-106-1.png" title="plot of chunk unnamed-chunk-106" alt="plot of chunk unnamed-chunk-106" style="display: block; margin: auto;" />
-
----
-
-## Base Plotting System - BoxPlot
-
-```r
-x <- rnorm(100, 0, 1)
-y <- rnorm(100, 1, 1)
-z <- rnorm(100, 2, 2)
-boxplot(x, y , z)
-```
-
-<img src="assets/fig/unnamed-chunk-107-1.png" title="plot of chunk unnamed-chunk-107" alt="plot of chunk unnamed-chunk-107" style="display: block; margin: auto;" />
-
----
-
-## Online Resources to Learn R:
-
-> 1. Very useful resources available on **The Comprehensive R Archive Network** (CRAN)
-  + please visit: http://cran.us.r-project.org
-
-> 2. R built-in facility:
-  + try ?lm, help(lm) in R console
-
-> 3. There are many free tutorials available online:
-  + Quick R: http://www.statmethods.net/
-  + R-Twotorials: http://www.twotorials.com/
-  + UCLA Academy Technology Services: http://www.ats.ucla.edu/stat/r/
-  
-> 4. R-Bloggers (http://www.r-bloggers.com/): is a central hub (e.g: A blog aggregator) of content collected from bloggers who write about R (in English). 
-
-
----
-
-## Useful Books in learning R:
-
-1. Chambers(1998). Programming with Data, Springer.
-
-2. Venables & Ripley (2000). S Programming, Springer.
-
-3. Chambers (2008). Software for Data Analysis, Springer. (highly recommended)
-
-4. More resources available at: http://www.r-project.org/doc/bib/R-books.html
-
----
-
-## How to get help in R:
-
-1. Simply use the built-in help function in R
-  + example: ?lm, help(lm)
-  
-2. R mailing lists: r-help and r-devel
-  + For more info: https://stat.ethz.ch/mailman/listinfo/r-help
-  + How to ask good questions: http://www.r-project.org/posting-guide.html
-
-3. Use Q&A websites in particular:
-  + stackoverflow (http://stackoverflow.com): for programming related questions.
-  + crossValidated (http://stats.stackexchange.com): for Stats related questions.
-  
-4. Google :)  
-
-
----
-
 ## EX10. Histogram for continuous variables
 to check the outliers and the distribution of the variables
 # 10.1 Histogram and pdf
@@ -3257,3 +3149,49 @@ Diagnostics is important in statistical analysis. Execute plot(model) and plot(m
 ## EX16. (optional) Adjusting opacity for plotting
 An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens 
 
+---
+
+## Online Resources to Learn R:
+
+> 1. Very useful resources available on **The Comprehensive R Archive Network** (CRAN)
+  + please visit: http://cran.us.r-project.org
+
+> 2. R built-in facility:
+  + try ?lm, help(lm) in R console
+
+> 3. There are many free tutorials available online:
+  + Quick R: http://www.statmethods.net/
+  + R-Twotorials: http://www.twotorials.com/
+  + UCLA Academy Technology Services: http://www.ats.ucla.edu/stat/r/
+  
+> 4. R-Bloggers (http://www.r-bloggers.com/): is a central hub (e.g: A blog aggregator) of content collected from bloggers who write about R (in English). 
+
+
+---
+
+## Useful Books in learning R:
+
+1. Chambers(1998). Programming with Data, Springer.
+
+2. Venables & Ripley (2000). S Programming, Springer.
+
+3. Chambers (2008). Software for Data Analysis, Springer. (highly recommended)
+
+4. More resources available at: http://www.r-project.org/doc/bib/R-books.html
+
+---
+
+## How to get help in R:
+
+1. Simply use the built-in help function in R
+  + example: ?lm, help(lm)
+  
+2. R mailing lists: r-help and r-devel
+  + For more info: https://stat.ethz.ch/mailman/listinfo/r-help
+  + How to ask good questions: http://www.r-project.org/posting-guide.html
+
+3. Use Q&A websites in particular:
+  + stackoverflow (http://stackoverflow.com): for programming related questions.
+  + crossValidated (http://stats.stackexchange.com): for Stats related questions.
+  
+4. Google :)  

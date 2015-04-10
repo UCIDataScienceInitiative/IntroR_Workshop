@@ -22,7 +22,7 @@ github:
 1) The class will include 5 sessions: 
   + Session 1  (9-10:20): Data Types in R 
   + Session 2  (10:30-11:20): Control Structures and Functions
-  + Session 3  (11:30-12): Data Exploration in R
+  + Session 3  (11:30-12): Statistical Distributions in R
   + Exercise 1 (12:30-1:20): Basic Data Exploration
   + Session 4  (1:20-2:50): Statistical Analysis in R 
   + Session 5  (3:00-4:20): Plotting and Data Visualization in R
@@ -1852,105 +1852,6 @@ m + geom_point(data=ucs, colour="red", size=5)
 ---
 
 
-## Plotting Systems in R
-
-There are three main plotting systems in R:
-  + Base Plotting System
-  + ggplot2
-  + Lattice
-
----
-
-## Base System (intro)
-
-In Base plotting system:
-  + We start with a blank canvas
-  + by calling a plot function, we start our plot
-  + Using annotation functions we can add more elements to our plot
-  
-In general, plotting functions under the base system are:
-  + Functions to generate plots: plot()
-  + Functions to annotate plots: text(), lines(), points()
-
-
----
-
-## Base Plotting System - Histogram
-
-```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
-x <- rnorm(100)
-hist(x)
-```
-
----
-
-## Base Plotting System - Scatter Plot
-```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
-x <- rnorm(100)
-y <- rnorm(100)
-plot(x, y)
-```
-
----
-
-## Base Plotting System - BoxPlot
-```{r echo=TRUE, fig.keep='last', fig.height=4.5, fig.align='center'}
-x <- rnorm(100, 0, 1)
-y <- rnorm(100, 1, 1)
-z <- rnorm(100, 2, 2)
-boxplot(x, y , z)
-```
-
----
-
-## Online Resources to Learn R:
-
-> 1. Very useful resources available on **The Comprehensive R Archive Network** (CRAN)
-  + please visit: http://cran.us.r-project.org
-
-> 2. R built-in facility:
-  + try ?lm, help(lm) in R console
-
-> 3. There are many free tutorials available online:
-  + Quick R: http://www.statmethods.net/
-  + R-Twotorials: http://www.twotorials.com/
-  + UCLA Academy Technology Services: http://www.ats.ucla.edu/stat/r/
-  
-> 4. R-Bloggers (http://www.r-bloggers.com/): is a central hub (e.g: A blog aggregator) of content collected from bloggers who write about R (in English). 
-
-
----
-
-## Useful Books in learning R:
-
-1. Chambers(1998). Programming with Data, Springer.
-
-2. Venables & Ripley (2000). S Programming, Springer.
-
-3. Chambers (2008). Software for Data Analysis, Springer. (highly recommended)
-
-4. More resources available at: http://www.r-project.org/doc/bib/R-books.html
-
----
-
-## How to get help in R:
-
-1. Simply use the built-in help function in R
-  + example: ?lm, help(lm)
-  
-2. R mailing lists: r-help and r-devel
-  + For more info: https://stat.ethz.ch/mailman/listinfo/r-help
-  + How to ask good questions: http://www.r-project.org/posting-guide.html
-
-3. Use Q&A websites in particular:
-  + stackoverflow (http://stackoverflow.com): for programming related questions.
-  + crossValidated (http://stats.stackexchange.com): for Stats related questions.
-  
-4. Google :)  
-
-
----
-
 ## EX10. Histogram for continuous variables
 to check the outliers and the distribution of the variables
 # 10.1 Histogram and pdf
@@ -2032,3 +1933,49 @@ Diagnostics is important in statistical analysis. Execute plot(model) and plot(m
 ## EX16. (optional) Adjusting opacity for plotting
 An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens 
 
+---
+
+## Online Resources to Learn R:
+
+> 1. Very useful resources available on **The Comprehensive R Archive Network** (CRAN)
+  + please visit: http://cran.us.r-project.org
+
+> 2. R built-in facility:
+  + try ?lm, help(lm) in R console
+
+> 3. There are many free tutorials available online:
+  + Quick R: http://www.statmethods.net/
+  + R-Twotorials: http://www.twotorials.com/
+  + UCLA Academy Technology Services: http://www.ats.ucla.edu/stat/r/
+  
+> 4. R-Bloggers (http://www.r-bloggers.com/): is a central hub (e.g: A blog aggregator) of content collected from bloggers who write about R (in English). 
+
+
+---
+
+## Useful Books in learning R:
+
+1. Chambers(1998). Programming with Data, Springer.
+
+2. Venables & Ripley (2000). S Programming, Springer.
+
+3. Chambers (2008). Software for Data Analysis, Springer. (highly recommended)
+
+4. More resources available at: http://www.r-project.org/doc/bib/R-books.html
+
+---
+
+## How to get help in R:
+
+1. Simply use the built-in help function in R
+  + example: ?lm, help(lm)
+  
+2. R mailing lists: r-help and r-devel
+  + For more info: https://stat.ethz.ch/mailman/listinfo/r-help
+  + How to ask good questions: http://www.r-project.org/posting-guide.html
+
+3. Use Q&A websites in particular:
+  + stackoverflow (http://stackoverflow.com): for programming related questions.
+  + crossValidated (http://stats.stackexchange.com): for Stats related questions.
+  
+4. Google :)  
