@@ -1255,10 +1255,12 @@ There are three main ways to install a package in R:
   + data.table: to organize datasets for fast operations
   + parallel: to use parallel processing in R
   
-  
+
 ---
 
+
 ## Calling a function in R
+
 
 
 ```r
@@ -1268,6 +1270,7 @@ str(sample)
 ```
 ## function (x, size, replace = FALSE, prob = NULL)
 ```
+
 + consider sample() in R. Simply run ?sample in R console to read the help on this function.
 + sample() gets four arguments: 
   + x: sample space in form of a vector
