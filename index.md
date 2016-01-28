@@ -1,7 +1,7 @@
 ---
 title       : Intro to R Workshop
 subtitle    : UCI Data Science Initiative
-author      : Sepehr Akhavan, Homer Strong, Yuxiao Wang, Zhe Yu
+author      : Sepehr Akhavan, Homer Strong, Emily Smith, Eric Lai
 job         : Dept. of Statistics
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -2813,10 +2813,6 @@ Let's make a histogram!
 ggplot(diamonds, aes(price)) + geom_histogram()
 ```
 
-```
-## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
-```
-
 ![plot of chunk unnamed-chunk-90](assets/fig/unnamed-chunk-90-1.png) 
 
 
@@ -2854,10 +2850,6 @@ Group diamonds by cut.
 ```r
 m <- ggplot(diamonds, aes(price))
 m + geom_histogram(aes(fill=cut))
-```
-
-```
-## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
 ![plot of chunk unnamed-chunk-92](assets/fig/unnamed-chunk-92-1.png) 
