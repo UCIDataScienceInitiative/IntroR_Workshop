@@ -56,13 +56,13 @@
     <p>1) The class will include 5 sessions: </p>
 
 <ul>
-<li>Session 1  (9-10:30): Data Types in R </li>
-<li>Session 2  (10:45-12:30): Control Structures, Functions, and Statistical Distributions in R</li>
-<li>Lunch (12:30 - 1)</li>
-<li>Exercise 1 (1-1:30): Basic Data Exploration</li>
-<li>Session 3  (1:30-3): Statistical Analysis in R </li>
-<li>Session 4  (3:15-4): Plotting and Data Visualization in R</li>
-<li>Exercise 2 (4:15-5:00): Data visualization &amp; Statistical Analysis</li>
+<li>Session 1  (9-10:20): Data Types in R </li>
+<li>Session 2  (10:30-11:20): Control Structures and Functions</li>
+<li>Session 3  (11:30-12): Statistical Distributions in R</li>
+<li>Exercise 1 (12:30-1:20): Basic Data Exploration</li>
+<li>Session 4  (1:20-2:50): Statistical Analysis in R </li>
+<li>Session 5  (3:00-4:20): Plotting and Data Visualization in R</li>
+<li>Exercise 2 (4:20-5:00): Data visualization &amp; Statistical Analysis</li>
 </ul>
 
   </article>
@@ -81,13 +81,7 @@
 <p>4) To access this presentation and the codes used during the workshop please visit:</p>
 
 <ul>
-<li><a href="http://ucidatascienceinitiative.github.io/IntroR_Workshop/">http://ucidatascienceinitiative.github.io/IntroR_Workshop/</a></li>
-</ul>
-
-<p>5) Please download the workshop material on your computer:</p>
-
-<ul>
-<li><a href="https://github.com/UCIDataScienceInitiative/IntroR_Workshop/archive/gh-pages.zip">https://github.com/UCIDataScienceInitiative/IntroR_Workshop/archive/gh-pages.zip</a></li>
+<li><a href="http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1">http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1</a></li>
 </ul>
 
   </article>
@@ -141,11 +135,7 @@
   <article data-timings="">
     <ol>
 <li><p>RStudio is a free and open source integrated development environment (IDE) for R.</p></li>
-<li><p>To download R and RStudio, please follow our guideline:</p>
-
-<ul>
-<li><a href="https://github.com/UCIDataScienceInitiative/IntroR_Workshop">https://github.com/UCIDataScienceInitiative/IntroR_Workshop</a></li>
-</ul></li>
+<li><p>To download RStudio please visit: <a href="http://rstudio.org/">http://rstudio.org/</a></p></li>
 <li><p>Please note that you must have R already installed before installing R Studio.</p></li>
 </ol>
 
@@ -1126,7 +1116,7 @@ str(quakes)
 
 <slide class="" id="slide-39" style="background:;">
   <hgroup>
-    <h2>Time to Break for 15 Minnutes :)</h2>
+    <h2>Time to Break for 10 Minutes :)</h2>
   </hgroup>
   <article data-timings="">
     
@@ -2006,24 +1996,24 @@ lapply(myList, function(element){return(mean(c(element[1], element[length(elemen
     <h3>tapply():</h3>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">HeightDF &lt;- data.frame(heigth = c(rnorm(100, 180, 3), rnorm(100, 170, 3)), gender = factor(rep(c(&quot;M&quot;, &quot;F&quot;), each = 100)))
+    <pre><code class="r">HeightDF &lt;- data.frame(height = c(rnorm(100, 180, 3), rnorm(100, 170, 3)), gender = factor(rep(c(&quot;M&quot;, &quot;F&quot;), each = 100)))
 head(HeightDF)
 </code></pre>
 
-<pre><code>##   heigth gender
-## 1  179.4      M
-## 2  178.1      M
-## 3  182.9      M
-## 4  177.3      M
-## 5  183.0      M
-## 6  184.2      M
+<pre><code>##     height gender
+## 1 179.3892      M
+## 2 178.1438      M
+## 3 182.8711      M
+## 4 177.3439      M
+## 5 182.9561      M
+## 6 184.1638      M
 </code></pre>
 
-<pre><code class="r">tapply(HeightDF$heigth, HeightDF$gender, mean)
+<pre><code class="r">tapply(HeightDF$height, HeightDF$gender, mean)
 </code></pre>
 
-<pre><code>##     F     M 
-## 169.9 180.1
+<pre><code>##        F        M 
+## 169.8686 180.1145
 </code></pre>
 
   </article>
@@ -2106,12 +2096,12 @@ mapply(sum, l1$e1, l1$e2, l2$e1, l2$e2)
 </code></pre>
 
 <pre><code>## &#39;data.frame&#39;:    200 obs. of  2 variables:
-##  $ heigth: num  179 178 183 177 183 ...
+##  $ height: num  179 178 183 177 183 ...
 ##  $ gender: Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 2 2 2 2 2 2 2 2 2 2 ...
 </code></pre>
 
 <pre><code class="r"># Goal: to separate Females from Males
-splitData &lt;- split(HeightDF$heigth, HeightDF$gender)
+splitData &lt;- split(HeightDF$height, HeightDF$gender)
 str(splitData)
 </code></pre>
 
@@ -2126,7 +2116,7 @@ str(splitData)
 
 <slide class="" id="slide-80" style="background:;">
   <hgroup>
-    <h2>Time for Break for 15 Minnutes :)</h2>
+    <h2>Time for Break for 10 Minutes :)</h2>
   </hgroup>
   <article data-timings="">
     
@@ -2407,7 +2397,7 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-91" style="background:;">
   <hgroup>
-    <h2>Time for Lunch Break for 30 Minutes. Please come back at 1pm :)</h2>
+    <h2>Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)</h2>
   </hgroup>
   <article data-timings="">
     
@@ -2421,8 +2411,8 @@ plot(x, y, type = &quot;l&quot;)
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Dataset: Auto-Mpg Data from UCI Machine Learning Repository (some modification is done on the data for the exercise of this workshop)</li>
-<li>Download: click the &quot;download&quot; button in slide 1, extract the zip file and the data files will be in the folder &quot;data&quot;</li>
+<li>Dataset: Auto-Mpg Data from UCI Machine Learning Repository (the data is slightly modified for the exercises of this workshop)</li>
+<li>Download: click the &quot;download&quot; button in slide 1 and extract the zip file. The data files will be in the folder &quot;data&quot;. </li>
 <li>Variables (names saved in auto-mpg-names.txt): 
 
 <ul>
@@ -2445,7 +2435,7 @@ plot(x, y, type = &quot;l&quot;)
   <article data-timings="">
     <ol>
 <li>Does mpg depend on the origin of the car?</li>
-<li>How is mpg related with other variables?</li>
+<li>How is mpg related to other variables?</li>
 <li>Predict mpg using the other variables provided in the data.</li>
 </ol>
 
@@ -2459,16 +2449,15 @@ plot(x, y, type = &quot;l&quot;)
   </hgroup>
   <article data-timings="">
     <ul>
-<li>The exercises can be found in section1_exercises.html</li>
+<li>The exercises can be found in section1_exercises.Rmd </li>
 <li>The solutions are in ex_code.r</li>
 </ul>
 
 <h1>Some suggestions</h1>
 
 <ul>
-<li>Disable &quot;hide file extensions&quot; so you can easily see the full file names</li>
-<li>Feel free to ask us for help</li>
 <li>Try to solve the exercises without looking at the solutions</li>
+<li>Feel free to ask us for help (or use Slack!)</li>
 </ul>
 
   </article>
@@ -2739,7 +2728,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ##  Welch Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -13.6442, df = 67.594, p-value &lt; 2.2e-16
+## t = -13.644, df = 67.594, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -3.377306 -2.515404
@@ -2764,7 +2753,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ##  Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -13.1985, df = 78, p-value &lt; 2.2e-16
+## t = -13.198, df = 78, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -3.390781 -2.501929
@@ -2789,7 +2778,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ##  Paired t-test
 ## 
 ## data:  Samp1 and Samp2[1:30]
-## t = -10.0819, df = 29, p-value = 5.483e-11
+## t = -10.082, df = 29, p-value = 5.483e-11
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -3.279760 -2.173502
@@ -3055,7 +3044,7 @@ predict(myReg, newData, interval=&quot;predict&quot;);
 plot(myReg)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-79-1.png" alt="plot of chunk unnamed-chunk-79"> </p>
+<p><img src="assets/fig/unnamed-chunk-79-1.png" alt="plot of chunk unnamed-chunk-79"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3291,7 +3280,7 @@ fitLogistic # summary(fitLogistic)
 
 <slide class="" id="slide-130" style="background:;">
   <hgroup>
-    <h2>Time for Break for 15 Minnutes :)</h2>
+    <h2>Time for Break for 10 Minutes :)</h2>
   </hgroup>
   <article data-timings="">
     
@@ -3370,7 +3359,10 @@ fitLogistic # summary(fitLogistic)
 <pre><code class="r">ggplot(diamonds, aes(price)) + geom_histogram()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-90-1.png" alt="plot of chunk unnamed-chunk-90"> </p>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-90-1.png" alt="plot of chunk unnamed-chunk-90"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3387,14 +3379,15 @@ fitLogistic # summary(fitLogistic)
 ggplot(airquality) # :(
 </code></pre>
 
-<pre><code>## Error: No layers in plot
-</code></pre>
+<p><img src="assets/fig/unnamed-chunk-91-1.png" alt="plot of chunk unnamed-chunk-91"></p>
 
 <pre><code class="r">ggplot(airquality, aes(temp)) # :&#39;&#39;&#39;(
 </code></pre>
 
-<pre><code>## Error: No layers in plot
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;temp&#39; not found
 </code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-91-2.png" alt="plot of chunk unnamed-chunk-91"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3411,7 +3404,10 @@ ggplot(airquality) # :(
 m + geom_histogram(aes(fill=cut))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-92-1.png" alt="plot of chunk unnamed-chunk-92"> </p>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-92-1.png" alt="plot of chunk unnamed-chunk-92"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3428,7 +3424,7 @@ m + geom_histogram(aes(fill=cut))
 m + geom_histogram(binwidth=100) + facet_grid(cut~color)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-93-1.png" alt="plot of chunk unnamed-chunk-93"> </p>
+<p><img src="assets/fig/unnamed-chunk-93-1.png" alt="plot of chunk unnamed-chunk-93"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3470,7 +3466,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-94-1.png" alt="plot of chunk unnamed-chunk-94"> </p>
+<p><img src="assets/fig/unnamed-chunk-94-1.png" alt="plot of chunk unnamed-chunk-94"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3484,7 +3480,7 @@ m + geom_histogram(aes(fill=cut))
     <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-95-1.png" alt="plot of chunk unnamed-chunk-95"> </p>
+<p><img src="assets/fig/unnamed-chunk-95-1.png" alt="plot of chunk unnamed-chunk-95"></p>
 
 <p>Scales begin with <code>scale_</code>, and are not only for continuous variables: also <code>datetime</code>, <code>shape</code>, <code>colour</code>, etc</p>
 
@@ -3502,7 +3498,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-96-1.png" alt="plot of chunk unnamed-chunk-96"> </p>
+<p><img src="assets/fig/unnamed-chunk-96-1.png" alt="plot of chunk unnamed-chunk-96"></p>
 
 <p>Note the legend for each mapping!</p>
 
@@ -3539,7 +3535,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-97-1.png" alt="plot of chunk unnamed-chunk-97"> </p>
+<p><img src="assets/fig/unnamed-chunk-97-1.png" alt="plot of chunk unnamed-chunk-97"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3555,7 +3551,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-98-1.png" alt="plot of chunk unnamed-chunk-98"> </p>
+<p><img src="assets/fig/unnamed-chunk-98-1.png" alt="plot of chunk unnamed-chunk-98"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3571,7 +3567,7 @@ m + geom_histogram(aes(fill=cut))
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + geom_jitter()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-99-1.png" alt="plot of chunk unnamed-chunk-99"> </p>
+<p><img src="assets/fig/unnamed-chunk-99-1.png" alt="plot of chunk unnamed-chunk-99"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3588,7 +3584,7 @@ m + geom_histogram(aes(fill=cut))
 ggplot(diamonds, aes(price, carat)) + geom_hex()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-100-1.png" alt="plot of chunk unnamed-chunk-100"> </p>
+<p><img src="assets/fig/unnamed-chunk-100-1.png" alt="plot of chunk unnamed-chunk-100"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3604,7 +3600,7 @@ ggplot(diamonds, aes(price, carat)) + geom_hex()
 <pre><code class="r">ggplot(diamonds, aes(price, carat)) + stat_density2d()
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-101-1.png" alt="plot of chunk unnamed-chunk-101"> </p>
+<p><img src="assets/fig/unnamed-chunk-101-1.png" alt="plot of chunk unnamed-chunk-101"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3620,7 +3616,7 @@ states &lt;- map_data(&quot;state&quot;)
 ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;white&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-102-1.png" alt="plot of chunk unnamed-chunk-102"> </p>
+<p><img src="assets/fig/unnamed-chunk-102-1.png" alt="plot of chunk unnamed-chunk-102"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3634,7 +3630,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;wh
     <pre><code class="r">ggplot(map_data(&quot;world&quot;)) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;white&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-103-1.png" alt="plot of chunk unnamed-chunk-103"> </p>
+<p><img src="assets/fig/unnamed-chunk-103-1.png" alt="plot of chunk unnamed-chunk-103"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3650,7 +3646,7 @@ m &lt;- ggplot(map_data(&quot;state&quot;), aes(x=long, y=lat)) + geom_polygon(a
 m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-104-1.png" alt="plot of chunk unnamed-chunk-104"> </p>
+<p><img src="assets/fig/unnamed-chunk-104-1.png" alt="plot of chunk unnamed-chunk-104"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -4150,7 +4146,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Time to Break for 15 Minnutes :)'>
+        data-slide=39 title='Time to Break for 10 Minutes :)'>
          39
       </a>
     </li>
@@ -4396,7 +4392,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=80 title='Time for Break for 15 Minnutes :)'>
+        data-slide=80 title='Time for Break for 10 Minutes :)'>
          80
       </a>
     </li>
@@ -4462,7 +4458,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=91 title='Time for Lunch Break for 30 Minutes. Please come back at 1pm :)'>
+        data-slide=91 title='Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)'>
          91
       </a>
     </li>
@@ -4696,7 +4692,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=130 title='Time for Break for 15 Minnutes :)'>
+        data-slide=130 title='Time for Break for 10 Minutes :)'>
          130
       </a>
     </li>

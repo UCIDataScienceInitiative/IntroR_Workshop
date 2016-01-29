@@ -20,17 +20,16 @@ github:
 ## Introduction
 
 1) The class will include 5 sessions: 
-  + Session 1  (9-10:30): Data Types in R 
-  + Session 2  (10:45-12:30): Control Structures, Functions, and Statistical Distributions in R
-  + Lunch (12:30 - 1)
-  + Exercise 1 (1-1:30): Basic Data Exploration
-  + Session 3  (1:30-3): Statistical Analysis in R 
-  + Session 4  (3:15-4): Plotting and Data Visualization in R
-  + Exercise 2 (4:15-5:00): Data visualization & Statistical Analysis
+  + Session 1  (9-10:20): Data Types in R 
+  + Session 2  (10:30-11:20): Control Structures and Functions
+  + Session 3  (11:30-12): Statistical Distributions in R
+  + Exercise 1 (12:30-1:20): Basic Data Exploration
+  + Session 4  (1:20-2:50): Statistical Analysis in R 
+  + Session 5  (3:00-4:20): Plotting and Data Visualization in R
+  + Exercise 2 (4:20-5:00): Data visualization & Statistical Analysis
   
 
 ---
-
 
 
 
@@ -41,10 +40,8 @@ github:
 3) Feel free to ask questions anytime during lectures.
 
 4) To access this presentation and the codes used during the workshop please visit:
-  + http://ucidatascienceinitiative.github.io/IntroR_Workshop/
+  + http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1
 
-5) Please download the workshop material on your computer:
-  + https://github.com/UCIDataScienceInitiative/IntroR_Workshop/archive/gh-pages.zip
 
 ---
 
@@ -79,8 +76,7 @@ github:
 
 1. RStudio is a free and open source integrated development environment (IDE) for R.
 
-2. To download R and RStudio, please follow our guideline:
-  + https://github.com/UCIDataScienceInitiative/IntroR_Workshop
+2. To download RStudio please visit: http://rstudio.org/
 
 3. Please note that you must have R already installed before installing R Studio.
 
@@ -964,7 +960,7 @@ quakes[1:10,]
 
 ---
 
-## Time to Break for 15 Minnutes :)
+## Time to Break for 10 Minutes :)
 
 ---
 
@@ -1691,27 +1687,27 @@ str(tapply)
 ### tapply():
 
 ```r
-HeightDF <- data.frame(heigth = c(rnorm(100, 180, 3), rnorm(100, 170, 3)), gender = factor(rep(c("M", "F"), each = 100)))
+HeightDF <- data.frame(height = c(rnorm(100, 180, 3), rnorm(100, 170, 3)), gender = factor(rep(c("M", "F"), each = 100)))
 head(HeightDF)
 ```
 
 ```
-##   heigth gender
-## 1  179.4      M
-## 2  178.1      M
-## 3  182.9      M
-## 4  177.3      M
-## 5  183.0      M
-## 6  184.2      M
+##     height gender
+## 1 179.3892      M
+## 2 178.1438      M
+## 3 182.8711      M
+## 4 177.3439      M
+## 5 182.9561      M
+## 6 184.1638      M
 ```
 
 ```r
-tapply(HeightDF$heigth, HeightDF$gender, mean)
+tapply(HeightDF$height, HeightDF$gender, mean)
 ```
 
 ```
-##     F     M 
-## 169.9 180.1
+##        F        M 
+## 169.8686 180.1145
 ```
 
 
@@ -1777,13 +1773,13 @@ str(HeightDF)
 
 ```
 ## 'data.frame':	200 obs. of  2 variables:
-##  $ heigth: num  179 178 183 177 183 ...
+##  $ height: num  179 178 183 177 183 ...
 ##  $ gender: Factor w/ 2 levels "F","M": 2 2 2 2 2 2 2 2 2 2 ...
 ```
 
 ```r
 # Goal: to separate Females from Males
-splitData <- split(HeightDF$heigth, HeightDF$gender)
+splitData <- split(HeightDF$height, HeightDF$gender)
 str(splitData)
 ```
 
@@ -1797,7 +1793,7 @@ str(splitData)
 ---
 
 
-## Time for Break for 15 Minnutes :)
+## Time for Break for 10 Minutes :)
 
 
 ---
@@ -2055,15 +2051,15 @@ plot(x, y, type = "l")
 ---
 
 
-## Time for Lunch Break for 30 Minutes. Please come back at 1pm :)
+## Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)
 
 
 ---
 
 ## Exercises: Analysis for Auto-Mpg Data
 
-1. Dataset: Auto-Mpg Data from UCI Machine Learning Repository (some modification is done on the data for the exercise of this workshop)
-2. Download: click the "download" button in slide 1, extract the zip file and the data files will be in the folder "data"
+1. Dataset: Auto-Mpg Data from UCI Machine Learning Repository (the data is slightly modified for the exercises of this workshop)
+2. Download: click the "download" button in slide 1 and extract the zip file. The data files will be in the folder "data". 
 3. Variables (names saved in auto-mpg-names.txt): 
   + continuous: mpg, displacement, horsepower, weight, acceleration
   + discrete: cylinders, model year, origin
@@ -2075,20 +2071,19 @@ plot(x, y, type = "l")
 
 ## Questions to answer
 1. Does mpg depend on the origin of the car?
-2. How is mpg related with other variables?
+2. How is mpg related to other variables?
 3. Predict mpg using the other variables provided in the data.
 
 ---
 
 ## Exercises: Section 1
 
-  + The exercises can be found in section1_exercises.html
+  + The exercises can be found in section1_exercises.Rmd 
   + The solutions are in ex_code.r
   
 # Some suggestions
-  + Disable "hide file extensions" so you can easily see the full file names
-  + Feel free to ask us for help
   + Try to solve the exercises without looking at the solutions
+  + Feel free to ask us for help (or use Slack!)
 
 ---
 
@@ -2210,6 +2205,7 @@ In this section, we will recode missing values and then remove entries containin
 ---
 
 
+
 ## Session 4 - Agenda
 
 1. T-Test in R
@@ -2291,7 +2287,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
 ## 	Welch Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -13.6442, df = 67.594, p-value < 2.2e-16
+## t = -13.644, df = 67.594, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -3.377306 -2.515404
@@ -2314,7 +2310,7 @@ t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 ## 	Two Sample t-test
 ## 
 ## data:  Samp1 and Samp2
-## t = -13.1985, df = 78, p-value < 2.2e-16
+## t = -13.198, df = 78, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -3.390781 -2.501929
@@ -2337,7 +2333,7 @@ t.test(Samp1, Samp2[1:30], paired = TRUE)
 ## 	Paired t-test
 ## 
 ## data:  Samp1 and Samp2[1:30]
-## t = -10.0819, df = 29, p-value = 5.483e-11
+## t = -10.082, df = 29, p-value = 5.483e-11
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -3.279760 -2.173502
@@ -2562,7 +2558,7 @@ par(mfrow = c(2, 2), oma = c(0, 0, 2, 0))
 plot(myReg)
 ```
 
-![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79-1.png) 
+![plot of chunk unnamed-chunk-79](assets/fig/unnamed-chunk-79-1.png)
 
 ---
 
@@ -2758,7 +2754,7 @@ anova(fitLogistic, fitLogistic2, test='Chisq');
 
 ---
 
-## Time for Break for 15 Minnutes :)
+## Time for Break for 10 Minutes :)
 
 ---
 
@@ -2814,7 +2810,11 @@ Let's make a histogram!
 ggplot(diamonds, aes(price)) + geom_histogram()
 ```
 
-![plot of chunk unnamed-chunk-90](assets/fig/unnamed-chunk-90-1.png) 
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+![plot of chunk unnamed-chunk-90](assets/fig/unnamed-chunk-90-1.png)
 
 
 ---
@@ -2829,17 +2829,17 @@ library(ggplot2)
 ggplot(airquality) # :(
 ```
 
-```
-## Error: No layers in plot
-```
+![plot of chunk unnamed-chunk-91](assets/fig/unnamed-chunk-91-1.png)
 
 ```r
 ggplot(airquality, aes(temp)) # :'''(
 ```
 
 ```
-## Error: No layers in plot
+## Error in eval(expr, envir, enclos): object 'temp' not found
 ```
+
+![plot of chunk unnamed-chunk-91](assets/fig/unnamed-chunk-91-2.png)
 
 ---
 
@@ -2853,7 +2853,11 @@ m <- ggplot(diamonds, aes(price))
 m + geom_histogram(aes(fill=cut))
 ```
 
-![plot of chunk unnamed-chunk-92](assets/fig/unnamed-chunk-92-1.png) 
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+![plot of chunk unnamed-chunk-92](assets/fig/unnamed-chunk-92-1.png)
 
 ---
 
@@ -2867,7 +2871,7 @@ m <- ggplot(diamonds, aes(price))
 m + geom_histogram(binwidth=100) + facet_grid(cut~color)
 ```
 
-![plot of chunk unnamed-chunk-93](assets/fig/unnamed-chunk-93-1.png) 
+![plot of chunk unnamed-chunk-93](assets/fig/unnamed-chunk-93-1.png)
 
 
 ---
@@ -2897,7 +2901,7 @@ Note: There's no "scatterplot" function. Use `geom_point`.
 ggplot(diamonds, aes(price, carat)) + geom_point()
 ```
 
-![plot of chunk unnamed-chunk-94](assets/fig/unnamed-chunk-94-1.png) 
+![plot of chunk unnamed-chunk-94](assets/fig/unnamed-chunk-94-1.png)
 
 ---
 ### Log scales
@@ -2908,7 +2912,7 @@ ggplot(diamonds, aes(price, carat)) + geom_point()
 ggplot(diamonds, aes(price, carat)) + geom_point() + scale_x_log10()
 ```
 
-![plot of chunk unnamed-chunk-95](assets/fig/unnamed-chunk-95-1.png) 
+![plot of chunk unnamed-chunk-95](assets/fig/unnamed-chunk-95-1.png)
 
 Scales begin with `scale_`, and are not only for continuous variables: also `datetime`, `shape`, `colour`, etc
 
@@ -2922,7 +2926,7 @@ Similar to histogram
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(colour=color, shape=cut))
 ```
 
-![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96-1.png) 
+![plot of chunk unnamed-chunk-96](assets/fig/unnamed-chunk-96-1.png)
 
 Note the legend for each mapping!
 
@@ -2946,7 +2950,7 @@ Try lowering opacity
 ggplot(diamonds, aes(price, carat)) + geom_point(alpha=0.1)
 ```
 
-![plot of chunk unnamed-chunk-97](assets/fig/unnamed-chunk-97-1.png) 
+![plot of chunk unnamed-chunk-97](assets/fig/unnamed-chunk-97-1.png)
 
 
 ---
@@ -2959,7 +2963,7 @@ Try mapping the inverse of a variable to opacity.
 ggplot(diamonds, aes(price, carat)) + geom_point(aes(alpha=1/carat))
 ```
 
-![plot of chunk unnamed-chunk-98](assets/fig/unnamed-chunk-98-1.png) 
+![plot of chunk unnamed-chunk-98](assets/fig/unnamed-chunk-98-1.png)
 
 
 ---
@@ -2972,7 +2976,7 @@ Shake the points around a little bit.
 ggplot(diamonds, aes(price, carat)) + geom_jitter()
 ```
 
-![plot of chunk unnamed-chunk-99](assets/fig/unnamed-chunk-99-1.png) 
+![plot of chunk unnamed-chunk-99](assets/fig/unnamed-chunk-99-1.png)
 
 
 ---
@@ -2986,7 +2990,7 @@ library(hexbin)
 ggplot(diamonds, aes(price, carat)) + geom_hex()
 ```
 
-![plot of chunk unnamed-chunk-100](assets/fig/unnamed-chunk-100-1.png) 
+![plot of chunk unnamed-chunk-100](assets/fig/unnamed-chunk-100-1.png)
 
 
 ---
@@ -2999,7 +3003,7 @@ Smooth with a 2d density
 ggplot(diamonds, aes(price, carat)) + stat_density2d()
 ```
 
-![plot of chunk unnamed-chunk-101](assets/fig/unnamed-chunk-101-1.png) 
+![plot of chunk unnamed-chunk-101](assets/fig/unnamed-chunk-101-1.png)
 
 
 ---
@@ -3013,7 +3017,7 @@ states <- map_data("state")
 ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-102](assets/fig/unnamed-chunk-102-1.png) 
+![plot of chunk unnamed-chunk-102](assets/fig/unnamed-chunk-102-1.png)
 
 ---
 ### The world is your oyster
@@ -3024,7 +3028,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ggplot(map_data("world")) + geom_polygon(aes(x=long, y=lat, group = group), colour="white")
 ```
 
-![plot of chunk unnamed-chunk-103](assets/fig/unnamed-chunk-103-1.png) 
+![plot of chunk unnamed-chunk-103](assets/fig/unnamed-chunk-103-1.png)
 
 ---
 ### What's the point?
@@ -3037,7 +3041,7 @@ m <- ggplot(map_data("state"), aes(x=long, y=lat)) + geom_polygon(aes(group=grou
 m + geom_point(data=ucs, colour="red", size=5)
 ```
 
-![plot of chunk unnamed-chunk-104](assets/fig/unnamed-chunk-104-1.png) 
+![plot of chunk unnamed-chunk-104](assets/fig/unnamed-chunk-104-1.png)
 
 
 ---
@@ -3164,6 +3168,8 @@ m + geom_point(data=ucs, colour="red", size=5)
 * *Hint*: Begin by creating a NULL vector called med_bootstrap. Within the for loop, include a line of code that concatenates the previous medians ("med_bootstrap") with current median ("med") using the function ```c()```. Store this as "med_bootstrap". 
 
 **10.6** After running your for loop, you should be left with a vector called med_bootstrap that contains 1000 median mpg estimates. Find the variance of this using the function ```var()```. 
+
+
 
 ---
 
