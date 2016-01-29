@@ -56,13 +56,13 @@
     <p>1) The class will include 5 sessions: </p>
 
 <ul>
-<li>Session 1  (9-10:20): Data Types in R </li>
-<li>Session 2  (10:30-11:20): Control Structures and Functions</li>
-<li>Session 3  (11:30-12): Statistical Distributions in R</li>
-<li>Exercise 1 (12:30-1:20): Basic Data Exploration</li>
-<li>Session 4  (1:20-2:50): Statistical Analysis in R </li>
-<li>Session 5  (3:00-4:20): Plotting and Data Visualization in R</li>
-<li>Exercise 2 (4:20-5:00): Data visualization &amp; Statistical Analysis</li>
+<li>Session 1  (9-10:30): Data Types in R </li>
+<li>Session 2  (10:45-12:30): Control Structures, Functions, and Statistical Distributions in R</li>
+<li>Lunch (12:30 - 1)</li>
+<li>Exercise 1 (1-1:30): Basic Data Exploration</li>
+<li>Session 3  (1:30-3): Statistical Analysis in R </li>
+<li>Session 4  (3:15-4): Plotting and Data Visualization in R</li>
+<li>Exercise 2 (4:15-5:00): Data visualization &amp; Statistical Analysis</li>
 </ul>
 
   </article>
@@ -2397,7 +2397,7 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-91" style="background:;">
   <hgroup>
-    <h2>Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)</h2>
+    <h2>Time for Lunch Break for 30 Minutes. Please come back at 1pm :)</h2>
   </hgroup>
   <article data-timings="">
     
@@ -2435,7 +2435,6 @@ plot(x, y, type = &quot;l&quot;)
   <article data-timings="">
     <ol>
 <li>Does mpg depend on the origin of the car?</li>
-<li>How is mpg related with #cylinders of the car?</li>
 <li>How is mpg related with other variables?</li>
 <li>Predict mpg using the other variables provided in the data.</li>
 </ol>
@@ -2446,14 +2445,20 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-94" style="background:;">
   <hgroup>
-    <h1>Some suggestions</h1>
+    <h2>Exercises: Section 1</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>First skip the optional problems, especially if you are very new to R; if you still have time after finishing all the regular problems, come back to work on the optional ones</li>
+<li>The exercises can be found in section1_exercises.html</li>
+<li>The solutions are in ex_code.r</li>
+</ul>
+
+<h1>Some suggestions</h1>
+
+<ul>
 <li>Disable &quot;hide file extensions&quot; so you can easily see the full file names</li>
 <li>Feel free to ask us for help</li>
-<li>Try to solve the exercises without looking at the solutions (ex_code.r)</li>
+<li>Try to solve the exercises without looking at the solutions</li>
 </ul>
 
   </article>
@@ -2462,20 +2467,10 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-95" style="background:;">
   <hgroup>
-    <h2>EX0. Getting ready</h2>
+    <h2>Exercises: Section 1</h2>
   </hgroup>
   <article data-timings="">
-    <h1>Overview of data analysis</h1>
-
-<p>Data checking &amp; cleaning, data visualization, data transformation, statistical modeling</p>
-
-<h1>R script</h1>
-
-<p>open a new R script file to write and save your code for the exercises. </p>
-
-<h1>Execute code</h1>
-
-<p>to execute the code you can either highlight the code and press Ctrl+Enter (Cmd+Return), or copy and paste the code to the console and press Enter (Return).</p>
+    <p>The first section of exercises will deal with reading a dataset into R, exploring various structural and content-related feature of the data, and manipulating the dataset so that it is in a form we can use later for analyses.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2483,20 +2478,12 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-96" style="background:;">
   <hgroup>
-    <h2>EX1. Import data</h2>
+    <h2>Exercise 0. Getting ready.</h2>
   </hgroup>
   <article data-timings="">
-    <h1>1.1 Set working directory</h1>
+    <p><strong>0.1</strong> Open a new R script file to write and save your code for the exercises. </p>
 
-<p>find the folder where the data files are saved, and set working directory to that folder using setwd().</p>
-
-<h1>1.2  Import CSV file</h1>
-
-<p>use read.csv() to import the data &quot;auto-mpg.csv&quot; (the data is of comma separated value file format), and store it as an object &quot;data&quot; ( data = read.csv(....) ). We need to set header = FALSE since the data starts right from the first line (i.e. the data has no header). Look at the data set to see what string/symbols are used to denote missing values; in this data &quot;NA&quot; is used, so na.strings = &quot;NA&quot; should be specified in read.csv(). </p>
-
-<h1>1.3 (optional) Other data format</h1>
-
-<p>Read data file &quot;auto-mpg.data-original.txt&quot;. What happens and why? Check the original data file. </p>
+<p><strong>0.2</strong> To execute code, you can either highlight the code and press Ctrl+Enter (Cmd+Return), or copy and paste the code to the console and press Enter (Return).</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2504,16 +2491,22 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-97" style="background:;">
   <hgroup>
-    <h2>EX2. Check data</h2>
+    <h2>Exercise 1. Find and import R data.</h2>
   </hgroup>
   <article data-timings="">
-    <h1>2.1 Variables and Values</h1>
+    <p><strong>1.1</strong> Find the folder where your R data files are saved and set your working directory to that folder using <code>setwd()</code>. </p>
 
-<p>check the top few rows of data; open the original data in excel or notepad and compare with the rows printed in R.  </p>
+<p><strong>1.2</strong> Import &quot;auto-mpg.csv&quot; using <code>read.csv()</code>, storing the data as an object called &quot;data&quot; (i.e., <code>data &lt;- read.csv(...)</code>)</p>
 
-<h1>2.2. Dimension</h1>
+<ul>
+<li>In this dataset, there is no header (i.e., no variable names) and missing values are denoted as NA. Therefore, within the <code>read.csv()</code> function:
 
-<p>check the dimension of data</p>
+<ul>
+<li>Set <code>header = FALSE</code></li>
+<li>Set <code>na.strings = &quot;NA&quot;</code></li>
+<li><em>Note</em>: If you need help, type <code>?read.csv</code></li>
+</ul></li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -2521,16 +2514,12 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-98" style="background:;">
   <hgroup>
-    <h2>EX3. Add variable names</h2>
+    <h2>Exercise 1 (continued)</h2>
   </hgroup>
   <article data-timings="">
-    <h1>3.1 Import variable names</h1>
+    <p><strong>1.3</strong> Now that your data is loaded, use the <code>head()</code> function to look at the first few rows of the data to make sure it looks okay (you can open the original CSV file in Excel or Notepad to compare). As mentioned above, you should notice that the data does not contain variable names. We will fix that in the next exercise. </p>
 
-<p>import variable names from &quot;auto-mpg-names.txt&quot; using readLines() and store as an object &quot;varnames&quot; (varnames = readLines(...)). Type &quot;varnames&quot; in the console to see what&#39;s inside. The difference between readLines() and read.table() is that readLines() imports the data file into a vector of strings, but read.table() imports the data file into a data frame. Each element of the vector returned by readLines() is the content of an entire line in the data file.</p>
-
-<h1>3.2 Name the variables</h1>
-
-<p>Run &quot;names(data)&quot;. It returns the variable names of the data. Assign the new variable names to data by &quot;names(data) = varnames&quot;. Check again the variable names, to see if they are updated correctly.</p>
+<p><strong>1.4</strong> Check the dimensions of the data, the number of rows in the data, and the number of columns in the data using the functions <code>dim()</code>, <code>nrow()</code>, and <code>ncol()</code>, respectively. </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2538,16 +2527,18 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-99" style="background:;">
   <hgroup>
-    <h2>EX4. Data summary</h2>
+    <h2>Exercise 2. Add variable names to the data.</h2>
   </hgroup>
   <article data-timings="">
-    <h1>4.1 Summarize data structure</h1>
+    <p><strong>2.1</strong> Use the function <code>readLines()</code> to read in &quot;auto-mpg-names.txt&quot;, a file that contains the variable names for our data. Store this as an object called &quot;varnames&quot;.</p>
 
-<p>summarize the data structure and the class of each column (use str() );</p>
+<ul>
+<li><em>Note</em>: The difference between <code>readLines()</code> and <code>read.table()</code> or <code>read.csv()</code> is that <code>readLines()</code> imports the data file into a vector of strings, while <code>read.table()</code> imports the data file into a data frame.</li>
+</ul>
 
-<h1>4.2 Summarize data content</h1>
+<p><strong>2.2</strong> Run <code>names(data)</code>. This returns the variable names of our data frame.</p>
 
-<p>apply function summary() on data and see how it is different from the function above. One nice thing is that it tells you #missing values for each variable (NA&#39;s). </p>
+<p><strong>2.3</strong> Assign the new variable names (i.e., varnames) to <code>names(data)</code>. </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -2555,16 +2546,14 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-100" style="background:;">
   <hgroup>
-    <h2>EX5. Subset exercises</h2>
+    <h2>Exercise 3. Summarize the data.</h2>
   </hgroup>
   <article data-timings="">
-    <h1>5.1 Subset single variable</h1>
+    <p><strong>3.1</strong> Summarize the data using the <code>str()</code> and <code>summary()</code> commands.</p>
 
-<p>summarize the variable mpg (use summary()). (There are 3 ways you can get the variable mpg.) Do you see something weird in the result? What might be the reason? We will get back to this later. </p>
-
-<h1>5.2 Subset multiple variables (columns)</h1>
-
-<p>create a vector &quot;index_cont&quot; in R for the numbers 1,3,4,5,6, which are the column indices for the continuous variables; use that vector to extract the continuous variables and summarize the continuous variables (use summary()).</p>
+<ul>
+<li><em>Note</em>: Notice the different kinds of information each of these functions provide with respect to the data. In particular, <code>str()</code> summarizes the structure of the data, while <code>summary()</code> summarizes the content of the data. </li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -2572,18 +2561,28 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-101" style="background:;">
   <hgroup>
-    <h1>5.3 (optional) Subset the complement set</h1>
+    <h2>Exercise 4. Subsetting the data.</h2>
   </hgroup>
   <article data-timings="">
-    <p>use the index vector you created above to extract the non-continuous variables and summarize them ( using &quot;-index_cont&quot; for subsetting will return the complement of &quot;index_cont&quot;);</p>
+    <p><strong>4.1</strong> Subset the following:</p>
 
-<h1>5.4 (optional) Subset the instances</h1>
+<p>a. The first row of the data frame.
+b. The mpg (first) column of the data frame (there are three ways to do this).
+c. The second row, first column of the data frame.</p>
 
-<p>read the help file for which(); create a vector of indices &quot;index_origin_23&quot; for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: &amp; for and, | for or, ! for NOT.    </p>
+<p><strong>4.2</strong> Summarize the variable mpg using <code>summary()</code>. Do you see something weird in the result? What might be the reason? We will get back to this later.</p>
 
-<h1>5.5 Drop a variable</h1>
+<p><strong>4.3</strong> Above we summarized a single variable. Next, we will summarize multiple variables at once. </p>
 
-<p>drop variable &quot;car_name&quot; (we will not use it in our analysis). Check the top few lines of the data. Hint: you can either assign NULL (empty) to the variable &quot;car_name&quot;, or redefine data to be the subset of the data that does not contain &quot;car_name&quot;. </p>
+<ul>
+<li>Create an index vector called &quot;index_cont&quot; for the numbers 1,3,4,5,6 using <code>c()</code>. These numbers the correspond to the columns that contain continuous variables. Then, use that vector to subset the continuous variables from our data, and summarize them using <code>summary()</code>. </li>
+</ul>
+
+<p><strong>4.4</strong> Finally, let&#39;s remove the variable car_name (we will not use it in subsequent exercises). </p>
+
+<ul>
+<li><em>Hint</em>: you can either assign NULL (empty) to the variable &quot;car_name&quot;, or redefine data to be the subset of the data that does not contain &quot;car_name&quot;.</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -2591,24 +2590,19 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-102" style="background:;">
   <hgroup>
-    <h2>EX6. Discrete variables</h2>
+    <h2>Exercise 5. Discrete variables and factors.</h2>
   </hgroup>
   <article data-timings="">
-    <h1>6.1 Make a copy of the data</h1>
+    <p>In this set of exercises, we will convert a variable to a factor and change the levels of the factor.</p>
 
-<p>we are going to change the data, so please first make a copy of the original data (assign data to a new object &quot;data_ori&quot;); in case you do something wrong later you can easily reset the new data to be the original data.</p>
+<p><strong>5.1</strong> The variable &quot;origin&quot; is of the class integer (run <code>class(data$origin)</code> to check for yourself), but it is categorical by nature. Convert &quot;origin&quot; to a factor using the <code>factor()</code> function and assign it back to <code>data$origin</code>. </p>
 
-<h1>6.2 Convert numerical to factor</h1>
+<p><strong>5.2</strong> Next, we want to change the levels of <code>data$origin</code>. Check the current levels by running <code>levels(data$origin)</code>. Then, change the levels to the following: </p>
 
-<p>origin is a categorical variable by nature, so we need to convert it to a factor type (use factor()), and assign it back to data$origin. </p>
-
-<h1>6.3 Add labels</h1>
-
-<p>run &quot;levels(data$origin)&quot; to see the current labels for the variable origin. Change the labels for the values (1: American, 2: European, 3:Japanese). </p>
-
-<h1>6.4 Summarize a factor variable</h1>
-
-<p>use summary() on the converted variable and see how the summary output changes for a factor variable. </p>
+<ul>
+<li>1: American, 2: European, 3: Japanese</li>
+<li><em>Hint</em>: create a character vector with the new levels and assign it to <code>levels(data$origin)</code>. </li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -2616,90 +2610,20 @@ plot(x, y, type = &quot;l&quot;)
 
 <slide class="" id="slide-103" style="background:;">
   <hgroup>
-    <h2>EX7. Missing values</h2>
+    <h2>Exercise 6. Missing values.</h2>
   </hgroup>
   <article data-timings="">
-    <h1>7.1 Fix inappropriate coding</h1>
+    <p>In this section, we will recode missing values and then remove entries containing missing values from our data.</p>
 
-<p>recall the weird values &#39;-99&#39; we saw before in &#39;mpg&#39;. Sometimes the coding gets messed up and the unlikely values like &quot;-99&quot; are used to code missing values - in which case we should confirm this with the data entry clerk. Now assuming this has been confirmed, let&#39;s replace all &quot;-99&quot; with NA (not &quot;NA&quot;).  </p>
+<p><strong>6.1</strong> Recall that in Exercise 4.2 we saw the weird value of &quot;-99&quot; in &quot;mpg&quot;. Sometimes, an unlikely value (commonly, values like -99, 99, or 999) is used to code missing values. It&#39;s always important to confirm these values were coded as missing with the data entry clerk. Let&#39;s assume that this has been confirmed, and replace all instances of &quot;-99&quot; with NA. </p>
 
-<h1>7.2 Data check</h1>
-
-<p>use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  </p>
+<p><strong>6.2</strong> Read the help file for the function <code>na.omit()</code>, and use this function to create a new dataset (store it as &quot;data_noNA&quot;) that contains only the instances that has no missing value on any variables. We will be using data_noNA for the remaining exercises. </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-104" style="background:;">
-  <hgroup>
-    <h1>7.3 Check missing values</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>calculate the total number of missing values in data (use is.na() and sum()). And then rewrite it to make it a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument &quot;x&quot;. Test your function on the current data, it should return 17. </p>
-
-<h1>7.4 Discard missing values</h1>
-
-<p>read the help file for function na.omit(), and use this function to create a new data (store it as data_noNA) that contains only the instances that has no missing value on any variables </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-105" style="background:;">
-  <hgroup>
-    <h1>From now on use the data set that contains no missing values</h1>
-  </hgroup>
-  <article data-timings="">
-    <h1>EX8. (optional) *apply() &amp; split()</h1>
-
-<ul>
-<li>8.1 use one of the *apply() functions to get the frequency table on all discrete variables. Note that if these variables were all of factor type instead of numerical type, this could be directly done by summary(data[,c(2,7,8)]) </li>
-<li>8.2 find average mpg for each # cylinders</li>
-<li>8.3 find 2.5 and 97.5 percentile of mpg for each # cylinders </li>
-<li>8.4 split the dataset based on # cylinders </li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-106" style="background:;">
-  <hgroup>
-    <h1>EX9. (optional) Loop, subset &amp; sample</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>Randomization testing for whether mean mpg is higher for Japanese cars than European cars</p>
-
-<ul>
-<li>9.1 calculate the difference between mean mpg for Japanese cars and European cars and save in object dif_JapVSEuro</li>
-<li>9.2 find the number of instances for European cars and save in object n_European</li>
-<li>9.3 write a for loop that does the following in each iteration:
-
-<ul>
-<li>find the subset of European cars and Japanese cars</li>
-<li>randomize the origin of the cars: randomly sample n_European instances to be &quot;European&quot; and the rest to be &quot;Japanese&quot;</li>
-<li>calculate the new difference in the mean mpg of the randomized data (Jap - Euro)</li>
-<li>record whether the new difference &gt;= the observed difference, dif_JapVSEuro</li>
-</ul></li>
-<li>9.4 run the simulation of 1000 iterations</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-107" style="background:;">
-  <article data-timings="">
-    <ul>
-<li>9.5 obtain the p value by calculating the proportion of times that the difference of the randomized data &gt;= the observed difference. If this p value &lt;= the alpha level we set for the test, then we can conclude mean mpg is higher for Japanese cars than European cars. </li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-108" style="background:;">
   <hgroup>
     <h2>Session 4 - Agenda</h2>
   </hgroup>
@@ -2715,7 +2639,7 @@ plot(x, y, type = &quot;l&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-109" style="background:;">
+<slide class="" id="slide-105" style="background:;">
   <hgroup>
     <h2>T-Test in R</h2>
   </hgroup>
@@ -2731,7 +2655,7 @@ plot(x, y, type = &quot;l&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-110" style="background:;">
+<slide class="" id="slide-106" style="background:;">
   <hgroup>
     <h3>One-Sample T-Test</h3>
   </hgroup>
@@ -2758,7 +2682,7 @@ oneSampTest.0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-111" style="background:;">
+<slide class="" id="slide-107" style="background:;">
   <hgroup>
     <h3>One-Sample T-Test</h3>
   </hgroup>
@@ -2774,7 +2698,7 @@ oneSampTest.0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-112" style="background:;">
+<slide class="" id="slide-108" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test</h3>
   </hgroup>
@@ -2791,7 +2715,7 @@ oneSampTest.0
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-113" style="background:;">
+<slide class="" id="slide-109" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Un-equal Variances)</h3>
   </hgroup>
@@ -2818,7 +2742,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-114" style="background:;">
+<slide class="" id="slide-110" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Equal Variances)</h3>
   </hgroup>
@@ -2843,7 +2767,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-115" style="background:;">
+<slide class="" id="slide-111" style="background:;">
   <hgroup>
     <h3>Two-Sample T-Test (Paired T Test)</h3>
   </hgroup>
@@ -2868,7 +2792,7 @@ t.test(Samp1, Samp2)  # default assump: unequal variances
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-116" style="background:;">
+<slide class="" id="slide-112" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -2892,7 +2816,7 @@ str(myDF)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-117" style="background:;">
+<slide class="" id="slide-113" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -2915,7 +2839,7 @@ str(myANOVA) # see what is
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-118" style="background:;">
+<slide class="" id="slide-114" style="background:;">
   <hgroup>
     <h2>ANOVA</h2>
   </hgroup>
@@ -2932,7 +2856,7 @@ str(myANOVA) # see what is
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-119" style="background:;">
+<slide class="" id="slide-115" style="background:;">
   <hgroup>
     <h2>Linear Regression- Data:</h2>
   </hgroup>
@@ -2961,7 +2885,7 @@ str(Prestige)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-120" style="background:;">
+<slide class="" id="slide-116" style="background:;">
   <hgroup>
     <h2>Linear Regression- Data Description:</h2>
   </hgroup>
@@ -2979,7 +2903,7 @@ str(Prestige)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-121" style="background:;">
+<slide class="" id="slide-117" style="background:;">
   <hgroup>
     <h2>Linear Regression - Fit:</h2>
   </hgroup>
@@ -3009,7 +2933,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-122" style="background:;">
+<slide class="" id="slide-118" style="background:;">
   <hgroup>
     <h2>Linear Regression - Summary of Fit:</h2>
   </hgroup>
@@ -3043,7 +2967,7 @@ myReg # summary(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-123" style="background:;">
+<slide class="" id="slide-119" style="background:;">
   <hgroup>
     <h2>Linear Regression - Predict</h2>
   </hgroup>
@@ -3064,7 +2988,7 @@ predict(myReg, newData, interval=&quot;predict&quot;);
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-124" style="background:;">
+<slide class="" id="slide-120" style="background:;">
   <hgroup>
     <h2>Linear Regression - Confidence Interval:</h2>
   </hgroup>
@@ -3112,7 +3036,7 @@ predict(myReg, newData, interval=&quot;predict&quot;);
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-125" style="background:;">
+<slide class="" id="slide-121" style="background:;">
   <hgroup>
     <h2>Model diagnostic plot</h2>
   </hgroup>
@@ -3127,7 +3051,7 @@ plot(myReg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-126" style="background:;">
+<slide class="" id="slide-122" style="background:;">
   <hgroup>
     <h2>Logistic Regression - Data:</h2>
   </hgroup>
@@ -3156,7 +3080,7 @@ data(Mroz); # load Mroz data</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-127" style="background:;">
+<slide class="" id="slide-123" style="background:;">
   <hgroup>
     <h2>Logistic Regression - Data Description</h2>
   </hgroup>
@@ -3176,7 +3100,7 @@ data(Mroz); # load Mroz data</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-128" style="background:;">
+<slide class="" id="slide-124" style="background:;">
   <hgroup>
     <h2>Logistic Regression - Model Fit</h2>
   </hgroup>
@@ -3202,7 +3126,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-129" style="background:;">
+<slide class="" id="slide-125" style="background:;">
   <hgroup>
     <h2>Logistic Regression - Model Fit</h2>
   </hgroup>
@@ -3226,7 +3150,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-130" style="background:;">
+<slide class="" id="slide-126" style="background:;">
   <hgroup>
     <h2>Summary of Fit</h2>
   </hgroup>
@@ -3263,7 +3187,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-131" style="background:;">
+<slide class="" id="slide-127" style="background:;">
   <article data-timings="">
     <ul>
 <li>95% CI for exp(coefficients) (profile liklihood mehtod)</li>
@@ -3295,7 +3219,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-132" style="background:;">
+<slide class="" id="slide-128" style="background:;">
   <article data-timings="">
     <ul>
 <li>Update model by adding &#39;inc&#39; and &#39;lwg&#39;</li>
@@ -3328,7 +3252,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-133" style="background:;">
+<slide class="" id="slide-129" style="background:;">
   <hgroup>
     <h2>Model Comparison</h2>
   </hgroup>
@@ -3355,7 +3279,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-134" style="background:;">
+<slide class="" id="slide-130" style="background:;">
   <hgroup>
     <h2>Time for Break for 10 Minutes :)</h2>
   </hgroup>
@@ -3365,7 +3289,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-135" style="background:;">
+<slide class="" id="slide-131" style="background:;">
   <hgroup>
     <h2>Session 5 - Agenda</h2>
   </hgroup>
@@ -3383,7 +3307,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-136" style="background:;">
+<slide class="" id="slide-132" style="background:;">
   <hgroup>
     <h3>Information Visualization</h3>
   </hgroup>
@@ -3399,7 +3323,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-137" style="background:;">
+<slide class="" id="slide-133" style="background:;">
   <hgroup>
     <h3>Hello, ggplot2</h3>
   </hgroup>
@@ -3426,7 +3350,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-138" style="background:;">
+<slide class="" id="slide-134" style="background:;">
   <hgroup>
     <h3>First ggplot2: histogram</h3>
   </hgroup>
@@ -3442,7 +3366,7 @@ fitLogistic # summary(fitLogistic)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-139" style="background:;">
+<slide class="" id="slide-135" style="background:;">
   <hgroup>
     <h3>Gotchas</h3>
   </hgroup>
@@ -3466,7 +3390,7 @@ ggplot(airquality) # :(
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-140" style="background:;">
+<slide class="" id="slide-136" style="background:;">
   <hgroup>
     <h3>Now make it fancier</h3>
   </hgroup>
@@ -3483,7 +3407,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-141" style="background:;">
+<slide class="" id="slide-137" style="background:;">
   <hgroup>
     <h3>Facets are an alternative</h3>
   </hgroup>
@@ -3500,7 +3424,7 @@ m + geom_histogram(binwidth=100) + facet_grid(cut~color)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-142" style="background:;">
+<slide class="" id="slide-138" style="background:;">
   <hgroup>
     <h3>Let&#39;s pause for a moment</h3>
   </hgroup>
@@ -3526,7 +3450,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-143" style="background:;">
+<slide class="" id="slide-139" style="background:;">
   <hgroup>
     <h3>Scatterplots</h3>
   </hgroup>
@@ -3542,7 +3466,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-144" style="background:;">
+<slide class="" id="slide-140" style="background:;">
   <hgroup>
     <h3>Log scales</h3>
   </hgroup>
@@ -3558,7 +3482,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-145" style="background:;">
+<slide class="" id="slide-141" style="background:;">
   <hgroup>
     <h3>Adding factors</h3>
   </hgroup>
@@ -3576,7 +3500,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-146" style="background:;">
+<slide class="" id="slide-142" style="background:;">
   <hgroup>
     <h3>Overview of components</h3>
   </hgroup>
@@ -3595,7 +3519,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-147" style="background:;">
+<slide class="" id="slide-143" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 1a</h3>
   </hgroup>
@@ -3611,7 +3535,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-148" style="background:;">
+<slide class="" id="slide-144" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 1b</h3>
   </hgroup>
@@ -3627,7 +3551,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-149" style="background:;">
+<slide class="" id="slide-145" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 2</h3>
   </hgroup>
@@ -3643,7 +3567,7 @@ m + geom_histogram(aes(fill=cut))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-150" style="background:;">
+<slide class="" id="slide-146" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 3</h3>
   </hgroup>
@@ -3660,7 +3584,7 @@ ggplot(diamonds, aes(price, carat)) + geom_hex()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-151" style="background:;">
+<slide class="" id="slide-147" style="background:;">
   <hgroup>
     <h3>Problem: overplotting, approach 4</h3>
   </hgroup>
@@ -3676,7 +3600,7 @@ ggplot(diamonds, aes(price, carat)) + geom_hex()
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-152" style="background:;">
+<slide class="" id="slide-148" style="background:;">
   <hgroup>
     <h3>Something completely different: map!</h3>
   </hgroup>
@@ -3692,7 +3616,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;wh
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-153" style="background:;">
+<slide class="" id="slide-149" style="background:;">
   <hgroup>
     <h3>The world is your oyster</h3>
   </hgroup>
@@ -3706,7 +3630,7 @@ ggplot(states) + geom_polygon(aes(x=long, y=lat, group = group), colour=&quot;wh
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-154" style="background:;">
+<slide class="" id="slide-150" style="background:;">
   <hgroup>
     <h3>What&#39;s the point?</h3>
   </hgroup>
@@ -3722,7 +3646,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-155" style="background:;">
+<slide class="" id="slide-151" style="background:;">
   <hgroup>
     <h3>FYI</h3>
   </hgroup>
@@ -3741,7 +3665,7 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-156" style="background:;">
+<slide class="" id="slide-152" style="background:;">
   <hgroup>
     <h3>Notes on oddities</h3>
   </hgroup>
@@ -3757,20 +3681,97 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-157" style="background:;">
+<slide class="" id="slide-153" style="background:;">
   <hgroup>
-    <h2>EX10. Histogram for continuous variables</h2>
+    <h2>Exercises: Section 2</h2>
   </hgroup>
   <article data-timings="">
-    <p>to check the outliers and the distribution of the variables</p>
+    <ul>
+<li><p>The exercises are located in section2_exercises.html and the solutions in ex_code.r</p></li>
+<li><p>This set of exercises will focus on data descriptives and data analysis.</p></li>
+</ul>
 
-<h1>10.1 Histogram and pdf</h1>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-<p>generate a histogram for each continuous variable (mpg, displacement, horsepower, weight, acceleration) (manually plot each variable or use a for loop); save all plots in a pdf file and check the file (use pdf() and dev.off()). Need to install and load &quot;ggplot2&quot; package if you have not done so. </p>
+<slide class="" id="slide-154" style="background:;">
+  <hgroup>
+    <h2>Exercise 7. Descriptive plots.</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><em>Now that we have our dataset in its final form, we can start analyzing it. We will start by simply plotting the data to check for outliers and the distributions of the variables.</em> </p>
 
-<h1>10.2 (optional) Multiple histograms side-by-side</h1>
+<p><strong>7.1</strong> If you haven&#39;t already, install and load the package ggplot2. </p>
 
-<p>reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the &quot;reshape2&quot; package.</p>
+<p><strong>7.2</strong> Generate a histogram plot for each continuous variable (remember to use data_noNA). </p>
+
+<p><strong>7.3</strong> Generate a boxplot of mpg by origin to visually check if mpg is different across different countries of origin. Look up how to make a boxplot in the online ggplot2 documentation or type <code>?geom_boxplot</code> for help. Make sure that your variable on the x-axis (in this case, origin) is a factor (you can type <code>class(data_noNA$origin)</code> to confirm this; if not refer to Exercise 5).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-155" style="background:;">
+  <hgroup>
+    <h2>Exercise 7 (continued)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>7.4</strong> Next we will create a scatterplot of mpg by cylinders and examine the form of the relationship (i.e., is it linear or not?). In other words, we want to decide if we should treat cylinders as a numerical variable (linear) or categorical variable (not linear). Do the following:</p>
+
+<ul>
+<li>First, create a scatterplot using <code>geom_point()</code>.</li>
+<li>Next, we will add smoothers to the plot. Read the help file for <code>stat_smooth()</code> and the argument &quot;method&quot;. </li>
+<li>Create two more scatterplots: 
+
+<ul>
+<li>One with the default smooth curve overlayed (<code>method = &quot;auto&quot;</code>)</li>
+<li>One with a linear regression fit overlayed (<code>method = &quot;lm&quot;</code>)</li>
+</ul></li>
+</ul>
+
+<p><strong>7.5</strong> Create a scatterplot matrix by applying the function <code>pairs()</code> to the data.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-156" style="background:;">
+  <hgroup>
+    <h2>Exercise 8. Data transformations.</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><em>Based on the scatterplot matrix from 7.5, we need to transform some of our variables before we can perform a statistical analysis. In particular, we can see that the variance increases as mpg increases, and there are non-linear relationships between mpg and some of the other variables.</em> </p>
+
+<p><strong>8.1</strong> Add the following variables to the dataset: </p>
+
+<ul>
+<li>Add log-transformed versions of mpg, horsepower, displacement, and weight. Name them as logmpg, loghorsepower, etc.
+
+<ul>
+<li><em>Hint</em>: to add a new variable, assign, for example, <code>log(data_noNA$mpg)</code> to <code>data_noNA$logmpg</code>. </li>
+</ul></li>
+<li>Add a factor version of cylinders. Call it &quot;cylinders_cat&quot;. </li>
+</ul>
+
+<p><strong>8.2</strong> Look at the data using the <code>head()</code> function to make sure everything looks good.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-157" style="background:;">
+  <hgroup>
+    <h2>Exercise 9. Statistical analysis.</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><em>Now that we have transformed our variables, we can perform statistical analyses to explore the relationship of mpg to other variables.</em></p>
+
+<p><strong>9.1</strong> Let&#39;s test whether mean mpg is different across cars of the three origins, using a significance level of 0.05. First, fit a linear regression model for mpg against origin. Then, use both <code>anova()</code> and <code>summary()</code> to check the results. </p>
+
+<p><strong>9.2</strong> Next, fit a linear regression model predicting mpg. Include all other variables, using only the log-transformed versions if available. Store the model as &quot;model&quot;. Then, fit a model using the same predictors, but predict log(mpg). Store the model as &quot;model_log&quot;.</p>
+
+<p><strong>9.3</strong> Apply <code>summary()</code> to both of the model objects and examine the results. Is origin still helpful in predicting mpg/log(mpg) after including other predictors?</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3778,18 +3779,12 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
 
 <slide class="" id="slide-158" style="background:;">
   <hgroup>
-    <h2>EX11. Boxplot</h2>
+    <h2>Exercise 9 (continued)</h2>
   </hgroup>
   <article data-timings="">
-    <p>To check relationship between a continuous variable and a categorical variable</p>
+    <p><strong>9.4</strong> What do the numbers in the &quot;Estimate&quot; column in the <code>summary()</code> output  represent? </p>
 
-<h1>11.1 Boxplot of mpg by origin</h1>
-
-<p>Boxplot of mpg by origin to visually check if mpg is different across different countries of origin. First look up how to make a boxplot in the online ggplot2 documentation. In order for boxplot to work, make sure the variable for the x-axis (origin in this case) is converted to factor type. After you&#39;ve generated the plots, you can see mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. </p>
-
-<h1>11.2 (optional) Show data points</h1>
-
-<p>add an additional layer a)geom_point or b)geom_jitter() and see what happens</p>
+<p><strong>9.5</strong> Run <code>newcase = data_noNA[1:10,]</code> to take the first 10 instances, and treat them as new car data for which we want to predict mpg. Use <code>predict()</code> to predict mpg for them using respectively the object &quot;model&quot; and &quot;model_log&quot;. Keep in mind that from &quot;model_log&quot;, <code>predict()</code> returns the predictions for log(mpg) instead of mpg. </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3797,18 +3792,22 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
 
 <slide class="" id="slide-159" style="background:;">
   <hgroup>
-    <h2>EX12. Scatterplot</h2>
+    <h2>Exercise 10. Bootstrapping. (Optional)</h2>
   </hgroup>
   <article data-timings="">
-    <p>To check what the relationship of the two variables is like, e.g. linear or not. </p>
+    <p><em>In this exercise, we will learn the technique of bootstrapping, a general method for determining the variance of a parameter. In particular, we will find an estimate of the variance for the median mpg.</em></p>
 
-<h1>12.1 Scatterplot of mpg vs cylinders</h1>
+<p><strong>10.1</strong> Subset the mpg column of the data and store it as &quot;mpg_data&quot;. </p>
 
-<p>to check the relationship and see if it is suitable to treat cylinder as a numerical variable (linear) or categorical variable (not linear). For this task, first check the use of stat_smooth() and the argument &quot;method&quot;. Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed (method=&quot;lm&quot;). The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. </p>
+<p><strong>10.2</strong> Find the median mpg using the function <code>median()</code>. We will eventually work toward finding an estimate for the variance of this parameter. </p>
 
-<h1>12.2 (optional) Scatterplot with odd cases removed</h1>
+<p><strong>10.3</strong> Sample mpg_data using the function <code>sample()</code>. Store this as an object called &quot;mpg_bootstrap&quot;. </p>
 
-<p>create another data with instances with odd number of cylinders removed, and check the above plots again. The two fitted curves look similar -&gt; could treat cylinder as numerical. </p>
+<ul>
+<li><em>Hint</em>: There are <code>length(mpg_data)</code>= 392 elements in mpg_data. We want to sample mpg_data 392 times (with replacement). Read <code>?sample</code> if you need help.</li>
+</ul>
+
+<p><strong>10.4</strong> Find the median of mpg_bootstrap. Store this as an object called &quot;med&quot;.  </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -3816,101 +3815,22 @@ m + geom_point(data=ucs, colour=&quot;red&quot;, size=5)
 
 <slide class="" id="slide-160" style="background:;">
   <hgroup>
-    <h2>EX13. Scatterplot matrix</h2>
+    <h2>Exercise 10 (continued)</h2>
   </hgroup>
   <article data-timings="">
-    <p>Apply function pairs() or ggpairs() on the data to create the scatterplot matrix. Save the plot in a pdf file. If you use ggpairs(), you need to install and load R package &quot;GGally&quot;.   </p>
+    <p><strong>10.5</strong> Now, we want to repeat steps 10.3 and 10.4 one thousand times, storing the median of mpg_bootstrap each time. Create a for loop to do this. </p>
 
 <ul>
-<li>to check the relationship between any pair of variable</li>
-<li>to check for linearity assumption and homogeneity assumption</li>
-<li>If violated, data transformation will be needed when building a linear regression model</li>
+<li><em>Hint</em>: Begin by creating a NULL vector called med_bootstrap. Within the for loop, include a line of code that concatenates the previous medians (&quot;med_bootstrap&quot;) with current median (&quot;med&quot;) using the function <code>c()</code>. Store this as &quot;med_bootstrap&quot;. </li>
 </ul>
+
+<p><strong>10.6</strong> After running your for loop, you should be left with a vector called med_bootstrap that contains 1000 median mpg estimates. Find the variance of this using the function <code>var()</code>. </p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-161" style="background:;">
-  <hgroup>
-    <h2>EX14. Data transformation</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Based on scatterplot matrix, we see increasing variance as mpg increases, and also non-linear relationship between mpg and other variables. We need to transform the variables.</li>
-<li>Add the following new variables to the data.<br></li>
-</ul>
-
-<h1>(a) Log transformation</h1>
-
-<p>log transformed versions of mpg, horsepower, displacement, and weight; name the new variables as logmpg, loghorsepower, etc. Hint: to add a new variable, e.g. log of mpg, you can assign &#39;log(data<strong>_</strong>noNA$mpg)&#39; to &#39;data<strong>_</strong>noNA$logmpg&#39;. </p>
-
-<h1>(b) Numerical converted to Factor</h1>
-
-<p>a factor version of cylinders.</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-162" style="background:;">
-  <hgroup>
-    <h2>EX15. Statistical analysis</h2>
-  </hgroup>
-  <article data-timings="">
-    <h1>15.1 ANOVA for origin.</h1>
-
-<p>To formally test whether mean mpg is different across cars of the three origins. Use significance level 0.05. First build a linear regression for mpg against origin. And then use both ANOVA() and summary() to check the results. </p>
-
-<h1>15.2 Linear regression.</h1>
-
-<p>Build a linear regression model to predict mpg. Include all other variables (use only the transformed version if available) (store the regression result in object &#39;model&#39;); build another regression model using the same predictors but to predict log(mpg) (store in object &#39;model_log&#39;).</p>
-
-<h1>15.3 Regression results</h1>
-
-<p>Apply summary() on the regression objects and read the outputs. Is origin still helpful in predicting mpg/log(mpg) after including other predictors? </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-163" style="background:;">
-  <hgroup>
-    <h1>15.4 Regression coefficients</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>Which column is to answer the relationship between mpg and other variables? </p>
-
-<h1>15.5 Make prediction</h1>
-
-<p>Run &quot;newcase = data<strong>_</strong>noNA[1:10,]&quot; to take the first 10 instances, and treat them as some new cars for which we want to predict mpg. Use predict() to predict mpg for them using respectively the object &quot;model&quot; and &quot;model<strong>_</strong>log&quot;. Keep in mind that from &quot;model<strong>_</strong>log&quot;, predict() returns the predictions for log(mpg) instead of mpg. 
-predict(model, newcase)
-exp(predict(model_log, newcase))</p>
-
-<h1>15.6 Diagnostics</h1>
-
-<p>Diagnostics is important in statistical analysis. Execute plot(model) and plot(model_log) in R and check the four plots for each model. Based on the diagnostic plots, are these reasonable models? Which one is better? Check the following aspects.<br>
-    + (a) linearity assumption
-    + (b) normality assumption
-    + (c) constant variance
-    + (d) outliers</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-164" style="background:;">
-  <hgroup>
-    <h2>EX16. (optional) Adjusting opacity for plotting</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-165" style="background:;">
   <hgroup>
     <h2>Online Resources to Learn R:</h2>
   </hgroup>
@@ -3940,7 +3860,7 @@ exp(predict(model_log, newcase))</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-166" style="background:;">
+<slide class="" id="slide-162" style="background:;">
   <hgroup>
     <h2>Useful Books in learning R:</h2>
   </hgroup>
@@ -3956,7 +3876,7 @@ exp(predict(model_log, newcase))</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-167" style="background:;">
+<slide class="" id="slide-163" style="background:;">
   <hgroup>
     <h2>How to get help in R:</h2>
   </hgroup>
@@ -4532,7 +4452,7 @@ exp(predict(model_log, newcase))</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=91 title='Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)'>
+        data-slide=91 title='Time for Lunch Break for 30 Minutes. Please come back at 1pm :)'>
          91
       </a>
     </li>
@@ -4550,446 +4470,422 @@ exp(predict(model_log, newcase))</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=94 title='Some suggestions'>
+        data-slide=94 title='Exercises: Section 1'>
          94
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=95 title='EX0. Getting ready'>
+        data-slide=95 title='Exercises: Section 1'>
          95
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=96 title='EX1. Import data'>
+        data-slide=96 title='Exercise 0. Getting ready.'>
          96
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=97 title='EX2. Check data'>
+        data-slide=97 title='Exercise 1. Find and import R data.'>
          97
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=98 title='EX3. Add variable names'>
+        data-slide=98 title='Exercise 1 (continued)'>
          98
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=99 title='EX4. Data summary'>
+        data-slide=99 title='Exercise 2. Add variable names to the data.'>
          99
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=100 title='EX5. Subset exercises'>
+        data-slide=100 title='Exercise 3. Summarize the data.'>
          100
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=101 title='5.3 (optional) Subset the complement set'>
+        data-slide=101 title='Exercise 4. Subsetting the data.'>
          101
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=102 title='EX6. Discrete variables'>
+        data-slide=102 title='Exercise 5. Discrete variables and factors.'>
          102
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=103 title='EX7. Missing values'>
+        data-slide=103 title='Exercise 6. Missing values.'>
          103
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=104 title='7.3 Check missing values'>
+        data-slide=104 title='Session 4 - Agenda'>
          104
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=105 title='From now on use the data set that contains no missing values'>
+        data-slide=105 title='T-Test in R'>
          105
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=106 title='EX9. (optional) Loop, subset &amp; sample'>
+        data-slide=106 title='One-Sample T-Test'>
          106
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=107 title='NA'>
+        data-slide=107 title='One-Sample T-Test'>
          107
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=108 title='Session 4 - Agenda'>
+        data-slide=108 title='Two-Sample T-Test'>
          108
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=109 title='T-Test in R'>
+        data-slide=109 title='Two-Sample T-Test (Un-equal Variances)'>
          109
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=110 title='One-Sample T-Test'>
+        data-slide=110 title='Two-Sample T-Test (Equal Variances)'>
          110
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=111 title='One-Sample T-Test'>
+        data-slide=111 title='Two-Sample T-Test (Paired T Test)'>
          111
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=112 title='Two-Sample T-Test'>
+        data-slide=112 title='ANOVA'>
          112
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=113 title='Two-Sample T-Test (Un-equal Variances)'>
+        data-slide=113 title='ANOVA'>
          113
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=114 title='Two-Sample T-Test (Equal Variances)'>
+        data-slide=114 title='ANOVA'>
          114
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=115 title='Two-Sample T-Test (Paired T Test)'>
+        data-slide=115 title='Linear Regression- Data:'>
          115
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=116 title='ANOVA'>
+        data-slide=116 title='Linear Regression- Data Description:'>
          116
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=117 title='ANOVA'>
+        data-slide=117 title='Linear Regression - Fit:'>
          117
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=118 title='ANOVA'>
+        data-slide=118 title='Linear Regression - Summary of Fit:'>
          118
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=119 title='Linear Regression- Data:'>
+        data-slide=119 title='Linear Regression - Predict'>
          119
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=120 title='Linear Regression- Data Description:'>
+        data-slide=120 title='Linear Regression - Confidence Interval:'>
          120
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=121 title='Linear Regression - Fit:'>
+        data-slide=121 title='Model diagnostic plot'>
          121
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=122 title='Linear Regression - Summary of Fit:'>
+        data-slide=122 title='Logistic Regression - Data:'>
          122
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=123 title='Linear Regression - Predict'>
+        data-slide=123 title='Logistic Regression - Data Description'>
          123
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=124 title='Linear Regression - Confidence Interval:'>
+        data-slide=124 title='Logistic Regression - Model Fit'>
          124
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=125 title='Model diagnostic plot'>
+        data-slide=125 title='Logistic Regression - Model Fit'>
          125
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=126 title='Logistic Regression - Data:'>
+        data-slide=126 title='Summary of Fit'>
          126
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=127 title='Logistic Regression - Data Description'>
+        data-slide=127 title='NA'>
          127
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=128 title='Logistic Regression - Model Fit'>
+        data-slide=128 title='NA'>
          128
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=129 title='Logistic Regression - Model Fit'>
+        data-slide=129 title='Model Comparison'>
          129
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=130 title='Summary of Fit'>
+        data-slide=130 title='Time for Break for 10 Minutes :)'>
          130
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=131 title='NA'>
+        data-slide=131 title='Session 5 - Agenda'>
          131
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=132 title='NA'>
+        data-slide=132 title='Information Visualization'>
          132
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=133 title='Model Comparison'>
+        data-slide=133 title='Hello, ggplot2'>
          133
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=134 title='Time for Break for 10 Minutes :)'>
+        data-slide=134 title='First ggplot2: histogram'>
          134
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=135 title='Session 5 - Agenda'>
+        data-slide=135 title='Gotchas'>
          135
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=136 title='Information Visualization'>
+        data-slide=136 title='Now make it fancier'>
          136
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=137 title='Hello, ggplot2'>
+        data-slide=137 title='Facets are an alternative'>
          137
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=138 title='First ggplot2: histogram'>
+        data-slide=138 title='Let&#39;s pause for a moment'>
          138
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=139 title='Gotchas'>
+        data-slide=139 title='Scatterplots'>
          139
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=140 title='Now make it fancier'>
+        data-slide=140 title='Log scales'>
          140
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=141 title='Facets are an alternative'>
+        data-slide=141 title='Adding factors'>
          141
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=142 title='Let&#39;s pause for a moment'>
+        data-slide=142 title='Overview of components'>
          142
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=143 title='Scatterplots'>
+        data-slide=143 title='Problem: overplotting, approach 1a'>
          143
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=144 title='Log scales'>
+        data-slide=144 title='Problem: overplotting, approach 1b'>
          144
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=145 title='Adding factors'>
+        data-slide=145 title='Problem: overplotting, approach 2'>
          145
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=146 title='Overview of components'>
+        data-slide=146 title='Problem: overplotting, approach 3'>
          146
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=147 title='Problem: overplotting, approach 1a'>
+        data-slide=147 title='Problem: overplotting, approach 4'>
          147
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=148 title='Problem: overplotting, approach 1b'>
+        data-slide=148 title='Something completely different: map!'>
          148
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=149 title='Problem: overplotting, approach 2'>
+        data-slide=149 title='The world is your oyster'>
          149
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=150 title='Problem: overplotting, approach 3'>
+        data-slide=150 title='What&#39;s the point?'>
          150
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=151 title='Problem: overplotting, approach 4'>
+        data-slide=151 title='FYI'>
          151
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=152 title='Something completely different: map!'>
+        data-slide=152 title='Notes on oddities'>
          152
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=153 title='The world is your oyster'>
+        data-slide=153 title='Exercises: Section 2'>
          153
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=154 title='What&#39;s the point?'>
+        data-slide=154 title='Exercise 7. Descriptive plots.'>
          154
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=155 title='FYI'>
+        data-slide=155 title='Exercise 7 (continued)'>
          155
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=156 title='Notes on oddities'>
+        data-slide=156 title='Exercise 8. Data transformations.'>
          156
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=157 title='EX10. Histogram for continuous variables'>
+        data-slide=157 title='Exercise 9. Statistical analysis.'>
          157
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=158 title='EX11. Boxplot'>
+        data-slide=158 title='Exercise 9 (continued)'>
          158
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=159 title='EX12. Scatterplot'>
+        data-slide=159 title='Exercise 10. Bootstrapping. (Optional)'>
          159
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=160 title='EX13. Scatterplot matrix'>
+        data-slide=160 title='Exercise 10 (continued)'>
          160
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=161 title='EX14. Data transformation'>
+        data-slide=161 title='Online Resources to Learn R:'>
          161
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=162 title='EX15. Statistical analysis'>
+        data-slide=162 title='Useful Books in learning R:'>
          162
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=163 title='15.4 Regression coefficients'>
+        data-slide=163 title='How to get help in R:'>
          163
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=164 title='EX16. (optional) Adjusting opacity for plotting'>
-         164
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=165 title='Online Resources to Learn R:'>
-         165
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=166 title='Useful Books in learning R:'>
-         166
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=167 title='How to get help in R:'>
-         167
       </a>
     </li>
   </ul>

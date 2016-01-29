@@ -1,0 +1,77 @@
+---
+title: 'Intro to R Workshop: Section 2 Exercises'
+author: "Emily Smith, Homer Strong, Sepehr Akhavan, Eric Lai"
+date: "January 28, 2016"
+output: html_document
+---
+
+# **Section 2**
+
+The second set of exercises will focus on data descriptives and data analysis. 
+
+#### Exercise 7. Descriptive plots. 
+
+*Now that we have our dataset in its final form, we can start analyzing it. We will start by simply plotting the data to check for outliers and the distributions of the variables.* 
+
+**7.1** If you haven't already, install and load the package ggplot2. 
+
+**7.2** Generate a histogram plot for each continuous variable (remember to use data_noNA). 
+
+**7.3** Generate a boxplot of mpg by origin to visually check if mpg is different across different countries of origin. Look up how to make a boxplot in the online ggplot2 documentation or type ```?geom_boxplot``` for help. Make sure that your variable on the x-axis (in this case, origin) is a factor (you can type ```class(data_noNA$origin)``` to confirm this; if not refer to Exercise 5).
+
+**7.4** Next we will create a scatterplot of mpg by cylinders and examine the form of the relationship (i.e., is it linear or not?). In other words, we want to decide if we should treat cylinders as a numerical variable (linear) or categorical variable (not linear). Do the following:
+
+* First, create a scatterplot using ```geom_point()```.
+* Next, we will add smoothers to the plot. Read the help file for ```stat_smooth()``` and the argument "method". 
+* Create two more scatterplots: 
+      + One with the default smooth curve overlayed (```method = "auto"```)
+      + One with a linear regression fit overlayed (```method = "lm"```)
+      
+**7.5** Create a scatterplot matrix by applying the function ```pairs()``` to the data.
+
+
+#### Exercise 8. Data transformations. 
+
+*Based on the scatterplot matrix from 7.5, we need to transform some of our variables before we can perform a statistical analysis. In particular, we can see that the variance increases as mpg increases, and there are non-linear relationships between mpg and some of the other variables.* 
+
+**8.1** Add the following variables to the dataset: 
+
+* Add log-transformed versions of mpg, horsepower, displacement, and weight. Name them as logmpg, loghorsepower, etc.
+      + *Hint*: to add a new variable, assign, for example, ```log(data_noNA$mpg)``` to ```data_noNA$logmpg```. 
+* Add a factor version of cylinders. Call it "cylinders_cat". 
+
+**8.2** Look at the data using the ```head()``` function to make sure everything looks good.
+
+#### Exercise 9. Statistical analysis.
+
+*Now that we have transformed our variables, we can perform statistical analyses to explore the relationship of mpg to other variables.*
+
+**9.1** Let's test whether mean mpg is different across cars of the three origins, using a significance level of 0.05. First, fit a linear regression model for mpg against origin. Then, use both ```anova()``` and ```summary()``` to check the results. 
+
+**9.2** Next, fit a linear regression model predicting mpg. Include all other variables, using only the log-transformed versions if available. Store the model as "model". Then, fit a model using the same predictors, but predict log(mpg). Store the model as "model_log".
+
+**9.3** Apply ```summary()``` to both of the model objects and examine the results. Is origin still helpful in predicting mpg/log(mpg) after including other predictors?
+
+**9.4** What do the numbers in the "Estimate" column in the ```summary()``` output  represent? 
+
+**9.5** Run ```newcase = data_noNA[1:10,]``` to take the first 10 instances, and treat them as new car data for which we want to predict mpg. Use ```predict()``` to predict mpg for them using respectively the object "model" and "model_log". Keep in mind that from "model_log", ```predict()``` returns the predictions for log(mpg) instead of mpg. 
+
+#### Exercise 10. Bootstrapping. (Optional)
+
+*In this exercise, we will learn the technique of bootstrapping, a general method for determining the variance of a parameter. In particular, we will find an estimate of the variance for the median mpg.*
+
+**10.1** Subset the mpg column of the data and store it as "mpg_data". 
+
+**10.2** Find the median mpg using the function ```median()```. We will eventually work toward finding an estimate for the variance of this parameter. 
+
+**10.3** Sample mpg_data using the function ```sample()```. Store this as an object called "mpg_bootstrap". 
+
+* *Hint*: There are ```length(mpg_data)```= 392 elements in mpg_data. We want to sample mpg_data 392 times (with replacement). Read ```?sample``` if you need help.
+
+**10.4** Find the median of mpg_bootstrap. Store this as an object called "med".  
+
+**10.5** Now, we want to repeat steps 10.3 and 10.4 one thousand times, storing the median of mpg_bootstrap each time. Create a for loop to do this. 
+
+* *Hint*: Begin by creating a NULL vector called med_bootstrap. Within the for loop, include a line of code that concatenates the previous medians ("med_bootstrap") with current median ("med") using the function ```c()```. Store this as "med_bootstrap". 
+
+**10.6** After running your for loop, you should be left with a vector called med_bootstrap that contains 1000 median mpg estimates. Find the variance of this using the function ```var()```. 

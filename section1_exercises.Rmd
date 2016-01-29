@@ -1,0 +1,97 @@
+---
+title: 'Intro to R Workshop: Section 1 Exercises'
+author: "Emily Smith, Homer Strong, Sepehr Akhavan, Eric Lai"
+date: "January 28, 2016"
+output: html_document
+---
+
+# **Section 1**
+
+The first section of exercises will deal with reading a dataset into R, exploring various structural and content-related feature of the data, and manipulating the dataset so that it is in a form we can use later for analyses.
+
+We will be using the Auto MPG Data Set, a collection of automobile records from 1970 to 1982 containing variables such as miles per gallon (mpg), car name, weight, and origin. Specifically, we will be focusing on the relationships between miles per gallon (mpg) and various other features of the car (such as model year, weight, number of cylinders, etc.). 
+
+#### Exercise 0. Getting ready.
+
+**0.1** Open a new R script file to write and save your code for the exercises. 
+
+**0.2** To execute code, you can either highlight the code and press Ctrl+Enter (Cmd+Return), or copy and paste the code to the console and press Enter (Return). 
+
+#### Exercise 1. Find and import R data.
+
+**1.1** Find the folder where your R data files are saved and set your working directory to that folder using ```setwd()```. 
+
+
+**1.2** Import "auto-mpg.csv" using ```read.csv()```, storing the data as an object called "data" (i.e., ```data <- read.csv(...)```)
+
+* In this dataset, there is no header (i.e., no variable names) and missing values are denoted as NA. Therefore, within the ```read.csv()``` function:
+    + Set ```header = FALSE```
+    + Set ```na.strings = "NA"```
+    + *Note*: If you need help, type ```?read.csv```
+
+**1.3** Now that your data is loaded, use the ```head()``` function to look at the first few rows of the data to make sure it looks okay (you can open the original CSV file in Excel or Notepad to compare). As mentioned above, you should notice that the data does not contain variable names. We will fix that in the next exercise. 
+
+**1.4** Check the dimensions of the data, the number of rows in the data, and the number of columns in the data using the functions ```dim()```, ```nrow()```, and ```ncol()```, respectively. 
+
+
+#### Exercise 2. Add variable names to the data.
+
+**2.1** Use the function ```readLines()``` to read in "auto-mpg-names.txt", a file that contains the variable names for our data. Store this as an object called "varnames".
+
+* *Note*: The difference between ```readLines()``` and ```read.table()``` or ```read.csv()``` is that ```readLines()``` imports the data file into a vector of strings, while ```read.table()``` imports the data file into a data frame.
+
+**2.2** Run ```names(data)```. This returns the variable names of our data frame.
+
+**2.3** Assign the new variable names (i.e., varnames) to ```names(data)```. 
+
+
+#### Exercise 3. Summarize the data. 
+
+**3.1** Summarize the data using the ```str()``` and ```summary()``` commands.
+
+* *Note*: Notice the different kinds of information each of these functions provide with respect to the data. In particular, ```str()``` summarizes the structure of the data, while ```summary()``` summarizes the content of the data. 
+
+
+#### Exercise 4. Subsetting the data.
+
+**4.1** Subset the following:
+
+a. The first row of the data frame.
+b. The mpg (first) column of the data frame (there are three ways to do this).
+c. The second row, first column of the data frame.
+
+
+**4.2** Summarize the variable mpg using ```summary()```. Do you see something weird in the result? What might be the reason? We will get back to this later.
+
+
+
+**4.3** Above we summarized a single variable. Next, we will summarize multiple variables at once. 
+
+* Create an index vector called "index_cont" for the numbers 1,3,4,5,6 using ```c()```. These numbers the correspond to the columns that contain continuous variables. Then, use that vector to subset the continuous variables from our data, and summarize them using ```summary()```. 
+
+
+**4.4** Finally, let's remove the variable car_name (we will not use it in subsequent exercises). 
+
+* *Hint*: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name".
+
+
+#### Exercise 5. Discrete variables and factors. 
+
+*In this set of exercises, we will convert a variable to a factor and change the levels of the factor.*
+
+**5.1** The variable "origin" is of the class integer (run ```class(data$origin)``` to check for yourself), but it is categorical by nature. Convert "origin" to a factor using the ```factor()``` function and assign it back to ```data$origin```. 
+
+
+**5.2** Next, we want to change the levels of ```data$origin```. Check the current levels by running ```levels(data$origin)```. Then, change the levels to the following: 
+
+* 1: American, 2: European, 3: Japanese
+* *Hint*: create a character vector with the new levels and assign it to ```levels(data$origin)```. 
+
+
+#### Exercise 6. Missing values. 
+
+*In this section, we will recode missing values and then remove entries containing missing values from our data. *
+
+**6.1** Recall that in Exercise 4.2 we saw the weird value of "-99" in "mpg". Sometimes, an unlikely value (commonly, values like -99, 99, or 999) is used to code missing values. It's always important to confirm these values were coded as missing with the data entry clerk. Let's assume that this has been confirmed, and replace all instances of "-99" with NA. 
+
+**6.2** Read the help file for the function ```na.omit()```, and use this function to create a new dataset (store it as "data_noNA") that contains only the instances that has no missing value on any variables. We will be using data_noNA for the remaining exercises. 

@@ -20,13 +20,13 @@ github:
 ## Introduction
 
 1) The class will include 5 sessions: 
-  + Session 1  (9-10:20): Data Types in R 
-  + Session 2  (10:30-11:20): Control Structures and Functions
-  + Session 3  (11:30-12): Statistical Distributions in R
-  + Exercise 1 (12:30-1:20): Basic Data Exploration
-  + Session 4  (1:20-2:50): Statistical Analysis in R 
-  + Session 5  (3:00-4:20): Plotting and Data Visualization in R
-  + Exercise 2 (4:20-5:00): Data visualization & Statistical Analysis
+  + Session 1  (9-10:30): Data Types in R 
+  + Session 2  (10:45-12:30): Control Structures, Functions, and Statistical Distributions in R
+  + Lunch (12:30 - 1)
+  + Exercise 1 (1-1:30): Basic Data Exploration
+  + Session 3  (1:30-3): Statistical Analysis in R 
+  + Session 4  (3:15-4): Plotting and Data Visualization in R
+  + Exercise 2 (4:15-5:00): Data visualization & Statistical Analysis
   
 
 ---
@@ -2052,7 +2052,7 @@ plot(x, y, type = "l")
 ---
 
 
-## Time for Lunch Break for 30 Minutes. Please come back at 12:30 :)
+## Time for Lunch Break for 30 Minutes. Please come back at 1pm :)
 
 
 ---
@@ -2072,139 +2072,137 @@ plot(x, y, type = "l")
 
 ## Questions to answer
 1. Does mpg depend on the origin of the car?
-2. How is mpg related with #cylinders of the car?
-3. How is mpg related with other variables?
-4. Predict mpg using the other variables provided in the data.
+2. How is mpg related with other variables?
+3. Predict mpg using the other variables provided in the data.
 
 ---
 
+## Exercises: Section 1
+
+  + The exercises can be found in section1_exercises.html
+  + The solutions are in ex_code.r
+  
 # Some suggestions
-  + First skip the optional problems, especially if you are very new to R; if you still have time after finishing all the regular problems, come back to work on the optional ones
   + Disable "hide file extensions" so you can easily see the full file names
   + Feel free to ask us for help
-  + Try to solve the exercises without looking at the solutions (ex_code.r)
+  + Try to solve the exercises without looking at the solutions
 
 ---
 
-## EX0. Getting ready
-# Overview of data analysis
-Data checking & cleaning, data visualization, data transformation, statistical modeling
-# R script
-open a new R script file to write and save your code for the exercises. 
-# Execute code
-to execute the code you can either highlight the code and press Ctrl+Enter (Cmd+Return), or copy and paste the code to the console and press Enter (Return).
+## Exercises: Section 1
 
+The first section of exercises will deal with reading a dataset into R, exploring various structural and content-related feature of the data, and manipulating the dataset so that it is in a form we can use later for analyses.
 
 ---
 
 
-## EX1. Import data
-# 1.1 Set working directory
-find the folder where the data files are saved, and set working directory to that folder using setwd().
-# 1.2  Import CSV file
-use read.csv() to import the data "auto-mpg.csv" (the data is of comma separated value file format), and store it as an object "data" ( data = read.csv(....) ). We need to set header = FALSE since the data starts right from the first line (i.e. the data has no header). Look at the data set to see what string/symbols are used to denote missing values; in this data "NA" is used, so na.strings = "NA" should be specified in read.csv(). 
-# 1.3 (optional) Other data format
-Read data file "auto-mpg.data-original.txt". What happens and why? Check the original data file. 
+## Exercise 0. Getting ready.
+
+**0.1** Open a new R script file to write and save your code for the exercises. 
+
+**0.2** To execute code, you can either highlight the code and press Ctrl+Enter (Cmd+Return), or copy and paste the code to the console and press Enter (Return).
 
 ---
 
-## EX2. Check data
-# 2.1 Variables and Values
-check the top few rows of data; open the original data in excel or notepad and compare with the rows printed in R.  
-# 2.2. Dimension
-check the dimension of data
+## Exercise 1. Find and import R data.
 
----
+**1.1** Find the folder where your R data files are saved and set your working directory to that folder using ```setwd()```. 
 
-## EX3. Add variable names
-# 3.1 Import variable names
-import variable names from "auto-mpg-names.txt" using readLines() and store as an object "varnames" (varnames = readLines(...)). Type "varnames" in the console to see what's inside. The difference between readLines() and read.table() is that readLines() imports the data file into a vector of strings, but read.table() imports the data file into a data frame. Each element of the vector returned by readLines() is the content of an entire line in the data file.
-# 3.2 Name the variables
-Run "names(data)". It returns the variable names of the data. Assign the new variable names to data by "names(data) = varnames". Check again the variable names, to see if they are updated correctly.
 
----
+**1.2** Import "auto-mpg.csv" using ```read.csv()```, storing the data as an object called "data" (i.e., ```data <- read.csv(...)```)
 
-## EX4. Data summary
-# 4.1 Summarize data structure
-summarize the data structure and the class of each column (use str() );
-# 4.2 Summarize data content
-apply function summary() on data and see how it is different from the function above. One nice thing is that it tells you #missing values for each variable (NA's). 
+* In this dataset, there is no header (i.e., no variable names) and missing values are denoted as NA. Therefore, within the ```read.csv()``` function:
+    + Set ```header = FALSE```
+    + Set ```na.strings = "NA"```
+    + *Note*: If you need help, type ```?read.csv```
 
----
 
-## EX5. Subset exercises 
-# 5.1 Subset single variable
-summarize the variable mpg (use summary()). (There are 3 ways you can get the variable mpg.) Do you see something weird in the result? What might be the reason? We will get back to this later. 
 
-# 5.2 Subset multiple variables (columns)
-create a vector "index_cont" in R for the numbers 1,3,4,5,6, which are the column indices for the continuous variables; use that vector to extract the continuous variables and summarize the continuous variables (use summary()).
-
----
-
-# 5.3 (optional) Subset the complement set  
-use the index vector you created above to extract the non-continuous variables and summarize them ( using "-index_cont" for subsetting will return the complement of "index_cont");
-
-# 5.4 (optional) Subset the instances
-read the help file for which(); create a vector of indices "index_origin_23" for the instances (rows) where origin is 2 or 3; create a new data that contains only the instances where origin is 2 or 3. Hint: logical operator: & for and, | for or, ! for NOT.    
-
-# 5.5 Drop a variable
-drop variable "car_name" (we will not use it in our analysis). Check the top few lines of the data. Hint: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name". 
-
----
-
-## EX6. Discrete variables 
-# 6.1 Make a copy of the data
-we are going to change the data, so please first make a copy of the original data (assign data to a new object "data_ori"); in case you do something wrong later you can easily reset the new data to be the original data.
-# 6.2 Convert numerical to factor
-origin is a categorical variable by nature, so we need to convert it to a factor type (use factor()), and assign it back to data$origin. 
-# 6.3 Add labels
-run "levels(data$origin)" to see the current labels for the variable origin. Change the labels for the values (1: American, 2: European, 3:Japanese). 
-# 6.4 Summarize a factor variable
-use summary() on the converted variable and see how the summary output changes for a factor variable. 
-
----
-
-## EX7. Missing values
-# 7.1 Fix inappropriate coding 
-recall the weird values '-99' we saw before in 'mpg'. Sometimes the coding gets messed up and the unlikely values like "-99" are used to code missing values - in which case we should confirm this with the data entry clerk. Now assuming this has been confirmed, let's replace all "-99" with NA (not "NA").  
-# 7.2 Data check
-use summary(data) to check if every variable looks reasonable now. Note: in reality, even dirtier data coding could happen, e.g. multiple bad codings, in which case histograms and boxplots will be useful - since we are able to see all weird values at the same time. Similar as checking outliers.  
 
 
 ---
 
+## Exercise 1 (continued)
 
-# 7.3 Check missing values
-calculate the total number of missing values in data (use is.na() and sum()). And then rewrite it to make it a function total_NAs(x) that returns the total number of missing values in the dataset given in the argument "x". Test your function on the current data, it should return 17. 
-# 7.4 Discard missing values
-read the help file for function na.omit(), and use this function to create a new data (store it as data_noNA) that contains only the instances that has no missing value on any variables 
+**1.3** Now that your data is loaded, use the ```head()``` function to look at the first few rows of the data to make sure it looks okay (you can open the original CSV file in Excel or Notepad to compare). As mentioned above, you should notice that the data does not contain variable names. We will fix that in the next exercise. 
 
----
-
-# From now on use the data set that contains no missing values
-# EX8. (optional) *apply() & split()
-  + 8.1 use one of the *apply() functions to get the frequency table on all discrete variables. Note that if these variables were all of factor type instead of numerical type, this could be directly done by summary(data[,c(2,7,8)]) 
-  + 8.2 find average mpg for each # cylinders
-  + 8.3 find 2.5 and 97.5 percentile of mpg for each # cylinders 
-  + 8.4 split the dataset based on # cylinders 
-
+**1.4** Check the dimensions of the data, the number of rows in the data, and the number of columns in the data using the functions ```dim()```, ```nrow()```, and ```ncol()```, respectively. 
 
 ---
 
-# EX9. (optional) Loop, subset & sample
-Randomization testing for whether mean mpg is higher for Japanese cars than European cars
-  + 9.1 calculate the difference between mean mpg for Japanese cars and European cars and save in object dif_JapVSEuro
-  + 9.2 find the number of instances for European cars and save in object n_European
-  + 9.3 write a for loop that does the following in each iteration:
-     + find the subset of European cars and Japanese cars
-     + randomize the origin of the cars: randomly sample n_European instances to be "European" and the rest to be "Japanese"
-     + calculate the new difference in the mean mpg of the randomized data (Jap - Euro)
-     + record whether the new difference >= the observed difference, dif_JapVSEuro
-  + 9.4 run the simulation of 1000 iterations
+
+## Exercise 2. Add variable names to the data.
+
+**2.1** Use the function ```readLines()``` to read in "auto-mpg-names.txt", a file that contains the variable names for our data. Store this as an object called "varnames".
+
+* *Note*: The difference between ```readLines()``` and ```read.table()``` or ```read.csv()``` is that ```readLines()``` imports the data file into a vector of strings, while ```read.table()``` imports the data file into a data frame.
+
+**2.2** Run ```names(data)```. This returns the variable names of our data frame.
+
+**2.3** Assign the new variable names (i.e., varnames) to ```names(data)```. 
+
 
 ---
 
-+ 9.5 obtain the p value by calculating the proportion of times that the difference of the randomized data >= the observed difference. If this p value <= the alpha level we set for the test, then we can conclude mean mpg is higher for Japanese cars than European cars. 
+## Exercise 3. Summarize the data. 
+
+**3.1** Summarize the data using the ```str()``` and ```summary()``` commands.
+
+* *Note*: Notice the different kinds of information each of these functions provide with respect to the data. In particular, ```str()``` summarizes the structure of the data, while ```summary()``` summarizes the content of the data. 
+
+
+
+---
+
+## Exercise 4. Subsetting the data.
+
+**4.1** Subset the following:
+
+a. The first row of the data frame.
+b. The mpg (first) column of the data frame (there are three ways to do this).
+c. The second row, first column of the data frame.
+
+
+**4.2** Summarize the variable mpg using ```summary()```. Do you see something weird in the result? What might be the reason? We will get back to this later.
+
+
+
+**4.3** Above we summarized a single variable. Next, we will summarize multiple variables at once. 
+
+* Create an index vector called "index_cont" for the numbers 1,3,4,5,6 using ```c()```. These numbers the correspond to the columns that contain continuous variables. Then, use that vector to subset the continuous variables from our data, and summarize them using ```summary()```. 
+
+
+**4.4** Finally, let's remove the variable car_name (we will not use it in subsequent exercises). 
+
+* *Hint*: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name".
+
+
+---
+
+## Exercise 5. Discrete variables and factors. 
+
+In this set of exercises, we will convert a variable to a factor and change the levels of the factor.
+
+**5.1** The variable "origin" is of the class integer (run ```class(data$origin)``` to check for yourself), but it is categorical by nature. Convert "origin" to a factor using the ```factor()``` function and assign it back to ```data$origin```. 
+
+
+**5.2** Next, we want to change the levels of ```data$origin```. Check the current levels by running ```levels(data$origin)```. Then, change the levels to the following: 
+
+* 1: American, 2: European, 3: Japanese
+* *Hint*: create a character vector with the new levels and assign it to ```levels(data$origin)```. 
+
+
+---
+
+## Exercise 6. Missing values. 
+
+In this section, we will recode missing values and then remove entries containing missing values from our data.
+
+**6.1** Recall that in Exercise 4.2 we saw the weird value of "-99" in "mpg". Sometimes, an unlikely value (commonly, values like -99, 99, or 999) is used to code missing values. It's always important to confirm these values were coded as missing with the data entry clerk. Let's assume that this has been confirmed, and replace all instances of "-99" with NA. 
+
+**6.2** Read the help file for the function ```na.omit()```, and use this function to create a new dataset (store it as "data_noNA") that contains only the instances that has no missing value on any variables. We will be using data_noNA for the remaining exercises. 
+
+
 
 ---
 
@@ -3062,87 +3060,107 @@ m + geom_point(data=ucs, colour="red", size=5)
 
 ---
 
+## Exercises: Section 2
 
-## EX10. Histogram for continuous variables
-to check the outliers and the distribution of the variables
-# 10.1 Histogram and pdf
-generate a histogram for each continuous variable (mpg, displacement, horsepower, weight, acceleration) (manually plot each variable or use a for loop); save all plots in a pdf file and check the file (use pdf() and dev.off()). Need to install and load "ggplot2" package if you have not done so. 
-# 10.2 (optional) Multiple histograms side-by-side
-reshape the continuous-variable-subset of the data and use facet_grid to generate a graph that contains the histograms for all the continuous variables. Hint: melt the data so that the values of all variables go into one column and with another column (a factor) recording which variable the value is from. The variable names will be the levels of this factor. Save the graph in a pdf file and check the file. You will need the "reshape2" package.
++ The exercises are located in section2_exercises.html and the solutions in ex_code.r
 
----
-
-## EX11. Boxplot
-To check relationship between a continuous variable and a categorical variable
-# 11.1 Boxplot of mpg by origin
-Boxplot of mpg by origin to visually check if mpg is different across different countries of origin. First look up how to make a boxplot in the online ggplot2 documentation. In order for boxplot to work, make sure the variable for the x-axis (origin in this case) is converted to factor type. After you've generated the plots, you can see mpg does look different across different origin categories, suggesting mpg is likely to depend on the car origin. We will do a formal statistical test later. 
-# 11.2 (optional) Show data points
-add an additional layer a)geom_point or b)geom_jitter() and see what happens
-
----
-
-## EX12. Scatterplot  
-To check what the relationship of the two variables is like, e.g. linear or not. 
-# 12.1 Scatterplot of mpg vs cylinders
-to check the relationship and see if it is suitable to treat cylinder as a numerical variable (linear) or categorical variable (not linear). For this task, first check the use of stat_smooth() and the argument "method". Generate a scatter plot with the default smooth curve fit overlayed, and the other scatter plot with a linear regression fit overlayed (method="lm"). The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
- 
-# 12.2 (optional) Scatterplot with odd cases removed
-create another data with instances with odd number of cylinders removed, and check the above plots again. The two fitted curves look similar -> could treat cylinder as numerical. 
++ This set of exercises will focus on data descriptives and data analysis.
 
 ---
 
 
-## EX13. Scatterplot matrix 
-Apply function pairs() or ggpairs() on the data to create the scatterplot matrix. Save the plot in a pdf file. If you use ggpairs(), you need to install and load R package "GGally".   
-  + to check the relationship between any pair of variable
-  + to check for linearity assumption and homogeneity assumption
-  + If violated, data transformation will be needed when building a linear regression model
+## Exercise 7. Descriptive plots. 
+
+*Now that we have our dataset in its final form, we can start analyzing it. We will start by simply plotting the data to check for outliers and the distributions of the variables.* 
+
+**7.1** If you haven't already, install and load the package ggplot2. 
+
+**7.2** Generate a histogram plot for each continuous variable (remember to use data_noNA). 
+
+**7.3** Generate a boxplot of mpg by origin to visually check if mpg is different across different countries of origin. Look up how to make a boxplot in the online ggplot2 documentation or type ```?geom_boxplot``` for help. Make sure that your variable on the x-axis (in this case, origin) is a factor (you can type ```class(data_noNA$origin)``` to confirm this; if not refer to Exercise 5).
+
+
+---
+
+## Exercise 7 (continued)
+
+**7.4** Next we will create a scatterplot of mpg by cylinders and examine the form of the relationship (i.e., is it linear or not?). In other words, we want to decide if we should treat cylinders as a numerical variable (linear) or categorical variable (not linear). Do the following:
+
+* First, create a scatterplot using ```geom_point()```.
+* Next, we will add smoothers to the plot. Read the help file for ```stat_smooth()``` and the argument "method". 
+* Create two more scatterplots: 
+      + One with the default smooth curve overlayed (```method = "auto"```)
+      + One with a linear regression fit overlayed (```method = "lm"```)
+      
+**7.5** Create a scatterplot matrix by applying the function ```pairs()``` to the data.
 
 
 
 ---
 
+## Exercise 8. Data transformations. 
 
-## EX14. Data transformation
-  + Based on scatterplot matrix, we see increasing variance as mpg increases, and also non-linear relationship between mpg and other variables. We need to transform the variables.
-  + Add the following new variables to the data.  
+*Based on the scatterplot matrix from 7.5, we need to transform some of our variables before we can perform a statistical analysis. In particular, we can see that the variance increases as mpg increases, and there are non-linear relationships between mpg and some of the other variables.* 
 
-# (a) Log transformation
-  log transformed versions of mpg, horsepower, displacement, and weight; name the new variables as logmpg, loghorsepower, etc. Hint: to add a new variable, e.g. log of mpg, you can assign 'log(data**_**noNA$mpg)' to 'data**_**noNA$logmpg'. 
-# (b) Numerical converted to Factor 
-  a factor version of cylinders.
+**8.1** Add the following variables to the dataset: 
 
----
+* Add log-transformed versions of mpg, horsepower, displacement, and weight. Name them as logmpg, loghorsepower, etc.
+      + *Hint*: to add a new variable, assign, for example, ```log(data_noNA$mpg)``` to ```data_noNA$logmpg```. 
+* Add a factor version of cylinders. Call it "cylinders_cat". 
 
-## EX15. Statistical analysis  
-# 15.1 ANOVA for origin. 
-To formally test whether mean mpg is different across cars of the three origins. Use significance level 0.05. First build a linear regression for mpg against origin. And then use both ANOVA() and summary() to check the results. 
-# 15.2 Linear regression. 
-Build a linear regression model to predict mpg. Include all other variables (use only the transformed version if available) (store the regression result in object 'model'); build another regression model using the same predictors but to predict log(mpg) (store in object 'model_log').
-# 15.3 Regression results
-Apply summary() on the regression objects and read the outputs. Is origin still helpful in predicting mpg/log(mpg) after including other predictors? 
+**8.2** Look at the data using the ```head()``` function to make sure everything looks good.
+
 
 ---
 
-# 15.4 Regression coefficients
-Which column is to answer the relationship between mpg and other variables? 
+## Exercise 9. Statistical analysis.
 
-# 15.5 Make prediction
-Run "newcase = data**_**noNA[1:10,]" to take the first 10 instances, and treat them as some new cars for which we want to predict mpg. Use predict() to predict mpg for them using respectively the object "model" and "model**_**log". Keep in mind that from "model**_**log", predict() returns the predictions for log(mpg) instead of mpg. 
-predict(model, newcase)
-exp(predict(model_log, newcase))
+*Now that we have transformed our variables, we can perform statistical analyses to explore the relationship of mpg to other variables.*
 
-# 15.6 Diagnostics
-Diagnostics is important in statistical analysis. Execute plot(model) and plot(model_log) in R and check the four plots for each model. Based on the diagnostic plots, are these reasonable models? Which one is better? Check the following aspects.  
-    + (a) linearity assumption
-    + (b) normality assumption
-    + (c) constant variance
-    + (d) outliers
+**9.1** Let's test whether mean mpg is different across cars of the three origins, using a significance level of 0.05. First, fit a linear regression model for mpg against origin. Then, use both ```anova()``` and ```summary()``` to check the results. 
+
+**9.2** Next, fit a linear regression model predicting mpg. Include all other variables, using only the log-transformed versions if available. Store the model as "model". Then, fit a model using the same predictors, but predict log(mpg). Store the model as "model_log".
+
+**9.3** Apply ```summary()``` to both of the model objects and examine the results. Is origin still helpful in predicting mpg/log(mpg) after including other predictors?
+
 
 ---
 
-## EX16. (optional) Adjusting opacity for plotting
-An independent exercise: play with opacity setting for scatterplot of carat vs price for the diamond data. Set alpha to be different functions of the variables and see what happens 
+## Exercise 9 (continued)
+
+
+**9.4** What do the numbers in the "Estimate" column in the ```summary()``` output  represent? 
+
+**9.5** Run ```newcase = data_noNA[1:10,]``` to take the first 10 instances, and treat them as new car data for which we want to predict mpg. Use ```predict()``` to predict mpg for them using respectively the object "model" and "model_log". Keep in mind that from "model_log", ```predict()``` returns the predictions for log(mpg) instead of mpg. 
+
+
+---
+
+## Exercise 10. Bootstrapping. (Optional)
+
+*In this exercise, we will learn the technique of bootstrapping, a general method for determining the variance of a parameter. In particular, we will find an estimate of the variance for the median mpg.*
+
+**10.1** Subset the mpg column of the data and store it as "mpg_data". 
+
+**10.2** Find the median mpg using the function ```median()```. We will eventually work toward finding an estimate for the variance of this parameter. 
+
+**10.3** Sample mpg_data using the function ```sample()```. Store this as an object called "mpg_bootstrap". 
+
+* *Hint*: There are ```length(mpg_data)```= 392 elements in mpg_data. We want to sample mpg_data 392 times (with replacement). Read ```?sample``` if you need help.
+
+**10.4** Find the median of mpg_bootstrap. Store this as an object called "med".  
+
+
+---
+
+## Exercise 10 (continued)
+
+
+**10.5** Now, we want to repeat steps 10.3 and 10.4 one thousand times, storing the median of mpg_bootstrap each time. Create a for loop to do this. 
+
+* *Hint*: Begin by creating a NULL vector called med_bootstrap. Within the for loop, include a line of code that concatenates the previous medians ("med_bootstrap") with current median ("med") using the function ```c()```. Store this as "med_bootstrap". 
+
+**10.6** After running your for loop, you should be left with a vector called med_bootstrap that contains 1000 median mpg estimates. Find the variance of this using the function ```var()```. 
 
 ---
 
