@@ -16,14 +16,20 @@ setwd("~/Documents/education/uci/research/misc/data_science_initiative/intro_r/I
   # In this dataset, there is no header (i.e., no variable names) and missing values are denoted as NA. Therefore, within the read.csv() function:
     # Set header = FALSE
     # Set na.strings = "NA"
-  # If you need help, type ?read.csv()
+  # If you need help, type ?read.csv
 
 data <- read.csv(file = "auto-mpg.csv", header = FALSE, na.strings= "NA")
 
-## 1.3 Now that your data is loaded, use the head() function to look at the first few rows of the data to make sure it looks okay (you can open the original CSV file in Excel or Notepad to compare). As mentioned above, you should notice that the data does not contain variable names. We will fix that in the next section. 
+## 1.3 Now that your data is loaded, use the head() function to look at the first few rows of the data to make sure it looks okay (you can open the original CSV file in Excel or Notepad to compare). As mentioned above, you should notice that the data does not contain variable names. We will fix that in the next exercise. 
 
 head(data)
 
+
+## Check the dimensions of the data, the number of rows in the data, and the number of columns in the data using the functions dim(), nrow(), and ncol(), respectively. 
+
+dim(data)
+nrow(data)
+ncol(data)
 
 # Exercise 2. Add variable names to the data. 
 
@@ -37,7 +43,7 @@ varnames <- readLines("auto-mpg-names.txt")
 
 names(data)
 
-## 2.3 Assign the new variable names (varnames) to names(data). 
+## 2.3 Assign the new variable names (i.e., varnames) to names(data). 
 
 names(data) <- varnames
 
@@ -54,7 +60,7 @@ summary(data)
 
 # Exercise 4. Subsetting data.
 
-# 2.1 Select:
+# 4.1 Select:
   # a. The first row of the data frame
     data[1,]
   # b. The mpg (first) column of the data frame (there are three ways to do this)
@@ -64,19 +70,19 @@ summary(data)
   # c. The second row, first column of the data frame
     data[2,3]
 
-# 2.2 Summarize the variable mpg using summary(). Do you see something weird in the result? What might be the reason? We will get back to this later.
+# 4.2 Summarize the variable mpg using summary(). Do you see something weird in the result? What might be the reason? We will get back to this later.
 
 summary(data$mpg)
 
-# 2.3 Above we summarized a single variable. Next, we will summarize multiple variables at once. 
+# 4.3 Above we summarized a single variable. Next, we will summarize multiple variables at once. 
   # Create an index vector called "index_cont" for the numbers 1,3,4,5,6 using c(). These numbers the correspond to the columns that contain continuous variables. Then, use that vector to subset the continuous variables from our data, and summarize them using summary(). 
 
 index_cont <- c(1,3:6)
 summary(data[,index_cont])
 
-# 2.4 Now we will practice subsetting the data using the which() function. Begin by reading the help file for which().
 
-# 2.5 Finally, let's remove the variable car_name (we will not use it in subsequent exercises). Hint: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name".
+
+# 4.4 Finally, let's remove the variable car_name (we will not use it in subsequent exercises). Hint: you can either assign NULL (empty) to the variable "car_name", or redefine data to be the subset of the data that does not contain "car_name".
 
 data$car_name <- NULL
 # or,
@@ -101,7 +107,7 @@ levels(data$origin) <- c("American", "European", "Japanese")
 
 # In this section, we will recode missing values and then remove entries containing missing values from our data. 
 
-## 6.1 Recall that in Exercise 2.2 we saw the weird value of "-99" in "mpg". Sometimes, an unlikely value (commonly, values like -99, 99, or 999) is used to code missing values. It's always important to confirm these values were coded as missing with the data entry clerk. Let's assume that this has been confirmed, and replace all "-99" with NA. 
+## 6.1 Recall that in Exercise 4.2 we saw the weird value of "-99" in "mpg". Sometimes, an unlikely value (commonly, values like -99, 99, or 999) is used to code missing values. It's always important to confirm these values were coded as missing with the data entry clerk. Let's assume that this has been confirmed, and replace all "-99" with NA. 
 
 data$mpg[data$mpg == -99] <- NA
 
@@ -154,9 +160,9 @@ pairs(data_noNA)
 
 # Based on the scatterplot matrix from 7.5, we need to transform some of our variables before we can perform a statistical analysis. In particular, we can see that the variance increases as mpg increases, and there are non-linear relationships between mpg and some of the other variables. 
 
-# Add the following variables to the dataset: 
+# 8.1 Add the following variables to the dataset: 
 
-# 8.1 Add log-transformed versions of mpg, horsepower, displacement, and weight. Name them as logmpg, loghorsepower, etc.
+# Add log-transformed versions of mpg, horsepower, displacement, and weight. Name them as logmpg, loghorsepower, etc.
   # Hint: to add a new variable, assign, for example, log(data_noNA$mpg) to data_noNA$logmpg. 
 
 data_noNA$logmpg <- log(data_noNA$mpg)
@@ -164,17 +170,17 @@ data_noNA$loghorsepower <- log(data_noNA$horsepower)
 data_noNA$logdisplacement <- log(data_noNA$displacement)
 data_noNA$logweight <- log(data_noNA$weight)
 
-# 8.2 Add a factor version of cylinders. Call it cylinders_cat. 
+# Add a factor version of cylinders. Call it cylinders_cat. 
 
 data_noNA$cylinders_cat <- factor(data_noNA$cylinders)
 
-# 8.3 Look at the data using the head() function to make sure everything looks good.
+# 8.2 Look at the data using the head() function to make sure everything looks good.
 
 # Exercise 9. Statistical analysis. 
 
 # Now that we have transformed our variables, we can perform statistical analyses to explore the relationship of mpg to other variables. 
 
-# 9.1 First, let's test whether mean mpg is different across cars of the three origins, using a significance level of 0.05. First, fit a linear regression model for mpg against origin. Then, use both anova() and summary() to check the results. 
+# 9.1 Let's test whether mean mpg is different across cars of the three origins, using a significance level of 0.05. First, fit a linear regression model for mpg against origin. Then, use both anova() and summary() to check the results. 
 
 model_origin = lm(mpg ~ origin , data = data_noNA)
 summary(model_origin)
@@ -205,17 +211,42 @@ newcase = data_noNA[1:10,]
 predict(model, newcase)
 exp(predict(model_log, newcase))
 
-# 9.6 Next we will run some model diagnostics, as this is a very important step in statistical analysis. Execute plot(model) and plot(model_log) in R and check the four plots for each model. Based on the diagnostic plots, are these reasonable models? Which one is better? Check the following aspects:
-  # (a) Linearity assumption
-  # (b) Normality assumption
-  # (c) Constant variance
-  # (d) Outliers
 
-plot(model)
-plot(model_log)
+## Exercise 10. Bootstrapping. (Optional)
 
-# The residual plot for "model" has a non-linear trend, the residuals do not look normal (quite skewed the right), the variance seems to go up as the fitted value goes up, and there are some outliers in the predictors. 
-# The residual plot for "model_log" has no obvious pattern, the residuals look closer to normal (still longer tail than normal but at least symmetric), the variance seems quite stable, although there are still some outliers in the predictors. 
-# Thus, "model_log" looks more reasonable. 
+# In this exercise, we will learn the technique of bootstrapping, a general method for determining the variance of a parameter. In particular, we will find an estimate of the variance for the median mpg.
+  
+# 10.1 Subset the mpg column of the data and store it as "mpg_data".
+
+mpg_data <- data_noNA$mpg
+
+# 10.2 Find the median mpg using the function median(). We will eventually work toward finding an estimate for the variance of this parameter. 
+
+median(mpg_data)
+
+# 10.3 Sample mpg_data using the function sample(). Store this as an object called "mpg_bootstrap". 
+  # Hint: There are length(mpg_data) = 392 elements in mpg_data. We want to sample mpg_data 392 times (with replacement). Read ?sample if you need help.
+
+mpg_bootstrap <- sample(mpg_data, length(mpg_data), replace = TRUE)
+
+# 10.4 Find the median of mpg_bootstrap. Store this as an object called "med".
+
+med <- median(mpg_bootstrap)
+
+# 10.5 Now, we want to repeat steps 10.3 and 10.4 one thousand times, storing the median of mpg_bootstrap each time. Create a for loop to do this. 
+  # Hint: Begin by creating a NULL vector called med_bootstrap. Within the for loop, include a line of code that concatenates the previous medians ("med_bootstrap") with current median ("med") using the function c(). Store this as "med_bootstrap". 
+
+med_bootstrap <- NULL
+
+for (i in 1:1000){
+  mpg_bootstrap <- sample(mpg_data, length(mpg_data), replace = TRUE)
+  med <- median(mpg_bootstrap)
+  med_bootstrap <- c(med_bootstrap, med)
+}
+
+
+# 10.6 After running your for loop, you should be left with a vector called med_bootstrap that contains 1000 median mpg estimates. Find the variance of this using the function var().
+
+var(med_bootstrap)
 
 
