@@ -3,6 +3,12 @@ title: "Preparing for the Introduction to R Workshop"
 author: "Eric Lai"
 output: pdf_document
 ---
+### Step 0: Sign into Slack chatroom
+Surf to 
+
+https://ucidatascience.slack.com/
+
+to gain access to the official workshop chatroom.
 
 ### Step 1: Download and install R
 First, visit The R Project for Statistical Computing's website through <https://www.r-project.org/>. Click on "CRAN" under the Download section on the left-hand side of the page. Then, click on any of the nearby websites under the USA section near the bottom of the page. For example, the link from the University of California, Berkley, CA or University of California, Los Angeles, CA are both fine. Download R for your platform (Linux, Mac, or Windows).
