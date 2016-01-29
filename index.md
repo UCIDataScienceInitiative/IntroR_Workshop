@@ -41,8 +41,10 @@ github:
 3) Feel free to ask questions anytime during lectures.
 
 4) To access this presentation and the codes used during the workshop please visit:
-  + http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1
+  + http://ucidatascienceinitiative.github.io/IntroR_Workshop/
 
+5) Please download the workshop material on your computer:
+  + https://github.com/UCIDataScienceInitiative/IntroR_Workshop/archive/gh-pages.zip
 
 ---
 
@@ -77,7 +79,8 @@ github:
 
 1. RStudio is a free and open source integrated development environment (IDE) for R.
 
-2. To download RStudio please visit: http://rstudio.org/
+2. To download R and RStudio, please follow our guideline:
+  + https://github.com/UCIDataScienceInitiative/IntroR_Workshop
 
 3. Please note that you must have R already installed before installing R Studio.
 
@@ -961,7 +964,7 @@ quakes[1:10,]
 
 ---
 
-## Time to Break for 10 Minutes :)
+## Time to Break for 15 Minnutes :)
 
 ---
 
@@ -1794,7 +1797,7 @@ str(splitData)
 ---
 
 
-## Time for Break for 10 Minutes :)
+## Time for Break for 15 Minnutes :)
 
 
 ---
@@ -2755,7 +2758,7 @@ anova(fitLogistic, fitLogistic2, test='Chisq');
 
 ---
 
-## Time for Break for 10 Minutes :)
+## Time for Break for 15 Minnutes :)
 
 ---
 
