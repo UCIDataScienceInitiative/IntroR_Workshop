@@ -1,0 +1,603 @@
+---
+title: 'Intro To R Workshop: Session 1'
+subtitle: 'UCI Data Science Initiative'
+author: "Emma Smith"
+date: May 31, 2016
+output: ioslides_presentation
+---
+
+## Introduction
+
++ The class will include 5 sessions: 
+    + Session 1  (9-10:20): Data Types in R 
+    + Session 2  (10:30-11:20): Control Structures and Functions
+    + Session 3  (11:30-12): Statistical Distributions in R
+    + Exercise 1 (12:30-1:20): Basic Data Exploration
+    + Session 4  (1:20-2:50): Statistical Analysis in R 
+    + Session 5  (3:00-4:20): Plotting and Data Visualization in R
+    + Exercise 2 (4:20-5:00): Data Visualization & Statistical Analysis
+  
+
+
+
+```{r,echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+library(ggplot2)
+```
+
+## Introduction 
+
++ Feel free to ask questions anytime during lectures.
+
++ To access this presentation and the codes used during the workshop please visit:
+    + http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1
+
+
+
+
+
+## Session 1 - Agenda
+
+1. RStudio
+2. Data Types in R
+3. Data Structures in R
+3. Subsetting in R
+
+
+
+## What is R?
+
++ R is a free software environment for statistical computing and graphics
+    + See http://www.r-project.org/ for more info 
++ R compiles and runs on a wide variety of UNIX platforms, Windows and Mac OS
++ R is open-source and free
++ R is fundamentally a command-driven system
++ R is an object-oriented programming language 
+    + Everything in R is an object (data, functions, etc.)
++ R is highly extendable
+    + You can write your own custom functions
+    + There are 8000 free add-on packages
+
+ 
+
+
+## R Studio:
+
+1. RStudio is a free and open source integrated development environment (IDE) for R.
+2. To download RStudio please visit: http://rstudio.org/
+3. Please note that you must have R already installed before installing R Studio.
+
+
+
+## Fundamentals
+
++ When you type commands at the prompt '>' and hit ENTER
+    + R tries to interpret what you've asked it to do (evaluation)
+    + If it understands what you've written, it does it (execution)
+    + If it doesn't, it will likely give you an error or a warning
+
++ Some commands trigger R to print to the screen, others don't
+
++ If you type an incomplete command, R will usually respond by changing the command prompt to the '+' character
+    + Hit ESC on a MAC to cancel
+    + Type _Ctrl_ + *C* on Windows and Linux to cancel
+
+
+
+## Data Types in R:
+
+
++ R has 5 main atomic data types:
+    + Numeric
+    + Integer
+    + Complex
+    + Logical
+    + Character
+
+
+
+## Data Structures in R:
+
+1. One-dimensional:
+    + Vectors
+  
+2. Multi-dimensional:
+    + Matrices
+    + Data frames
+
+&nbsp;
+
++ Everything in R is an object
++ Objects can have attributes
+    + e.g., names, dimension, length
+
+
+## Vectors in R:
+
++ A vector is the most basic object in R
++ It is one-dimensional; its single dimension is its length
++ A vector of length *n* has *n* cells
++ Each cell can hold a single value, like a numeric or string value
+    + In general, vectors can only hold ONE type of data 
+  
+```{r echo=TRUE}
+numVec <- c(2,3,4)      # <- is the assigning operator
+numVec
+```
+
+
+
+## Examples of Vectors
+
+Examples of character, logical, and complex vectors:
+
+```{r echo=TRUE}
+charVec <- c("red", "green", "blue")
+charVec
+
+logVec <- c(TRUE, FALSE, FALSE, T, F)
+logVec
+
+compVec <- c(1 + 0i, 3 + 1i)
+compVec
+```
+
+
+
+
+
+
+
+## Special Values:
+
+There are some special values in R:
+
+  + Use L to refer to an integer value, e.g., 1L
+  + R knows infinity: Inf, -Inf
+  + NaN: refers to "Not a number"
+  
+```{r echo=TRUE}
+intVec <- c(1L, 2L, 3L, 4L) 
+intVec
+
+a <- Inf; b <- 0
+rslt <- c(b/a, a/a)
+rslt
+```
+
+
+
+## Data Type Coercion:
+
++ In general, vectors CANNOT have mixed types of objects
+    + Exception: lists in R 
+
+```{r echo=TRUE, results='hide'}
+numCharVec <- c(3.14, "a")
+numCharVec                 # What do you expect to be printed? 
+
+numLogVec <- c(pi, T)
+numLogVec                   
+
+charLogVec <- c("a", TRUE)
+charLogVec 
+```
+
++ The above are examples of implicit coercion 
++ Explicit coercion is also possible
+
+
+
+## Data Type Coercion:
+
++ as(): explicitly coerces objects from one type to another
+
+```{r echo=TRUE}
+numVec <- seq(from = 1200, to = 1300, by = 15)
+numVec
+numToChar <- as(numVec, "character")
+numToChar
+logVec <- c(F, T, F, T, T)
+as(logVec, "numeric")
+```
+
+
+
+## Data Type Coercion:
+
++ Coercion does not always work! Be careful about warnings:
+
+```{r echo=TRUE}
+compVec <- c(12+10i, 1+6i, -3-2i)
+as(compVec, "numeric")
+
+charVec <- c("2.5", "3", "2.8", "1.5", "zero")
+as(charVec, "numeric")
+```
+
+
+
+## Factors:
+
++ A factor is a vector object used to specify a discrete classification (categorical values).
++ Factors can be ordered or un-ordered
++ Levels of a factor are better labeled (self-descriptive)
+    + Consider gender as (0, 1) as opposed to labeled ("F", "M")
+```{r echo=TRUE}
+Gender <- rep(c("Female", "Male"), times = 3)
+Gender
+GenderFac1 <- factor(Gender)
+GenderFac1
+```
+
+
+
+## Factors:
+
+```{r echo=TRUE}
+levels(GenderFac1)
+table(GenderFac1)
+unclass(GenderFac1) # returns the factor as integer values
+```
+
+
+
+## Factors:
+```{r echo=TRUE}
+GenderFac1 # levels are ordered alphabetically - 1st level = BaseLevel
+GenderFac2 <- factor(Gender, levels = c("Male", "Female"))
+GenderFac1
+GenderFac2
+```
+
+
+
+## Missing Values:
+
++ There are two kinds of missing values in R:
+    + NaN: stands for "Not a Number" and is a missing value produced by numerical computation.
+    + NA: stands for "Not Available" and is used when a value is missing
+
++ NaN is also considered as NA (the reverse is NOT true)
+```{r echo=TRUE}
+a <- c(1,2)
+a[3]
+
+b <- 0/0
+b
+```
+
+
+
+## Matrices:
+
++ A matrix is a special case of a vector
+    + Unlike vectors, matrices have a dimension attribute
+
+```{r echo=TRUE}
+myMat <- matrix(nrow = 2, ncol = 4)
+myMat
+attributes(myMat)
+```
+
+
+
+## Matrices:
+```{r echo=TRUE}
+myMat <- matrix(1:8, nrow = 2, ncol = 4)
+myMat # matrices are filled in column-wise
+```
+
+
+
+## A matrix is a special case of a vector:
+
+```{r echo=TRUE}
+myVec <- 1:8
+myVec
+dim(myVec) <- c(2,4)
+myVec
+```
+
++ Similar to vectors, all elements of a matrix should be of the same data type
+    + If not, R automatically coerces
+
+
+
+## Other Ways to Create a Matrix:
+
++ Intuitively, matrices seem to be a combination of vectors that are put next to each other (either column-wise or row-wise).
+
++ rbind() and cbind() (row bind and column bind) achieve this: 
+```{r echo=TRUE}
+vec1 <- 1:4
+vec2 <- sample(1:100, 4, replace = FALSE)
+vec3 <- rnorm(4, mean = 0, sd = 1)
+colMat <- cbind(vec1, vec2, vec3)
+colMat
+```
+
+
+
+## Other Ways to Create a Matrix:
+
+```{r echo=TRUE}
+vec1 <- 1:4
+vec2 <- sample(1:100, 4, replace = FALSE)
+vec3 <- rnorm(4, mean = 0, sd = 1)
+rowMat <- rbind(vec1, vec2, vec3)
+rowMat
+```
+
+
+
+
+
+
+
+## Lists:
+
++ Think of a list as a vector with the following main differences: 
+    + Each element of a list can have its own data structure regardless of other elements
+    + This means, each element can be of a different data type and a different length
+```{r echo=TRUE}
+myVec <- c(10, "R", 10-5i, T)
+myVec
+```
+
+
+
+## Lists:
+
+```{r echo=TRUE}
+myList <- list(10, "R", 10-5i, T)
+myList
+```
++ Elements of a list are shown with [[]]
++ Elements of a vector are shown with []
+
+
+
+## Data Frames:
+
++ A data frame is a special list where all objects have equal length
++ A data frame looks very similar to a matrix; however, different columns in a data frame can be different data types
+```{r echo=TRUE}
+studentID <- paste("S#", sample(c(6473:7392), 10), sep = "")
+score <- sample(c(0:100), 10)
+gender <- sample(c("female", "male"), 10, replace = TRUE)
+data <- data.frame(studentID = studentID, score = score, gender = gender)
+head(data)
+```
+
+
+
+## Subsetting:
+
++ Sometimes, we want to take a subset of a vector, matrix, list, or data frame
++ Consider three main operators to take a subset of an object
+    + [ ] single brackets return an object of the same class of the original object
+    + [[ ]] double brackets are used primarily for lists and dataframes
+    + $ used primarily for lists and dataframes (similar to double brackets)
+        + We use $ when selecting an element by name
++ [ ] allows us to select more than one element 
++ [[ ]] and $ allow us to select only one 
+      
+    
+   
+
+
+
+## Subsetting Examples:
+
+```{r echo=TRUE}
+myVec <- 1:10
+myVec[3]
+
+myList <- list(obj1 = "a", obj2 = 10, obj3 = T, obj4 = 10-5i)
+myList[[3]]
+myList$obj4
+```
+
+
+
+## Subsetting with [ ]:
+
++ By using single brackets, we can choose more than one element of an object
+```{r echo=TRUE}
+x <- seq(from=0, to=100, by=10) 
+x
+x[1:3]           # select the first, second, and third elements
+x[c(2,4,6)]      # select the second, fourth, and six elements
+```
+
+
+
+
+
+
+## Subsetting with [ ]: Index Vectors
+
++ Another way to select more than one element from an object is by using index vectors
+    + An index vector is a vector of indices that is used to select a subset of another vector (or matrix)
+  
+```{r echo=TRUE}
+x <- seq(from=0, to=100,by=10) 
+x
+IndVec <- c(1, 2, 3, 4, 5)       # index vector to select the first 5 elements 
+x[IndVec]
+```
+
+
+
+## Index Vectors:
+
++ There are four types of index vectors:
+    1. Logical index vector
+    2. Vector of positive integers
+    3. Vector of negative integers
+    4. Vector of character strings
+
+
+
+## Example:
+
++ Suppose we have grades of ten students
+
+```{r echo=TRUE}
+grades <- sample(0:100, 10)
+names(grades) <- sample(letters[1:10], 10)
+grades
+```
+
++ We will explore the different ways to subset this vector using index vectors
+
+
+
+## 1. Logical Index Vector
+
++ A vector of TRUE/FALSE values that should be the same length as the vector from which we are subsetting. 
+    + Values corresponding to TRUE in the index vector are selected
+
+```{r echo=TRUE}
+logIndVec <- rep(c(T, F), each = 5)
+logIndVec
+
+grades[logIndVec]
+```
+
+
+
+## 1. Logical Index Vector
+
++ Logical index vectors can also be generated by using conditional statements
+    + Using ==, !=, <, >, ...
+
+```{r echo=TRUE}
+logIndVec <- grades > 60
+logIndVec
+
+grades[logIndVec]
+```
+
+
+
+## 2. Index Vector of Positive Integers
++ A vector of positive integers corresponding to the elements you want to subset
++ All of the values in this type of index vector must lie in 1:(length(x)).
+```{r echo=TRUE}
+posIndVec <- 4:7
+posIndVec
+
+grades[posIndVec]
+```
+
+
+
+
+## 3. Index Vector of Negative Integers
++  A vector of negative integers indicates the values to be excluded from the vector
+```{r echo=TRUE}
+negIndVec <- -1:-5
+negIndVec
+
+grades[negIndVec]
+```
+
+
+
+
+## 4. Vector of Character Strings
++ If a vector has a name attribute, we can take a subset of the vector by calling the names of the elements
+```{r echo=TRUE}
+chIndVec <- c("a")
+chIndVec
+
+grades[chIndVec]
+```
+
+
+
+
+## Subsetting Matrices: 
++ We also use the single square brackets to subset matrices
+    + In the square brackets, the first position refers to the row(s) and the second position refers to the column(s)
+```{r echo=TRUE}
+myMat <- matrix(1:8, ncol = 4)
+myMat
+```
+
++ Let's go over the various ways to subset this matrix
+
+
+
+
+## Subsetting Matrices: 
+
+```{r echo=TRUE}
+myMat[1,1]            # retrieve the element in the first row, first column
+myMat[2,]             # retrieve the second row
+myMat[,3]             # retrieve the third column
+```  
+
+
+
+## Subsetting Matrices:
+
++ By default, when the retrieved elements of a matrix look like a vector, R drops their dimension attribute. We can turn this feature off by setting drop = FALSE
+
+```{r echo=TRUE}
+myMat[1,1]
+myMat[1,1, drop = FALSE]
+
+myMat[2,, drop = FALSE]
+``` 
+
+
+
+## Subsetting Lists:
+```{r echo=TRUE}
+myList <- list(ID = paste("ID", sample(c(100:199), 3), sep = ""), Age = sample(c(18:99), 3), Gender = sample(c("M", "F"), 3, replace = TRUE))
+myList
+myList[1] # subset is still a list
+``` 
+
+
+
+## Subsetting Lists:
+```{r echo=TRUE}
+myList[1:2] # return the first two objects; subset is still a list
+myList[[1]] # return the 1st object; subset is a character vector
+myList$ID # alternative to [[]]
+``` 
+
+
+
+## Subsetting Lists:
+```{r echo=TRUE}
+myList[[1]][2] # return the 2nd element of the 1st object
+myList$ID[2]
+myList[[c(1,2)]]
+``` 
+
+
+
+## Subsetting Data Frames:
+```{r echo=TRUE}
+library(datasets)
+data(quakes) # ?quakes for more info
+str(quakes)
+``` 
+
+## Subsetting Data Frames:
+
+```{r echo=TRUE}
+quakes[1:10,]
+``` 
+
+
+## Subsetting Data Frames: 
+
+```{r echo=TRUE}
+head(quakes$long)
+head(quakes[,c("lat", "long")])
+```
