@@ -378,6 +378,32 @@ str(myList)
 
 ---
 
+### Compare Vectors, Matrices, Arrays, Lists and Data Frames
+
++ Vector - all elements must be of the same type
+```{r echo=TRUE}
+mylist1 = c("red", "yellow", "green");
+mylist2 = c(1, 2, 3, 4, 6);
+```
++ Array & Matrix - matrix is a special kind of vector, with two additional attributes: number of rows and and number of columns
+```{r echo=TRUE}
+mymatrix1 = matrix(c(1, 2, 3, 4), nrow=2, ncol=2);
+my3darray = array(c(1, 2, 3, 4, 5, 6, 7, 8), dim=c(2, 2, 2));
+```
++ List - can be heterogeneous
+```{r echo=TRUE}
+mylist1 = list(name="abcdef", gender="Male", age="1000");
+```
++ Data Frame - a list of vectors of equal length
+```{r echo=TRUE}
+name = c('a', 'b', 'c');
+age = c(1, 2, 3);
+ismale = c(TRUE, FALSE, TRUE);
+mydataframe = data.frame(name, age, ismale);
+```
+
+---
+
 ### apply():
 
 ```{r echo=TRUE}
@@ -525,6 +551,20 @@ mapply(sum, l1$e1, l1$e2, l2$e1, l2$e2)
 ```
 
 
+---
+
+### compare apply functions
+
++ apply for matrices and arrays
++ lapply and sapply for lists
++ lapply returns a list object
++ sapply returns a vector when possible
++ tapply for ragged arrays as vectors (to each (non-empty) group of values given by a unique combination of the levels of certain factors)
+```{r echo=TRUE}
+groups <- as.factor(rbinom(32, n = 5, prob = 0.4))
+tapply(groups, groups, length) #- is almost the same as
+#table(groups)
+```
 ---
 
 ### split():

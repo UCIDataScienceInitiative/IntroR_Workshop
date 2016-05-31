@@ -218,9 +218,9 @@ for (i in <span class="dv">1</span>:(<span class="kw">length</span>(age))) {
 age.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">age =</span> age, <span class="dt">ageCat =</span> ageCat)
 age.df[<span class="dv">1</span>:<span class="dv">3</span>,]</code></pre></div>
 <pre><code>##   age      ageCat
-## 1  79         Old
-## 2  15       Young
-## 3  37 Middle-Aged</code></pre>
+## 1  23       Young
+## 2  39 Middle-Aged
+## 3  41 Middle-Aged</code></pre>
 </div>
 <div id="functions-and-packages" class="slide section level2">
 <h1>Functions and Packages:</h1>
@@ -317,9 +317,9 @@ age.df[<span class="dv">1</span>:<span class="dv">3</span>,]</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Functions arguments can be matched: 1) by position or 2) by name</span>
 sampSpace &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">6</span> <span class="co"># rolling a die</span>
 <span class="kw">sample</span>(sampSpace, <span class="dv">1</span>) <span class="co"># arguments with default values can be omitted</span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 3</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">x =</span> sampSpace) <span class="co"># no need to remember the order </span></code></pre></div>
-<pre><code>## [1] 4</code></pre>
+<pre><code>## [1] 6</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, sampSpace)</code></pre></div>
 <pre><code>## [1] 4</code></pre>
 </div>
@@ -403,7 +403,7 @@ sampSpace &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="d
 <pre><code>## function (x, size, replace = FALSE, prob = NULL)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genderF &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>), <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))
 <span class="kw">str</span>(genderF)</code></pre></div>
-<pre><code>##  Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 1 2 1 1 1 2 1 1 1 ...</code></pre>
+<pre><code>##  Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 1 2 2 2 2 1 2 1 1 ...</code></pre>
 </div>
 <div class="slide section level2">
 
@@ -417,6 +417,31 @@ sampSpace &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="d
 ##  $ numVec : int [1:3] 1 2 3
 ##  $ logVec : logi FALSE
 ##  $ charVec: chr [1:4] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot;</code></pre>
+</div>
+<div class="slide section level2">
+
+<h3 id="compare-vectors-matrices-arrays-lists-and-data-frames">Compare Vectors, Matrices, Arrays, Lists and Data Frames</h3>
+<ul>
+<li>Vector - all elements must be of the same type</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mylist1 =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;green&quot;</span>);
+mylist2 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">6</span>);</code></pre></div>
+<ul>
+<li>Array &amp; Matrix - matrix is a special kind of vector, with two additional attributes: number of rows and and number of columns</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mymatrix1 =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">ncol=</span><span class="dv">2</span>);
+my3darray =<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>), <span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>));</code></pre></div>
+<ul>
+<li>List - can be heterogeneous</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mylist1 =<span class="st"> </span><span class="kw">list</span>(<span class="dt">name=</span><span class="st">&quot;abcdef&quot;</span>, <span class="dt">gender=</span><span class="st">&quot;Male&quot;</span>, <span class="dt">age=</span><span class="st">&quot;1000&quot;</span>);</code></pre></div>
+<ul>
+<li>Data Frame - a list of vectors of equal length</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">name =<span class="st"> </span><span class="kw">c</span>(<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>);
+age =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>);
+ismale =<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>);
+mydataframe =<span class="st"> </span><span class="kw">data.frame</span>(name, age, ismale);</code></pre></div>
 </div>
 <div class="slide section level2">
 
@@ -542,15 +567,15 @@ myMat</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">HeightDF &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">height =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">180</span>, <span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">170</span>, <span class="dv">3</span>)), <span class="dt">gender =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>), <span class="dt">each =</span> <span class="dv">100</span>)))
 <span class="kw">head</span>(HeightDF)</code></pre></div>
 <pre><code>##     height gender
-## 1 174.5017      M
-## 2 177.6990      M
-## 3 186.9638      M
-## 4 179.2390      M
-## 5 181.9160      M
-## 6 184.0310      M</code></pre>
+## 1 181.3154      M
+## 2 182.6637      M
+## 3 181.4343      M
+## 4 178.1650      M
+## 5 180.9576      M
+## 6 188.0054      M</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(HeightDF$height, HeightDF$gender, mean)</code></pre></div>
 <pre><code>##        F        M 
-## 170.3752 180.3295</code></pre>
+## 170.0403 180.4847</code></pre>
 </div>
 <div class="slide section level2">
 
@@ -575,6 +600,22 @@ l2 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">e
 </div>
 <div class="slide section level2">
 
+<h3 id="compare-apply-functions">compare apply functions</h3>
+<ul>
+<li>apply for matrices and arrays</li>
+<li>lapply and sapply for lists</li>
+<li>lapply returns a list object</li>
+<li>sapply returns a vector when possible</li>
+<li>tapply for ragged arrays as vectors (to each (non-empty) group of values given by a unique combination of the levels of certain factors)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">groups &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">rbinom</span>(<span class="dv">32</span>, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">prob =</span> <span class="fl">0.4</span>))
+<span class="kw">tapply</span>(groups, groups, length) <span class="co">#- is almost the same as</span></code></pre></div>
+<pre><code>##  9 13 14 18 
+##  2  1  1  1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#table(groups)</span></code></pre></div>
+</div>
+<div class="slide section level2">
+
 <h3 id="split">split():</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(split) <span class="co"># ?split for more info</span></code></pre></div>
 <pre><code>## function (x, f, drop = FALSE, ...)</code></pre>
@@ -589,14 +630,14 @@ l2 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">e
 <h3 id="split-1">split():</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(HeightDF)</code></pre></div>
 <pre><code>## 'data.frame':    200 obs. of  2 variables:
-##  $ height: num  175 178 187 179 182 ...
+##  $ height: num  181 183 181 178 181 ...
 ##  $ gender: Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Goal: to separate Females from Males</span>
 splitData &lt;-<span class="st"> </span><span class="kw">split</span>(HeightDF$height, HeightDF$gender)
 <span class="kw">str</span>(splitData)</code></pre></div>
 <pre><code>## List of 2
-##  $ F: num [1:100] 170 170 166 171 173 ...
-##  $ M: num [1:100] 175 178 187 179 182 ...</code></pre>
+##  $ F: num [1:100] 175 172 173 171 171 ...
+##  $ M: num [1:100] 181 183 181 178 181 ...</code></pre>
 </div>
 <div id="time-for-break-for-10-minutes" class="slide section level2">
 <h1>Time for Break for 10 Minutes :)</h1>
