@@ -1,0 +1,201 @@
+---
+title: "Session 5"
+output: html_document
+---
+
+## Session 5 - Agenda
+
+1. Histograms in R
+2. Bar Charts in R
+3. Line Charts in R
+4. Scatter Plots in R
+
+---
+
+## Histograms
+```{r echo=TRUE}
+library(car)
+data(Prestige) # load the Prestige dataset
+data = Prestige # give it a simple name, since we will use it a lot
+rm(Prestige) # remove Prestige from memory
+# data <- read.csv("~/Downloads/Prestige.csv")
+head(data)
+```
+
+---
+
+### Histograms
+```{r echo=TRUE}
+hist(data$income)
+```
+
+---
+
+### Histograms - Add Labels and Title
+```{r echo=TRUE}
+hist(data$income, xlab="Income in Dollars", ylab="Counts", main="Distribution of Income from Prestige Dataset")
+```
+
+---
+
+### Histograms - Plot Overlapping Histograms
+```{r echo=TRUE}
+hist(data$income, xlim=c(0,35000), ylim=c(0,60), density=10, angle=45, col=2, las=1)
+set.seed(1234)
+random_error = sample(10000, length(data$income), replace=TRUE)
+hist(data$income + random_error, density=10, angle=-45, col=4, add=T)
+```
+
+---
+
+### Bar Charts vs. Histograms
+```{r echo=TRUE}
+hist(as.numeric(data$type)) # Histograms handles categorical/ordinal variables poorly
+```
+
+---
+
+### Bar Charts vs. Histograms
+```{r echo=TRUE}
+hist(as.numeric(data$type), xaxt="n") # suppress displaying x-axis
+axis(side=1, at=c(1,2,3), labels=levels(data$type)) # mannually add x-axis
+```
+
+---
+
+## Bar Charts
+```{r echo=TRUE}
+barplot(table(as.numeric(data$type))) # must use table() here
+```
+
+---
+
+### Bar Charts
+```{r echo=TRUE}
+barplot(table(as.numeric(data$type)), names.arg=levels(data$type), density=c(30, 20, 10))
+title(xlab="Profession Type", ylab="Counts", main="Distribution of Profession")
+```
+
+---
+
+### Bar Charts
+```{r echo=TRUE}
+mat = matrix(NA, nrow=4, ncol=3)
+colnames(mat) = c("cars", "trucks", "suvs")
+rownames(mat) = paste("quarter", 1:4, sep="")
+mat[,1] = 1:4
+mat[,2] = 4:1
+mat[,3] = c(1,2,3,1)
+mat
+```
+
+---
+
+### Bar Charts
+```{r echo=TRUE}
+barplot(mat) # beside=FALSE by default
+```
+
+---
+
+### Bar Charts - Unstack the Bars
+```{r echo=TRUE}
+barplot(mat, beside=TRUE)
+```
+
+---
+
+### Bar Charts - Change Some Attributes & Add Legend
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+par(xpd=T, mar=par()$mar+c(0,0,0,4))
+barplot(mat, beside=TRUE, density=c(10,15,20,25), col=c(2,4,5,6), las=1)
+legend("topright", rownames(mat), bty="n", density=c(10,15,20,25)+10, fill=c(2,4,5,6), horiz=FALSE, inset=-0.1)
+par(mar=c(5, 4, 4, 2) + 0.1) # restore default parameters
+par(xpd=FALSE)
+```
+
+---
+
+## Line Charts
+```{r echo=TRUE}
+cars = c(2,3,4,3,5)
+plot(cars)
+```
+
+---
+
+### Line Charts - Change Some Attributes
+```{r echo=TRUE}
+plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
+title(main="Autos Sales", col.main="darkgrey")
+```
+
+---
+
+### Line Charts - Add Another Line
+```{r echo=TRUE}
+plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
+title(main="Autos Sales", col.main="darkgrey")
+suvs = c(1,4,3,3,4)
+lines(suvs, type="o", col="blue", lty=2, pch=6)
+```
+
+---
+
+### Line Charts - Add a Horizontal Line
+```{r echo=TRUE}
+plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
+title(main="Autos Sales", col.main="darkgrey")
+lines(suvs, type="o", col="blue", lty=2, pch=6)
+abline(h=c(3,4), lty=2, col="darkgrey") # h for horizontal
+```
+
+---
+
+### Line Charts - Add Legend
+```{r echo=TRUE}
+plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
+title(main="Autos Sales", col.main="darkgrey")
+lines(suvs, type="o", col="blue", lty=2, pch=6)
+abline(h=c(3,4), lty=2, col="darkgrey") # h for horizontal
+legend(4.2, 1.2, c("cars","suvs"), col=c("red","blue"), lty=1:2, pch=c(1,6), bty="n")
+```
+
+---
+
+## Scatter Plots
+```{r echo=TRUE}
+plot(data$education, data$prestige)
+```
+
+---
+
+### Scatter Plots - Add Labels
+```{r echo=TRUE}
+plot(data$education, data$prestige, xlab="Education in Years", ylab="Prestige", cex.lab = 1.2, cex.axis=1.2, las=1)
+```
+
+---
+
+### Scatter Plots - Add Labels
+```{r echo=TRUE}
+plot(data$education, data$prestige, xlab="Education in Years", ylab="Prestige", cex.lab = 1.2, cex.axis=1.2, las=1)
+abline(lm(prestige~education, data=data), col="red")
+lines(lowess(data$education, data$prestige), col="blue", lty=2, lwd=1.5)
+```
+
+---
+
+### Scatter Plots - Add Colors by Profession
+```{r echo=TRUE}
+plot(data$education, data$prestige, xlab="Education in Years", ylab="Prestige", cex.lab=1.2, cex.axis=1.2, las=1, col=ifelse(data$type=="prof", "red", "blue"), pch=ifelse(data$type=="prof", 1, 2))
+```
+
+---
+
+### Scatter Plots - Add Legend
+```{r echo=TRUE}
+plot(data$education, data$prestige, xlab="Education in Years", ylab="Prestige", cex.lab=1.2, cex.axis=1.2, las=1, col=ifelse(data$type=="prof", "red", "blue"), pch=ifelse(data$type=="prof", 1, 2))
+legend("topleft", c("Professional","Non-Professional"), col=c("red","blue"), pch=c(1,2), bty="n", cex=1.2)
+```
+

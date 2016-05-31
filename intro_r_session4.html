@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Intro to R Workshop</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Intro to R Workshop">
+  <meta name="author" content="Wenliang He &amp; Sepehr Akhavan">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/logo.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/logo.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Intro to R Workshop</h1>
+    <h2>UCI Data Science Initiative</h2>
+    <p>Wenliang He &amp; Sepehr Akhavan<br/>School of Education &amp; Department of Statistics</p>
+  </hgroup>
+    <a href="https://github.com/UCIDataScienceInitiative/IntroR_Workshop/zipball/gh-pages" class="example">
+     Download
+    </a>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Session 4 - Agenda</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>T-Test in R</li>
+<li>ANOVA in R</li>
+<li>Linear Regression in R</li>
+<li>Logistic Regression in R</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>T-Test in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>T-tests can be categorized into two groups:</p>
+
+<ul>
+<li>1) One-Sample t-test</li>
+<li>2) Two-sample t-test</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h3>One-Sample T-Test (Create Data)</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">set.seed(123)
+oneSampData &lt;- rnorm(100, mean = 0, sd = 1)
+
+mean(oneSampData)
+</code></pre>
+
+<pre><code>## [1] 0.09040591
+</code></pre>
+
+<pre><code class="r">sd(oneSampData)
+</code></pre>
+
+<pre><code>## [1] 0.9128159
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h3>One-Sample T-Test (True Mean Equal to 0)</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">oneSampTest.0 &lt;- t.test(oneSampData) # ?t.test
+oneSampTest.0
+</code></pre>
+
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  oneSampData
+## t = 0.99041, df = 99, p-value = 0.3244
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  -0.09071657  0.27152838
+## sample estimates:
+##  mean of x 
+## 0.09040591
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">names(oneSampTest.0) # alternative to names()?? 
+</code></pre>
+
+<pre><code>## [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;   
+## [6] &quot;null.value&quot;  &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;
+</code></pre>
+
+<pre><code class="r">oneSampTest.0$statistic
+</code></pre>
+
+<pre><code>##         t 
+## 0.9904068
+</code></pre>
+
+<pre><code class="r">oneSampTest.0$estimate
+</code></pre>
+
+<pre><code>##  mean of x 
+## 0.09040591
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h3>One-Sample T-Test (True Mean Equal to mu)</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">oneSampTest.mu &lt;- t.test(oneSampData, mu = 0.3)
+oneSampTest.mu
+</code></pre>
+
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  oneSampData
+## t = -2.2961, df = 99, p-value = 0.02378
+## alternative hypothesis: true mean is not equal to 0.3
+## 95 percent confidence interval:
+##  -0.09071657  0.27152838
+## sample estimates:
+##  mean of x 
+## 0.09040591
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h3>Two-Sample T-Test</h3>
+  </hgroup>
+  <article data-timings="">
+    <p>Two sample t-tests are categorized into 3 groups:</p>
+
+<ul>
+<li>T-Test with equal variances</li>
+<li>T-Test with un-equal variances</li>
+<li>Paired T-Test: can be also considered as one-sample t-test on deltas.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h3>Two-Sample T-Test (Un-equal Variances)</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">Samp1 &lt;- rnorm(30, mean = 2.5, sd = 1)
+Samp2 &lt;- rnorm(50, mean = 3.0, sd = 1) # notice: not the same sample size
+t.test(Samp1, Samp2)  # default assump: unequal variances
+</code></pre>
+
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Samp1 and Samp2
+## t = -3.793, df = 77.061, p-value = 0.0002943
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.1903480 -0.3707903
+## sample estimates:
+## mean of x mean of y 
+##  2.223600  3.004169
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h3>Two-Sample T-Test (Equal Variances)</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
+</code></pre>
+
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  Samp1 and Samp2
+## t = -3.4398, df = 78, p-value = 0.0009378
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.2323417 -0.3287966
+## sample estimates:
+## mean of x mean of y 
+##  2.223600  3.004169
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h3>Two-Sample T-Test (Paired T Test)</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">t.test(Samp1, Samp2[1:30], paired = TRUE) # must be of the same sample size
+</code></pre>
+
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  Samp1 and Samp2[1:30]
+## t = -2.5797, df = 29, p-value = 0.01522
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.2049365 -0.1392412
+## sample estimates:
+## mean of the differences 
+##              -0.6720889
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>ANOVA</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>If you are not familiar with ANOVA, simply consider ANOVA as an extension to two-sample t-test where we have more than two groups.</p>
+
+<pre><code class="r">Samp1 &lt;- round(rnorm(10, mean = 25, sd = 1), 1)
+Samp2 &lt;- round(rnorm(10, mean = 30, sd = 1), 1)
+Samp3 &lt;- round(rnorm(10, mean = 35, sd = 1), 1)
+myDF &lt;- data.frame(y = c(Samp1, Samp2, Samp3), group = rep(c(1, 2, 3), each = 10))
+myDF$group &lt;- as.factor(myDF$group)
+str(myDF)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    30 obs. of  2 variables:
+##  $ y    : num  24.1 24.5 25.8 22.9 25 24.6 24.9 26.8 24.2 26.9 ...
+##  $ group: Factor w/ 3 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h3>ANOVA</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">head(myDF, n=15)
+</code></pre>
+
+<pre><code>##       y group
+## 1  24.1     1
+## 2  24.5     1
+## 3  25.8     1
+## 4  22.9     1
+## 5  25.0     1
+## 6  24.6     1
+## 7  24.9     1
+## 8  26.8     1
+## 9  24.2     1
+## 10 26.9     1
+## 11 30.7     2
+## 12 30.7     2
+## 13 31.4     2
+## 14 29.4     2
+## 15 29.2     2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h3>ANOVA</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mod.aov &lt;- aov(y ~ group, data = myDF)  # use aov() not anova()
+mod.aov
+</code></pre>
+
+<pre><code>## Call:
+##    aov(formula = y ~ group, data = myDF)
+## 
+## Terms:
+##                    group Residuals
+## Sum of Squares  530.6247   26.0300
+## Deg. of Freedom        2        27
+## 
+## Residual standard error: 0.9818727
+## Estimated effects may be unbalanced
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h3>ANOVA</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">summary(mod.aov)
+</code></pre>
+
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## group        2  530.6  265.31   275.2 &lt;2e-16 ***
+## Residuals   27   26.0    0.96                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</code></pre>
+
+<pre><code class="r">names(mod.aov) # see what else is stored in mod.aov
+</code></pre>
+
+<pre><code>##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;         
+##  [5] &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;  
+##  [9] &quot;contrasts&quot;     &quot;xlevels&quot;       &quot;call&quot;          &quot;terms&quot;        
+## [13] &quot;model&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h3>ANOVA</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mod.lm &lt;- lm(y ~ group, data = myDF)  # fit a linear model first using lm()
+mod.anova &lt;- anova(mod.lm)  # anova computes ANOVA tables on a fitted model object.
+mod.anova
+</code></pre>
+
+<pre><code>## Analysis of Variance Table
+## 
+## Response: y
+##           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## group      2 463.02 231.511  186.78 &lt; 2.2e-16 ***
+## Residuals 27  33.47   1.239                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</code></pre>
+
+<pre><code class="r">names(mod.anova) # see what else is stored in mod.anova
+</code></pre>
+
+<pre><code>## [1] &quot;Df&quot;      &quot;Sum Sq&quot;  &quot;Mean Sq&quot; &quot;F value&quot; &quot;Pr(&gt;F)&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>ANOVA</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mod = lm(mod.aov)
+summary(mod)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = mod.aov)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -1.110 -0.775 -0.260  0.710  2.270 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  25.0100     0.3105   80.55  &lt; 2e-16 ***
+## group2        4.7200     0.4391   10.75 2.95e-11 ***
+## group3       10.2900     0.4391   23.43  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9819 on 27 degrees of freedom
+## Multiple R-squared:  0.9532, Adjusted R-squared:  0.9498 
+## F-statistic: 275.2 on 2 and 27 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>ANOVA</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>To learn more on how to fit ANOVA, please visit: 
+
+<ul>
+<li><a href="http://www.statmethods.net/stats/anova.html">http://www.statmethods.net/stats/anova.html</a></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>lm() is used to fit linear regression</li>
+<li>Here we use &quot;Prestige&quot; dataset from &quot;car&quot; package</li>
+</ul>
+
+<pre><code class="r"># install.package(&quot;car&quot;, dependencies=TRUE)
+library(car)
+data(Prestige) # load the data
+str(Prestige)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    102 obs. of  6 variables:
+##  $ education: num  13.1 12.3 12.8 11.4 14.6 ...
+##  $ income   : int  12351 25879 9271 8865 8403 11030 8258 14163 11377 11023 ...
+##  $ women    : num  11.16 4.02 15.7 9.11 11.68 ...
+##  $ prestige : num  68.8 69.1 63.4 56.8 73.5 77.6 72.6 78.1 73.1 68.8 ...
+##  $ census   : int  1113 1130 1171 1175 2111 2113 2133 2141 2143 2153 ...
+##  $ type     : Factor w/ 3 levels &quot;bc&quot;,&quot;prof&quot;,&quot;wc&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">sapply(Prestige, function(x) { sum(is.na(x)) })
+</code></pre>
+
+<pre><code>## education    income     women  prestige    census      type 
+##         0         0         0         0         0         4
+</code></pre>
+
+<pre><code class="r">Prestige = na.omit(Prestige) # remove missing NA data
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Data Description</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>education: Average education of occupational incumbents, years, in 1971.</p></li>
+<li><p>income: Average income of incumbents, dollars, in 1971.</p></li>
+<li><p>women: Percentage of incumbents who are women.</p></li>
+<li><p>prestige :Pineo-Porter prestige score for occupation, from a social survey conducted in the mid-1960s.</p></li>
+<li><p>census: Canadian Census occupational code.</p></li>
+<li><p>type: Type of occupation. A factor with levels (note: out of order): bc, Blue Collar; prof, Professional, Managerial, and Technical; wc, White Collar.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Two-Sample T-Test Revisited</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">Prestige[&quot;prof&quot;] =  (Prestige$type == &quot;prof&quot;) * 1 # must add the ()
+t.test(income ~ (type==&quot;prof&quot;), data=Prestige) # () is optional here
+</code></pre>
+
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  income by type == &quot;prof&quot;
+## t = -5.2778, df = 33.738, p-value = 7.648e-06
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -7335.559 -3256.031
+## sample estimates:
+## mean in group FALSE  mean in group TRUE 
+##            5263.657           10559.452
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Two-Sample T-Test Revisited</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">set.seed(123)
+group = sample(0:1, nrow(Prestige), replace=T)
+t.test(Prestige$income ~ group)
+</code></pre>
+
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Prestige$income by group
+## t = -1.9961, df = 72.894, p-value = 0.04966
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3454.063202    -2.614056
+## sample estimates:
+## mean in group 0 mean in group 1 
+##        6127.596        7855.935
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Fit</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">myReg &lt;- lm(prestige ~ education + income + women, data = Prestige)
+myReg
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = prestige ~ education + income + women, data = Prestige)
+## 
+## Coefficients:
+## (Intercept)    education       income        women  
+##   -7.524222     4.362425     0.001172    -0.012946
+</code></pre>
+
+<pre><code class="r">names(myReg)
+</code></pre>
+
+<pre><code>##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;         
+##  [5] &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;  
+##  [9] &quot;xlevels&quot;       &quot;call&quot;          &quot;terms&quot;         &quot;model&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Summary of Fit</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">summary(myReg) # summary(myReg)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = prestige ~ education + income + women, data = Prestige)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -16.8834  -4.3572  -0.2191   4.9286  16.4533 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -7.5242222  3.1377519  -2.398   0.0185 *  
+## education    4.3624246  0.3749725  11.634  &lt; 2e-16 ***
+## income       0.0011723  0.0002721   4.308 4.05e-05 ***
+## women       -0.0129461  0.0300771  -0.430   0.6679    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 7.482 on 94 degrees of freedom
+## Multiple R-squared:  0.8144, Adjusted R-squared:  0.8084 
+## F-statistic: 137.5 on 3 and 94 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">sum.myReg = summary(myReg)
+names(sum.myReg) # show different contents
+</code></pre>
+
+<pre><code>##  [1] &quot;call&quot;          &quot;terms&quot;         &quot;residuals&quot;     &quot;coefficients&quot; 
+##  [5] &quot;aliased&quot;       &quot;sigma&quot;         &quot;df&quot;            &quot;r.squared&quot;    
+##  [9] &quot;adj.r.squared&quot; &quot;fstatistic&quot;    &quot;cov.unscaled&quot;
+</code></pre>
+
+<pre><code class="r">names(myReg) # this is what we had previously
+</code></pre>
+
+<pre><code>##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;         
+##  [5] &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;  
+##  [9] &quot;xlevels&quot;       &quot;call&quot;          &quot;terms&quot;         &quot;model&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">sd(myReg$residuals)
+</code></pre>
+
+<pre><code>## [1] 7.365332
+</code></pre>
+
+<pre><code class="r">sum.myReg$sigma
+</code></pre>
+
+<pre><code>## [1] 7.481941
+</code></pre>
+
+<pre><code class="r">sqrt( sum(myReg$residuals^2) / ( nrow(Prestige) - length(myReg$coefficients) ) )
+</code></pre>
+
+<pre><code>## [1] 7.481941
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Predict</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Predict the output for a new input</li>
+</ul>
+
+<pre><code class="r">newData = data.frame(education=13.2, income=12000, women=12);
+predict(myReg, newData, interval=&quot;predict&quot;);
+</code></pre>
+
+<pre><code>##        fit     lwr      upr
+## 1 63.97166 48.9267 79.01661
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Confidence Interval</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>95% confidence interval for coefficient of &#39;income&#39;</li>
+</ul>
+
+<pre><code class="r">confint(myReg, &#39;income&#39;, level=0.95)
+</code></pre>
+
+<pre><code>##               2.5 %      97.5 %
+## income 0.0006319649 0.001712573
+</code></pre>
+
+<ul>
+<li>95% confidence interval for each coefficient</li>
+</ul>
+
+<pre><code class="r">confint(myReg, level=0.95)
+</code></pre>
+
+<pre><code>##                     2.5 %       97.5 %
+## (Intercept) -1.375430e+01 -1.294142240
+## education    3.617908e+00  5.106941239
+## income       6.319649e-04  0.001712573
+## women       -7.266485e-02  0.046772692
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Model Selection</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">add1(myReg, ~ . + type, test=&quot;F&quot;)
+</code></pre>
+
+<pre><code>## Single term additions
+## 
+## Model:
+## prestige ~ education + income + women
+##        Df Sum of Sq    RSS    AIC F value   Pr(&gt;F)   
+## &lt;none&gt;              5262.1 398.36                    
+## type    2    583.08 4679.0 390.86  5.7324 0.004506 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Model Selection</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mod = update(myReg, ~ . + type); summary(mod)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = prestige ~ education + income + women + type, data = Prestige)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -14.7485  -4.4817   0.3119   5.2478  18.4978 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -0.8139032  5.3311558  -0.153 0.878994    
+## education    3.6623557  0.6458300   5.671 1.63e-07 ***
+## income       0.0010428  0.0002623   3.976 0.000139 ***
+## women        0.0064434  0.0303781   0.212 0.832494    
+## typeprof     5.9051970  3.9377001   1.500 0.137127    
+## typewc      -2.9170720  2.6653961  -1.094 0.276626    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 7.132 on 92 degrees of freedom
+## Multiple R-squared:  0.8349, Adjusted R-squared:  0.826 
+## F-statistic: 93.07 on 5 and 92 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Model Selection</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">levels(Prestige$type)
+</code></pre>
+
+<pre><code>## [1] &quot;bc&quot;   &quot;prof&quot; &quot;wc&quot;
+</code></pre>
+
+<pre><code class="r">Prestige$type = relevel(Prestige$type, &quot;prof&quot;)
+levels(Prestige$type)
+</code></pre>
+
+<pre><code>## [1] &quot;prof&quot; &quot;bc&quot;   &quot;wc&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Model Selection</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mod = update(myReg, ~ . + type); summary(mod)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = prestige ~ education + income + women + type, data = Prestige)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -14.7485  -4.4817   0.3119   5.2478  18.4978 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  5.0912938  8.8702671   0.574 0.567387    
+## education    3.6623557  0.6458300   5.671 1.63e-07 ***
+## income       0.0010428  0.0002623   3.976 0.000139 ***
+## women        0.0064434  0.0303781   0.212 0.832494    
+## typebc      -5.9051970  3.9377001  -1.500 0.137127    
+## typewc      -8.8222690  2.7937639  -3.158 0.002150 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 7.132 on 92 degrees of freedom
+## Multiple R-squared:  0.8349, Adjusted R-squared:  0.826 
+## F-statistic: 93.07 on 5 and 92 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Model Selection</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">add1(myReg, ~ type + I(education^2) + I(income^2) + .^2, test=&quot;F&quot;)
+</code></pre>
+
+<pre><code>## Single term additions
+## 
+## Model:
+## prestige ~ education + income + women
+##                  Df Sum of Sq    RSS    AIC F value    Pr(&gt;F)    
+## &lt;none&gt;                        5262.1 398.36                      
+## type              2    583.08 4679.0 390.86  5.7324 0.0045060 ** 
+## I(education^2)    1     48.02 5214.0 399.47  0.8566 0.3570918    
+## I(income^2)       1    672.75 4589.3 386.96 13.6328 0.0003747 ***
+## education:income  1    333.09 4929.0 393.96  6.2847 0.0139136 *  
+## education:women   1     31.31 5230.8 399.78  0.5568 0.4574512    
+## income:women      1     82.80 5179.3 398.81  1.4868 0.2257986    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Model Selection</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(MASS)
+stepAIC(myReg, ~ type + I(education^2) + I(income^2) + .^2, test=&quot;F&quot;, direction=&quot;both&quot;)
+</code></pre>
+
+<pre><code>## Start:  AIC=398.36
+## prestige ~ education + income + women
+## 
+##                    Df Sum of Sq     RSS    AIC F Value     Pr(F)    
+## + I(income^2)       1     672.7  4589.3 386.96  13.633 0.0003747 ***
+## + type              2     583.1  4679.0 390.86   5.732 0.0045060 ** 
+## + education:income  1     333.1  4929.0 393.96   6.285 0.0139136 *  
+## - women             1      10.4  5272.4 396.56   0.185 0.6678683    
+## &lt;none&gt;                           5262.1 398.36                      
+## + income:women      1      82.8  5179.3 398.81   1.487 0.2257986    
+## + I(education^2)    1      48.0  5214.0 399.47   0.857 0.3570918    
+## + education:women   1      31.3  5230.8 399.78   0.557 0.4574512    
+## - income            1    1038.9  6300.9 414.02  18.558  4.05e-05 ***
+## - education         1    7576.8 12838.9 483.78 135.350 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Step:  AIC=386.96
+## prestige ~ education + income + women + I(income^2)
+## 
+##                    Df Sum of Sq    RSS    AIC F Value     Pr(F)    
+## + type              2     554.7 4034.6 378.33   6.256 0.0028471 ** 
+## &lt;none&gt;                          4589.3 386.96                      
+## + education:income  1      61.3 4528.0 387.64   1.246 0.2672926    
+## + I(education^2)    1      59.3 4530.0 387.68   1.204 0.2753849    
+## + income:women      1      14.6 4574.8 388.65   0.293 0.5897858    
+## - women             1     178.9 4768.2 388.71   3.626 0.0599836 .  
+## + education:women   1       7.0 4582.4 388.81   0.140 0.7092253    
+## - I(income^2)       1     672.7 5262.1 398.36  13.633 0.0003747 ***
+## - income            1    1182.7 5772.0 407.43  23.966 4.114e-06 ***
+## - education         1    3252.8 7842.1 437.47  65.916 1.912e-12 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Step:  AIC=378.33
+## prestige ~ education + income + women + I(income^2) + type
+## 
+##                    Df Sum of Sq    RSS    AIC F Value     Pr(F)    
+## + education:income  1    144.46 3890.1 376.76  3.3421 0.0708397 .  
+## &lt;none&gt;                          4034.6 378.33                      
+## + I(education^2)    1     13.48 4021.1 380.01  0.3017 0.5841522    
+## + education:women   1     11.70 4022.9 380.05  0.2618 0.6101645    
+## + income:women      1      0.16 4034.5 380.33  0.0035 0.9530846    
+## - women             1    257.93 4292.5 382.41  5.8175 0.0178746 *  
+## - type              2    554.72 4589.3 386.96  6.2558 0.0028471 ** 
+## - I(income^2)       1    644.38 4679.0 390.86 14.5339 0.0002502 ***
+## - education         1    789.17 4823.8 393.84 17.7997 5.793e-05 ***
+## - income            1   1072.90 5107.5 399.44 24.1992 3.841e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Step:  AIC=376.76
+## prestige ~ education + income + women + I(income^2) + type + 
+##     education:income
+## 
+##                    Df Sum of Sq    RSS    AIC F Value    Pr(F)   
+## &lt;none&gt;                          3890.1 376.76                    
+## + I(education^2)    1     52.82 3837.3 377.42  1.2251 0.271348   
+## - education:income  1    144.46 4034.6 378.33  3.3421 0.070840 . 
+## + education:women   1      6.68 3883.5 378.59  0.1532 0.696459   
+## + income:women      1      1.97 3888.2 378.71  0.0450 0.832521   
+## - women             1    265.48 4155.6 381.23  6.1420 0.015066 * 
+## - I(income^2)       1    294.29 4184.4 381.91  6.8084 0.010625 * 
+## - type              2    637.87 4528.0 387.64  7.3787 0.001078 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = prestige ~ education + income + women + I(income^2) + 
+##     type + education:income, data = Prestige)
+## 
+## Coefficients:
+##      (Intercept)         education            income             women  
+##       -1.284e+01         3.927e+00         5.306e-03         8.554e-02  
+##      I(income^2)            typebc            typewc  education:income  
+##       -7.673e-08        -5.329e+00        -9.095e+00        -1.465e-04
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Linear Regression - Diagnostics</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Here we cover some common regression diagnostics including:</li>
+<li>Testing for Normality</li>
+<li><p>Testing for Constant Variance</p></li>
+<li><p>Reference: <a href="http://www.statmethods.net/stats/rdiagnostics.html">http://www.statmethods.net/stats/rdiagnostics.html</a></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>Model diagnostic plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">par(mfrow = c(2, 2), oma = c(0, 0, 2, 0))
+plot(myReg)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-31-1.png" alt="plot of chunk unnamed-chunk-31"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-37" style="background:;">
+  <hgroup>
+    <h2>Logistic Regression - Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>glm() is used to fit logistic regression model</li>
+<li>Mroz data</li>
+</ul>
+
+<pre><code class="r">data(Mroz); # load Mroz data
+head(Mroz)
+</code></pre>
+
+<pre><code>##   lfp k5 k618 age  wc hc       lwg    inc
+## 1 yes  1    0  32  no no 1.2101647 10.910
+## 2 yes  0    2  30  no no 0.3285041 19.500
+## 3 yes  1    3  35  no no 1.5141279 12.040
+## 4 yes  0    3  34  no no 0.0921151  6.800
+## 5 yes  1    2  31 yes no 1.5242802 20.100
+## 6 yes  0    0  54  no no 1.5564855  9.859
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-38" style="background:;">
+  <hgroup>
+    <h2>Logistic Regression - Data Description</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>lfp: labor-force participation; a factor with levels: no; yes.</li>
+<li>k5: number of children 5 years old or younger.</li>
+<li>k618: number of children 6 to 18 years old.</li>
+<li>age: in years.</li>
+<li>wc: wife&#39;s college attendance; a factor with levels: no; yes.</li>
+<li>hc: husband&#39;s college attendance; a factor with levels: no; yes.</li>
+<li>lwg: log expected wage rate; for women in the labor force, the actual wage rate; for women not in the labor force, an imputed value based on the regression of lwg on the other variables.</li>
+<li>inc: family income exclusive of wife&#39;s income.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:;">
+  <hgroup>
+    <h2>Logistic Regression - Model Fit</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">fitLogistic &lt;- glm(lfp ~ k5 + age, family=binomial(logit), data=Mroz); 
+fitLogistic
+</code></pre>
+
+<pre><code>## 
+## Call:  glm(formula = lfp ~ k5 + age, family = binomial(logit), data = Mroz)
+## 
+## Coefficients:
+## (Intercept)           k5          age  
+##     3.08578     -1.32042     -0.05847  
+## 
+## Degrees of Freedom: 752 Total (i.e. Null);  750 Residual
+## Null Deviance:       1030 
+## Residual Deviance: 964.5     AIC: 970.5
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h2>Logistic Regression - Model Fit</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">summary(fitLogistic)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## glm(formula = lfp ~ k5 + age, family = binomial(logit), data = Mroz)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.7698  -1.1719   0.7588   1.0144   1.9663  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  3.08578    0.49712   6.207 5.39e-10 ***
+## k5          -1.32042    0.18638  -7.085 1.39e-12 ***
+## age         -0.05847    0.01090  -5.364 8.13e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1029.75  on 752  degrees of freedom
+## Residual deviance:  964.48  on 750  degrees of freedom
+## AIC: 970.48
+## 
+## Number of Fisher Scoring iterations: 4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h2>Logistic Regression - Model Fit</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">names(fitLogistic)
+</code></pre>
+
+<pre><code>##  [1] &quot;coefficients&quot;      &quot;residuals&quot;         &quot;fitted.values&quot;    
+##  [4] &quot;effects&quot;           &quot;R&quot;                 &quot;rank&quot;             
+##  [7] &quot;qr&quot;                &quot;family&quot;            &quot;linear.predictors&quot;
+## [10] &quot;deviance&quot;          &quot;aic&quot;               &quot;null.deviance&quot;    
+## [13] &quot;iter&quot;              &quot;weights&quot;           &quot;prior.weights&quot;    
+## [16] &quot;df.residual&quot;       &quot;df.null&quot;           &quot;y&quot;                
+## [19] &quot;converged&quot;         &quot;boundary&quot;          &quot;model&quot;            
+## [22] &quot;call&quot;              &quot;formula&quot;           &quot;terms&quot;            
+## [25] &quot;data&quot;              &quot;offset&quot;            &quot;control&quot;          
+## [28] &quot;method&quot;            &quot;contrasts&quot;         &quot;xlevels&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-42" style="background:;">
+  <article data-timings="">
+    <ul>
+<li>95% CI for exp(coefficients) (profile liklihood mehtod)</li>
+</ul>
+
+<pre><code class="r">exp(confint(fitLogistic, level=0.95))
+</code></pre>
+
+<pre><code>##                 2.5 %     97.5 %
+## (Intercept) 8.3698492 58.8728998
+## k5          0.1832502  0.3808541
+## age         0.9230190  0.9633534
+</code></pre>
+
+<ul>
+<li>95% CI for exp(coefficients) (Wald confident interval)</li>
+</ul>
+
+<pre><code class="r">exp(confint.default(fitLogistic, level=0.95))
+</code></pre>
+
+<pre><code>##                 2.5 %     97.5 %
+## (Intercept) 8.2602111 57.9810036
+## k5          0.1853124  0.3847626
+## age         0.9232736  0.9635756
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-43" style="background:;">
+  <article data-timings="">
+    <ul>
+<li>Update model by adding &#39;inc&#39; and &#39;lwg&#39;</li>
+</ul>
+
+<pre><code class="r">fitLogistic2 = update(fitLogistic, . ~ . + inc + lwg, data=Mroz)
+</code></pre>
+
+<ul>
+<li>After update</li>
+</ul>
+
+<pre><code class="r">fitLogistic2
+</code></pre>
+
+<pre><code>## 
+## Call:  glm(formula = lfp ~ k5 + age + inc + lwg, family = binomial(logit), 
+##     data = Mroz)
+## 
+## Coefficients:
+## (Intercept)           k5          age          inc          lwg  
+##     2.75867     -1.34227     -0.05900     -0.02464      0.78765  
+## 
+## Degrees of Freedom: 752 Total (i.e. Null);  748 Residual
+## Null Deviance:       1030 
+## Residual Deviance: 925.2     AIC: 935.2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-44" style="background:;">
+  <hgroup>
+    <h2>Model Comparison</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Use change of deviance of fitted model</li>
+</ul>
+
+<pre><code class="r">anova(fitLogistic, fitLogistic2, test=&#39;LRT&#39;)
+</code></pre>
+
+<pre><code>## Analysis of Deviance Table
+## 
+## Model 1: lfp ~ k5 + age
+## Model 2: lfp ~ k5 + age + inc + lwg
+##   Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    
+## 1       750     964.48                          
+## 2       748     925.17  2   39.318 2.899e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-45" style="background:;">
+  <hgroup>
+    <h2>Time for Break for 10 Minutes :)</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Session 4 - Agenda'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='T-Test in R'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='One-Sample T-Test (Create Data)'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='One-Sample T-Test (True Mean Equal to 0)'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='NA'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='One-Sample T-Test (True Mean Equal to mu)'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Two-Sample T-Test'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Two-Sample T-Test (Un-equal Variances)'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Two-Sample T-Test (Equal Variances)'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Two-Sample T-Test (Paired T Test)'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='ANOVA'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='ANOVA'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='ANOVA'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='ANOVA'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='ANOVA'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='ANOVA'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='ANOVA'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Linear Regression - Data'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Linear Regression - Data'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Linear Regression - Data Description'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Two-Sample T-Test Revisited'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Two-Sample T-Test Revisited'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Linear Regression - Fit'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Linear Regression - Summary of Fit'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Linear Regression'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Linear Regression'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Linear Regression - Predict'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Linear Regression - Confidence Interval'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Linear Regression - Model Selection'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Linear Regression - Model Selection'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Linear Regression - Model Selection'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Linear Regression - Model Selection'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Linear Regression - Model Selection'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Linear Regression - Model Selection'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Linear Regression - Diagnostics'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Model diagnostic plot'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Logistic Regression - Data'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Logistic Regression - Data Description'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Logistic Regression - Model Fit'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Logistic Regression - Model Fit'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='Logistic Regression - Model Fit'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='NA'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='NA'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Model Comparison'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='Time for Break for 10 Minutes :)'>
+         45
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
