@@ -1,0 +1,559 @@
+---
+title: 'Intro to R Workshop: Session 3'
+output: slidy_presentation
+date: "May 30, 2016"
+subtitle: UCI Data Science Initiative
+---
+
+```{r, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+---
+
+## Session 2 - Agenda
+
+1. Vectorized Operations in R
+2. Reading and Writing in R
+3. Control Structure
+4. R Packages and Functions
+
+---
+
+## Vectorized Operations
+
+R is capable of vectorized operations without any need for running loops:
+```{r echo=TRUE}
+x <- 1:5
+y <- c(1, 2, 6, 7, 10)
+x + y # R does an element by element summation
+x < y
+```
+
+---
+
+## Vectorized Operations
+
++ Similar to vectors, vectorized operations can be performed for Matrices:
+```{r echo=TRUE}
+x <- matrix(1:9, ncol = 3)
+y <- matrix(rep(c(5,6,7), 3), ncol = 3)
+x + y # R does an element by element summation
+x < y
+```
+
+---
+
+## Reading and Writing Data
+
+**The slides for "Reading and Writing Data" section were mainly from Dr. Roger D. Peng, Associate Professor at Johns Hopkins**
+
+Main functions for reading data into R:
+
+1. read.table(), read.csv(): to read tabular data 
+2. readLines(): to read lines of a text file
+3. source(), dget(): reading R codes
+4. load(): to read saved workspaces
+
++ Only read.table() and read.csv() are covered in this lecture. 
+
+---
+
+## Reading and Writing Data
+
+Main functions for writing data from R:
+
+1. write.table(), write.csv(): to write tabular data to file
+2. writeLines(): to write lines to a text file
+3. dump, dput: to write R codes to a file
+4. save: to save a workspace
+
++ Only write.table() is covered in this lecture. 
+
+---
+
+## read.table():
+
++ read.table() is the most commonly used function to read data in R. Below are important arguments of this function:
+
+  + file: name or address to the file of interest
+  + header: logical indicator on whether the file has header or not
+  + sep: string on how columns of data are separated (in .csv, sep = ",")
+  + colClasses: is a character vector for class of each column
+  + nrows: number of rows in the dataset
+  + comment.char: a character that is used in the dataset for commenting
+  + skip: number of lines to skip from the beginning of the file
+  + stringAsFactors: logical indicator on whether characters should be converted to factors 
+
++ read.csv() is equivalent to read.table with sep = "," and header = TRUE
+
+---
+
+## read.table():
+
+```{r echo = TRUE, eval=TRUE}
+irisFile <- read.table(file = "iris.csv", sep=",", header = TRUE)
+head(irisFile)
+```
+
++ to make read.table() run faster:
+  + set comment.char = " "
+  + set colClasses upfront
+
+---
+
+## Calculating Memory Requirements:
+
++ Note that datasets will be read into RAM. So, you should have enough RAM in order to read a dataset. 
+
++ Consider a data frame with 1.5 million rows and 120 columns. How much memory is required to read this dataset?
+
+1.5m * 120 * 8 bytes/numeric = 1.44 * $10^9$ = 1.44 * $10^9$/ $2^{20}$ MB = 1,373.29 MB = 1.34 GB
+
++ So it's recommended to have a RAM of size 2 * 1.34GB to read that dataset.
+
+---
+
+## write.table():
+
+```{r echo = T, eval=FALSE}
+write.table(irisFile, file = "path/to/the/file")
+```
+
+---
+
+## Loops:
+
++ There are 3 ways in R to write loops:
+  + for 
+  + repeat (skipped!)
+  + while (skipped!)
+
+---
+
+### for:
+
+```{r echo = T}
+for(i in 1:4){
+  print(paste("cycle #", i, sep = ""))
+  i <- i + 1 
+}
+```
+
+---
+
+## if:
+
++ if/else statements are used to write conditional statements
+
+```{r echo = T}
+x <- 7
+if (x < 10){
+  print("x is less than 10")
+}else{
+  print("x is greater than 10")
+}
+```
+
+---
+
+## if:
+```{r echo = T}
+age <- sample(1:100, 10)
+ageCat <- rep(NA, length(age))
+for (i in 1:(length(age))) {
+    if (age[i] <= 35){
+       ageCat[i] <- "Young"
+      }else if (age[i] <= 55){
+        ageCat[i] <- "Middle-Aged"
+      }else{
+         ageCat[i] <- "Old"
+      } 
+}
+age.df <- data.frame(age = age, ageCat = ageCat)
+age.df[1:3,]
+```
+
+---
+
+## Functions and Packages:
+
+1. R language has many built-in functions
+2. Each function has a name followed by ()
+3. Arguments of a function are put within parentheses
+4. R packages are a comfortable way to maintain collections of R functions and data sets
+5. Packages allow for easy, transparent and cross-platform extension of the R base system
+
+
+---
+
+## Functions and Packages:
+
+There are some terms which sometimes get confused and should be clarified:
+
+1. Package: An extension of the R base system with code, data and documentation in a standardized format
+2. Library: A directory containing installed packages
+3. Repository: A website providing packages for installation
+4. Source: The original version of a package with human-readable text and code
+5. Base packages: Part of the R source tree, maintained by R Core
+
++ for more info on how R packages are developed, please read: "Creating R Packages: A Tutorial" (Friedrich Leisch)
+  + http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf
+
+
+---
+
+## How to install a package in R:
+
+There are three main ways to install a package in R:
+
+1. Installing from CRAN: install a package directly from the repository
+  + Using R studio: tools/install packages
+  + From R console: install.packages()
+
+2. Installing from Source: In this method, you should first download the add-on R package and use the following unix command in the console to install the package:
+  + R CMD INSTALL packageName -l path/to/your/Rpackage/Directory
+
+3. Installing from a version control (Github): 
+  + Check-out https://github.com/hadley/devtools
+
++ Once you install a package, you need to load it into R using the function library()
+
+
+---
+
+## Popular Packages in R:
+
+1. To visualize data:
+  + ggplot2: to create beautiful graphics
+  + googleVis: to use Google Chart tools
+  
+2. To report results:
+  + shiny: to create interactive web-based apps
+  + knitr: to combine R codes and Latex/Markdown codes
+  + slidify: to build HTML 5 slide shows
+  
+3. To write high-performance R code:
+  + Rcpp: to write R functions that call C++ code
+  + data.table: to organize datasets for fast operations
+  + parallel: to use parallel processing in R
+  
+
+---
+
+
+## Calling a function in R
+
+
+```{r echo=TRUE}
+str(sample)
+```
+
++ consider sample() in R. Simply run ?sample in R console to read the help on this function.
++ sample() gets four arguments: 
+  + x: sample space in form of a vector
+  + size: your desired sample size
+  + replace: sampling with/without replacement
+  + prob: a vector of probability weights
+
++ some of the arguments have default values. What are those arguments?
+
++ How to use (or call) this function? 
+
+
+---
+
+## Calling a function in R
+
+```{r echo=TRUE}
+# Functions arguments can be matched: 1) by position or 2) by name
+sampSpace <- 1:6 # rolling a die
+sample(sampSpace, 1) # arguments with default values can be omitted
+sample(size = 1, x = sampSpace) # no need to remember the order 
+sample(size = 1, sampSpace)
+```
+
+
+---
+
+## Writing your Own functions
+
+```{r echo=TRUE, eval=FALSE}
+yourFnName <- function(<your arguments>){
+  # body of your code
+  
+  # return the output of the function
+}
+
+# to use your function, you can simply call the function name as:
+yourFnName(<set values for the input arguments>)
+```
+
+
+---
+
+## Writing your Own functions
+
++ Let's write a function that gets three arguments: a, b, c
++ The function then returns min of these two numbers
+
+```{r echo=TRUE, eval=TRUE}
+myMin <- function(a, b, c){
+  myMinVal <- min(a, b, c)
+  return(myMinVal)
+}
+
+myMin(10, 20, 30)
+myMin(10, NA, 20) # ? how to fix this so it returns 10
+```
+
+
+---
+
+## Some notes on Functions
+
+> 1. Variables defined within a function are locally defined (i.e. not defined outside of the function).
+
+> 2. Functions in R are treated like any other first class objects. This means functions can be passed as arguments of other functions.
+
+> 3. Arguments of functions are evaluated as they are needed (lazy evaluation). 
+
+> 4. " ... " can be an argument of a function and it refers to a situation where number of input arguments can be varied and is not fixed upfront. 
+
+
+---
+
+## Lazy Evaluation of Function Arguments
+
+```{r echo=TRUE, error=T}
+myLazyFn1 <- function(a, b){
+  return(a)
+}
+myLazyFn1(10) # No error!
+
+myLazyFn2 <- function(a, b){
+  print(a)
+  print(b)
+  return(1)
+}
+myLazyFn2(10) 
+```
+
+
+---
+
+## Some useful functions:
+
++ Here we are going to talk about:
+  + str(): a function to explain internal structure of a function
+  + apply(): to apply a function to a matrix or dataframe
+  + lapply(), sapply(), tapply(), mapply(): applying a function to a vector
+  + split(): to split a dataset by levels of a factor
+
+
+---
+
+### str():
+
++ str() is a compact way of understanding what an object is and what is in that object.
+```{r echo=TRUE}
+str(str)
+str(sample)
+
+genderF <- factor(sample(c("Male", "Female"), 20, replace = TRUE))
+str(genderF)
+```
+
+
+---
+
+### str():
+```{r echo=TRUE}
+myMat <- matrix(1:10, ncol = 5)
+str(myMat)
+myList <- list(numVec = 1:3, logVec = F, charVec = LETTERS[1:4])
+str(myList)
+```
+
+
+---
+
+### apply():
+
+```{r echo=TRUE}
+str(apply) # try ?apply for more info
+```
+
++ apply() is a useful function to apply a function (FUN) on a MARGIN of a matrix or dataframe (X)
+
++ MARGIN: a vector giving the subscripts which the function will be applied over
+  + 1: indicates rows
+  + 2: indicates columns
+  + c(1, 2): indicates rows and columns
+
++ FUN: refers to the function that we want to apply on the dataset
+
++ "..." : additional arguments of FUN
+
+
+---
+
+### apply():
+
+```{r echo=TRUE}
+myMat <- matrix(1:10, ncol = 5)
+myMat[2,c(2, 5)] <- NA
+myMat
+apply(myMat, 2, sum, na.rm = TRUE)
+```
+
+
+---
+
+### apply():
+
+```{r echo=TRUE}
+# consider iris dataset: 
+head(iris) # more info ?iris
+# suppose we are interested in getting 25% and 75% of each numeric column
+```
+
+
+---
+
+### apply():
+
+```{r echo=TRUE}
+# Consider iris dataset: 
+apply(iris[,-5], 2, quantile, probs = c(0.25, 0.75))
+```
+
+
+---
+
+### lapply() and sapply():
+
+```{r echo=TRUE}
+str(lapply)
+str(sapply)
+```
++ x: a list, dataframe, or a vector
++ FUN: the function to be applied to each element of X
++ "...": other arguments of FUN
+
+
+---
+
+### lapply() and sapply():
+```{r echo=TRUE}
+myList <- list(e1 = 1:10, e2 = -1:-10)
+lapply(myList, mean)
+sapply(myList, mean)
+```
+
+
+---
+
+### lapply() v. sapply()?:
+
++ sapply() simplifies the result of lapply.
+  
++ If the result of lapply is a list with all elements of the same length:
+    + if length == 1: sapply() returns a vector
+    + if length != 1: sapply() returns a matrix
+    
++ otherwise, sapply() generates a list similar to lapply()
+
+
+---
+
+### lapply() & sapply() with a user-defined FUN
+```{r echo=TRUE}
+myList <- list(e1 = 1:10, e2 = -1:-10)
+lapply(myList, function(element){return(mean(c(element[1], element[length(element)])))})
+sapply(myList, function(element){return(mean(c(element[1], element[length(element)])))})
+```
+
+
+---
+
+### tapply():
+```{r echo = TRUE}
+str(tapply)
+```
+
++ tapply() applies a function on a subset of a vector
++ X: is a vector 
++ INDEX: list of one or more factors, each of same length as X
++ FUN: our function of interest
++ "...": other arguments of FUN
++ simplify: any guess???
+
+
+---
+
+### tapply():
+```{r echo = TRUE}
+HeightDF <- data.frame(height = c(rnorm(100, 180, 3), rnorm(100, 170, 3)), gender = factor(rep(c("M", "F"), each = 100)))
+head(HeightDF)
+tapply(HeightDF$height, HeightDF$gender, mean)
+```
+
+
+---
+
+### mapply():
+```{r echo=TRUE}
+str(mapply)
+```
+  
++ all previous "apply" functions were univariate
+  + f(x, {some other parameters})
+  
++ What to do if we want to apply a multivariate function:
+  + f(x, y, {some other parameters}) # we can have more than 2 variables 
+
+
+---
+
+### mapply():
+```{r echo=TRUE}
+l1 <- list(e1 = 1:10, e2 = 1:10)
+l2 <- list(e1 = -1:-10, e2 = -1:-10)
+# how to get l1$e1[i] + l1$e2[i] + l2$e1[i] + l2$e2[i] ? 
+mapply(sum, l1$e1, l1$e2, l2$e1, l2$e2)
+```
+
+
+---
+
+### split():
+```{r echo=TRUE}
+str(split) # ?split for more info
+```
+
++ X: a vector or a data frame
++ f: factor
++ drop: should R drop empty factor levels?
+
+
+---
+
+### split():
+```{r echo=TRUE}
+str(HeightDF)
+# Goal: to separate Females from Males
+splitData <- split(HeightDF$height, HeightDF$gender)
+str(splitData)
+```
+
+
+---
+
+
+## Time for Break for 10 Minutes :)
+
+
+---
+
+
