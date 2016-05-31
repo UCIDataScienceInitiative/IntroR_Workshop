@@ -1,5 +1,5 @@
 ---
-title: 'Intro to R Workshop: Session 3'
+title: 'Intro to R Workshop: Session 2'
 output: slidy_presentation
 date: "May 30, 2016"
 subtitle: UCI Data Science Initiative

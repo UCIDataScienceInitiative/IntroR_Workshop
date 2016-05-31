@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="date" content="2016-05-30" />
-  <title>Intro to R Workshop: Session 3</title>
+  <title>Intro to R Workshop: Session 2</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
 div.sourceCode { overflow-x: auto; }
@@ -50,7 +50,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Intro to R Workshop: Session 3</h1>
+  <h1 class="title">Intro to R Workshop: Session 2</h1>
   <h1 class="subtitle">UCI Data Science Initiative</h1>
   <p class="author">
 
@@ -218,9 +218,9 @@ for (i in <span class="dv">1</span>:(<span class="kw">length</span>(age))) {
 age.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">age =</span> age, <span class="dt">ageCat =</span> ageCat)
 age.df[<span class="dv">1</span>:<span class="dv">3</span>,]</code></pre></div>
 <pre><code>##   age      ageCat
-## 1  23       Young
-## 2  39 Middle-Aged
-## 3  41 Middle-Aged</code></pre>
+## 1  68         Old
+## 2  66         Old
+## 3  40 Middle-Aged</code></pre>
 </div>
 <div id="functions-and-packages" class="slide section level2">
 <h1>Functions and Packages:</h1>
@@ -317,9 +317,9 @@ age.df[<span class="dv">1</span>:<span class="dv">3</span>,]</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Functions arguments can be matched: 1) by position or 2) by name</span>
 sampSpace &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">6</span> <span class="co"># rolling a die</span>
 <span class="kw">sample</span>(sampSpace, <span class="dv">1</span>) <span class="co"># arguments with default values can be omitted</span></code></pre></div>
-<pre><code>## [1] 3</code></pre>
+<pre><code>## [1] 1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">x =</span> sampSpace) <span class="co"># no need to remember the order </span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 3</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, sampSpace)</code></pre></div>
 <pre><code>## [1] 4</code></pre>
 </div>
@@ -403,7 +403,7 @@ sampSpace &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="d
 <pre><code>## function (x, size, replace = FALSE, prob = NULL)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genderF &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>), <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>))
 <span class="kw">str</span>(genderF)</code></pre></div>
-<pre><code>##  Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 1 2 2 2 2 1 2 1 1 ...</code></pre>
+<pre><code>##  Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 1 2 2 2 1 2 2 2 2 ...</code></pre>
 </div>
 <div class="slide section level2">
 
@@ -567,15 +567,15 @@ myMat</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">HeightDF &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">height =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">180</span>, <span class="dv">3</span>), <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">170</span>, <span class="dv">3</span>)), <span class="dt">gender =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>), <span class="dt">each =</span> <span class="dv">100</span>)))
 <span class="kw">head</span>(HeightDF)</code></pre></div>
 <pre><code>##     height gender
-## 1 181.3154      M
-## 2 182.6637      M
-## 3 181.4343      M
-## 4 178.1650      M
-## 5 180.9576      M
-## 6 188.0054      M</code></pre>
+## 1 183.7112      M
+## 2 177.7033      M
+## 3 181.2193      M
+## 4 183.4014      M
+## 5 177.2043      M
+## 6 185.1051      M</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(HeightDF$height, HeightDF$gender, mean)</code></pre></div>
 <pre><code>##        F        M 
-## 170.0403 180.4847</code></pre>
+## 169.9628 180.3099</code></pre>
 </div>
 <div class="slide section level2">
 
@@ -610,8 +610,8 @@ l2 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">e
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">groups &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">rbinom</span>(<span class="dv">32</span>, <span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">prob =</span> <span class="fl">0.4</span>))
 <span class="kw">tapply</span>(groups, groups, length) <span class="co">#- is almost the same as</span></code></pre></div>
-<pre><code>##  9 13 14 18 
-##  2  1  1  1</code></pre>
+<pre><code>##  6 13 14 15 18 
+##  1  1  1  1  1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#table(groups)</span></code></pre></div>
 </div>
 <div class="slide section level2">
@@ -630,14 +630,14 @@ l2 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">e
 <h3 id="split-1">split():</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(HeightDF)</code></pre></div>
 <pre><code>## 'data.frame':    200 obs. of  2 variables:
-##  $ height: num  181 183 181 178 181 ...
+##  $ height: num  184 178 181 183 177 ...
 ##  $ gender: Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Goal: to separate Females from Males</span>
 splitData &lt;-<span class="st"> </span><span class="kw">split</span>(HeightDF$height, HeightDF$gender)
 <span class="kw">str</span>(splitData)</code></pre></div>
 <pre><code>## List of 2
-##  $ F: num [1:100] 175 172 173 171 171 ...
-##  $ M: num [1:100] 181 183 181 178 181 ...</code></pre>
+##  $ F: num [1:100] 170 169 173 170 173 ...
+##  $ M: num [1:100] 184 178 181 183 177 ...</code></pre>
 </div>
 <div id="time-for-break-for-10-minutes" class="slide section level2">
 <h1>Time for Break for 10 Minutes :)</h1>
