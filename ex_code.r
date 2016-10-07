@@ -123,37 +123,28 @@ data_noNA <- na.omit(data)
 
 # Now that we have our dataset in its final form, we can start analyzing it. We will start by simply plotting the data to check for outliers and the distributions of the variables. 
 
-# 7.1 If you haven't already, install and load the package ggplot2. 
+# 7.1 Generate a histogram plot for each continuous variable (remember to use data_noNA). 
+hist(data_noNA$mpg)
+hist(data_noNA$displacement)
+hist(data_noNA$horsepower)
+hist(data_noNA$weight)
+hist(data_noNA$acceleration)
 
-install.packages("ggplot2", dependencies = TRUE)
-library(ggplot2)
+# 7.3 Generate a boxplot of mpg by origin to visually check if mpg is different across different countries of origin. Type ?boxplot for help. Make sure that your variable on the x-axis (in this case, origin) is a factor (you can type class(data_noNA$origin) to confirm this; if not refer to Exercise 5).
 
-# 7.2 Generate a histogram plot for each continuous variable (remember to use data_noNA). 
-
-ggplot(data_noNA, aes(mpg)) + geom_histogram()
-ggplot(data_noNA, aes(displacement)) + geom_histogram()
-ggplot(data_noNA, aes(horsepower)) + geom_histogram()
-ggplot(data_noNA, aes(weight)) + geom_histogram()
-ggplot(data_noNA, aes(acceleration)) + geom_histogram()
-
-# 7.3 Generate a boxplot of mpg by origin to visually check if mpg is different across different countries of origin. Look up how to make a boxplot in the online ggplot2 documentation or type ?geom_boxplot for help. Make sure that your variable on the x-axis (in this case, origin) is a factor (you can type class(data_noNA$origin) to confirm this; if not refer to Exercise 5).
-
-ggplot(data_noNA, aes(origin, mpg)) + geom_boxplot()
+boxplot(mpg ~ origin, data = data_noNA)
 
 # 7.4 Create a scatterplot of mpg by cylinders and examine the form of the relationship (i.e., is it linear or not?). In other words, we want to decide if we should treat cylinders as a numerical variable (linear) or categorical variable (not linear).
-  # First, create a scatterplot using geom_point().
-    ggplot(data_noNA, aes(cylinders, mpg)) + geom_point()
-  # Next, we will add smoothers to the plot. Read the help file for stat_smooth() and the argument "method. 
-  # Create two more scatterplots: 
-    # One with the default smooth curve overlayed (method = "auto")
-      ggplot(data_noNA, aes(cylinders, mpg)) + geom_point() + stat_smooth(method="auto")
-    # One with a linear regression fit overlayed (method = "lm")
-      ggplot(data_noNA, aes(cylinders, mpg)) + geom_point() + stat_smooth(method="lm")
+  # Include the following:
+    # 1. Default smooth curve overlayed (lines(lowess())
+        
+    # 2. A linear regression fit overlayed (abline(reg())
+        
 
   # The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
 
-# 7.5 Next we are going to create a scatterplot matrix by applying the function pairs() to our data.
-pairs(data_noNA)
+# 7.5 Next we are going to create a scatterplot matrix by applying the function scatterplotMatrix() to our data.
+scatterplotMatrix(data_noNA)
 
 
 # Exercise 8. Data transformation. 
