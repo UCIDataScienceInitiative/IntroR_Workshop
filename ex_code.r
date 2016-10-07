@@ -140,10 +140,15 @@ boxplot(mpg ~ origin, data = data_noNA)
         
     # 2. A linear regression fit overlayed (abline(reg())
         
+plot(data_noNA$cylinders, data_noNA$mpg)
+lines(lowess(data_noNA$cylinders, data_noNA$mpg), col = "blue")
+abline(reg = lm(mpg~cylinders, data = data_noNA), col = "red")
+
 
   # The two fitted curves should both have non-zero slopes but look quite different, suggesting mpg and cylinders are associated, but not linearly associated, in which case we want to keep cylinder as a categorical variable. You can see very few cases have cylinder = 3 or 5; sometimes you may want to do a secondary analysis with those cases removed. 
 
 # 7.5 Next we are going to create a scatterplot matrix by applying the function scatterplotMatrix() to our data.
+# library(car)
 scatterplotMatrix(data_noNA)
 
 
