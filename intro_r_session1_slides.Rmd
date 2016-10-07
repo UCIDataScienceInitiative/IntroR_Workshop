@@ -9,12 +9,12 @@ output: ioslides_presentation
 ## Introduction
 
 + The class will include 5 sessions: 
-    + Session 1  (9-10:20): Data Types in R 
+    + Session 1  (9-10:20): Data Types
     + Session 2  (10:30-11:20): Control Structures and Functions
-    + Session 3  (11:30-12): Statistical Distributions in R
+    + Session 3  (11:30-12): Statistical Distributions
     + Exercise 1 (12:30-1:20): Basic Data Exploration
-    + Session 4  (1:20-2:50): Statistical Analysis in R 
-    + Session 5  (3:00-4:20): Plotting and Data Visualization in R
+    + Session 4  (1:20-2:50): T-Tests and Data Visualization 
+    + Session 5  (3:00-4:20): Linear Regression
     + Exercise 2 (4:20-5:00): Data Visualization & Statistical Analysis
   
 
@@ -29,7 +29,7 @@ library(ggplot2)
 + Feel free to ask questions anytime during lectures.
 
 + To access this presentation and the codes used during the workshop please visit:
-    + http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1
+    + https://github.com/UCIDataScienceInitiative/IntroR_Workshop
 
 
 
