@@ -1,138 +1,36 @@
 ---
-title: "Session 5"
-output: html_document
+title: "Intro to R Workshop (Session 5)"
+subtitle: "UCI Data Science Initiative"
+author: "Steven Brownlee (based on Wenliang He and Sepehr Akhavan's material)"
+date: "10/7/2016"
+output: slidy_presentation
 ---
 
-## Session 5 - Agenda
-
-1. Histograms in R
-2. Bar Charts in R
-3. Line Charts in R
-4. Scatter Plots in R
-
----
-
-## Histograms
-```{r echo=TRUE}
-library(car)
-data(Prestige) # load the Prestige dataset
-data = Prestige # give it a simple name, since we will use it a lot
-rm(Prestige) # remove Prestige from memory
-# data <- read.csv("~/Downloads/Prestige.csv")
-head(data)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
----
+## Session 5 Agenda
++ More Plotting (Line Charts)
 
-### Histograms
-```{r echo=TRUE}
-hist(data$income)
-```
++ Logistic Regression
 
----
-
-### Histograms - Add Labels and Title
-```{r echo=TRUE}
-hist(data$income, xlab="Income in Dollars", ylab="Counts", main="Distribution of Income from Prestige Dataset")
-```
-
----
-
-### Histograms - Plot Overlapping Histograms
-```{r echo=TRUE}
-hist(data$income, xlim=c(0,35000), ylim=c(0,60), density=10, angle=45, col=2, las=1)
-set.seed(1234)
-random_error = sample(10000, length(data$income), replace=TRUE)
-hist(data$income + random_error, density=10, angle=-45, col=4, add=T)
-```
-
----
-
-### Bar Charts vs. Histograms
-```{r echo=TRUE}
-hist(as.numeric(data$type)) # Histograms handles categorical/ordinal variables poorly
-```
-
----
-
-### Bar Charts vs. Histograms
-```{r echo=TRUE}
-hist(as.numeric(data$type), xaxt="n") # suppress displaying x-axis
-axis(side=1, at=c(1,2,3), labels=levels(data$type)) # mannually add x-axis
-```
-
----
-
-## Bar Charts
-```{r echo=TRUE}
-barplot(table(as.numeric(data$type))) # must use table() here
-```
-
----
-
-### Bar Charts
-```{r echo=TRUE}
-barplot(table(as.numeric(data$type)), names.arg=levels(data$type), density=c(30, 20, 10))
-title(xlab="Profession Type", ylab="Counts", main="Distribution of Profession")
-```
-
----
-
-### Bar Charts
-```{r echo=TRUE}
-mat = matrix(NA, nrow=4, ncol=3)
-colnames(mat) = c("cars", "trucks", "suvs")
-rownames(mat) = paste("quarter", 1:4, sep="")
-mat[,1] = 1:4
-mat[,2] = 4:1
-mat[,3] = c(1,2,3,1)
-mat
-```
-
----
-
-### Bar Charts
-```{r echo=TRUE}
-barplot(mat) # beside=FALSE by default
-```
-
----
-
-### Bar Charts - Unstack the Bars
-```{r echo=TRUE}
-barplot(mat, beside=TRUE)
-```
-
----
-
-### Bar Charts - Change Some Attributes & Add Legend
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-par(xpd=T, mar=par()$mar+c(0,0,0,4))
-barplot(mat, beside=TRUE, density=c(10,15,20,25), col=c(2,4,5,6), las=1)
-legend("topright", rownames(mat), bty="n", density=c(10,15,20,25)+10, fill=c(2,4,5,6), horiz=FALSE, inset=-0.1)
-par(mar=c(5, 4, 4, 2) + 0.1) # restore default parameters
-par(xpd=FALSE)
-```
-
----
 
 ## Line Charts
 ```{r echo=TRUE}
 cars = c(2,3,4,3,5)
-plot(cars)
+plot(cars, type = "o")
 ```
 
----
 
-### Line Charts - Change Some Attributes
+## Line Charts - Change Some Attributes
 ```{r echo=TRUE}
 plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
 title(main="Autos Sales", col.main="darkgrey")
 ```
 
----
 
-### Line Charts - Add Another Line
+## Line Charts - Add Another Line
 ```{r echo=TRUE}
 plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
 title(main="Autos Sales", col.main="darkgrey")
@@ -140,9 +38,8 @@ suvs = c(1,4,3,3,4)
 lines(suvs, type="o", col="blue", lty=2, pch=6)
 ```
 
----
 
-### Line Charts - Add a Horizontal Line
+## Line Charts - Add a Horizontal Line
 ```{r echo=TRUE}
 plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
 title(main="Autos Sales", col.main="darkgrey")
@@ -150,9 +47,8 @@ lines(suvs, type="o", col="blue", lty=2, pch=6)
 abline(h=c(3,4), lty=2, col="darkgrey") # h for horizontal
 ```
 
----
 
-### Line Charts - Add Legend
+## Line Charts - Add Legend
 ```{r echo=TRUE}
 plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
 title(main="Autos Sales", col.main="darkgrey")
@@ -161,41 +57,141 @@ abline(h=c(3,4), lty=2, col="darkgrey") # h for horizontal
 legend(4.2, 1.2, c("cars","suvs"), col=c("red","blue"), lty=1:2, pch=c(1,6), bty="n")
 ```
 
----
 
-## Scatter Plots
-```{r echo=TRUE}
-plot(data$education, data$prestige)
+
+##  Logistic Regression - Data
++ Used to model the probability of a binary outcome
++ glm() is used to fit logistic regression model
++ Mroz data - Want to predict female labor force participation
+
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+library(car)
+data(Mroz); # load Mroz data
+str(Mroz)
 ```
 
----
 
-### Scatter Plots - Add Labels
-```{r echo=TRUE}
-plot(data$education, data$prestige, xlab="Education in Years", ylab="Prestige", cex.lab = 1.2, cex.axis=1.2, las=1)
+## Logistic Regression - Data Description
++ lfp: female labor-force participation; a factor with levels: no; yes.
++ k5: number of children 5 years old or younger.
++ k618: number of children 6 to 18 years old.
++ age: in years.
++ wc: wife's college attendance; a factor with levels: no; yes.
++ hc: husband's college attendance; a factor with levels: no; yes.
++ lwg: log expected wage rate; 
+    + for women in the labor force, the actual wage rate; 
+    + for women not in the labor force, an imputed value 
++ inc: family income exclusive of wife's income.
+
+
+## Logistic Regression - Data Description
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+str(Mroz)
 ```
 
----
 
-### Scatter Plots - Add Labels
-```{r echo=TRUE}
-plot(data$education, data$prestige, xlab="Education in Years", ylab="Prestige", cex.lab = 1.2, cex.axis=1.2, las=1)
-abline(lm(prestige~education, data=data), col="red")
-lines(lowess(data$education, data$prestige), col="blue", lty=2, lwd=1.5)
+## Logistic Regression - Data Description
+Barplot
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+barplot(table(Mroz$lfp), col = "blue", main = "Count of Females by Labor Force Participation",
+        xlab = "Labor Force Participation Status", ylab = "Number of Females")
 ```
 
----
 
-### Scatter Plots - Add Colors by Profession
-```{r echo=TRUE}
-plot(data$education, data$prestige, xlab="Education in Years", ylab="Prestige", cex.lab=1.2, cex.axis=1.2, las=1, col=ifelse(data$type=="prof", "red", "blue"), pch=ifelse(data$type=="prof", 1, 2))
+## Logistic Regression - Data Description
+Stacked Barplot
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+counts <- table(Mroz$lfp, Mroz$k5)
+barplot(counts, col = c("blue","red"),
+        main = "Labor Force Participation by # of Children < 5",
+        xlab = "# of Children < 5", ylab = "Count",
+        legend = rownames(counts))
 ```
 
----
 
-### Scatter Plots - Add Legend
-```{r echo=TRUE}
-plot(data$education, data$prestige, xlab="Education in Years", ylab="Prestige", cex.lab=1.2, cex.axis=1.2, las=1, col=ifelse(data$type=="prof", "red", "blue"), pch=ifelse(data$type=="prof", 1, 2))
-legend("topleft", c("Professional","Non-Professional"), col=c("red","blue"), pch=c(1,2), bty="n", cex=1.2)
+## Logistic Regression - Data Description
+Grouped Barplot
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+counts <- table(Mroz$lfp, Mroz$k5)
+barplot(counts, col = c("blue","red"),
+        main = "Labor Force Participation by # of Children < 5",
+        xlab = "# of Children < 5", ylab = "Count",
+        legend = rownames(counts), beside = T)
 ```
+
+
+## Logistic Regression - Data Description
+Scatter Plot with Classification
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+plot(Mroz$age, Mroz$lwg, col = ifelse(Mroz$lfp == "yes", "red", "blue"),
+     main = "Age vs. Log Wage by LFP", xlab = "Age (Years)", ylab = "Wage")
+legend(x = 50, y = -1.5, legend = c("in LF", "Out of LF"),
+       fill = c("red", "blue"), bty = "n")
+```
+
+
+## Logistic Regression - Model Fit
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+fitLogistic <- glm(lfp ~ k5 + age, family=binomial(logit), data=Mroz); 
+fitLogistic
+```
+
+
+## Logistic Regression - Model Fit
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+summary(fitLogistic)
+```
+
+
+## Logistic Regression - Model Fit
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+names(fitLogistic)
+```
+
+
+## Logistic Regression - Exponentiated CIs
++ 95% CI for exp(coefficients) (profile liklihood mehtod)
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+exp(confint(fitLogistic, level=0.95))
+```
+
++ 95% CI for exp(coefficients) (Wald confident interval)
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+exp(confint.default(fitLogistic, level=0.95))
+```
+
+
+## Logistic Regression - Predictions
+To get Probabilities, be sure to use type = "response"
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+head(Mroz,1)
+XB <- as.vector(head(predict(fitLogistic),1))
+p <- as.vector(head(predict(fitLogistic, type = "response"),1))
+XB
+p
+exp(XB)/(1 + exp(XB))
+```
+
+
+## Logistic Regression - Updates
++ Update model by adding 'inc' and 'lwg'
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+fitLogistic2 = update(fitLogistic, . ~ . + inc + lwg, data=Mroz)
+```
+
++ After update
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+fitLogistic2
+```
+
+
+## Model Comparison
++ Use change of deviance of fitted model
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+anova(fitLogistic, fitLogistic2, test='LRT')
+```
+
+
+
+
 

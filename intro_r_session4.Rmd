@@ -1,36 +1,41 @@
 ---
-title       : Intro to R Workshop
-subtitle    : UCI Data Science Initiative
-author      : Wenliang He (based on Sepehr Akhavan's material)
-job         : School of Education
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
-widgets     : mathjax            # {mathjax, quiz, bootstrap}
-logo        : logo.png
-mode        : selfcontained # {standalone, draft}
-knit        : slidify::knit2slides
-github:
-  user: UCIDataScienceInitiative
-  repo: IntroR_Workshop
-
+title: "Intro to R Workshop (Session 4)"
+subtitle: "UCI Data Science Initiative"
+author: "Steven Brownlee (based on Wenliang He and Sepehr Akhavan's material)"
+date: "10/7/2016"
+output: slidy_presentation
 ---
-## Session 4 - Agenda
 
-1. T-Test in R
-2. ANOVA in R
-3. Linear Regression in R
-4. Logistic Regression in R
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
 
----
+## Sessions4 Agenda
+1. T-Tests
+
+2. Plotting
+
+3. Linear Regression
+
+
 ## T-Test in R
+T-test can be used to draw statistical conclusions about parameters of interest in the data
+
++ Is the mean of this data different from zero (or another number)?
+
++ Is the mean of this data different from that data?
+
++ Is the regression slope coefficient different from zero?
+
 
 T-tests can be categorized into two groups:
-  + 1) One-Sample t-test
-  + 2) Two-sample t-test
 
----
-###  One-Sample T-Test (Create Data)
++ 1) One-Sample t-test
+
++ 2) Two-sample t-test
+
+
+##  One-Sample T-Test (Create Data)
 ```{r echo=TRUE}
 set.seed(123)
 oneSampData <- rnorm(100, mean = 0, sd = 1)
@@ -39,172 +44,216 @@ mean(oneSampData)
 sd(oneSampData)
 ```
 
----
-###  One-Sample T-Test (True Mean Equal to 0)
+
+##  One-Sample T-Test (True Mean Equal to 0)
 ```{r echo=TRUE}
-oneSampTest.0 <- t.test(oneSampData) # ?t.test
+oneSampTest.0 <- t.test(oneSampData) 
 oneSampTest.0
 ```
 
----
+
 ```{r echo=TRUE}
-names(oneSampTest.0) # alternative to names()?? 
+names(oneSampTest.0) 
 oneSampTest.0$statistic
 oneSampTest.0$estimate
 ```  
 
----
-###  One-Sample T-Test (True Mean Equal to mu)
+
+##  One-Sample T-Test (True Mean Equal to mu)
 ```{r echo=TRUE}
 oneSampTest.mu <- t.test(oneSampData, mu = 0.3)
 oneSampTest.mu
 ```  
 
----
-###  Two-Sample T-Test
+
+##  Two-Sample T-Test
 Two sample t-tests are categorized into 3 groups:
+
   + T-Test with equal variances
+  
   + T-Test with un-equal variances
+  
   + Paired T-Test: can be also considered as one-sample t-test on deltas.
 
----
-###  Two-Sample T-Test (Un-equal Variances)
+
+##  Two-Sample T-Test (Un-equal Variances)
 ```{r echo = TRUE}
-Samp1 <- rnorm(30, mean = 2.5, sd = 1)
-Samp2 <- rnorm(50, mean = 3.0, sd = 1) # notice: not the same sample size
+Samp1 <- rnorm(300, mean = 2.5, sd = 1)
+Samp2 <- rnorm(500, mean = 3.0, sd = 1) # notice: not the same sample size
 t.test(Samp1, Samp2)  # default assump: unequal variances
 ```
 
----
-###  Two-Sample T-Test (Equal Variances)
+
+##  Two-Sample T-Test (Equal Variances)
 ```{r echo = TRUE}
 t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 ```
 
----
-###  Two-Sample T-Test (Paired T Test)
+
+##  Two-Sample T-Test (Paired T Test)
 ```{r echo = TRUE}
-t.test(Samp1, Samp2[1:30], paired = TRUE) # must be of the same sample size
+t.test(Samp1, Samp2[1:300], paired = TRUE) # must be of the same sample size
 ```
 
----
-##  ANOVA
-If you are not familiar with ANOVA, simply consider ANOVA as an extension to two-sample t-test where we have more than two groups.
 
+## Basic Histogram
 ```{r echo = TRUE}
-Samp1 <- round(rnorm(10, mean = 25, sd = 1), 1)
-Samp2 <- round(rnorm(10, mean = 30, sd = 1), 1)
-Samp3 <- round(rnorm(10, mean = 35, sd = 1), 1)
-myDF <- data.frame(y = c(Samp1, Samp2, Samp3), group = rep(c(1, 2, 3), each = 10))
-myDF$group <- as.factor(myDF$group)
-str(myDF)
+hist(Samp1)
 ```
 
----
-###  ANOVA
+
+## Relative Frequency Histogram
+With line at the mean
 ```{r echo = TRUE}
-head(myDF, n=15)
+hist(Samp1, main = "Density of Samp1", freq = F, col = "grey") 
+abline(v = mean(Samp1), col = "red", lwd = 2)
 ```
 
----
-###  ANOVA
+
+## Overlayed Histograms
 ```{r echo = TRUE}
-mod.aov <- aov(y ~ group, data = myDF)  # use aov() not anova()
-mod.aov
+hist(Samp1, main = "Densities of Samp1 and Samp2", xlab = "x", freq = F, col = "grey") 
+abline(v = mean(Samp1), col = "red", lwd = 2)
+hist(Samp2, freq = F, add = T)
+abline(v = mean(Samp2), col = "blue", lwd = 2)
 ```
 
----
-###  ANOVA
+
+## Overlayed Histograms with a Legend
 ```{r echo = TRUE}
-summary(mod.aov)
-names(mod.aov) # see what else is stored in mod.aov
+hist(Samp1, main = "Densities of Samp1 and Samp2", freq = F, col = "grey") 
+abline(v = mean(Samp1), col = "red", lwd = 2)
+hist(Samp2, freq = F, add = T)
+abline(v = mean(Samp2), col = "blue", lwd = 2)
+legend("topright", legend = c("Samp1", "Samp2"), fill = c("grey","white"), bty = "n", cex = 1.3)
 ```
 
----
-###  ANOVA
-```{r echo = TRUE}
-mod.lm <- lm(y ~ group, data = myDF)  # fit a linear model first using lm()
-mod.anova <- anova(mod.lm)  # anova computes ANOVA tables on a fitted model object.
-mod.anova
 
-names(mod.anova) # see what else is stored in mod.anova
-```
+## Linear Regression Data Set Description
+Here we use "Prestige" dataset from "car" package.
 
----
-## ANOVA
-```{r echo = TRUE}
-mod = lm(mod.aov)
-summary(mod)
-```
-
----
-##  ANOVA
-+ To learn more on how to fit ANOVA, please visit: 
-  + http://www.statmethods.net/stats/anova.html
-
----
-##  Linear Regression - Data
-+ lm() is used to fit linear regression
-+ Here we use "Prestige" dataset from "car" package
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-# install.package("car", dependencies=TRUE)
-library(car)
-data(Prestige) # load the data
-str(Prestige)
-```
-
----
-##  Linear Regression - Data
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-sapply(Prestige, function(x) { sum(is.na(x)) })
-Prestige = na.omit(Prestige) # remove missing NA data
-```
-
----
-##  Linear Regression - Data Description
 + education: Average education of occupational incumbents, years, in 1971.
 
 + income: Average income of incumbents, dollars, in 1971.
 
 + women: Percentage of incumbents who are women.
 
-+ prestige :Pineo-Porter prestige score for occupation, from a social survey conducted in the mid-1960s.
++ prestige: Pineo-Porter prestige score for occupation, from a social survey conducted in the mid-1960s.
 
 + census: Canadian Census occupational code.
 
-+ type: Type of occupation. A factor with levels (note: out of order): bc, Blue Collar; prof, Professional, Managerial, and Technical; wc, White Collar.
++ type: Type of occupation. A factor with levels 
+    + bc: Blue Collar
+    + prof: Professional, Managerial, and Technical
+    + wc: White Collar
 
----
-##  Two-Sample T-Test Revisited
+
+## Load Data
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-Prestige["prof"] =  (Prestige$type == "prof") * 1 # must add the ()
-t.test(income ~ (type=="prof"), data=Prestige) # () is optional here
+# install.packages("car", dependencies=TRUE)
+library(car)
+data(Prestige) # load the data
+str(Prestige)
 ```
 
----
-##  Two-Sample T-Test Revisited
+
+##  Look at the Data
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-set.seed(123)
-group = sample(0:1, nrow(Prestige), replace=T)
-t.test(Prestige$income ~ group)
+summary(Prestige)
+```
+See 4 NA values for "type".
+Let's look at them.
+
+
+## Examine Observations with NA values
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+Prestige[is.na(Prestige$type),]
 ```
 
----
-##  Linear Regression - Fit
+Let's recode "newsboys", "babysitters", and "farmers" as blue collar and exclude athletes.
+First find their row indexes, and corresponding names.
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+which(is.na(Prestige$type))  # gives index numbers of the NAs in the vector
+rownames(Prestige)[which(is.na(Prestige$type))]             # find the row names at those indexes
+```
+
+
+## Recode/Drop NA Values
+Recode "newsboys", "babysitters", and "farmers" to blue collar.
+
+Use "rep" to create a vector with 3 elements of "bc"
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+Prestige[c(53, 63, 67),"type"] <- rep("bc", 3)
+summary(Prestige$type)
+```
+
+Exclude athletes
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+Prestige <- na.omit(Prestige) 
+summary(Prestige$type)
+```
+
+
+## Plotting - Histograms
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+hist(Prestige$prestige, col = "grey", 
+     main = "Histogram of Prestige Score", xlab = "Prestige Score")
+```
+
+
+## Plotting - Basic Scatter Plot
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+plot(Prestige$education, Prestige$prestige,
+     main = "Prestige Score by Education",
+     xlab = "Ave. Years of Education", ylab = "Prestige Score")
+```
+
+
+## Plotting - Including Regression/Smoother Lines
+abline adds a line to the plot
+lm() is a list object that contains regression coefficients
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+plot(Prestige$education, Prestige$prestige,
+     main = "Prestige Score by Education",
+     xlab = "Ave. Years of Education", ylab = "Prestige Score")
+abline(reg = lm(prestige ~ education, data = Prestige), col = "red", lwd = 2)
+lines(lowess(Prestige$education, Prestige$prestige), col = "blue", lty = 2, lwd = 2)
+legend("topleft",legend = c("Regression Line", "Smoother"), col = c("red","blue"),
+       lwd = c(2,2), lty = c(1,2), bty = "n")
+```
+
+
+## Plotting - Scatter Plot Matrix
+Use the scatterplotMatrix function from the "car" package
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+# Use direct ordering of the varaibles to control how they are plotted
+scatterplotMatrix(Prestige[,c("prestige","education","income","women","census")])
+```
+
+
+## Plotting - Boxplots 
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+boxplot(prestige ~ type, data = Prestige, col = "grey",
+        main = "Distribution of Prestige Score by Types",
+        xlab = "Occupation Types", ylab = "Prestige Score")
+```
+
+
+## Linear Regression - Fit the Model
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 myReg <- lm(prestige ~ education + income + women, data = Prestige)
 myReg
 names(myReg)
 ```
 
----
+
 ##  Linear Regression - Summary of Fit
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-summary(myReg) # summary(myReg)
+summary(myReg)
 ```
 
----
-##  Linear Regression
+
+##  Linear Regression - "summary" Contents
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 sum.myReg = summary(myReg)
 names(sum.myReg) # show different contents
@@ -212,23 +261,7 @@ names(sum.myReg) # show different contents
 names(myReg) # this is what we had previously
 ```
 
----
-##  Linear Regression
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-sd(myReg$residuals)
-sum.myReg$sigma
-sqrt( sum(myReg$residuals^2) / ( nrow(Prestige) - length(myReg$coefficients) ) )
-```
 
----
-##  Linear Regression - Predict
-+ Predict the output for a new input
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-newData = data.frame(education=13.2, income=12000, women=12);
-predict(myReg, newData, interval="predict");
-```
-
----
 ##  Linear Regression - Confidence Interval
 + 95% confidence interval for coefficient of 'income'
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
@@ -240,130 +273,42 @@ confint(myReg, 'income', level=0.95)
 confint(myReg, level=0.95)
 ```
 
----
-##  Linear Regression - Model Selection
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-add1(myReg, ~ . + type, test="F")
-```
 
----
-##  Linear Regression - Model Selection
+##  Linear Regression - Adding Variables
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 mod = update(myReg, ~ . + type); summary(mod)
 ```
 
----
-##  Linear Regression - Model Selection
+
+##  Linear Regression - Relevel a Factor
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 levels(Prestige$type)
 Prestige$type = relevel(Prestige$type, "prof")
+
 levels(Prestige$type)
 ```
 
----
-##  Linear Regression - Model Selection
+
+##  Linear Regression - Relevel a Factor
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 mod = update(myReg, ~ . + type); summary(mod)
 ```
 
----
-##  Linear Regression - Model Selection
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-add1(myReg, ~ type + I(education^2) + I(income^2) + .^2, test="F")
-```
 
----
-##  Linear Regression - Model Selection
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-library(MASS)
-stepAIC(myReg, ~ type + I(education^2) + I(income^2) + .^2, test="F", direction="both")
-```
-
----
 ##  Linear Regression - Diagnostics
-+ Here we cover some common regression diagnostics including:
-+ Testing for Normality
-+ Testing for Constant Variance
-
-+ Reference: http://www.statmethods.net/stats/rdiagnostics.html
-
----
-## Model diagnostic plot
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=6.5, fig.width=8}
 par(mfrow = c(2, 2), oma = c(0, 0, 2, 0))
 plot(myReg)
 ```
 
----
-##  Logistic Regression - Data
-+ glm() is used to fit logistic regression model
-+ Mroz data
 
+##  Linear Regression - Predict
++ Predict the output for a new input
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-data(Mroz); # load Mroz data
-head(Mroz)
+newData = data.frame(education=13.2, income=12000, women=12)
+predict(myReg, newData, interval="predict")
 ```
 
----
-## Logistic Regression - Data Description
-+ lfp: labor-force participation; a factor with levels: no; yes.
-+ k5: number of children 5 years old or younger.
-+ k618: number of children 6 to 18 years old.
-+ age: in years.
-+ wc: wife's college attendance; a factor with levels: no; yes.
-+ hc: husband's college attendance; a factor with levels: no; yes.
-+ lwg: log expected wage rate; for women in the labor force, the actual wage rate; for women not in the labor force, an imputed value based on the regression of lwg on the other variables.
-+ inc: family income exclusive of wife's income.
 
----
-## Logistic Regression - Model Fit
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-fitLogistic <- glm(lfp ~ k5 + age, family=binomial(logit), data=Mroz); 
-fitLogistic
-```
-
----
-## Logistic Regression - Model Fit
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-summary(fitLogistic)
-```
-
----
-## Logistic Regression - Model Fit
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-names(fitLogistic)
-```
-
----
-+ 95% CI for exp(coefficients) (profile liklihood mehtod)
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-exp(confint(fitLogistic, level=0.95))
-```
-
-+ 95% CI for exp(coefficients) (Wald confident interval)
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-exp(confint.default(fitLogistic, level=0.95))
-```
-
----
-+ Update model by adding 'inc' and 'lwg'
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-fitLogistic2 = update(fitLogistic, . ~ . + inc + lwg, data=Mroz)
-```
-
-+ After update
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-fitLogistic2
-```
-
----
-## Model Comparison
-+ Use change of deviance of fitted model
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-anova(fitLogistic, fitLogistic2, test='LRT')
-```
-
----
-## Time for Break for 10 Minutes :)
-
-
+## End of Session 4
+BREAK!
