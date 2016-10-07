@@ -100,12 +100,12 @@
 <li>The class will include 5 sessions:
 
 <ul>
-<li>Session 1 (9-10:20): Data Types in R</li>
+<li>Session 1 (9-10:20): Data Types</li>
 <li>Session 2 (10:30-11:20): Control Structures and Functions</li>
-<li>Session 3 (11:30-12): Statistical Distributions in R</li>
+<li>Session 3 (11:30-12): Statistical Distributions</li>
 <li>Exercise 1 (12:30-1:20): Basic Data Exploration</li>
-<li>Session 4 (1:20-2:50): Statistical Analysis in R</li>
-<li>Session 5 (3:00-4:20): Plotting and Data Visualization in R</li>
+<li>Session 4 (1:20-2:50): T-Tests and Data Visualization</li>
+<li>Session 5 (3:00-4:20): Linear Regression</li>
 <li>Exercise 2 (4:20-5:00): Data Visualization &amp; Statistical Analysis</li>
 </ul></li>
 </ul>
@@ -117,7 +117,7 @@
 <li>To access this presentation and the codes used during the workshop please visit:
 
 <ul>
-<li><a href='http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1' title=''>http://ucidatascienceinitiative.github.io/IntroR_Workshop/#1</a></li>
+<li><a href='https://github.com/UCIDataScienceInitiative/IntroR_Workshop' title=''>https://github.com/UCIDataScienceInitiative/IntroR_Workshop</a></li>
 </ul></li>
 </ul>
 
@@ -493,10 +493,10 @@ colMat &lt;- cbind(vec1, vec2, vec3)
 colMat</pre>
 
 <pre >##      vec1 vec2        vec3
-## [1,]    1   21  1.24527481
-## [2,]    2   67 -0.50475653
-## [3,]    3   77  0.62083785
-## [4,]    4    5  0.07619742</pre>
+## [1,]    1   28  0.05215082
+## [2,]    2   75 -0.06348479
+## [3,]    3   86 -0.29510710
+## [4,]    4   69 -1.59683656</pre>
 
 </article></slide><slide class=''><hgroup><h2>Other Ways to Create a Matrix:</h2></hgroup><article  id="other-ways-to-create-a-matrix-1">
 
@@ -506,10 +506,10 @@ vec3 &lt;- rnorm(4, mean = 0, sd = 1)
 rowMat &lt;- rbind(vec1, vec2, vec3)
 rowMat</pre>
 
-<pre >##            [,1]       [,2]      [,3]      [,4]
-## vec1  1.0000000  2.0000000  3.000000  4.000000
-## vec2 29.0000000 82.0000000 36.000000 95.000000
-## vec3  0.5770565 -0.3149842 -1.492652 -1.518218</pre>
+<pre >##           [,1]      [,2]       [,3]       [,4]
+## vec1  1.000000  2.000000  3.0000000  4.0000000
+## vec2 42.000000 85.000000 99.0000000 50.0000000
+## vec3  1.162116 -1.185202 -0.1443295  0.5246078</pre>
 
 </article></slide><slide class=''><hgroup><h2>Lists:</h2></hgroup><article  id="lists">
 
@@ -563,12 +563,12 @@ data &lt;- data.frame(studentID = studentID, score = score, gender = gender)
 head(data)</pre>
 
 <pre >##   studentID score gender
-## 1    S#6963    43   male
-## 2    S#7135    89   male
-## 3    S#6880    44   male
-## 4    S#7337    53 female
-## 5    S#6739    98 female
-## 6    S#6696     8   male</pre>
+## 1    S#6895    35 female
+## 2    S#7316    14 female
+## 3    S#7036    97 female
+## 4    S#7159    11   male
+## 5    S#6790    27   male
+## 6    S#7082    39 female</pre>
 
 </article></slide><slide class=''><hgroup><h2>Subsetting:</h2></hgroup><article  id="subsetting">
 
@@ -667,8 +667,8 @@ x[IndVec]</pre>
 names(grades) &lt;- sample(letters[1:10], 10)
 grades</pre>
 
-<pre >##  h  j  a  c  g  d  f  i  e  b 
-## 43 91 55 11 36 52 10 14 22 67</pre>
+<pre >##  j  d  i  c  b  f  e  g  h  a 
+##  9 15  2 36 31 82 24 17 41 93</pre>
 
 <ul>
 <li>We will explore the different ways to subset this vector using index vectors</li>
@@ -691,8 +691,8 @@ logIndVec</pre>
 
 <pre class = 'prettyprint lang-r'>grades[logIndVec]</pre>
 
-<pre >##  h  j  a  c  g 
-## 43 91 55 11 36</pre>
+<pre >##  j  d  i  c  b 
+##  9 15  2 36 31</pre>
 
 </article></slide><slide class=''><hgroup><h2>1. Logical Index Vector</h2></hgroup><article  id="logical-index-vector-1">
 
@@ -707,13 +707,13 @@ logIndVec</pre>
 <pre class = 'prettyprint lang-r'>logIndVec &lt;- grades &gt; 60
 logIndVec</pre>
 
-<pre >##     h     j     a     c     g     d     f     i     e     b 
-## FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE</pre>
+<pre >##     j     d     i     c     b     f     e     g     h     a 
+## FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE</pre>
 
 <pre class = 'prettyprint lang-r'>grades[logIndVec]</pre>
 
-<pre >##  j  b 
-## 91 67</pre>
+<pre >##  f  a 
+## 82 93</pre>
 
 </article></slide><slide class=''><hgroup><h2>2. Index Vector of Positive Integers</h2></hgroup><article  id="index-vector-of-positive-integers">
 
@@ -729,8 +729,8 @@ posIndVec</pre>
 
 <pre class = 'prettyprint lang-r'>grades[posIndVec]</pre>
 
-<pre >##  c  g  d  f 
-## 11 36 52 10</pre>
+<pre >##  c  b  f  e 
+## 36 31 82 24</pre>
 
 </article></slide><slide class=''><hgroup><h2>3. Index Vector of Negative Integers</h2></hgroup><article  id="index-vector-of-negative-integers">
 
@@ -745,8 +745,8 @@ negIndVec</pre>
 
 <pre class = 'prettyprint lang-r'>grades[negIndVec]</pre>
 
-<pre >##  d  f  i  e  b 
-## 52 10 14 22 67</pre>
+<pre >##  f  e  g  h  a 
+## 82 24 17 41 93</pre>
 
 </article></slide><slide class=''><hgroup><h2>4. Vector of Character Strings</h2></hgroup><article  id="vector-of-character-strings">
 
@@ -762,7 +762,7 @@ chIndVec</pre>
 <pre class = 'prettyprint lang-r'>grades[chIndVec]</pre>
 
 <pre >##  a 
-## 55</pre>
+## 93</pre>
 
 </article></slide><slide class=''><hgroup><h2>Subsetting Matrices:</h2></hgroup><article  id="subsetting-matrices">
 
@@ -825,50 +825,50 @@ myMat</pre>
 myList</pre>
 
 <pre >## $ID
-## [1] &quot;ID138&quot; &quot;ID188&quot; &quot;ID147&quot;
+## [1] &quot;ID179&quot; &quot;ID121&quot; &quot;ID194&quot;
 ## 
 ## $Age
-## [1] 75 76 81
+## [1] 66 92 75
 ## 
 ## $Gender
-## [1] &quot;M&quot; &quot;F&quot; &quot;F&quot;</pre>
+## [1] &quot;F&quot; &quot;F&quot; &quot;F&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>myList[1] # subset is still a list</pre>
 
 <pre >## $ID
-## [1] &quot;ID138&quot; &quot;ID188&quot; &quot;ID147&quot;</pre>
+## [1] &quot;ID179&quot; &quot;ID121&quot; &quot;ID194&quot;</pre>
 
 </article></slide><slide class=''><hgroup><h2>Subsetting Lists:</h2></hgroup><article  id="subsetting-lists-1">
 
 <pre class = 'prettyprint lang-r'>myList[1:2] # return the first two objects; subset is still a list</pre>
 
 <pre >## $ID
-## [1] &quot;ID138&quot; &quot;ID188&quot; &quot;ID147&quot;
+## [1] &quot;ID179&quot; &quot;ID121&quot; &quot;ID194&quot;
 ## 
 ## $Age
-## [1] 75 76 81</pre>
+## [1] 66 92 75</pre>
 
 <pre class = 'prettyprint lang-r'>myList[[1]] # return the 1st object; subset is a character vector</pre>
 
-<pre >## [1] &quot;ID138&quot; &quot;ID188&quot; &quot;ID147&quot;</pre>
+<pre >## [1] &quot;ID179&quot; &quot;ID121&quot; &quot;ID194&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>myList$ID # alternative to [[]]</pre>
 
-<pre >## [1] &quot;ID138&quot; &quot;ID188&quot; &quot;ID147&quot;</pre>
+<pre >## [1] &quot;ID179&quot; &quot;ID121&quot; &quot;ID194&quot;</pre>
 
 </article></slide><slide class=''><hgroup><h2>Subsetting Lists:</h2></hgroup><article  id="subsetting-lists-2">
 
 <pre class = 'prettyprint lang-r'>myList[[1]][2] # return the 2nd element of the 1st object</pre>
 
-<pre >## [1] &quot;ID188&quot;</pre>
+<pre >## [1] &quot;ID121&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>myList$ID[2]</pre>
 
-<pre >## [1] &quot;ID188&quot;</pre>
+<pre >## [1] &quot;ID121&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>myList[[c(1,2)]]</pre>
 
-<pre >## [1] &quot;ID188&quot;</pre>
+<pre >## [1] &quot;ID121&quot;</pre>
 
 </article></slide><slide class=''><hgroup><h2>Subsetting Data Frames:</h2></hgroup><article  id="subsetting-data-frames">
 
