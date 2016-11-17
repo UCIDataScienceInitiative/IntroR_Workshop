@@ -33,3 +33,18 @@ Before the workshop begins, please install the following packages: ggplot2. See 
 ```
 R> install.packages("ggplot2", dependencies = TRUE)
 ```
+
+### Step 4: Link to slides
+* Session 1: <http://ucidatascienceinitiative.github.io/IntroR_Workshop/intro_r_session1_slides.html#1>
+
+* Session 2: <http://ucidatascienceinitiative.github.io/IntroR_Workshop/intro_r_session2_slides.html#1>
+
+* Session 3: <http://ucidatascienceinitiative.github.io/IntroR_Workshop/intro_r_session3_slides.html#1>
+
+* Session 4: <http://ucidatascienceinitiative.github.io/IntroR_Workshop/intro_r_session4_slides.html#1>
+
+* Session 5: <http://ucidatascienceinitiative.github.io/IntroR_Workshop/intro_r_session5_slides.html#1>
+
+* Exercises 1: <http://ucidatascienceinitiative.github.io/IntroR_Workshop/section1_exercises.html#1>
+
+* Exercises 2: <http://ucidatascienceinitiative.github.io/IntroR_Workshop/section2_exercises.html#1>
