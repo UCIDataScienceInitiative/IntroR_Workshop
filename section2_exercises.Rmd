@@ -1,7 +1,7 @@
 ---
 title: 'Intro to R Workshop: Section 2 Exercises'
 # author: "Emily Smith, Homer Strong, Sepehr Akhavan, Eric Lai"
-date: "January 28, 2016"
+date: Nov 18, 2016
 output: html_document
 subtitle: UCI Data Science Initiative
 ---
