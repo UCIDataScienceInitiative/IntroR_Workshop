@@ -1,16 +1,16 @@
 ---
-title: "Intro to R Workshop (Session 4)"
-subtitle: "UCI Data Science Initiative"
-author: "Steven Brownlee (based on Wenliang He and Sepehr Akhavan's material)"
-date: "10/7/2016"
-output: slidy_presentation
+title: "Intro to R Workshop: Session 4"
+# author: "Steven Brownlee (based on Wenliang He and Sepehr Akhavan's material)"
+date: Nov 18, 2016
+output: ioslides_presentation
+subtitle: UCI Data Science Initiative
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Sessions4 Agenda
+## Session 4 Agenda
 1. T-Tests
 
 2. Plotting
