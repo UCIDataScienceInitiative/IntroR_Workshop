@@ -1,9 +1,9 @@
 ---
-title: "Intro to R Workshop: Session 4"
-# author: "Steven Brownlee (based on Wenliang He and Sepehr Akhavan's material)"
-date: Nov 18, 2016
-output: ioslides_presentation
+title: 'Intro to R Workshop: Session 4'
+output: slidy_presentation
+date: "Nov 18, 2016"
 subtitle: UCI Data Science Initiative
+smaller: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -30,9 +30,9 @@ T-test can be used to draw statistical conclusions about parameters of interest 
 
 T-tests can be categorized into two groups:
 
-+ 1) One-Sample t-test
++ One-Sample t-test
 
-+ 2) Two-sample t-test
++ Two-sample t-test
 
 
 ##  One-Sample T-Test (Create Data)
@@ -125,9 +125,9 @@ hist(Samp1, main = "Densities of Samp1 and Samp2", freq = F, col = "grey")
 abline(v = mean(Samp1), col = "red", lwd = 2)
 hist(Samp2, freq = F, add = T)
 abline(v = mean(Samp2), col = "blue", lwd = 2)
-legend("topright", legend = c("Samp1", "Samp2"), fill = c("grey","white"), bty = "n", cex = 1.3)
+legend("topright", legend = c("Samp1", "Samp2"),
+       fill = c("grey","white"), bty = "n", cex = 1.3)
 ```
-
 
 ## Linear Regression Data Set Description
 Here we use "Prestige" dataset from "car" package.
@@ -146,7 +146,6 @@ Here we use "Prestige" dataset from "car" package.
     + bc: Blue Collar
     + prof: Professional, Managerial, and Technical
     + wc: White Collar
-
 
 ## Load Data
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
