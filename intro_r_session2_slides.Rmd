@@ -1,7 +1,7 @@
 ---
 title: 'Intro to R Workshop: Session 2'
 output: ioslides_presentation
-date: "Jan 20, 2017"
+date: "January 20, 2017"
 subtitle: UCI Data Science Initiative
 ---
 
