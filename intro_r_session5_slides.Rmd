@@ -2,7 +2,7 @@
 title: 'Intro to R Workshop: Session 5'
 output: slidy_presentation
 smaller: true
-date: "Nov 18, 2016"
+date: "January 20, 2017"
 subtitle: UCI Data Science Initiative
 ---
 
