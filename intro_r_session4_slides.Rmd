@@ -1,7 +1,7 @@
 ---
 title: 'Intro to R Workshop: Session 4'
 output: slidy_presentation
-date: "January 20, 2017"
+date: "April 13, 2017"
 subtitle: UCI Data Science Initiative
 smaller: yes
 ---
@@ -30,7 +30,7 @@ T-test can be used to draw statistical conclusions about parameters of interest 
 
 T-tests can be categorized into two groups:
 
-+ One-Sample t-test
++ One-sample t-test
 
 + Two-sample t-test
 
@@ -59,7 +59,7 @@ oneSampTest.0$estimate
 ```  
 
 
-##  One-Sample T-Test (True Mean Equal to mu)
+##  One-Sample T-Test (True Mean Equal to $\mu$)
 ```{r echo=TRUE}
 oneSampTest.mu <- t.test(oneSampData, mu = 0.3)
 oneSampTest.mu
@@ -73,7 +73,7 @@ Two sample t-tests are categorized into 3 groups:
   
   + T-Test with un-equal variances
   
-  + Paired T-Test: can be also considered as one-sample t-test on deltas.
+  + Paired T-Test (one-sample t-test on differences)
 
 
 ##  Two-Sample T-Test (Un-equal Variances)
@@ -110,18 +110,9 @@ abline(v = mean(Samp1), col = "red", lwd = 2)
 ```
 
 
-## Overlayed Histograms
-```{r echo = TRUE}
-hist(Samp1, main = "Densities of Samp1 and Samp2", xlab = "x", freq = F, col = "grey") 
-abline(v = mean(Samp1), col = "red", lwd = 2)
-hist(Samp2, freq = F, add = T)
-abline(v = mean(Samp2), col = "blue", lwd = 2)
-```
-
-
 ## Overlayed Histograms with a Legend
 ```{r echo = TRUE}
-hist(Samp1, main = "Densities of Samp1 and Samp2", freq = F, col = "grey") 
+hist(Samp1, main = "Densities of Samp1 and Samp2", freq = F, col = "grey", xlab="") 
 abline(v = mean(Samp1), col = "red", lwd = 2)
 hist(Samp2, freq = F, add = T)
 abline(v = mean(Samp2), col = "blue", lwd = 2)
@@ -129,8 +120,20 @@ legend("topright", legend = c("Samp1", "Samp2"),
        fill = c("grey","white"), bty = "n", cex = 1.3)
 ```
 
+
+## Overlayed Density Plots
+```{r echo=TRUE}
+plot(density(Samp1), col="red", main="Densities of Samp1 and Samp2", xlab="")
+abline(v = mean(Samp1), col = "red", lwd = 2, lty=2)
+lines(density(Samp2), col="blue")
+abline(v = mean(Samp2), col = "blue", lwd = 2, lty = 2)
+legend("topright", legend = c("Samp1", "Samp2"),
+       fill = c("red","blue"), bty = "n", cex = 1.3)
+```
+
+
 ## Linear Regression Data Set Description
-Here we use "Prestige" dataset from "car" package.
+Here we use the "Prestige" dataset from the `car` package, which has the following variables
 
 + education: Average education of occupational incumbents, years, in 1971.
 
@@ -142,7 +145,8 @@ Here we use "Prestige" dataset from "car" package.
 
 + census: Canadian Census occupational code.
 
-+ type: Type of occupation. A factor with levels 
++ type: Type of occupation, a factor with levels 
+
     + bc: Blue Collar
     + prof: Professional, Managerial, and Technical
     + wc: White Collar
@@ -160,7 +164,7 @@ str(Prestige)
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 summary(Prestige)
 ```
-See 4 NA values for "type".
+See 4 NA values for "type."
 Let's look at them.
 
 
@@ -169,24 +173,24 @@ Let's look at them.
 Prestige[is.na(Prestige$type),]
 ```
 
-Let's recode "newsboys", "babysitters", and "farmers" as blue collar and exclude athletes.
-First find their row indexes, and corresponding names.
+Find their row indices and corresponding names...
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-which(is.na(Prestige$type))  # gives index numbers of the NAs in the vector
-rownames(Prestige)[which(is.na(Prestige$type))]             # find the row names at those indexes
+ind <- which(is.na(Prestige$type))  # gives index numbers of the NAs in the vector
+rbind(index=ind, name=rownames(Prestige)[ind])  # print index with rowname
 ```
 
 
 ## Recode/Drop NA Values
-Recode "newsboys", "babysitters", and "farmers" to blue collar.
+Let's recode newsboys, babysitters, and farmers as blue collar and exclude athletes.
 
-Use "rep" to create a vector with 3 elements of "bc"
+Use `rep()` to create a vector with 3 elements of "bc"
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-Prestige[c(53, 63, 67),"type"] <- rep("bc", 3)
+ind.ch <- ind[-1]
+Prestige[ind.ch,"type"] <- rep("bc", 3)
 summary(Prestige$type)
 ```
 
-Exclude athletes
+Exclude athletes...
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 Prestige <- na.omit(Prestige) 
 summary(Prestige$type)
@@ -209,12 +213,11 @@ plot(Prestige$education, Prestige$prestige,
 
 
 ## Plotting - Including Regression/Smoother Lines
-abline adds a line to the plot
-lm() is a list object that contains regression coefficients
+`abline()` adds a line to the plot, and `lm()` is a list object that contains regression coefficients.
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 plot(Prestige$education, Prestige$prestige,
      main = "Prestige Score by Education",
-     xlab = "Ave. Years of Education", ylab = "Prestige Score")
+     xlab = "Avg Years of Education", ylab = "Prestige Score")
 abline(reg = lm(prestige ~ education, data = Prestige), col = "red", lwd = 2)
 lines(lowess(Prestige$education, Prestige$prestige), col = "blue", lty = 2, lwd = 2)
 legend("topleft",legend = c("Regression Line", "Smoother"), col = c("red","blue"),
@@ -223,10 +226,10 @@ legend("topleft",legend = c("Regression Line", "Smoother"), col = c("red","blue"
 
 
 ## Plotting - Scatter Plot Matrix
-Use the scatterplotMatrix function from the "car" package
+Use the `scatterplotMatrix()` function from the `car` package
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 # Use direct ordering of the varaibles to control how they are plotted
-scatterplotMatrix(Prestige[,c("prestige","education","income","women","census")])
+scatterplotMatrix(Prestige[,c("prestige","education","income","women")])
 ```
 
 
@@ -302,7 +305,7 @@ plot(myReg)
 
 
 ##  Linear Regression - Predict
-+ Predict the output for a new input
+Predict the output for a new input
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 newData = data.frame(education=13.2, income=12000, women=12)
 predict(myReg, newData, interval="predict")
