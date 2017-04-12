@@ -1,7 +1,7 @@
 ---
 title: "Intro to R Workshop: Session 3"
 #author: "Yuxiao Wang"
-date: "January 20, 2017"
+date: "April 13, 2017"
 output: ioslides_presentation
 subtitle: UCI Data Science Initiative
 ---
@@ -9,8 +9,6 @@ subtitle: UCI Data Science Initiative
 ```{r, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
-
----
 
 
 ## Session 3 - Agenda
@@ -41,8 +39,8 @@ knitr::opts_chunk$set(echo = FALSE)
 + Let's calculate the probability of getting five heads using the function ```dbinom()```
 
 ```{r echo=TRUE}  
-str(dbinom)
-dbinom(5, 10, 0.5) # prob of getting five heads
+str(dbinom) # binomial probability mass func
+dbinom(5, 10, 0.5) # Pr[X = 5] = ?
 ```
 
 ## Discrete Distribution: Binomial
@@ -50,60 +48,60 @@ dbinom(5, 10, 0.5) # prob of getting five heads
 + Next, let's calculate the probability of getting 5 or fewer heads using the function ```pbinom()```
 
 ```{r echo=TRUE} 
-str(pbinom) 
-pbinom(5, 10, 0.5) # Pr[X <= 5]
+str(pbinom) # binomial CDF 
+pbinom(5, 10, 0.5) # Pr[X <= 5] = ?
 ```
 
 
 ## Discrete Distribution: Binomial
 
-+ Now, suppose we have the probability 0.75 and we want to calculate the number whose CDF is equal to that using ```qnorm()``` (note that this is the inverse of ```pnorm()```)
++ Now, suppose we have the probability 0.75 and we want to calculate the number of heads whose CDF is equal to that using ```qnorm()``` (note that this is the inverse of ```pnorm()```)
 
 ```{r echo=TRUE}  
-str(qbinom) # quantile: Pr[X <= ?] = known value
-qbinom(0.75, 10, 0.5) # get the value of ? s.t. Pr[X <= ?]=0.75
+str(qbinom) # binomial quantile func
+qbinom(0.75, 10, 0.5) # get the value of ? s.t. Pr[X <= ?] = 0.75
 ```
 
 ## Discrete Distribution: Binomial
 
-+ Finally, let's generate 20 independent samples from a binomial(10, 0.5)
++ Finally, let's generate 20 independent samples from a binomial(10, 0.5). This is equivalent to repeatedly (i.e., 20 times) flipping a coin 10 times and counting the number of heads. 
 
 ```{r echo=TRUE} 
-str(rbinom) # Generating random numbers
+str(rbinom) # binomial random number generator
 rbinom(20, 10, 0.5) # 20 ind samples from binomial(10, 0.5)
 ```
 
 
 ## Continuous Distribution: Standard Normal
 
-+ Calculate the probability that x = 0
++ Calculate the value of the probability density function at $X = 0$
 ```{r echo=TRUE}  
-str(dnorm)
+str(dnorm) # normal pdf
 dnorm(x = 0, mean = 0, sd = 1)
 ```
 
 ## Continuous Distribution: Standard Normal
 
-+ Calculate the probability that x <= 0
++ Calculate the probability that $X \leq 0$
 ```{r echo=TRUE}  
-str(pnorm) # CDF
-pnorm(0, mean = 0, sd = 1)
+str(pnorm) # normal CDF
+pnorm(0, mean = 0, sd = 1) # Pr[X <= 0] = ?
 ```
 
 
 ## Continuous Distribution: Standard Normal
 
-+ Find the value for which the CDF = 0.5
++ Find the value for which the CDF = 0.975
 ```{r echo=TRUE}  
-str(qnorm) # quantile
-qnorm(0.5, mean = 0, sd = 1)
+str(qnorm) # normal quantile func
+qnorm(0.975, mean = 0, sd = 1) # PR[X <= ?] = 0.975
 ```
 
 ## Continuous Distribution: Standard Normal
 
 + Generate 10 independent random numbers from a standard normal distribution
 ```{r echo=TRUE}  
-str(pnorm) # cumulative dist
+str(rnorm) # generate random number from normal dist
 rnorm(10, mean = 0, sd = 1)
 ```
 
