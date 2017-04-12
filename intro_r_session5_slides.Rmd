@@ -2,7 +2,7 @@
 title: 'Intro to R Workshop: Session 5'
 output: slidy_presentation
 smaller: true
-date: "January 20, 2017"
+date: "April 13, 2017"
 subtitle: UCI Data Science Initiative
 ---
 
@@ -25,15 +25,17 @@ plot(cars, type = "o")
 
 ## Line Charts - Change Some Attributes
 ```{r echo=TRUE}
-plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
-title(main="Autos Sales", col.main="darkgrey")
+plot(cars, type="o", col="red", ylim=c(0.5,5), 
+     xlab="Months", ylab="Sales in Millions",
+     main="Autos Sales")
 ```
 
 
 ## Line Charts - Add Another Line
 ```{r echo=TRUE}
-plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
-title(main="Autos Sales", col.main="darkgrey")
+plot(cars, type="o", col="red", ylim=c(0.5,5), 
+     xlab="Months", ylab="Sales in Millions",
+     main="Autos Sales")
 suvs = c(1,4,3,3,4)
 lines(suvs, type="o", col="blue", lty=2, pch=6)
 ```
@@ -41,8 +43,9 @@ lines(suvs, type="o", col="blue", lty=2, pch=6)
 
 ## Line Charts - Add a Horizontal Line
 ```{r echo=TRUE}
-plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
-title(main="Autos Sales", col.main="darkgrey")
+plot(cars, type="o", col="red", ylim=c(0.5,5), 
+     xlab="Months", ylab="Sales in Millions",
+     main="Autos Sales")
 lines(suvs, type="o", col="blue", lty=2, pch=6)
 abline(h=c(3,4), lty=2, col="darkgrey") # h for horizontal
 ```
@@ -50,56 +53,55 @@ abline(h=c(3,4), lty=2, col="darkgrey") # h for horizontal
 
 ## Line Charts - Add Legend
 ```{r echo=TRUE}
-plot(cars, type="o", col="red", ylim=c(0.5,5), xlab="Months", ylab="Sales in Millions")
-title(main="Autos Sales", col.main="darkgrey")
+plot(cars, type="o", col="red", ylim=c(0.5,5), 
+     xlab="Months", ylab="Sales in Millions",
+     main="Autos Sales")
 lines(suvs, type="o", col="blue", lty=2, pch=6)
 abline(h=c(3,4), lty=2, col="darkgrey") # h for horizontal
 legend(4.2, 1.2, c("cars","suvs"), col=c("red","blue"), lty=1:2, pch=c(1,6), bty="n")
 ```
 
 
-
 ##  Logistic Regression - Data
-+ Used to model the probability of a binary outcome
-+ glm() is used to fit logistic regression model
-+ Mroz data - Want to predict female labor force participation
++ `glm()` is used to fit generalized linear models (logistic regression in this example).
++ Logistic regression is used to model the probability of a binary outcome.
++ For instance, say we want to predict female labor force participation using the `Mroz` data.
 
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 library(car)
-data(Mroz); # load Mroz data
+data(Mroz) # load Mroz data
 str(Mroz)
 ```
 
 
 ## Logistic Regression - Data Description
-+ lfp: female labor-force participation; a factor with levels: no; yes.
-+ k5: number of children 5 years old or younger.
-+ k618: number of children 6 to 18 years old.
-+ age: in years.
-+ wc: wife's college attendance; a factor with levels: no; yes.
-+ hc: husband's college attendance; a factor with levels: no; yes.
-+ lwg: log expected wage rate; 
-    + for women in the labor force, the actual wage rate; 
++ lfp: female labor-force participation (factor with levels no/yes)
++ k5: number of children 5 years old or younger
++ k618: number of children 6 to 18 years old
++ age: in years
++ wc: wife's college attendance (factor with levels no/yes)
++ hc: husband's college attendance (factor with levels no/yes)
++ lwg: log expected wage rate
+    + for women in the labor force, the actual wage rate
     + for women not in the labor force, an imputed value 
-+ inc: family income exclusive of wife's income.
++ inc: family income exclusive of wife's income
 
 
-## Logistic Regression - Data Description
+## Logistic Regression - Exploratory Data Analysis (EDA)
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-str(Mroz)
+summary(Mroz)
 ```
 
 
-## Logistic Regression - Data Description
-Barplot
+## Logistic Regression - EDA
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-barplot(table(Mroz$lfp), col = "blue", main = "Count of Females by Labor Force Participation",
+barplot(table(Mroz$lfp), col = "blue", 
+        main = "Count of Females by Labor Force Participation",
         xlab = "Labor Force Participation Status", ylab = "Number of Females")
 ```
 
 
-## Logistic Regression - Data Description
-Stacked Barplot
+## Logistic Regression - EDA
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 counts <- table(Mroz$lfp, Mroz$k5)
 barplot(counts, col = c("blue","red"),
@@ -109,8 +111,7 @@ barplot(counts, col = c("blue","red"),
 ```
 
 
-## Logistic Regression - Data Description
-Grouped Barplot
+## Logistic Regression - EDA
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 counts <- table(Mroz$lfp, Mroz$k5)
 barplot(counts, col = c("blue","red"),
@@ -120,8 +121,7 @@ barplot(counts, col = c("blue","red"),
 ```
 
 
-## Logistic Regression - Data Description
-Scatter Plot with Classification
+## Logistic Regression - EDA
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 plot(Mroz$age, Mroz$lwg, col = ifelse(Mroz$lfp == "yes", "red", "blue"),
      main = "Age vs. Log Wage by LFP", xlab = "Age (Years)", ylab = "Wage")
@@ -132,7 +132,7 @@ legend(x = 50, y = -1.5, legend = c("in LF", "Out of LF"),
 
 ## Logistic Regression - Model Fit
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-fitLogistic <- glm(lfp ~ k5 + age, family=binomial(logit), data=Mroz); 
+fitLogistic <- glm(lfp ~ k5 + age, family=binomial(logit), data=Mroz)
 fitLogistic
 ```
 
@@ -150,26 +150,26 @@ names(fitLogistic)
 
 
 ## Logistic Regression - Exponentiated CIs
-+ 95% CI for exp(coefficients) (profile liklihood mehtod)
++ 95% CI for exp(coefficients) (profile likelihood method)
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 exp(confint(fitLogistic, level=0.95))
 ```
 
-+ 95% CI for exp(coefficients) (Wald confident interval)
++ 95% CI for exp(coefficients) (Wald confidence interval)
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 exp(confint.default(fitLogistic, level=0.95))
 ```
 
 
 ## Logistic Regression - Predictions
-To get Probabilities, be sure to use type = "response"
+To get probabilities, be sure to use type = "response"
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 head(Mroz,1)
 XB <- as.vector(head(predict(fitLogistic),1))
-p <- as.vector(head(predict(fitLogistic, type = "response"),1))
 XB
+p <- as.vector(head(predict(fitLogistic, type = "response"),1))
 p
-exp(XB)/(1 + exp(XB))
+exp(XB)/(1 + exp(XB))  # inverse logit function
 ```
 
 
@@ -192,6 +192,8 @@ anova(fitLogistic, fitLogistic2, test='LRT')
 ```
 
 
+## End of Session 5
+Break
 
 
 
