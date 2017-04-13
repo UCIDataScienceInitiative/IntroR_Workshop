@@ -1,8 +1,9 @@
 ---
 title: 'Intro to R Workshop: Session 2'
-output: ioslides_presentation
-date: "January 20, 2017"
+output: slidy_presentation
+date: "April 13, 2017"
 subtitle: UCI Data Science Initiative
+smaller: yes
 ---
 
 ```{r, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
